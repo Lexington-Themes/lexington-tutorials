@@ -22,11 +22,11 @@ const images = [
 ---
 
 <BaseLayout>
-  <section class="bg-zinc-50">
+  <section class="bg-zinc-50 overflow-hidden">
     <div
       class="max-w-screen-xl 2xl:max-w-screen-3xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 h-svh flex flex-col justify-center"
     >
-      <div class="hidden lg:grid mt-12 lg:grid-cols-4 mx-auto scale-125">
+      <div class="flex flex-col sm:flex-row mx-auto">
         {
           images.map((image) => (
             <a href="#_">
@@ -53,7 +53,9 @@ const images = [
                 How to create animated image cards with Tailwind CSS and Astrojs
               </p>
               <p class="mt-2 text-xs text-orange-500 underline">
-                <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
               </p>
             </div>
           </div>
