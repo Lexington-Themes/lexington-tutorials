@@ -3,13 +3,16 @@
 
 This collection offers a range of code snippets tailored for Astro.js and Tailwind CSS projects. Each snippet is designed specifically for use with Astro and Tailwind CSS, ensuring seamless integration.
 
-### All tutorials
+## All tutorials
 
+### How to create animated image cards with Tailwind CSS and Astro.js
+![Tutorials image](https://lexingtonthemes.com/images/tutorials/animatedImages.png)
+Let’s elevate your website with a captivating image component. If your Astro.js project is already set up, we’ll dive straight into using Tailwind CSS to craft the animations for our cards.
 - [How to create animated image cards with Tailwind CSS and Astrojs](https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/)
 
 
 
-### Terms of Use
+## Terms of Use
 
 By accessing and using the code snippets provided by Lexington Themes, you agree to the following terms, which incorporate the GNU General Public License v3.0 (GPLv3):
 
@@ -28,10 +31,10 @@ By accessing and using the code snippets provided by Lexington Themes, you agree
 Use of the snippets indicates your acceptance of these terms and the GNU General Public License v3.0.
 
 
-### License
+## License
 
 You can read the license right here: [GNU License](https://github.com/UnwrappedDesign/lexington-tutorials/blob/main/LICENSE).
 
 
-### Contact
+## Contact
 For any questions and answers you can reach out to Lexingon Themes on [X/Twitter](https://x.com/lexingtonthemes)
