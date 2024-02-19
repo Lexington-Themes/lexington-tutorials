@@ -1,8 +1,41 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Landing from "@/components/landing/Landing.astro";
+
+const component = [
+  {
+    url: "/simplified-cards",
+    title: "Simplified astro cards",
+  },
+  {
+    url: "/animated-images",
+    title: "How to create animated image cards with Tailwind CSS and Astrojs",
+  },
+];
 ---
+
 <BaseLayout>
-  <Landing />
-  
+  <section>
+    <div
+      class="items-center w-full px-5 py-24 mx-auto md:px-12 max-w-7xl h-svh flex flex-col justify-center"
+    >
+      <div>
+        <dl class="flex flex-col max-w-xl mx-auto divide-y">
+          {
+            component.map((template, index) => (
+              <div class="py-2 inline-flex items-center gap-4">
+                <dt class="text-neutral-600 hover:text-orange-500 w-full">
+                  <a href={template.url} class="inline-flex items-center">
+                    {template.title}
+                  </a>
+                </dt>
+                <dd class="order-first">
+                  {String(index + 1).padStart(2, "0") + "."}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

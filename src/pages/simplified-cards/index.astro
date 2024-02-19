@@ -1,0 +1,65 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Define an array of objects named 'features'.
+// Each object in the array represents a feature with a 'title' and a 'description'.
+// This data structure allows for easy management and iteration of features in the UI.
+const features = [
+  {
+    title: "Intuitive Design",
+    description: "We've built our platform prioritizing the user's experience.",
+  },
+  {
+    title: "Flexible Customization",
+    description: "Our platform supports tailored branding options.",
+  },
+  {
+    title: "Order Scheduling",
+    description:
+      "Our platform offers the capability to schedule orders in advance.",
+  },
+  {
+    title: "Filter for Allergens",
+    description: "Our platform features a tool for filtering allergens.",
+  },
+];
+
+---
+
+<BaseLayout>
+  <section class="bg-zinc-950">
+    <div
+      class="max-w-screen-xl 2xl:max-w-screen-2xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 h-svh flex flex-col justify-center"
+    >
+
+      <ul
+        class="grid grid-cols-1 gap-6 mt-12 list-none md:grid-cols-2 lg:grid-cols-4 lg:mt-24"
+        role="list"
+      >
+        <!--
+          // Maping.
+          //
+          // The features array is mapped to generate <li> elements for each feature.
+          // This dynamic generation allows for easy addition or removal of features.
+          // This  part "{String(index + 1).padStart(2, "0") + "."}" adds a number dynamically"
+        -->
+        {
+          features.map((feature, index) => (
+            <li class="ring-1 ring-white/10 p-8 rounded-xl bg-gradient-to-t from-zinc-900 to-zinc-800">
+              <div>
+                <p class="text-2xl font-medium text-orange-500">
+                  {String(index + 1).padStart(2, "0") + "."}
+                </p>
+                <p class="text-lg mt-6 font-medium text-white lg:text-xl">
+                  {feature.title}
+                </p>
+              </div>
+              <div class="mt-2 text-base text-zinc-400 text-pretty">
+                {feature.description}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

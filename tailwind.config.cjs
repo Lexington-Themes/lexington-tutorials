@@ -6,31 +6,30 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'astro-code-text': 'black', // Directly use Tailwind color name
-        'astro-code-background': 'gray.100', // Use Tailwind's color system
-        // Example mappings using Tailwind color names
-        'astro-code-token-constant': 'gray.800',
-        'astro-code-token-string': 'gray.500',
-        'astro-code-token-comment': 'gray.600',
-        'astro-code-token-keyword': 'black', // Reusing 'astro-code-text'
-        'astro-code-token-parameter': 'black',
-        'astro-code-token-function': 'gray.700',
-        'astro-code-token-string-expression': 'gray.800',
-        'astro-code-token-punctuation': 'gray.500',
-        'astro-code-token-link': 'gray.800',
-        // Add more mappings as needed
-        black:"#151515",
-        white:"#f5f5f5",
+
+       orange: {
+            50: "hsl(22, 100%, 96%)",
+          100: "hsl(25, 100%, 91%)",
+          200: "hsl(22, 100%, 82%)",
+          300: "hsl(20, 100%, 71%)",
+          400: "hsl(16, 100%, 60%)",
+          500: "hsl(14, 100%, 52%)",
+          600: "hsl(9, 100%, 50%)",
+          700: "hsl(6, 98%, 40%)",
+          800: "hsl(4, 87%, 34%)",
+          900: "hsl(4, 83%, 28%)",
+          950: "hsl(1, 89%, 15%)",
+        },
       },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
-
       },
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
        require('@tailwindcss/forms'),
+       
     // ...
   ],
 }
