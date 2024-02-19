@@ -6,7 +6,6 @@ This collection offers a range of code snippets tailored for Astro.js and Tailwi
 ## All tutorials
 
 ### How to create animated image cards with Tailwind CSS and Astro.js
-  <img src="https://lexingtonthemes.com/images/tutorials/animatedImages.png" alt="Tutorials image" width="600"/>
 
 Let’s elevate your website with a captivating image component. If your Astro.js project is already set up, we’ll dive straight into using Tailwind CSS to craft the animations for our cards.
 - [How to create animated image cards with Tailwind CSS and Astro.js](https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/)
