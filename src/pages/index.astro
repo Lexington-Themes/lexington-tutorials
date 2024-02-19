@@ -21,7 +21,7 @@ const component = [
       <div>
         <dl class="flex flex-col max-w-xl mx-auto divide-y">
           {
-            component.map((template, index) => (
+            component.slice(1,2).map((template, index) => (
               <div class="py-2 inline-flex items-center gap-4">
                 <dt class="text-neutral-600 hover:text-orange-500 w-full">
                   <a href={template.url} class="inline-flex items-center">
