@@ -6,7 +6,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-
        orange: {
             50: "hsl(22, 100%, 96%)",
           100: "hsl(25, 100%, 91%)",
@@ -29,7 +28,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
        require('@tailwindcss/forms'),
-       
     // ...
   ],
 }

@@ -1,25 +1,104 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 const component = [
-  {
+  /* {
     url: "/simplified-cards",
     title: "Simplified astro cards",
-  },
+  }, */
   {
     url: "/animated-images",
     title: "How to create animated image cards with Tailwind CSS and Astrojs",
   },
+  {
+    url: "/pricing-table",
+    title:
+      "How to create prcing cards with alpinejs and tailwind CSS with Astrojs",
+  }
 ];
 ---
+
 <BaseLayout>
-  <section>˚
+  <section>
+
     <div
       class="items-center w-full px-5 py-24 mx-auto md:px-12 max-w-7xl h-svh flex flex-col justify-center"
     >
       <div>
-        <dl class="flex flex-col max-w-xl mx-auto divide-y">
+        <a
+          class="text-lg text-black focus:outline-none focus:ring lg:text-2xl tracking-tight uppercase"
+          href="https://lexingtonthemes.com/tutorials"
+        >
+          <span
+            class="items-center inline-flex gap-2 group font-extrabold lg:text-lg 2xl:text-xl uppecase"
+          >
+            <svg
+              class="h-5 w-5 group-hover:motion-safe:animate-spin group-hover:text-accent-600 duration-200"
+              viewBox="0 0 147 148"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M77.0546 0.147949H69.9463V147.148H77.0546V0.147949Z"
+                fill="currentColor"></path>
+              <path
+                d="M77.0546 0.147949H69.9463V147.148H77.0546V0.147949Z"
+                fill="currentColor"
+                fill-opacity="0.2"></path>
+              <path d="M147 70.0938H0V77.2021H147V70.0938Z" fill="currentColor"
+              ></path>
+              <path
+                d="M147 70.0938H0V77.2021H147V70.0938Z"
+                fill="currentColor"
+                fill-opacity="0.2"></path>
+              <path
+                d="M24.0282 19.1578L19.002 24.1841L122.946 128.128L127.972 123.101L24.0282 19.1578Z"
+                fill="currentColor"></path>
+              <path
+                d="M24.0282 19.1578L19.002 24.1841L122.946 128.128L127.972 123.101L24.0282 19.1578Z"
+                fill="currentColor"
+                fill-opacity="0.2"></path>
+              <path
+                d="M122.946 19.1564L19.002 123.1L24.0282 128.126L127.972 24.1827L122.946 19.1564Z"
+                fill="currentColor"></path>
+              <path
+                d="M122.946 19.1564L19.002 123.1L24.0282 128.126L127.972 24.1827L122.946 19.1564Z"
+                fill="currentColor"
+                fill-opacity="0.2"></path>
+              <path
+                d="M6.7933 42.6484L4.11133 49.2314L140.248 104.695L142.93 98.1115L6.7933 42.6484Z"
+                fill="currentColor"></path>
+              <path
+                d="M6.7933 42.6484L4.11133 49.2314L140.248 104.695L142.93 98.1115L6.7933 42.6484Z"
+                fill="currentColor"
+                fill-opacity="0.2"></path>
+              <path
+                d="M97.9631 4.26955L42.5 140.406L49.083 143.088L104.546 6.95152L97.9631 4.26955Z"
+                fill="currentColor"></path>
+              <path
+                d="M97.9631 4.26955L42.5 140.406L49.083 143.088L104.546 6.95152L97.9631 4.26955Z"
+                fill="currentColor"
+                fill-opacity="0.2"></path>
+              <path
+                d="M140.41 42.8958L4.03809 97.7856L6.69233 104.38L143.064 49.4902L140.41 42.8958Z"
+                fill="currentColor"></path>
+              <path
+                d="M140.41 42.8958L4.03809 97.7856L6.69233 104.38L143.064 49.4902L140.41 42.8958Z"
+                fill="currentColor"
+                fill-opacity="0.2"></path>
+              <path
+                d="M49.3122 4.18875L42.7178 6.84229L97.5928 143.214L104.187 140.561L49.3122 4.18875Z"
+                fill="currentColor"></path>
+              <path
+                d="M49.3122 4.18875L42.7178 6.84229L97.5928 143.214L104.187 140.561L49.3122 4.18875Z"
+                fill="currentColor"
+                fill-opacity="0.2"></path>
+            </svg>
+            Lexington tutorials
+          </span>
+        </a>
+        <dl class="flex flex-col mt-12 max-w-xl mx-auto divide-y">
           {
-            component.slice(1,2).map((template, index) => (
+            component.map((template, index) => (
               <div class="py-2 inline-flex items-center gap-4">
                 <dt class="text-neutral-600 hover:text-orange-500 w-full">
                   <a href={template.url} class="inline-flex items-center">

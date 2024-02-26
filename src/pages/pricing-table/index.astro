@@ -1,0 +1,284 @@
+---
+// Import BaseLayout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// This block maps over the pricingPlans array to generate pricing plan cards.
+// Each card displays information based on whether the 'annual' state is true or false,
+// which toggles between showing monthly and annual prices.
+// Features and unavailable features are listed with icons indicating their availability.
+const pricingPlans = [
+  {
+    // Name of the pricing plan.
+    name: "Starter Pack",
+    // Monthly price of the plan as a string.
+    monthlyPrice: "15",
+    // Annual price of the plan as a string, representing cost per month when billed annually.
+    annualPrice: "8",
+    // A short description for your pricing table
+    description:
+      "This plan is ideal for individual users and hobbyists who are looking for essential functionalities to support their projects.",
+    // Tailwind CSS classes for styling the card's background.
+    cardBgClass: "bg-black/20 backdrop-blur-3xl",
+    // Tailwind CSS classes for styling the button within the card.
+    buttonClass: "text-white bg-black/50 hover:bg-black/20 ",
+    // Array of features included in the plan.
+    features: ["5 mb/PDF", "75 pages/PDF", "10 messages/Day", "Up to 3 PDFs"],
+    // Array of features not available in the plan.
+    unavailableFeatures: ["Gpt-3.5-turbo model", "Test mode", "Doc summary"],
+  },
+  {
+    // Name of the second pricing plan.
+    name: "Silver Surfer",
+    // Monthly price of the second plan as a string.
+    monthlyPrice: "25",
+    // Annual price of the second plan as a string, indicating cost per month when billed annually.
+    annualPrice: "20",
+    // A short description for your pricing table
+    description:
+      "If you're a small business or a startup, this plan is designed to cater to your needs. It offers a balance of essential features.",
+    // Tailwind CSS classes for the second plan's card background styling.
+    cardBgClass: "bg-black/50 backdrop-blur-3xl",
+    // Tailwind CSS classes for the second plan's button styling.
+    buttonClass: "text-black bg-white hover:bg-white/5 hover:text-white ",
+    // Array of features included in the second plan.
+    features: [
+      "10 mb/PDF",
+      "150 pages/PDF",
+      "25 messages/Day",
+      "Up to 5 PDFs",
+      "Gpt-3.5-turbo model",
+    ],
+    // Array of features not available in the second plan.
+    unavailableFeatures: ["Test mode", "Doc summary"],
+  },
+  {
+    // Name of the third pricing plan.
+    name: "Golden Unicorn",
+    // Monthly price of the third plan as a string.
+    monthlyPrice: "50",
+    // Annual price of the third plan as a string, showing cost per month when billed annually.
+    annualPrice: "40",
+    // A short description for your pricing table
+    description:
+      "Tailored for medium-sized businesses, this plan offers advanced tools and features to support your growing demands.",
+    // Tailwind CSS classes for the third plan's card background styling.
+    cardBgClass: "bg-black/20 backdrop-blur-3xl",
+    // Tailwind CSS classes for the third plan's button styling.
+    buttonClass: "text-white bg-black/50 hover:bg-black/20 ",
+    // Array of features included in the third plan.
+    features: [
+      "32 mb/PDF",
+      "1500 pages/PDF",
+      "1000 messages/Day",
+      "Up to 50 PDFs",
+      "Gpt-3.5-turbo-16k model",
+      "Test mode",
+      "Doc summary",
+    ],
+    // The third plan does not have unavailable features, hence an empty array.
+    unavailableFeatures: [],
+  },
+];
+---
+
+<BaseLayout>
+  <section
+    x-data="{annual: false}"
+    class="relative flex flex-col overflow-hidden overflow-y-auto h-svh items-center justify-center bg-zinc-950"
+  >
+    <!-- Background image -->
+    <img
+      class="absolute w-full h-full lg:w-auto lg:h-auto"
+      src="/images/blueBlob.svg"
+      alt="alt text"
+    />
+    <!-- Ends Background image -->
+    <div
+      class="relative items-center px-8 py-12 mx-auto md:px-12 lg:px-32 max-w-7xl"
+    >
+      <!-- Pricing Toggle Buttons -->
+      <div class="md:max-w-sm mx-auto">
+        <!-- Toggle Button Container -->
+        <div
+          class="inline-flex w-full border rounded-full mt-6 overflow-hidden border-white/20 p-0.5 z-0"
+        >
+          <!-- Monthly Button: Sets 'annual' to false when clicked -->
+          <button
+            class="font-medium rounded-full transition h-12 w-full py-2 block px-8 text-xs bg-black/50 text-white"
+            :class="{ '  bg-black/50  text-white': !annual, ' text-white': annual }"
+            @click="annual = false"
+            type="button"
+          >
+            Monthly
+          </button>
+          <!-- Annual Button: Sets 'annual' to true when clicked -->
+          <button
+            class="font-medium rounded-full transition h-12 w-full py-2 block px-8 text-xs border-white text-white"
+            :class="{ '  bg-black/50  text-white': annual, ' text-white': !annual }"
+            @click="annual = true"
+            type="button"
+          >
+            Annual
+          </button>
+        </div>
+      </div>
+
+      <!--------------------------------------------------------------------------------------------------------------------------------------------------------
+//Alpinejs part
+//
+// This section uses Alpine.js to switch between monthly and annual pricing.
+// - The `x-data` directive initializes component state (not shown here).
+// - The `:class` directive dynamically updates class attributes based on the `annual` state.
+// - The `@click` directive toggles the `annual` state between true and false.
+// - The `x-show` directive conditionally renders elements based on the `annual` state.
+// Pricing plans are dynamically generated using `.map()`, with each plan's details being displayed.
+// Features and unavailable features are also dynamically listed, using conditional rendering based on the plan's data.
+//
+// Template
+//
+// The following unordered list (ul) element contains a list of features and unavailable features for each plan.
+// It uses Tailwind CSS for layout, spacing, and text styling.
+//
+//
+// This paragraph displays the description of each pricing plan.
+// It uses Tailwind CSS classes for margin, font size, and text color.
+///// <p class="mt-8 text-xs text-white/80">{plan.description}</p>
+//
+//
+// Maps over the 'features' array of the current plan to generate list items (li) for each feature.
+// Each list item displays a check icon to indicate that the feature is available in this plan.
+///// {plan.features.map((feature)
+//
+//
+// Maps over the 'unavailableFeatures' array of the current plan to generate list items for each.
+// These items are styled with reduced opacity to indicate that they are not available in this plan.
+///// {plan.unavailableFeatures.map((feature)
+-------------------------------------------------------------------------------------------------------------------------------------------------------->
+      <div class="grid grid-cols-1 gap-2 mt-12 lg:grid-cols-3">
+        {
+          pricingPlans.map((plan) => (
+            <div
+              class={`flex flex-col justify-between p-8 shadow-2xl  rounded-3xl ${plan.cardBgClass} backdrop-blur-3xl shadow-gray-900/50`}
+            >
+              <div>
+                <div class="flex flex-col justify-between gap-3">
+                  <p class="text-xl font-medium tracking-tight text-white">
+                    {plan.name}
+                  </p>
+                  <p class="text-white">
+                    <span class="text-2xl tracking-tight">
+                      <span x-show="!annual">${plan.monthlyPrice}</span>
+                      <span x-show="annual">${plan.annualPrice}</span>
+                    </span>
+                    <span class="text-base font-medium">
+                      /m
+                      <span x-show="annual" style="display: none;">
+                        (billed annually)
+                      </span>
+                    </span>
+                  </p>
+                </div>
+                <p class="mt-8 text-xs text-white/80">{plan.description}</p>
+                <ul class="flex flex-col order-last mt-8 text-sm text-white gap-y-3">
+                  {plan.features.map((feature) => (
+                    <li class="inline-flex items-center gap-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-circle-check"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                        <path d="M9 12l2 2l4 -4" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                  {plan.unavailableFeatures.map((feature) => (
+                    <li class="inline-flex items-center gap-2 opacity-50">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-circle-x"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                        <path d="M10 10l4 4m0 -4l-4 4" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="flex mt-6">
+                <a
+                  href="#_"
+                  title={plan.name}
+                  aria-label="get started"
+                  class={`flex items-center justify-center w-full  h-12 px-4 py-2 text-base font-medium transition-all duration-200 rounded-xl ${plan.buttonClass}`}
+                >
+                  Get started
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8"
+      >
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+        >
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create simplified cards with Tailwind CSS and Astrojs
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/how-to-create-interactive-pricing-table-astro-tailwind-alpine/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+    </div>
+  </section>
+</BaseLayout>

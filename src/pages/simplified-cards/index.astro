@@ -7,30 +7,49 @@ const features = [
   {
     title: "Intuitive Design",
     description: "We've built our platform prioritizing the user's experience.",
+    bgColor: "bg-cyan-50",
+    ringColor: "ring-cyan-100",
+    numberColor: "text-cyan-950",
+    titleColor: "text-cyan-900",
+    descriptionColor: "text-cyan-700",
   },
   {
     title: "Flexible Customization",
     description: "Our platform supports tailored branding options.",
+    bgColor: "bg-indigo-50",
+    ringColor: "ring-indigo-100",
+    numberColor: "text-indigo-950",
+    titleColor: "text-indigo-900",
+    descriptionColor: "text-indigo-700",
   },
   {
     title: "Order Scheduling",
     description:
       "Our platform offers the capability to schedule orders in advance.",
+    bgColor: "bg-pink-50",
+    ringColor: "ring-pink-100",
+    numberColor: "text-pink-950",
+    titleColor: "text-pink-900",
+    descriptionColor: "text-pink-700",
   },
   {
     title: "Filter for Allergens",
     description: "Our platform features a tool for filtering allergens.",
+    bgColor: "bg-purple-50",
+    ringColor: "ring-purple-100",
+    numberColor: "text-purple-950",
+    titleColor: "text-purple-900",
+    descriptionColor: "text-purple-700",
   },
 ];
-
 ---
 
 <BaseLayout>
-  <section class="bg-zinc-950">
+  <section class="bg-white">
     <div
       class="max-w-screen-xl 2xl:max-w-screen-2xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 h-svh flex flex-col justify-center"
     >
-
+      <!-- Starts component -->
       <ul
         class="grid grid-cols-1 gap-6 mt-12 list-none md:grid-cols-2 lg:grid-cols-4 lg:mt-24"
         role="list"
@@ -44,22 +63,69 @@ const features = [
         -->
         {
           features.map((feature, index) => (
-            <li class="ring-1 ring-white/10 p-8 rounded-xl bg-gradient-to-t from-zinc-900 to-zinc-800">
+            <li
+              class={`p-8 text-black rounded-xl ring-1 ring-inset ${feature.bgColor}  ${feature.ringColor} `}
+            >
               <div>
-                <p class="text-2xl font-medium text-orange-500">
+                <p class={`text-2xl font-medium ${feature.numberColor} `}>
                   {String(index + 1).padStart(2, "0") + "."}
                 </p>
-                <p class="text-lg mt-6 font-medium text-white lg:text-xl">
+                <p
+                  class={`text-lg mt-6 font-medium  lg:text-xl ${feature.titleColor} `}
+                >
                   {feature.title}
                 </p>
               </div>
-              <div class="mt-2 text-base text-zinc-400 text-pretty">
+              <div class={`mt-2 text-base  ${feature.descriptionColor} `}>
                 {feature.description}
               </div>
             </li>
           ))
         }
       </ul>
+      <!-- ends component -->
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8"
+      >
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+        >
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create simplified cards with Tailwind CSS and Astrojs
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
     </div>
   </section>
 </BaseLayout>
