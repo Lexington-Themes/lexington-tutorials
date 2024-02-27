@@ -25,7 +25,7 @@ const cards = [
   <section x-data="{ atTop: true }">
     <!-- Alpine.js initializes data properties for the component. `atTop` determines if the page is scrolled past a certain point. -->
     <div
-      class="fixed z-50 w-full px-8 py-4 transition-all duration-1000 rounded-full mt-4 max-w-2xl inset-x-0 mx-auto ease-in-out transform bg-white"
+      class="fixed z-50 w-full px-8 py-4 transition-all duration-1000 rounded-full mt-4 max-w-2xl inset-x-0 mx-auto ease-in-out transform bg-black"
       :class="{ 'bg-black bg-opacity-90 backdrop-blur-xl max-w-4xl ': !atTop, 'max-w-2xl': atTop }"
       @scroll.window="atTop = (window.pageYOffset > 50 ? false : true)"
     >
@@ -144,6 +144,6 @@ const cards = [
         </div>
       </div>
        <!-- Ends links to tutorial -->
-       <div class="bg-black hidden"></div>
+
   </section>
 </BaseLayout>
