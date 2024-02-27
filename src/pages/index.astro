@@ -12,14 +12,18 @@ const component = [
   {
     url: "/pricing-table",
     title:
-      "How to create prcing cards with alpinejs and tailwind CSS with Astrojs",
-  }
+      "How to create an interactive pricing table with Astro, Tailwind CSS, and Alpine.js",
+  },
+  {
+    url: "/adaptable-navigation",
+    title:
+      "How to create adaptable-navigation with Astro, Tailwind CSS, and Alpine.js",
+  },
 ];
 ---
 
 <BaseLayout>
   <section>
-
     <div
       class="items-center w-full px-5 py-24 mx-auto md:px-12 max-w-7xl h-svh flex flex-col justify-center"
     >
@@ -96,7 +100,7 @@ const component = [
             Lexington tutorials
           </span>
         </a>
-        <dl class="flex flex-col mt-12 max-w-xl mx-auto divide-y">
+        <dl class="flex flex-col mt-12 max-w-3xl mx-auto divide-y">
           {
             component.map((template, index) => (
               <div class="py-2 inline-flex items-center gap-4">

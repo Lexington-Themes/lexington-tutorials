@@ -47,7 +47,7 @@ const features = [
 <BaseLayout>
   <section class="bg-white">
     <div
-      class="max-w-screen-xl 2xl:max-w-screen-2xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 h-svh flex flex-col justify-center"
+      class="max-w-screen-xl 2xl:max-w-screen-2xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 flex flex-col justify-center"
     >
       <!-- Starts component -->
       <ul
@@ -64,7 +64,7 @@ const features = [
         {
           features.map((feature, index) => (
             <li
-              class={`p-8 text-black rounded-xl ring-1 ring-inset ${feature.bgColor}  ${feature.ringColor} `}
+              class={`p-8 text-black rounded-xl ring-1 ring-inset   ${feature.bgColor}  ${feature.ringColor} `}
             >
               <div>
                 <p class={`text-2xl font-medium ${feature.numberColor} `}>
@@ -83,6 +83,7 @@ const features = [
           ))
         }
       </ul>
+
       <!-- ends component -->
       <!-- Starts links to tutorial -->
       <div
