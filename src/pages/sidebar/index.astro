@@ -1,0 +1,226 @@
+---
+// Import the base layout component
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// Define menu items with text and href attributes for navigation
+const menuItems = [
+  { text: "Work", href: "#" },
+  { text: "Stack", href: "#" },
+  { text: "Store", href: "#" },
+  { text: "News", href: "#" },
+  { text: "Blog", href: "#" },
+];
+---
+
+<BaseLayout>
+  <div style="">
+    <div class="bg-white">
+      <!--
+        // Alpine.js component for the sidebar, initialized with 'open' state set to false -->
+      <div x-data="{ open: false }" @keydown.window.escape="open = false">
+        <!--
+          // Overlay that appears when the sidebar is open
+         // Controls the visibility based on 'open' state
+         // Ensures overlay is above other content
+        -->
+        <div
+          x-show="open"
+          class="relative z-50"
+          x-description="Off-canvas menu for mobile, show/hide based on off-canvas menu state."
+          x-ref="dialog"
+          aria-modal="true"
+          style="display: none;"
+        >
+          <!--
+            // Backdrop for the sidebar, dims the screen when sidebar is open
+            // Display control based on 'open' state
+            // Full screen backdrop with semi-transparent background
+          -->
+          <div
+            x-show="open"
+            class="fixed inset-0 bg-teal-900/50"
+            x-description="Off-canvas menu backdrop, show/hide based on off-canvas menu state."
+            style="display: none;"
+          >
+          </div>
+          <!--
+             // Container for the actual sidebar content
+             // Sidebar area
+             // Sidebar styling
+             // Close sidebar when clicking outside of it
+             // Display control based on 'open' state
+            -->
+          <div class="fixed inset-0 flex">
+            <div
+              x-show="open"
+              x-description="Off-canvas menu, show/hide based on off-canvas menu state."
+              class="relative mr-16 flex w-full max-w-lg flex-1"
+              @click.away="open = false"
+              style="display: none;"
+            >
+              <!--
+                // Close button for the sidebar
+                // Display control based on 'open' state
+              -->
+              <div
+                x-show="open"
+                x-description="Close button, show/hide based on off-canvas menu state."
+                class="absolute left-full top-0 flex w-16 justify-center pt-5"
+                style="display: none;"
+                >
+                <!-- Positioning of the close button -->
+                <button
+                  type="button"
+                  class="-m-2.5 p-2.5"
+                  @click="open = false"
+                  >
+                  <!-- Toggle 'open' state to close sidebar -->
+                  <span class="sr-only">Close sidebar</span> <!-- Accessibility text -->
+                  <!-- Close icon -->
+                  <svg
+                    class="h-6 w-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </div>
+              <!--
+                // Navigation list within the sidebar
+                // Styling for the navigation container
+                // Styling for navigation links
+                // Dynamically generate menu items
+
+              -->
+              <div
+                class="flex grow flex-col gap-y-5 overflow-y-auto bg-black px-6 pb-2"
+              >
+                <nav class="flex flex-1 flex-col pt-6">
+                  <ul
+                    role="list"
+                    class="flex flex-1 flex-col justify-center gap-y-7 text-3xl text-white uppercase lg:text-6xl"
+                  >
+
+                    {
+                      menuItems.map((item) => (
+                        <li>
+                          <a class="hover:text-[#1f57ef]" href={item.href}>⏤ {item.text}</a>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--
+          // Button to open the sidebar
+          // Styling for the button container
+        -->
+        <div
+          class="sticky top-0 z-40 flex justify-end gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6"
+        >
+         <!--
+          // Button styling
+          // Toggle 'open' state to show sidebar -->
+          <button
+            type="button"
+            class="-m-2.5 p-2.5 text-neutral-700"
+            @click="open = true"
+          >
+          <!-- Accessibility text -->
+            <span class="sr-only">Open sidebar</span>
+            <!-- Hamburger icon -->
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Main content area -->
+        <main class="py-4 px-10 h-screen">
+          <!-- Placeholder content, replace with your own -->
+          <p class="text-xl  z-20 top-10 left-10 text-black uppercase">
+            Your content goes here
+          </p>
+          <!-- Example content area -->
+          <div
+            class="grid grid-cols-3 gap-2 h-full rounded-3xl overflow-hidden"
+          >
+            <!-- Placeholder images, replace with your own -->
+            <img
+              class="w-full h-full object-cover"
+              src="/images/gradient.png"
+            /><img
+              class="w-full h-full object-cover"
+              src="/images/gradient.png"
+            /><img
+              class="w-full h-full object-cover"
+              src="/images/gradient.png"
+            />
+          </div>
+        </main>
+         <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8 "
+      >
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+        >
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create a responsive sidebar with Astro, Tailwind CSS, and Alpine.js
+
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-interactive-pricing-table-astro-tailwind-alpine/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/pricing-table/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+      </div>
+    </div>
+  </div>
+</BaseLayout>
