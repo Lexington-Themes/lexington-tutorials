@@ -1,0 +1,105 @@
+---
+// Import the BaseLayout component from the layouts directory to structure the page
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+<style>
+  /* Apply a perspective to all containers to enhance the 3D effect of the transformations */
+  .perspective-container {
+    perspective: 1000px;
+  }
+</style>
+<BaseLayout>
+  <!-- Introductory section with a title -->
+  <section class="">
+    <div
+      class="px-8 py-48 md:px-12 lg:px-24 flex flex-col h-screen justify-center max-w-screen-xl mx-auto"
+    >
+      <p
+        class="max-w-3xl text-balance mx-auto text-4xl font-thin text-center lg:text-8xl 2xl:text-[12rem] text-black uppercase"
+      >
+        Scroll to see effects
+      </p>
+    </div>
+  </section>
+  <!--
+  // Section for the first image with a rotation around the Y-axis
+  //
+  // Section for the second image with a rotation around the X-axis
+  // Initializes Alpine.js data for rotation around the X-axis
+  // The x-intersect directive triggers the animation function once on element's first intersection with the viewport
+  // Applies the dynamic rotation style to the image. The rotation is more subtle due to the lower target degree
+  -->
+  <section class="overflow-hidden">
+    <div class="flex flex-col h-screen my-24 ">
+      <div
+        x-data="{ degree: 0, target: 360, rotate() { let interval = setInterval(() => { if (this.degree < this.target) { this.degree += 5; } else { clearInterval(interval); } }, 50); } }"
+        x-intersect.once="rotate()"
+        class="perspective-container mt-12"
+      >
+        <img
+          :style="`transform: perspective(1000px) rotateY(${degree}deg)`"
+          class="transition-transform duration-1000 w-64 ease-in-out md:w-full mx-auto rounded-3xl md:max-w-xl"
+          src="https://i.pinimg.com/564x/78/d1/c0/78d1c06554aead1dc1d1490f08d39ffd.jpg"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="overflow-hidden">
+    <div class="flex flex-col h-screen my-24 ">
+      <div
+        x-data="{ degree: 0, target: 30, animate() { let interval = setInterval(() => { if (this.degree < this.target) { this.degree += 1; } else { clearInterval(interval); } }, 50); } }"
+        x-intersect.once="animate()"
+        class="perspective-container"
+      >
+        <img
+          :style="`transform: perspective(1000px) rotateX(${degree}deg)`"
+          class="transition-transform duration-1000 w-64 ease-in-out md:w-full mx-auto rounded-3xl md:max-w-xl"
+          src="https://i.pinimg.com/564x/78/d1/c0/78d1c06554aead1dc1d1490f08d39ffd.jpg"
+        />
+      </div>
+    </div>
+  </section>
+   <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8"
+      >
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+        >
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to animate objects with Tailwind CSS and Alpinejs intersection observer
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/intersection-observer/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Ends links to tutorial -->
+</BaseLayout>

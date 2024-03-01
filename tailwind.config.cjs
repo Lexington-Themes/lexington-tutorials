@@ -2,12 +2,12 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
       colors: {
-       orange: {
-            50: "hsl(22, 100%, 96%)",
+        orange: {
+          50: "hsl(22, 100%, 96%)",
           100: "hsl(25, 100%, 91%)",
           200: "hsl(22, 100%, 82%)",
           300: "hsl(20, 100%, 71%)",
@@ -26,8 +26,10 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
-       require('@tailwindcss/forms'),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    require("tailwind-scrollbar-hide"),
+
     // ...
   ],
-}
+};
