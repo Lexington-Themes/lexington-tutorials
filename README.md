@@ -7,11 +7,24 @@ This collection offers a range of code snippets tailored for Astro.js and Tailwi
 
 ### 1. How to Create Animated Image Cards with Tailwind CSS and Astro.js
 
-Let’s elevate your website with a captivating image component. If your Astro.js project is already set up, we’ll dive straight into using Tailwind CSS to craft the animations for our cards.
-
 - [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/)
 
+### 2. How to create an interactive pricing table with Astro, Tailwind CSS, and Alpine.js
 
+- [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-interactive-pricing-table-astro-tailwind-alpine/)
+
+### 3. How to create an adaptable navigation on scroll with Astro, Tailwind CSS, and Alpine.js
+
+- [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-an-animated-navigation-with-alpine-js/)
+
+### 4. How to create a sidebar navigation with Astro, Tailwind CSS and Alpine.js
+
+- [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-a-sidebar-navigation-with-tailwindcss-and-alpine-js/)
+
+### 5. How to create a dynamic feature grid with Astrojs and Tailwind CSS
+
+
+- [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-a-dynamic-feature-grid-with-astrojs-and-tailwind-css/)
 
 
 ## Terms of Use
@@ -39,4 +52,4 @@ You can read the license right here: [GNU License](https://github.com/UnwrappedD
 
 
 ## Contact
-For any questions and answers you can reach out to Lexingon Themes on [X/Twitter](https://x.com/lexingtonthemes)
+For any questions and answers you can reach out to Michael Andreuzza on [X/Twitter](https://x.com/mike_andreuzza)  Lexington Themes on [X/Twitter](https://x.com/lexingtonthemes)
