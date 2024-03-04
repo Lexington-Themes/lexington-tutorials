@@ -17,39 +17,40 @@ const component = [
   },
   {
     url: "/alpine-sidebar",
-    title:
-      "How to create a sidebar navigation Tailwind CSS and and Alpine.js",
+    title: "How to create a sidebar navigation Tailwind CSS and and Alpine.js",
   },
   {
     url: "/simplified-cards",
     title: "How to create a dynamic feature grid with Astrojs and Tailwind CSS",
-  }
-  ,
+  },
   {
     url: "/intersection-observer",
-    title: "How to animate objects with Tailwind CSS and Alpinejs intersection observer",
-  }
+    title:
+      "How to animate objects with Tailwind CSS and Alpinejs intersection observer",
+  },{
+    url: "/sticky-changelog",
+    title:
+      "How to create sticky changelog with Tailwind CSS and Astrojs",
+  },
+
 ];
 ---
+
 <BaseLayout>
   <section>
     <div
-      class="items-center w-full px-5 py-24 mx-auto md:px-12 max-w-7xl h-svh flex flex-col justify-center"
-    >
+      class="items-center w-full px-5 py-24 mx-auto md:px-12 max-w-7xl h-svh flex flex-col justify-center">
       <div>
         <a
           class="text-lg text-black focus:outline-none focus:ring lg:text-2xl tracking-tight uppercase"
-          href="https://lexingtonthemes.com/tutorials"
-        >
+          href="https://lexingtonthemes.com/tutorials">
           <span
-            class="items-center inline-flex gap-2 group font-extrabold lg:text-lg 2xl:text-xl uppecase"
-          >
+            class="items-center inline-flex gap-2 group font-extrabold lg:text-lg 2xl:text-xl uppecase">
             <svg
               class="h-5 w-5 group-hover:motion-safe:animate-spin group-hover:text-accent-600 duration-200"
               viewBox="0 0 147 148"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M77.0546 0.147949H69.9463V147.148H77.0546V0.147949Z"
                 fill="currentColor"></path>
@@ -109,7 +110,8 @@ const component = [
             Lexington tutorials
           </span>
         </a>
-        <dl class="flex flex-col mt-12 max-w-3xl mx-auto divide-y bg-opacity-90 backdrop-blur-xl">
+        <dl
+          class="flex flex-col mt-12 max-w-3xl mx-auto divide-y bg-opacity-90 backdrop-blur-xl">
           {
             component.map((template, index) => (
               <div class="py-2 inline-flex items-center gap-4">

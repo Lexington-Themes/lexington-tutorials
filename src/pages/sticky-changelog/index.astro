@@ -1,0 +1,146 @@
+---
+// Import the BaseLayout component from the layouts directory. This component is likely used as a wrapper for the page, providing consistent structure and styling.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Define the array of changelog entries
+const changelogEntries = [
+  {
+    date: "16 March - 2024",
+    title: "80% faster widgets",
+    image:
+      "https://i.pinimg.com/564x/59/41/a0/5941a02c048f6226031a0487451c2651.jpg",
+    description:
+      "In our latest update, we've revolutionized the performance of our widgets, achieving a remarkable 80% increase in loading speeds. This breakthrough ensures a seamless experience across all Snowpeaks widgets, setting a new standard for efficiency and user satisfaction. Dive into the details to see how our widgets now lead the pack in speed and reliability.",
+  },
+  {
+    date: "1 March - 2024",
+    title: "Teams support",
+    image:
+      "https://i.pinimg.com/736x/70/25/f6/7025f63ebdd1caa11b47889c4c4d8fcd.jpg",
+    description:
+      "Expanding your business operations has never been easier with our new Teams support feature. Now, you can empower your team by inviting members to manage and run your Snowpeak store collaboratively. Streamline your workflow and boost productivity by leveraging the strengths of your team, all accessible from our revamped Team settings page.",
+  },
+  {
+    date: "20 February - 2024",
+    title: "Modify subscriptions in the dashboard",
+    image:
+      "https://i.pinimg.com/564x/4e/a7/ff/4ea7ff230ad9f3bc1c30b1b6cbaccad3.jpg",
+    description:
+      "We've brought the power of our API directly to your fingertips with an intuitive dashboard feature that allows for effortless modification of subscription plans. Now, managing your subscriptions is as simple as clicking 'Modify subscription'—a feature designed to streamline plan adjustments and proration handling. Experience the ease of subscription management with our user-friendly dashboard.",
+  },
+  {
+    date: "28 February - 2024",
+    title: "New Analytics Dashboard",
+    image:
+      "https://i.pinimg.com/564x/00/03/99/000399041b1f172201a912c235521db7.jpg",
+    description:
+      "Unveiling our latest innovation, the Analytics Dashboard, designed to offer deeper insights into your store's performance with just a glance. Track visitor behavior, sales trends, and more with our comprehensive and intuitive interface. This new dashboard is engineered to help you make informed decisions, driving your business towards unparalleled growth.",
+  },
+  {
+    date: "10 February - 2024",
+    title: "Enhanced Security Features",
+    image:
+      "https://i.pinimg.com/564x/f9/1e/3a/f91e3a9f23239a2c26f5fd757dadc848.jpg",
+    description:
+      "Security is paramount, and with our latest update, we're introducing enhanced security features to safeguard your online store. Benefit from advanced encryption, real-time monitoring, and automated threat detection. These updates fortify your store's defenses, ensuring your data, and your customers' data, remains protected against evolving cyber threats.",
+  },
+  {
+    date: "25 March - 2023",
+    title: "New Feature Launch: Interactive Dashboards",
+    image:
+      "https://i.pinimg.com/564x/5c/32/ad/5c32ade1feddce20f146d1b440f2ef96.jpg",
+    description:
+      "Our latest update introduces Interactive Dashboards, allowing users to dynamically interact with their data like never before. Customize, explore, and gain insights in a wholly intuitive and seamless manner.",
+  },
+  // Additional entries...
+];
+---
+
+<BaseLayout>
+  <section>
+    <div
+      class="mx-auto max-w-5xl px-8 py-24 md:px-12 lg:px-16 divide-y prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl space-y-24">
+      <div>
+        <h1>Changelog</h1><p class="text-balance">
+          Explore the latest update featuring essential performance
+          enhancements, new customization options, and critical bug fixes across
+          our theme collection.
+        </p>
+      </div>
+      <!-- Starts component -->
+      {
+        changelogEntries.map((entry) => (
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-32 ">
+            <div>
+              <div class="lg:sticker lg:sticky pb-16 top-0">
+                <div class="rounded-lg pt-8">
+                  <p>{entry.date}</p>
+                </div>
+
+              </div>
+            </div>
+            <div class="lg:col-span-2 pt-8">
+              <div class="flex-shrink-0">
+                <div class="mx-auto ">
+                  <img
+                    class="aspect-[4/3] object-cover"
+                    src={entry.image}
+                    alt="#_"
+                  />
+                  <h1>{entry.title}</h1>
+                  <p class="line-clamp-4">{entry.description}</p>
+                  <p>
+                    <a href="#_">Read more</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+      <!-- Ends component -->
+    </div>
+    <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8"
+      >
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+        >
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                     How to ceeate sticky changelog with Tailwind CSS and Astrojs
+
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-sticky-changelog-with-tailwind-css-and-astrojs"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/sticky-changelog/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
