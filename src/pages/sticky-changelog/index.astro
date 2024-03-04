@@ -60,22 +60,34 @@ const changelogEntries = [
     <div
       class="mx-auto max-w-5xl px-8 py-24 md:px-12 lg:px-16 divide-y prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl space-y-24">
       <div>
-        <h1>Changelog</h1><p class="text-balance">
+        <h1>Changelog</h1>
+        <p class="text-balance">
           Explore the latest update featuring essential performance
           enhancements, new customization options, and critical bug fixes across
           our theme collection.
         </p>
       </div>
       <!-- Starts component -->
+      <!--
+            // Assuming `changelogEntries` is an array where each object contains the date, image, title, and description of a changelog entry.
+            // Start of the component.
+            // This component dynamically generates a list of changelog entries using the `changelogEntries` array.
+            //
+            // This div is responsible for the sticky behavior of the date. It uses Tailwind's 'sticky' utility class.
+                <div class="lg:sticky pb-16 top-0">
+                    The key class here is 'lg:sticky', which applies sticky positioning at the large breakpoint and above.
+                 'pb-16 top-0' adds padding at the bottom and positions the sticky element at the top of the viewport when it reaches it during scrolling.
+
+                </div>
+-->
       {
         changelogEntries.map((entry) => (
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-32 ">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-32 ">
             <div>
-              <div class="lg:sticker lg:sticky pb-16 top-0">
-                <div class="rounded-lg pt-8">
+              <div class="lg:sticky lg:pb-16 top-0">
+                <div class="pt-8">
                   <p>{entry.date}</p>
                 </div>
-
               </div>
             </div>
             <div class="lg:col-span-2 pt-8">
@@ -100,47 +112,42 @@ const changelogEntries = [
       <!-- Ends component -->
     </div>
     <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8">
       <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8"
-      >
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
-        >
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                     How to ceeate sticky changelog with Tailwind CSS and Astrojs
-
-              </p>
-              <p class="mt-2 text-xs text-orange-500 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
-              </p>
-            </div>
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to ceeate sticky changelog with Tailwind CSS and Astrojs
+            </p>
+            <p class="mt-2 text-xs text-orange-500 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
           </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-sticky-changelog-with-tailwind-css-and-astrojs"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/sticky-changelog/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Get the code</a
-                >
-              </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-a-sticky-changelog-with-tailwind-css-and-astrojs"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/sticky-changelog/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Get the code</a
+              >
             </div>
           </div>
         </div>
       </div>
-      <!-- Ends links to tutorial -->
+    </div>
+    <!-- Ends links to tutorial -->
   </section>
 </BaseLayout>
