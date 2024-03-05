@@ -4,13 +4,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <section
-    class="bg-white"
-    x-data="{ open: false }">
+  <section class="bg-white">
     <div
       class="max-w-screen-xl 2xl:max-w-screen-2xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 flex flex-col justify-center lg:h-screen">
       <!-- Starts component -->
-      <div class="flex justify-center">
+      <div
+        class="flex justify-center"
+        x-data="{ open: false }">
         <!-- Trigger -->
         <span x-on:click="open = true">
           <button
@@ -22,20 +22,20 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <!-- Modal -->
         <div
           x-show="open"
-          x-on:keydown.escape.prevent.stop="open = false"
           role="dialog"
           aria-modal="true"
+          style="display: none;"
           x-id="['modal-title']"
-          :aria-labelledby="$id('modal-title')"
-          class="fixed inset-0 z-50 w-screen overflow-y-hidden"
           aria-labelledby="modal-title-3"
-          style="display: none;">
+          :aria-labelledby="$id('modal-title')"
+          x-on:keydown.escape.prevent.stop="open = false"
+          class="fixed inset-0 z-50 w-screen overflow-y-hidden">
           <!-- Overlay -->
           <div
             x-show="open"
             x-transition.opacity=""
-            class="fixed inset-0 bg-gray-500 bg-opacity-50"
-            style="display: none;">
+            style="display: none;"
+            class="fixed inset-0 bg-gray-500 bg-opacity-50">
           </div>
           <!-- Panel -->
           <div
@@ -146,19 +146,17 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         </div>
       </div>
       <!-- ends component -->
-       <!-- Starts links to tutorial -->
+      <!-- Starts links to tutorial -->
       <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8 "
-      >
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8">
         <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
-        >
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
           <div class="flex w-0 flex-1 items-center p-4">
             <div class="w-full">
               <p class="text-sm font-medium text-neutral-900">Tutorial</p>
               <p class="mt-1 text-sm text-neutral-500">
-                How to create a responsive sidebar with Astro, Tailwind CSS, and Alpine.js
-
+                How to create an animated log in modal with Tailwind CSS and
+                Alpine.js
               </p>
               <p class="mt-2 text-xs text-orange-500 underline">
                 <a href="https://lexingtonthemes.com">
@@ -192,3 +190,4 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </div>
   </section>
 </BaseLayout>
+
