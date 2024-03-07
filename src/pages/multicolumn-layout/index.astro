@@ -1,0 +1,388 @@
+---
+// Import BaseLayout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Defining arrays to avoid writing the same code again.
+// You can use your own system
+const blogEntries = [
+  {
+    title: "The Future of Web Development",
+    excerpt:
+      "Explore the latest trends and predictions in the web development landscape.",
+    date: "Jan 12",
+  },
+  {
+    title: "Top 10 JavaScript Frameworks in 2024",
+    excerpt:
+      "A comprehensive comparison of the most popular JavaScript frameworks.",
+    date: "Jan 18",
+  },
+  {
+    title: "Designing for Accessibility",
+    excerpt: "How to make your websites more accessible to everyone.",
+    date: "Jan 24",
+  },
+  {
+    title: "The Rise of Astro",
+    excerpt:
+      "Discover how Astro is changing the game for static site generation.",
+    date: "Feb 1",
+  },
+  {
+    title: "SEO Myths Busted",
+    excerpt: "Uncover the truth behind common SEO misconceptions.",
+    date: "Feb 10",
+  },
+  {
+    title: "Building a Full Stack App with Astro",
+    excerpt:
+      "Step-by-step guide to creating a full stack application using Astro.",
+    date: "Feb 15",
+  },
+  {
+    title: "Mobile-First Design in 2024",
+    excerpt: "Why mobile-first design remains crucial for online success.",
+    date: "Feb 22",
+  },
+  {
+    title: "Using Tailwind CSS for Rapid UI Development",
+    excerpt: "Speed up your design process with utility-first CSS.",
+    date: "Mar 2",
+  },
+  {
+    title: "Astro and Content Management",
+    excerpt: "Best practices for managing content in Astro-powered websites.",
+    date: "Mar 10",
+  },
+  {
+    title: "Optimizing Site Performance",
+    excerpt:
+      "Tips and tricks to speed up your website for better user experience.",
+    date: "Mar 18",
+  },
+];
+const tableOfContents = [
+  { id: "understanding-semantic-tags", title: "Understanding semantic tags" },
+  { id: "benefits-of-semantic-tags", title: "Benefits of semantic tags" },
+  {
+    id: "common-semantic-tags-and-their-usage",
+    title: "Common semantic tags and their usage",
+  },
+  {
+    id: "practical-implementation-tips",
+    title: "Practical implementation tips",
+  },
+  { id: "conclusion", title: "Conclusion" },
+];
+---
+
+<BaseLayout>
+  <!-- Starts component -->
+  <div>
+    <!-- Sidebar Navigation for Blog Entries (Starts hidden and becomes visible on larger screens) -->
+    <div
+      class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+      <!-- This div will hold the navigation and is set to scroll if content overflows -->
+      <div class="overflow-y-auto border-r">
+        <!-- Navigation for the blog entries list -->
+        <nav class="flex flex-1 flex-col">
+          <ul
+            role="list"
+            class="border-b divide-y">
+            <!-- Mapping through the blog entries to display them in the sidebar -->
+            {
+              blogEntries.map((entry) => (
+                <li class="bg-white ">
+                  <div class="relative flex items-start p-4 space-x-3 group">
+                    <div class="flex-1 min-w-0">
+                      <div class="text-sm font-medium leading-6 text-black hover:text-blue-500">
+                        <a
+                          href="#"
+                          class="flex flex-col gap-2 w-full">
+                          <div class=" text-xs font-normal text-gray-500">
+                            {entry.date}
+                          </div>
+                          <span>{entry.title}</span>
+                        </a>
+                      </div>
+                      <p class="mt-5 text-sm text-gray-500">{entry.excerpt}</p>
+                    </div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- Sidebar Navigation for Blog Entries (Ends) -->
+    <!-- Main Content Area (Gets pushed to the right on larger screens where sidebar is visible) -->
+    <main class="lg:pl-72">
+      <!-- Right padding for the main content to make room for the TOC on the largest screens -->
+      <div class="xl:pr-96">
+        <!-- Padding and margin handling for the main content area -->
+        <div class="px-4 py-10 sm:px-6 lg:px-8">
+          <!-- Main blog post content -->
+          <div class="prose">
+            <h1>The power of HTML semantic tags</h1>
+            <div class="pb-5 border-b">
+              <div
+                class="inline-flex items-center justify-between w-full p-5 font-mono text-xs text-white uppercase bg-black border-b">
+                <span>Fri Aug 11 2023</span>
+                <span>Author - Michael Andreuzza</span>
+              </div>
+            </div>
+            <img class="w-full"
+              src="https://i.pinimg.com/originals/70/65/4f/70654fd75f2991e168ec22b75fdbd6a5.gif"
+              alt=""
+            />
+            <div class="mt-12">
+              <p>
+                In the ever-evolving landscape of web development, creating
+                websites that are not only visually appealing but also
+                well-structured and accessible is crucial. HTML (Hypertext
+                Markup Language) provides a set of semantic tags that play a
+                pivotal role in achieving these goals. Semantic tags allow
+                developers to describe the meaning and purpose of different
+                parts of a webpage, making it easier for both browsers and
+                assistive technologies to understand and present the content
+                accurately. In this blog post, we’ll delve deep into HTML
+                semantic tags, exploring their significance, benefits, and
+                practical implementation.
+              </p>
+              <h2 id="understanding-semantic-tags">
+                Understanding semantic tags
+              </h2>
+              <p>
+                Semantic tags are HTML elements that carry a specific meaning,
+                beyond just the visual presentation. These tags provide context
+                and convey the purpose of the content they encapsulate. Unlike
+                non-semantic tags like <code>&lt;div&gt;</code> and <code
+                  >&lt;span&gt;</code
+                >, which are used mainly for styling and layout, semantic tags
+                enhance the structural integrity and accessibility of a webpage.
+              </p>
+              <h2 id="benefits-of-semantic-tags">Benefits of semantic tags</h2>
+              <ol>
+                <li>
+                  <p>
+                    <strong>Improved Accessibility</strong>: Semantic tags
+                    greatly enhance web accessibility by providing a clear and
+                    organized structure to the content. Screen readers and other
+                    assistive technologies rely on these tags to convey accurate
+                    information to users with disabilities, enabling them to
+                    navigate and understand the webpage effectively.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Search Engine Optimization (SEO)</strong>: Search
+                    engines utilize semantic tags to understand the content of a
+                    webpage better. Properly structured content using semantic
+                    tags can positively impact SEO, making it easier for search
+                    engines to index and rank your website.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Maintenance and Styling</strong>: Semantic tags
+                    offer a more logical structure to your codebase. This makes
+                    it easier to maintain and update the website over time.
+                    Additionally, because semantic tags carry inherent meaning,
+                    they can reduce the reliance on class and ID attributes for
+                    styling purposes.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Future-Proofing</strong>: As the web continues to
+                    evolve, new devices and technologies may emerge. By using
+                    semantic tags, you’re ensuring that your content remains
+                    adaptable and interpretable across different platforms.
+                  </p>
+                </li>
+              </ol>
+              <h2 id="common-semantic-tags-and-their-usage">
+                Common semantic tags and their usage
+              </h2>
+              <ol>
+                <li>
+                  <p><strong></strong></p><header>
+                    : The <code>&lt;header&gt;</code> tag represents the introductory
+                    content of a section or a page. It typically contains the website’s
+                    logo, navigation menu, and possibly a heading. This tag aids
+                    in structuring the top portion of your webpage.<p></p>
+                  </header>
+                </li>
+                <li>
+                  <p><strong></strong></p><nav>
+                    : The <code>&lt;nav&gt;</code> tag is used to define navigation
+                    links within your website. By wrapping navigation links in this
+                    tag, you provide context to assistive technologies, making it
+                    clear that these links are part of the site’s navigation.<p>
+                    </p>
+                  </nav>
+                </li>
+                <li>
+                  <p><strong></strong></p><main>
+                    : The <code>&lt;main&gt;</code> tag encapsulates the main content
+                    of your webpage. It should be unique to the page and should not
+                    include repeated content such as headers or footers.<p></p>
+                  </main>
+                </li>
+                <li>
+                  <p><strong></strong></p><article>
+                    : The <code>&lt;article&gt;</code> tag represents a standalone
+                    piece of content that could be distributed and understood independently
+                    from the rest of the page. This could include blog posts, news
+                    articles, or forum posts.<p></p>
+                  </article>
+                </li>
+                <li>
+                  <p><strong></strong></p><section>
+                    : The <code>&lt;section&gt;</code> tag defines a thematic grouping
+                    of content within your webpage. It helps to logically divide
+                    your content into different sections, making it easier to understand
+                    the hierarchy.<p></p>
+                  </section>
+                </li>
+                <li>
+                  <p><strong></strong></p><aside>
+                    : The <code>&lt;aside&gt;</code> tag is used to mark content
+                    that is tangentially related to the main content. This could
+                    include sidebars, pull quotes, or advertisements.<p></p>
+                  </aside>
+                </li>
+                <li>
+                  <p><strong></strong></p><footer>
+                    : The <code>&lt;footer&gt;</code> tag represents the closing
+                    section of a page. It often contains copyright information, contact
+                    details, and links to relevant pages.<p></p>
+                  </footer>
+                </li>
+              </ol>
+              <h2 id="practical-implementation-tips">
+                Practical implementation tips
+              </h2>
+              <ol>
+                <li>
+                  <p>
+                    <strong>Choose Semantics Wisely</strong>: Always prioritize
+                    the appropriate semantic tag over a non-semantic one. For
+                    instance, use <code>&lt;article&gt;</code> for a blog post rather
+                    than a <code>&lt;div&gt;</code>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Avoid Overusing Divs</strong>: While <code
+                      >&lt;div&gt;</code
+                    > elements are versatile, try to use them sparingly for layout
+                    purposes. Instead, use semantic tags to structure your content
+                    whenever possible.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Maintain Hierarchy</strong>: Use semantic tags in a
+                    hierarchical manner. For instance, use a <code
+                      >&lt;header&gt;</code
+                    > inside your <code>&lt;body&gt;</code>, and within your <code
+                      >&lt;header&gt;</code
+                    >, you might have a <code>&lt;nav&gt;</code>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Test Accessibility</strong>: Regularly test your
+                    webpage’s accessibility using screen readers and
+                    accessibility tools to ensure that the semantic tags are
+                    providing the intended information to users with
+                    disabilities.
+                  </p>
+                </li>
+              </ol>
+              <h2 id="conclusion">Conclusion</h2>
+              <p>
+                HTML semantic tags are more than just tools for styling; they
+                are powerful aids for structuring your webpage and enhancing its
+                accessibility. By using semantic tags, you create a more
+                meaningful and well-organized web presence that benefits not
+                only users but also search engines and assistive technologies.
+                In an era where user experience and inclusivity are paramount,
+                embracing semantic tags is a fundamental step towards creating a
+                better digital landscape for everyone. So, as you embark on your
+                web development journey, remember the significance of semantic
+                tags and let them guide you towards a more robust and accessible
+                website.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Main Content Area (Ends) -->
+    <!-- Table of Contents (TOC) Section (Visible on extra-large screens) -->
+    <aside
+      class="fixed inset-y-0 right-0 py-10 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 sm:px-6 lg:px-8 bg-white xl:block">
+      <!-- Navigation for the table of contents -->
+      <nav aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ul class="prose prose-sm">
+          <!-- Mapping through the table of contents to create links to the different sections of the blog post -->
+
+          {
+            tableOfContents.map((section) => (
+              <li>
+                <a
+                  href={`#${section.id}`}
+                  class="text-blue-600 hover:text-blue-800">
+                  {section.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </aside>
+    <!-- Table of Contents (TOC) Section (Ends) -->
+  </div>
+  <!-- Ends component -->
+  <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+            How to create a multicolumn layout with Tailwind CSS
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-a-sticky-changelog-with-tailwind-css-and-astrojs"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/multicolumn-layout/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ends links to tutorial -->
+</BaseLayout>
