@@ -87,24 +87,24 @@ const tableOfContents = [
         <nav class="flex flex-1 flex-col">
           <ul
             role="list"
-            class="border-b divide-y">
+            class="border-b divide-y divide-zinc-700">
             <!-- Mapping through the blog entries to display them in the sidebar -->
             {
               blogEntries.map((entry) => (
-                <li class="bg-white ">
+                <li class="bg-[#1f1f1f] ">
                   <div class="relative flex items-start p-4 space-x-3 group">
                     <div class="flex-1 min-w-0">
-                      <div class="text-sm font-medium leading-6 text-black hover:text-blue-500">
+                      <div class="text-sm font-medium leading-6 text-white hover:text-blue-400">
                         <a
                           href="#"
                           class="flex flex-col gap-2 w-full">
-                          <div class=" text-xs font-normal text-gray-500">
+                          <div class=" text-xs font-normal up text-zinc-400">
                             {entry.date}
                           </div>
-                          <span>{entry.title}</span>
+                          <span class="uppercase">{entry.title}</span>
                         </a>
                       </div>
-                      <p class="mt-5 text-sm text-gray-500">{entry.excerpt}</p>
+                      <p class="mt-5 text-xs text-zinc-400">{entry.excerpt}</p>
                     </div>
                   </div>
                 </li>
@@ -116,22 +116,22 @@ const tableOfContents = [
     </div>
     <!-- Sidebar Navigation for Blog Entries (Ends) -->
     <!-- Main Content Area (Gets pushed to the right on larger screens where sidebar is visible) -->
-    <main class="lg:pl-72">
+    <main class="lg:pl-72 bg-[#1f1f1f]">
       <!-- Right padding for the main content to make room for the TOC on the largest screens -->
       <div class="xl:pr-96">
         <!-- Padding and margin handling for the main content area -->
-        <div class="px-4 py-10 sm:px-6 lg:px-8">
+        <div class="px-4 py-10 sm:px-6 lg:px-8 xl:px-12 ">
           <!-- Main blog post content -->
-          <div class="prose">
-            <h1>The power of HTML semantic tags</h1>
-            <div class="pb-5 border-b">
+          <div class="prose text-white 2xl:prose-2xl max-w-none 2xl:max-w-screen-xl mx-auto  prose-headings:text-white prose-headings:font-normal prose-p:text-zinc-400 prose-strong:text-white">
+            <h1 >The power of HTML semantic tags</h1>
+            <div class="pb-5 border-b border-zinc-700">
               <div
-                class="inline-flex items-center justify-between w-full p-5 font-mono text-xs text-white uppercase bg-black border-b">
+                class="inline-flex items-center justify-between w-full font-mono text-xs text-white uppercase">
                 <span>Fri Aug 11 2023</span>
                 <span>Author - Michael Andreuzza</span>
               </div>
             </div>
-            <img class="w-full"
+            <img class="w-full h-64 object-cover object-top invert"
               src="https://i.pinimg.com/originals/70/65/4f/70654fd75f2991e168ec22b75fdbd6a5.gif"
               alt=""
             />
@@ -323,11 +323,11 @@ const tableOfContents = [
     <!-- Main Content Area (Ends) -->
     <!-- Table of Contents (TOC) Section (Visible on extra-large screens) -->
     <aside
-      class="fixed inset-y-0 right-0 py-10 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 sm:px-6 lg:px-8 bg-white xl:block">
+      class="fixed inset-y-0 right-0 py-10 hidden w-96 overflow-y-auto  border-l border-zinc-700 px-4 sm:px-6 lg:px-8 bg-[#1f1f1f] xl:block">
       <!-- Navigation for the table of contents -->
       <nav aria-label="Table of contents">
-        <h2>Table of Contents</h2>
-        <ul class="prose prose-sm">
+        <h2 class="text-white">Table of Contents</h2>
+        <ul class="prose prose-sm mt-4">
           <!-- Mapping through the table of contents to create links to the different sections of the blog post -->
 
           {
@@ -335,7 +335,7 @@ const tableOfContents = [
               <li>
                 <a
                   href={`#${section.id}`}
-                  class="text-blue-600 hover:text-blue-800">
+                  class="text-white hover:text-blue-800">
                   {section.title}
                 </a>
               </li>
@@ -351,7 +351,7 @@ const tableOfContents = [
   <div
     class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
     <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-[#1f1f1f] ring-opacity-5">
       <div class="flex w-0 flex-1 items-center p-4">
         <div class="w-full">
           <p class="text-sm font-medium text-neutral-900">Tutorial</p>
