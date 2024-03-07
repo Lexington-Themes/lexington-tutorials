@@ -87,7 +87,7 @@ const tableOfContents = [
         <nav class="flex flex-1 flex-col">
           <ul
             role="list"
-            class="border-b divide-y ">
+            class="border-b divide-y">
             <!-- Mapping through the blog entries to display them in the sidebar -->
             {
               blogEntries.map((entry) => (
@@ -120,18 +120,20 @@ const tableOfContents = [
       <!-- Right padding for the main content to make room for the TOC on the largest screens -->
       <div class="xl:pr-96">
         <!-- Padding and margin handling for the main content area -->
-        <div class="px-4 py-10 sm:px-6 lg:px-8 xl:px-12 ">
+        <div class="px-4 py-10 sm:px-6 lg:px-8 xl:px-12">
           <!-- Main blog post content -->
-          <div class="prose text-black 2xl:prose-2xl max-w-none 2xl:max-w-screen-xl mx-auto  prose-headings:text-black prose-headings:font-normal prose-p:text-zinc-400 prose-strong:text-black">
-            <h1 >The power of HTML semantic tags</h1>
-            <div class="pb-5 border-b ">
+          <div
+            class="prose text-black 2xl:prose-2xl max-w-none 2xl:max-w-screen-xl mx-auto prose-headings:text-black prose-headings:font-normal prose-p:text-zinc-400 prose-strong:text-black">
+            <h1>The power of HTML semantic tags</h1>
+            <div class="pb-5 border-b">
               <div
                 class="inline-flex items-center justify-between w-full font-mono text-xs text-black uppercase">
                 <span>Fri Aug 11 2023</span>
                 <span>Author - Michael Andreuzza</span>
               </div>
             </div>
-            <img class="w-full h-64 2xl:h-[30rem] border object-cover object-top invert"
+            <img
+              class="w-full h-64 2xl:h-[30rem] border object-cover object-top invert"
               src="https://i.pinimg.com/originals/70/65/4f/70654fd75f2991e168ec22b75fdbd6a5.gif"
               alt=""
             />
@@ -323,7 +325,7 @@ const tableOfContents = [
     <!-- Main Content Area (Ends) -->
     <!-- Table of Contents (TOC) Section (Visible on extra-large screens) -->
     <aside
-      class="fixed inset-y-0 right-0 py-10 hidden w-96 overflow-y-auto  border-l  px-4 sm:px-6 lg:px-8 bg-white xl:block">
+      class="fixed inset-y-0 right-0 py-10 hidden w-96 overflow-y-auto border-l px-4 sm:px-6 lg:px-8 bg-white xl:block">
       <!-- Navigation for the table of contents -->
       <nav aria-label="Table of contents">
         <h2 class="text-black">Table of Contents</h2>
@@ -367,7 +369,7 @@ const tableOfContents = [
         <div class="flex flex-col divide-y divide-neutral-200">
           <div class="flex h-0 flex-1">
             <a
-              href="https://lexingtonthemes.com/tutorials/how-to-create-a-sticky-changelog-with-tailwind-css-and-astrojs"
+              href="https://lexingtonthemes.com/tutorials/how-to-create-a-multi-column-layout-with-tailwind-css"
               type="button"
               class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
               >Tutorial</a
@@ -384,5 +386,5 @@ const tableOfContents = [
       </div>
     </div>
   </div>
-  <!-- Ends links to tutorial -->
 </BaseLayout>
+<!-- Ends links to tutorial -->
