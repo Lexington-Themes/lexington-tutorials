@@ -25,6 +25,8 @@ This collection offers a range of code snippets tailored for Astro.js and Tailwi
 
 ### 10. [How to create a multi column layout Tailwind CSS](https://lexingtonthemes.com/tutorials/how-to-create-a-multi-column-layout-with-tailwind-css)
 
+### 11. [How to create a flyout menu with Astrojs, Tailwind CSS and Alpinejs](https://lexingtonthemes.com/tutorials/how-to-create-a-flyout-menu-with-astrojs-tailwind-css-and-alpinejs)
+
 
 
 ## Terms of Use
