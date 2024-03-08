@@ -5,26 +5,26 @@ This collection offers a range of code snippets tailored for Astro.js and Tailwi
 
 ## All tutorials
 
-### 1. How to Create Animated Image Cards with Tailwind CSS and Astro.js
+### 1. [How to Create Animated Image Cards with Tailwind CSS and Astro.js](https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/)
 
-- [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/)
+### 2. [How to create an interactive pricing table with Astro, Tailwind CSS, and Alpine.js](https://lexingtonthemes.com/tutorials/how-to-create-interactive-pricing-table-astro-tailwind-alpine/)
 
-### 2. How to create an interactive pricing table with Astro, Tailwind CSS, and Alpine.js
+### 3. [How to create an adaptable navigation on scroll with Astro, Tailwind CSS, and Alpine.js](https://lexingtonthemes.com/tutorials/how-to-create-an-animated-navigation-with-alpine-js/)
 
-- [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-interactive-pricing-table-astro-tailwind-alpine/)
+### 4. [How to create a sidebar navigation with Astro, Tailwind CSS and Alpine.js](https://lexingtonthemes.com/tutorials/how-to-create-a-sidebar-navigation-with-tailwindcss-and-alpine-js/)
 
-### 3. How to create an adaptable navigation on scroll with Astro, Tailwind CSS, and Alpine.js
+### 5. [How to create a dynamic feature grid with Astrojs and Tailwind CSS](https://lexingtonthemes.com/tutorials/how-to-create-a-dynamic-feature-grid-with-astrojs-and-tailwind-css/)
 
-- [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-an-animated-navigation-with-alpine-js/)
+### 6. [How to animate objects with Tailwind CSS and Alpinejs intersection observer](https://lexingtonthemes.com/tutorials/how-to-animate-objects-with-tailwind-css-and-alpinejs-intersection-observer)
 
-### 4. How to create a sidebar navigation with Astro, Tailwind CSS and Alpine.js
+### 7. [How to create a sticky changelog component with Tailwind CSS and Astro.js](https://lexingtonthemes.com/images/tutorials/stickyChangelog.gif)
 
-- [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-a-sidebar-navigation-with-tailwindcss-and-alpine-js/)
+### 8. [How to create an animated log in modal with Tailwind CSS and Alpine.js](https://lexingtonthemes.com/tutorials/how-to-create-an-animated-log-in-modal-with-tailwind-css-and-alpine-js)
 
-### 5. How to create a dynamic feature grid with Astrojs and Tailwind CSS
+### 9. [How to create an interactive testimonial with Astrojs, Tailwind CSS and Alpine.js](https://lexingtonthemes.com/tutorials/how-to-create-an-interactive-testimonial-with-astro-tailwind-css-and-alpine-js)
 
+### 10. [How to create a multi column layout Tailwind CSS](https://lexingtonthemes.com/tutorials/how-to-create-a-multi-column-layout-with-tailwind-css)
 
-- [Read the tutorial](https://lexingtonthemes.com/tutorials/how-to-create-a-dynamic-feature-grid-with-astrojs-and-tailwind-css/)
 
 
 ## Terms of Use
