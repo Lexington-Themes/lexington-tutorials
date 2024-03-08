@@ -1,65 +1,139 @@
 ---
+// Import the BaseLayout from the layouts directory. .
 import BaseLayout from "@/layouts/BaseLayout.astro";
+// Define an array of objects, each representing a link with a href, title, and description.
+// These are used to dynamically generate link elements in the UI.
+const links = [
+  {
+    href: "#",
+    title: "Explore design work",
+    description: "Trending designs to inspire you",
+  },
+  {
+    href: "#",
+    title: "Blog",
+    description: "Interviews, tutorials and more",
+  },
+  {
+    href: "#",
+    title: "Secure",
+    description: "Secure your data efficiently",
+  },
+  {
+    href: "#",
+    title: "Users",
+    description: "User engagement strategies",
+  },
+  // Additional link objects with an isActive property to denote if the link is currently active
+];
 ---
 
 <BaseLayout>
-<div class="relative">
-  <button type="button" class="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" aria-expanded="false">
-    <span>Solutions</span>
-    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-    </svg>
-  </button>
-
-  <!--
-    Flyout menu, show/hide based on flyout menu state.
-
-    Entering: "transition ease-out duration-200"
-      From: "opacity-0 translate-y-1"
-      To: "opacity-100 translate-y-0"
-    Leaving: "transition ease-in duration-150"
-      From: "opacity-100 translate-y-0"
-      To: "opacity-0 translate-y-1"
-  -->
-  <div class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
-    <div class="w-screen max-w-sm flex-auto rounded-3xl bg-white p-4 text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
-      <div class="relative rounded-lg p-4 hover:bg-gray-50">
-        <a href="#" class="font-semibold text-gray-900">
-          Blog
-          <span class="absolute inset-0"></span>
-        </a>
-        <p class="mt-1 text-gray-600">Learn about tips, product updates and company culture</p>
+  <section class="bg-white">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl items-center flex flex-col justify-center h-screen relative p-8">
+      <!--- decorative image -->
+      <img
+        src="https://i.pinimg.com/564x/5b/27/d8/5b27d828f0279dac21a87d56f54a1f08.jpg"
+        class="absolute"
+        alt="#_"
+      />
+      <!--
+       // Setup a div that will contain the dropdown menu. It's set to be centrally aligned within the screen.
+       // Utilize Alpine.js for state management and interactivity:
+      -->
+      <div
+        @click.away="open = false"
+        class="relative flex"
+        x-data="{ open: false }">
+        <div class="flex justify-center items-center h-screen">
+          <div class="text-center">
+            <!-- Button to toggle the dropdown menu visibility -->
+            <button
+              @click="open = !open"
+              class="justify-center mx-auto px-4 py-2 bg-[#626b82] rounded-full h-12 text-base text-left text-[#efefef] hover:bg-[#1f283a] duration-1000 focus:outline-none focus:shadow-outline focus:ring-[#1f283a] ring-2 ring-ofsset-4
+                             ring-transparent">
+              I am your flyout menu
+            </button>
+            <!--
+            // Dropdown Menu
+            // Use transitions for smooth opening and closing of the dropdown menu
+            -->
+            <div
+              x-show="open"
+              x-transition:enter="transition ease-out duration-100"
+              x-transition:enter-start="transform opacity-0 scale-95"
+              x-transition:enter-end="transform opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-75"
+              x-transition:leave-start="transform opacity-100 scale-100"
+              x-transition:leave-end="transform opacity-0 scale-95"
+              class="absolute z-10 max-w-xs w-screen px-2 mt-3 transform -translate-x-1/2 left-1/2">
+              <div
+                class="overflow-hidden rounded-2xl shadow-lg ring-1 ring-[#1f283a] ring-opacity-5">
+                <!-- Container for link items -->
+                <div
+                  class="relative grid text-left gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
+                  <div class="space-y-4">
+                    <!-- Dynamic generation of links based on the links array -->
+                    {
+                      links.map((link) => (
+                        <a href={link.href}>
+                          <div class="py-2 group">
+                            <p class="text-base font-medium text-[#1f283a] group-hover:text-[#3e4960]  ">
+                              {link.title}
+                            </p>
+                            <p class="mt-1 text-sm text-[#626b82]">
+                              {link.description}
+                            </p>
+                          </div>
+                        </a>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="relative rounded-lg p-4 hover:bg-gray-50">
-        <a href="#" class="font-semibold text-gray-900">
-          Help center
-          <span class="absolute inset-0"></span>
-        </a>
-        <p class="mt-1 text-gray-600">Get all of your questions answered in our forums of contact support</p>
+    </div>
+     <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-white ring-opacity-5">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+          How to create a flyout menu with Astrojs, Tailwind CSS and Alpinejs
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
       </div>
-      <div class="relative rounded-lg p-4 hover:bg-gray-50">
-        <a href="#" class="font-semibold text-gray-900">
-          Guides
-          <span class="absolute inset-0"></span>
-        </a>
-        <p class="mt-1 text-gray-600">Learn how to maximize our platform to get the most out of it</p>
-      </div>
-      <div class="relative rounded-lg p-4 hover:bg-gray-50">
-        <a href="#" class="font-semibold text-gray-900">
-          Events
-          <span class="absolute inset-0"></span>
-        </a>
-        <p class="mt-1 text-gray-600">Check out webinars with experts and learn about our annual conference</p>
-      </div>
-      <div class="relative rounded-lg p-4 hover:bg-gray-50">
-        <a href="#" class="font-semibold text-gray-900">
-          Security
-          <span class="absolute inset-0"></span>
-        </a>
-        <p class="mt-1 text-gray-600">Understand how we take your privacy seriously</p>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-a-flyout-menu-with-astrojs-tailwind-css-and-alpinejs"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/flyout-menu/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+  <!-- Ends links to tutorial -->
+  </section>
 </BaseLayout>
