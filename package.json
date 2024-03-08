@@ -19,7 +19,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
-    "astro": "^4.4.11",
+    "astro": "^4.4.15",
     "astro-devtool-breakpoints": "^0.3.0",
     "preact": "^10.19.6",
     "tailwind-scrollbar-hide": "^1.1.7",
