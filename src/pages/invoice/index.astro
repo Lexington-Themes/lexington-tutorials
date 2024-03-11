@@ -1,0 +1,143 @@
+---
+// Importing a layout component for structural consistency across the site
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// Invoice data and details as JavaScript objects for dynamic rendering
+const invoiceData = [
+  // Each object represents a project with details
+  {
+    project: "Website Development",
+    description: "Design and development of a responsive company website.",
+    hours: 50.0,
+    rate: 150.0,
+    price: 7500.0,
+  },
+  {
+    project: "Mobile App Development",
+    description: "Creation of a cross-platform mobile application for customer engagement.",
+    hours: 60.0,
+    rate: 120.0,
+    price: 7200.0,
+  },
+  {
+    project: "SEO Optimization",
+    description: "Search engine optimization services for improving website visibility.",
+    hours: 30.0,
+    rate: 90.0,
+    price: 2700.0,
+  },
+  // Placeholder for additional projects
+];
+
+// Calculated totals for display in the invoice
+const totals = {
+  subtotal: 17400.0,
+  tax: 3480.0,
+  total: 20880.0,
+};
+
+// Unique invoice number and company address for display
+const invoiceNumber = "INV-20240330";
+const companyAddress = {
+  line1: "123 Tech Lane",
+  line2: "Wiggle Wiggle, SuperTrooper 101010",
+  phone: "+1234567890",
+  email: "contact@yourcompany.com",
+};
+
+// Footer note for additional invoice details or messages
+const footnote = "Thank you for your business! Please make your payment within 30 days to the provided account details. For any inquiries, don't hesitate to contact us.";
+---
+
+<BaseLayout>
+  <section>
+    <!-- Main container with responsive padding -->
+    <div class="px-8 py-24 flex flex-col mx-auto justify-center sm:px-12 lg:px-24 max-w-6xl">
+      <!-- Header section with logo and invoice details, flex container for responsive alignment -->
+      <img class="h-96 object-cover object-top" src="https://i.pinimg.com/564x/63/de/a1/63dea11021f3d12fe2c884c43b2a0f1d.jpg" alt="">
+      <div class="flex justify-between items-start mt-24">
+        <!-- Company logo -->
+        <img class="w-24 h-24 rounded-full" src="https://i.pinimg.com/564x/63/de/a1/63dea11021f3d12fe2c884c43b2a0f1d.jpg" alt="Company Logo" />
+        <!-- Invoice number and company address -->
+        <div class="text-right text-sm space-y-1 text-gray-500">
+          <!-- Dynamically rendered invoice number and address -->
+          <p><strong class="text-black">Invoice Number:</strong> {invoiceNumber}</p>
+          <p>{companyAddress.line1}</p>
+          <p>{companyAddress.line2}</p>
+          <p>{companyAddress.phone}</p>
+          <p>{companyAddress.email}</p>
+        </div>
+      </div>
+
+      <!-- Responsive design for invoice date and details, stacking on small screens and aligning side by side on larger screens -->
+      <div class="sm:flex sm:items-center mt-12">
+        <div class="sm:flex-auto">
+          <h1 class="text-xl">Invoice</h1>
+          <p class="max-w-xs mt-4 text-gray-500">
+            Regarding services rendered between <time datetime="2024-03-16">March 16, 2022</time>
+            and <time datetime="2024-03-30">March 30, 2024</time>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Table container with responsive margin adjustments -->
+      <div class="-mx-4 mt-24 flow-root sm:mx-0">
+        <!-- Min-width ensures table spans the full width, border and text styling -->
+        <table class="min-w-full">
+          <thead class="border-b border-gray-300 text-gray-900">
+            <!-- Table headers with conditional visibility for responsiveness -->
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left sm:pl-0">Project</th>
+              <th scope="col" class="hidden px-3 py-3.5 text-right sm:table-cell">Hours</th>
+              <th scope="col" class="hidden px-3 py-3.5 text-right sm:table-cell">Rate</th>
+              <th scope="col" class="py-3.5 pl-3 pr-4 text-right sm:pr-0">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dynamically generated rows for each project -->
+            {
+              invoiceData.map((item) => (
+                <tr class="border-b border-gray-200">
+                  <!-- Responsive cell design for project details -->
+                  <td class="max-w-0 py-5 pl-4 pr-3 text-sm sm:pl-0">
+                    <div class="font-medium text-base text-gray-900">{item.project}</div>
+                    <div class="mt-1 truncate text-gray-500">{item.description}</div>
+                  </td>
+                  <!-- Conditional visibility for hours and rate -->
+                  <td class="hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell">{item.hours}</td>
+                  <td class="hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell">${item.rate.toFixed(2)}</td>
+                  <!-- Price always visible -->
+                  <td class="py-5 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-0">${item.price.toFixed(2)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+          <!-- Footer for subtotal, tax, and total calculations -->
+          <tfoot>
+            <!-- Subtotal row with conditional visibility for responsive layout -->
+            <tr class="text-right">
+              <th scope="row" colspan="3" class="hidden pl-4 pr-3 pt-6 sm:table-cell sm:pl-0">Subtotal</th>
+              <td class="pl-3 pr-4 pt-6 sm:pr-0">${totals.subtotal.toFixed(2)}</td>
+            </tr>
+            <!-- Tax row -->
+            <tr class="text-right">
+              <th scope="row" colspan="3" class="hidden pl-4 pr-3 pt-4 sm:table-cell sm:pl-0">Tax</th>
+              <td class="pl-3 pr-4 pt-4 sm:pr-0">${totals.tax.toFixed(2)}</td>
+            </tr>
+            <!-- Total row -->
+            <tr class="text-right">
+              <th scope="row" colspan="3" class="hidden pl-4 pr-3 pt-4 sm:table-cell sm:pl-0">Total</th>
+              <td class="pl-3 pr-4 pt-4 text-right text-sm font-semibold text-blue-600 sm:pr-0">${totals.total.toFixed(2)}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Footnote section for additional information, positioned at the bottom -->
+      <div class="mt-24 pt-12 border-t text-sm text-gray-500">
+        <!-- Rendered footnote text -->
+        <p><strong>Note:</strong> {footnote}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
