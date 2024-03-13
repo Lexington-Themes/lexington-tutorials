@@ -31,6 +31,8 @@ This collection offers a range of code snippets tailored for Astro.js and Tailwi
 
 ### 13. [How to create and print an invoice with Astrojs and Tailwind CSS](https://lexingtonthemes.com/tutorials/how-to-create-and-print-an-invoice-with-astrojs-and-tailwind-css/)
 
+### 14. [How to create a dismissible cookie banner with Tailwind CSS and  Alpinejs](https://lexingtonthemes.com/tutorials/how-to-create-a-dissmisable-cookie-banner-with-tailwind-css-and-alpinejs/)
+
 
 
 ## Terms of Use

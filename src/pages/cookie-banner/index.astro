@@ -6,6 +6,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   <section>
     <div
       class="max-w-7xl mx-auto px-8 md:px-12 lg:px-32 py-24 flex flex-col justify-center h-svh">
+      <!--
+       // Alpine.js component for cookie banner
+       // Initializes component state with `showAlert` to manage visibility
+       // Focus management; focuses the 'Accept' button on init if `showAlert` is true
+       // ARIA role for accessibility; marks this as a dialog for screen readers
+       // ARIA attribute to associate the dialog with its title for screen readers
+       // Controls the visibility of the cookie banner based on `showAlert`
+       // ARIA attribute to associate the dialog with its description for screen readers
+      -->
       <div
         x-data="{ showAlert: true }"
         x-init="$nextTick(() => { if (showAlert) $refs.firstButton.focus() })"
@@ -14,19 +23,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         aria-labelledby="cookieBannerTitle"
         aria-describedby="cookieBannerDesc">
         <!-- Cookie banner content container -->
-        <div class="mx-auto p-8 lg:p-10 bg-white rounded-3xl ring-1 ring-gray-200 ring-inset shadow-2xl max-w-lg text-center">
+        <div
+          class="mx-auto p-8 lg:p-10 bg-white rounded-3xl ring-1 ring-gray-200 ring-inset shadow-2xl max-w-lg text-center">
           <img
             src="https://i.pinimg.com/originals/ef/86/cf/ef86cfbac3952cbfdaacb66e8ca3b685.gif"
             alt="Cookies"
             class="w-32 h-32 mx-auto rounded-full -mt-24"
           />
-
           <h2
             id="cookieBannerTitle"
             class="text-2xl font-medium mt-8">
             Our website uses cookies
           </h2>
-
           <p
             id="cookieBannerDesc"
             class="mt-4 text-gray-500">
@@ -38,17 +46,20 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               >Privacy Policy.</a
             >
           </p>
-
-          <!-- Accept cookies button -->
+          <!--
+           // Accept cookies button
+           // Alpine.js reference for initial focus
+           // Click event handler that updates `showAlert` to hide the banner -->
           <div class="mt-8">
             <button
               x-ref="firstButton"
               @click="showAlert = false"
-              class="rounded-full bg-orange-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+              class="rounded-full bg-orange-600 px-8 py-2 h-12 text-sm font-semibold
+              text-white hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500
+              focus:ring-offset-2">
               Accept all cookies
             </button>
           </div>
-
           <!-- Manage cookies link -->
           <div class="mt-4">
             <a
@@ -61,4 +72,43 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       </div>
     </div>
   </section>
+  <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+            How to create a dismissible cookie banner with Tailwind CSS and
+            Alpinejs
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-a-dissmisable-cookie-banner-with-tailwind-css-and-alpinejs"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/cookie-banner/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ends links to tutorial -->
 </BaseLayout>
