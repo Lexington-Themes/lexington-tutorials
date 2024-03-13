@@ -27,6 +27,10 @@ This collection offers a range of code snippets tailored for Astro.js and Tailwi
 
 ### 11. [How to create a flyout menu with Astrojs, Tailwind CSS and Alpinejs](https://lexingtonthemes.com/tutorials/how-to-create-a-flyout-menu-with-astrojs-tailwind-css-and-alpinejs)
 
+### 12. [How to create and print an invoice with Astrojs and Tailwind CSS](https://lexingtonthemes.com/tutorials/how-to-create-and-print-an-invoice-with-astrojs-and-tailwind-css/)
+
+### 13. [How to create and print an invoice with Astrojs and Tailwind CSS](https://lexingtonthemes.com/tutorials/how-to-create-and-print-an-invoice-with-astrojs-and-tailwind-css/)
+
 
 
 ## Terms of Use
