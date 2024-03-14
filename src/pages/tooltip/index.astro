@@ -16,13 +16,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     -->
 
       <div
-        x-data="{ open: false }"
-        @mouseover="open = true"
-        @mouseout="open = false"
-        class="relative flex justify-center w-auto items-center">
+        x-data="{ open: false, buttonHovered: false }"
+        @mouseenter="open = true"
+        @mouseleave="open = false"
+        class="relative flex justify-center items-center duration-200">
         <button
+          @mouseenter="buttonHovered = true"
+          @mouseleave="buttonHovered = false"
           type="button"
-          class="inline-flex justify-center mx-auto w-auto rounded-full h-12 items-center border-2 border-gray-300 shadow-sm px-8 py-2 bg-white text-base font-medium text-gray-700 focus:outline-none focus:ring-2 hover:border-orange-200 focus:ring-offset-2 focus:ring-orange-500 duration-300">
+          class="inline-flex justify-center mx-auto w-auto rounded-full h-24 items-center border-2 border-gray-300 shadow-sm px-12 py-2 bg-white text-3xl font-medium text-orange-600 focus:outline-none focus:ring-2 hover:border-orange-600 focus:ring-offset-2 focus:ring-orange-600 duration-300">
           Poke me
         </button>
 
@@ -31,8 +33,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         // x-show="open" means this div will only be visible when "open" is true.
         -->
         <div
-          x-show="open"
-          class="absolute z-10 bottom-full mb-2 w-56 overflow-hidden h-12 justify-center items-center flex text-center rounded-md shadow-lg bg-orange-600"
+          x-show="open && buttonHovered"
+          class="absolute z-10 bottom-full mb-2 w-56 overflow-hidden h-20 justify-center items-center flex text-center rounded-md shadow-lg bg-orange-600"
           style="display: none;">
           <div
             role="menu"
@@ -40,9 +42,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             aria-labelledby="options-menu">
             <a
               href="#"
-              class="block px-4 py-2 text-base mx-auto text-white b"
+              class="block px-4 py-2 text-xl mx-auto text-white"
               role="menuitem">
-              Hello pomelo
+              Hello pomelo, I am your tooltip!
             </a>
           </div>
         </div>
@@ -59,7 +61,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             <p class="mt-1 text-sm text-neutral-500">
               How to create a tooltip Tailwind CSS and Alpinejs
             </p>
-            <p class="mt-2 text-xs text-orange-500 underline">
+            <p class="mt-2 text-xs text-orange-600 underline">
               <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
             </p>
           </div>
@@ -70,14 +72,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               <a
                 href="https://lexingtonthemes.com/tutorials/how-to-create-a-tooltip-with-tailwind-css-and-alpinejs/"
                 type="button"
-                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
                 >Tutorial</a
               >
             </div>
             <div class="flex h-0 flex-1">
               <a
                 href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/tooltip/index.astro"
-                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
                 >Get the code</a
               >
             </div>
