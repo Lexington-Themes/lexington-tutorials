@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white">
+    <div
+      class="w-full mx-auto max-w-xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
+        <div>
+          <h1>Progress bar</h1>
+          <p class="text-balance">
+            Test the progress by clicking on the start button and click on the
+            reset button to reset the progress.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12">
+        <div
+          x-data="{ progress: 0, interval: null }"
+          x-init="() => { interval = setInterval(() => { progress < 100 ? progress += 5 : clearInterval(interval); }, 100); }"
+          class="w-full">
+          <div
+            class="text-sm text-gray-500"
+            x-text="progress + '%'">
+          </div>
+          <div class="relative h-1 mt-2 bg-gray-200 rounded-full">
+            <div
+              x-bind:style="'width: ' + progress + '%;'"
+              class="absolute top-0 left-0 h-full bg-orange-500 rounded-full">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

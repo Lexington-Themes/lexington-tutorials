@@ -1,0 +1,89 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white">
+    <div
+      class="w-full mx-auto max-w-xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
+        <div>
+          <h1>Log in form with password validation</h1>
+          <p class="text-balance">
+           Fill in the form below to log in to your account, and you will  see the inputs validation in action.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12">
+        <div
+          x-data="{ loginEmail: '', loginPassword: '', passwordPattern: /^(?=.*[A-Z])(?=.*[@#$%^&+=]).{1,8}$/, showPassword: false }">
+          <form
+            class="w-full divide-neutral-200 rounded-3xl bg-white shadow-2xl border p-8 lg:p-10"
+            x-on:submit.prevent="login">
+            <h2 class="text-2xl font-semibold mb-4">Login</h2>
+            <div class="py-2 space-y-3">
+              <label
+                for="login_email"
+                class="block text-sm text-gray-700"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="login_email"
+                x-model="loginEmail"
+                class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+                placeholder="Enter your email"
+                required
+              />
+              <p
+                x-show="!loginEmail"
+                class="text-red-500 text-xs mt-1">
+                Email is required
+              </p>
+            </div>
+            <div class="py-2 space-y-3">
+              <label
+                for="login_password"
+                class="block text-sm text-gray-700"
+                >Password</label
+              >
+              <div class="relative">
+                <input
+                  :type="showPassword ? 'text' : 'password'"
+                  id="login_password"
+                  x-model="loginPassword"
+                  class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-2 focus:ring-inset text-xs"
+                  placeholder="Enter your password"
+                  required
+                />
+                <span
+                  class="absolute inset-y-0 right-0 flex items-center pr-4 text-xs text-gray-400 cursor-pointer"
+                  x-text="showPassword ? 'Hide' : 'Show'"
+                  @click="showPassword = !showPassword"
+                  >Show</span
+                >
+              </div>
+              <p class="text-gray-500 text-xs mt-1 lg:text-pretty">
+                Password must contain at least one capital letter, a special
+                character, and be 1-8 characters long
+              </p>
+              <p
+                x-show="loginPassword && !passwordPattern.test(loginPassword)"
+                class="text-red-500 mt-1">
+                Password does not meet requirements
+              </p>
+            </div>
+            <div class="mt-4">
+              <button
+                type="submit"
+                class="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full"
+                >Login</button
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+        <div>
+          <h1>Accordion</h1>
+          <p class="text-balance">
+            Click on accordion items to see the content.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12 max-w-xl mx-auto w-full">
+        <div x-data="{ openIndex: null }">
+          <div class="border rounded-md overflow-hidden">
+            <!-- Accordion Item 1 -->
+            <div class="border-b">
+              <button
+                @click="openIndex === 0 ? openIndex = null : openIndex = 0"
+                class="w-full flex justify-between items-center p-4 focus:outline-none text-gray-500 focus:text-orange-500">
+                <span>What time is it?</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 transform transition-transform"
+                  :class="{ 'rotate-45': openIndex === 0 }">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  ></path>
+                </svg>
+              </button>
+              <div
+                x-show="openIndex === 0"
+                class="p-4 border-t text-sm bg-gray-50 text-gray-500">
+                I don't know what time it is.
+              </div>
+            </div>
+
+            <!-- Accordion Item 2 -->
+            <div class="border-b">
+              <button
+                @click="openIndex === 1 ? openIndex = null : openIndex = 1"
+                class="w-full flex justify-between items-center p-4 focus:outline-none text-gray-500 focus:text-orange-500">
+                <span>Why not?</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 transform transition-transform"
+                  :class="{ 'rotate-45': openIndex === 1 }">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  ></path>
+                </svg>
+              </button>
+              <div
+                x-show="openIndex === 1"
+                class="p-4 text-gray-500 bg-gray-50 text-sm border-t">
+                Because I have lost the notion of time.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

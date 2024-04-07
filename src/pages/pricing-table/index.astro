@@ -83,8 +83,7 @@ const pricingPlans = [
 <BaseLayout>
   <section
     x-data="{annual: false}"
-    class="relative flex flex-col overflow-hidden  overflow-y-auto h-svh items-center justify-center bg-zinc-950"
-  >
+    class="relative flex flex-col overflow-hidden overflow-y-auto h-svh items-center justify-center bg-zinc-950">
     <!-- Background image -->
     <img
       class="absolute w-full h-full lg:w-auto lg:h-auto"
@@ -93,21 +92,26 @@ const pricingPlans = [
     />
     <!-- Ends Background image -->
     <div
-      class="relative items-center px-8 py-12 mx-auto md:px-12  max-w-7xl"
-    >
+      class="prose text-white prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto relative">
+      <div>
+        <h1 class="text-white">Animated images on hover</h1>
+        <p class="text-balance">
+          Hover over the images to see the animation.
+        </p>
+      </div>
+    </div>
+    <div class="relative items-center px-8 py-12 mx-auto md:px-12 max-w-7xl">
       <!-- Pricing Toggle Buttons -->
       <div class="md:max-w-sm mx-auto">
         <!-- Toggle Button Container -->
         <div
-          class="inline-flex w-full border rounded-full mt-6 overflow-hidden border-white/20 p-0.5 z-0"
-        >
+          class="inline-flex w-full border rounded-full mt-6 overflow-hidden border-white/20 p-0.5 z-0">
           <!-- Monthly Button: Sets 'annual' to false when clicked -->
           <button
             class="font-medium rounded-full transition h-12 w-full py-2 block px-8 text-xs bg-black/50 text-white"
             :class="{ '  bg-black/50  text-white': !annual, ' text-white': annual }"
             @click="annual = false"
-            type="button"
-          >
+            type="button">
             Monthly
           </button>
           <!-- Annual Button: Sets 'annual' to true when clicked -->
@@ -115,8 +119,7 @@ const pricingPlans = [
             class="font-medium rounded-full transition h-12 w-full py-2 block px-8 text-xs border-white text-white"
             :class="{ '  bg-black/50  text-white': annual, ' text-white': !annual }"
             @click="annual = true"
-            type="button"
-          >
+            type="button">
             Annual
           </button>
         </div>
@@ -157,8 +160,7 @@ const pricingPlans = [
         {
           pricingPlans.map((plan) => (
             <div
-              class={`flex flex-col justify-between p-8 shadow-2xl  rounded-3xl ${plan.cardBgClass} backdrop-blur-3xl shadow-gray-900/50`}
-            >
+              class={`flex flex-col justify-between p-8 shadow-2xl  rounded-3xl ${plan.cardBgClass} backdrop-blur-3xl shadow-gray-900/50`}>
               <div>
                 <div class="flex flex-col justify-between gap-3">
                   <p class="text-xl font-medium tracking-tight text-white">
@@ -171,7 +173,9 @@ const pricingPlans = [
                     </span>
                     <span class="text-base font-medium">
                       /m
-                      <span x-show="annual" style="display: none;">
+                      <span
+                        x-show="annual"
+                        style="display: none;">
                         (billed annually)
                       </span>
                     </span>
@@ -191,9 +195,12 @@ const pricingPlans = [
                         stroke="currentColor"
                         fill="none"
                         stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        stroke-linejoin="round">
+                        <path
+                          stroke="none"
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        />
                         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                         <path d="M9 12l2 2l4 -4" />
                       </svg>
@@ -212,9 +219,12 @@ const pricingPlans = [
                         stroke="currentColor"
                         fill="none"
                         stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        stroke-linejoin="round">
+                        <path
+                          stroke="none"
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        />
                         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                         <path d="M10 10l4 4m0 -4l-4 4" />
                       </svg>
@@ -228,8 +238,7 @@ const pricingPlans = [
                   href="#_"
                   title={plan.name}
                   aria-label="get started"
-                  class={`flex items-center justify-center w-full  h-12 px-4 py-2 text-base font-medium transition-all duration-200 rounded-xl ${plan.buttonClass}`}
-                >
+                  class={`flex items-center justify-center w-full  h-12 px-4 py-2 text-base font-medium transition-all duration-200 rounded-xl ${plan.buttonClass}`}>
                   Get started
                 </a>
               </div>
@@ -239,16 +248,15 @@ const pricingPlans = [
       </div>
       <!-- Starts links to tutorial -->
       <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8 "
-      >
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8">
         <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border"
-        >
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
           <div class="flex w-0 flex-1 items-center p-4">
             <div class="w-full">
               <p class="text-sm font-medium text-neutral-900">Tutorial</p>
               <p class="mt-1 text-sm text-neutral-500">
-                How to create an interactive pricing table with Astro, Tailwind CSS, and Alpine.js
+                How to create an interactive pricing table with Astro, Tailwind
+                CSS, and Alpine.js
               </p>
               <p class="mt-2 text-xs text-orange-500 underline">
                 <a href="https://lexingtonthemes.com">

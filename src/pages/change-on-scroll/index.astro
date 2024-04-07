@@ -14,7 +14,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     @scroll.window="scroll = (window.pageYOffset > 50) ? true : false"
     :class="{ 'bg-white': scroll, 'bg-transparent': !scroll }"
     class="w-full fixed top-0 p-20 text-4xl 2xl:text-8xl flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
-    <h1>Scroll to see effect</h1>
+    <div
+      class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
+      <div>
+        <h1>Background change on scroll</h1>
+        <p class="text-balance">
+         Scroll down to see the background color change while scroll.
+        </p>
+      </div>
+    </div>
   </header>
   <!--
     The sections have a fixed height (h-svh) and padding (p-20).

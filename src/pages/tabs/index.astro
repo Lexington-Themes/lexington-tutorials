@@ -1,0 +1,194 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
+        <div>
+          <h1>Tabs</h1>
+          <p class="text-balance">
+            Test the tabs by clicking on the button below.
+          </p>
+        </div>
+      </div>
+      <div
+        x-data="{ activeTab: 0 }"
+        class="mx-auto w-full mt-6 border-t pt-12">
+        <!-- Tab List -->
+        <ul
+          role="tablist"
+          class="-mb-px flex items-stretch gap-2 text-slate-500">
+          <!-- Tab 1 -->
+          <li>
+            <button
+              @click="activeTab = 0"
+              :aria-selected="activeTab === 0"
+              :class="{ 'bg-orange-50 text-orange-600': activeTab === 0 }"
+              class="flex gap-2 items-center rounded-full px-6 h-10 py-2 text-sm font-medium"
+              role="tab"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="size-4">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                ></path>
+              </svg>
+              <span>My Account</span></button
+            >
+          </li>
+
+          <!-- Tab 2 -->
+          <li>
+            <button
+              @click="activeTab = 1"
+              :aria-selected="activeTab === 1"
+              :class="{ 'bg-orange-50 text-orange-600': activeTab === 1 }"
+              class="flex gap-2 items-center rounded-full px-6 h-10 py-2 text-sm font-medium"
+              role="tab"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="size-4">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"
+                ></path>
+              </svg>
+              <span>Billing</span></button
+            >
+          </li>
+        </ul>
+
+        <!-- Panels -->
+        <div
+          role="tabpanels"
+          class="rounded-b-md border rounded-xl overflow-hidden border-gray-200 mt-2 bg-white">
+          <!-- Panel 1 -->
+          <section
+            x-show="activeTab === 0"
+            role="tabpanel"
+            class="p-8">
+            <ul
+              role="list"
+              class="divide-y divide-gray-100">
+              <li class="relative flex justify-between gap-x-6 py-3 px-6">
+                <div class="flex min-w-0 gap-x-4">
+                  <img
+                    class="h-12 w-12 flex-none rounded-full bg-gray-50"
+                    src="https://alfred.lexingtonthemes.com/avatar1.png"
+                    alt=""
+                  />
+                  <div class="min-w-0 flex-auto">
+                    <p class="text-sm font-semibold leading-6 text-gray-900">
+                      <a href="#">
+                        <span class="absolute inset-x-0 -top-px bottom-0"
+                        ></span>
+                        Michael Andreuzza
+                      </a>
+                    </p>
+                    <p class="mt-1 flex text-xs leading-5 text-gray-500">
+                      <a
+                        href="mailto:leslie.alexander@example.com"
+                        class="relative truncate hover:underline"
+                        >michae.andreuzza@example.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div class="flex shrink-0 items-center gap-x-4">
+                  <div class="hidden sm:flex sm:flex-col sm:items-end">
+                    <p class="text-sm leading-6 text-gray-900">
+                      Co-Founder / CEO
+                    </p>
+                    <p class="mt-1 text-xs leading-5 text-gray-500">
+                      Last seen <time datetime="2023-01-23T13:23Z">3h ago</time>
+                    </p>
+                  </div>
+                  <svg
+                    class="h-5 w-5 flex-none text-gray-400"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true">
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Panel 2 -->
+          <section
+            x-show="activeTab === 1"
+            role="tabpanel"
+            class="p-8">
+            <dl
+              class="mx-auto grid grid-cols-1 gap-px bg-gray-900/5 sm:grid-cols-2 lg:grid-cols-4">
+              <div
+                class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white sm:px-6 xl:px-8">
+                <dt class="text-sm font-medium leading-6 text-gray-500">
+                  Revenue
+                </dt>
+                <dd class="text-xs font-medium text-gray-700">+4.75%</dd>
+                <dd
+                  class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
+                  $405,091.00
+                </dd>
+              </div>
+              <div
+                class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 sm:px-6 xl:px-8">
+                <dt class="text-sm font-medium leading-6 text-gray-500">
+                  Overdue invoices
+                </dt>
+                <dd class="text-xs font-medium text-rose-600">+54.02%</dd>
+                <dd
+                  class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
+                  $12,787.00
+                </dd>
+              </div>
+              <div
+                class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 sm:px-6 xl:px-8">
+                <dt class="text-sm font-medium leading-6 text-gray-500">
+                  Outstanding invoices
+                </dt>
+                <dd class="text-xs font-medium text-gray-700">-1.39%</dd>
+                <dd
+                  class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
+                  $245,988.00
+                </dd>
+              </div>
+              <div
+                class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 sm:px-6 xl:px-8">
+                <dt class="text-sm font-medium leading-6 text-gray-500">
+                  Expenses
+                </dt>
+                <dd class="text-xs font-medium text-rose-600">+10.18%</dd>
+                <dd
+                  class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
+                  $30,156.00
+                </dd>
+              </div>
+            </dl>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

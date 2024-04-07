@@ -1,0 +1,99 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+        <div>
+          <h1>Todo list</h1>
+          <p class="text-balance">
+           Click on the button below or press enter to add a new item. Then click on the checkbox to mark the item as completed, to remove it from the listm, just click on the X.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 border-t pt-12 max-w-xl mx-auto w-full">
+        <div
+          x-data="{
+        todos: [],
+        newTodo: '',
+        addTodo() {
+            if (this.newTodo.trim() !== '') {
+                this.todos.push({ text: this.newTodo, completed: false });
+                this.newTodo = '';
+                localStorage.setItem('todos', JSON.stringify(this.todos));
+            }
+        },
+        removeTodo(index) {
+            this.todos.splice(index, 1);
+            localStorage.setItem('todos', JSON.stringify(this.todos));
+        },
+        initializeTodos() {
+            const storedTodos = localStorage.getItem('todos');
+            if (storedTodos) {
+                this.todos = JSON.parse(storedTodos);
+            }
+        }
+    }"
+          x-init="initializeTodos">
+          <!-- Input to add new todo -->
+          <div class="flex flex-col gap-2 items-center  ">
+            <button
+              @click="addTodo"
+              class="rounded-full bg-orange-600 px-8 py-2 h-10 text-sm font-semibold text-white hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 w-full"
+              >Add</button
+            >
+            <input
+              type="text"
+              x-model="newTodo"
+              @keydown.enter="addTodo"
+              class="w-full border-gray-300 rounded-md placeholder-gray-400 text-sm focus:border-orange-500 focus:ring-orange-500"
+              placeholder="Make the logo bigger"
+            />
+          </div>
+
+          <!-- List of todos -->
+          <ul class="divide-y mt-4">
+            <template
+              x-for="(todo, index) in todos"
+              :key="index">
+              <li class="flex items-center space-x-2 w-full py-2">
+                <div class="flex items-center justify-between w-full">
+                  <div>
+                    <input
+                      type="checkbox"
+                      x-model="todo.completed"
+                      class="form-checkbox h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    />
+                    <span
+                      x-text="todo.text"
+                      :class="{ 'line-through': todo.completed }"
+                      class="text-lg text-gray-500"
+                    ></span>
+                  </div>
+                  <button
+                    @click="removeTodo(index)"
+                    class="text-black hover:text-red-700 focus:outline-none ml-auto"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="w-5 h-5">
+                      <path
+                        d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,110 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+        <div>
+          <h1>Scroll to Top</h1>
+          <p class="text-balance">
+            Scroll down to see the scroll to top button, and click on it to go
+            to the top.
+          </p>
+        </div>
+      </div>
+      <!-- Scroll to Top Button -->
+      <div
+        x-data="{ isVisible: false }"
+        x-init="window.addEventListener('scroll', () => { isVisible = window.scrollY > 100; })"
+        class="fixed bottom-6 right-6 z-50"
+        x-show="isVisible"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform translate-y-2"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 transform translate-y-0"
+        x-transition:leave-end="opacity-0 transform translate-y-2">
+        <button
+          @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+          class="inline-flex items-center gap-x-2 rounded-full bg-orange-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 w-full">
+          scroll to top
+        </button>
+      </div>
+
+      <div class="mt-6 border-t pt-12 max-w-xl mx-auto w-full">
+        <div class="prose prose-sm text-gray-500">
+          <h1 id="about">about</h1>
+          <p>Brief Facts About Me</p>
+          <ul>
+            <li>
+              Born in London on the 80s at St Thomas’ Hospital Medical School.
+              My father is Italian, and my mother is a Spaniard.
+            </li>
+            <li>Raised in the north of Italy and south Spain.</li>
+            <li>
+              I lived most of my life in Borgosesia, Vercelli Italy, gorliz,
+              bilbao and Torrevieja, Alicante, Spain.
+            </li>
+            <li>Passionate about drawing cars.</li>
+            <li>Lifelong surfer.</li>
+            <li>Fluent in Castilian Spanish, English, Italian, and Swedish.</li>
+            <li>Served as a lifeguard on the Spanish coast.</li>
+            <li>
+              Moved to Harrogate in 2009 in my 20s to explore life in the UK.
+            </li>
+            <li>Returned to Spain seeking the warmth and sunshine I missed.</li>
+            <li>Relocated to Helsinki with my wife in 2011.</li>
+            <li>Now living in the Åland Islands.</li>
+            <li>Proudly a father and a husband.</li>
+            <li>
+              Inspired to pursue web development after tweaking my Android phone
+              settings.
+            </li>
+            <li>
+              Launched my first project, <a href="https://colorsandfonts.com"
+                >Colors and Fonts</a
+              >, in 2018 and have been actively building since.
+            </li>
+            <li>
+              Developed 4 projects on a laptop with a failing and falling
+              screen; two were acquired in 2022.
+            </li>
+            <li>
+              Began building <a href="https://lexingtonthemes.com"
+                >Lexington Themes</a
+              > and <a href="https://windstatic.com">Windstatic</a> in 2022, officially
+              launched in February 2023.
+            </li>
+            <li>I admire simplicity and clarity in design.</li>
+            <li>
+              Consistency is my go-to resource in both life and work, guiding my
+              approach to web development, project management, and personal
+              growth.
+            </li>
+          </ul>
+          <p>
+            Reflecting on my journey from the diverse landscapes of Italy and
+            Spain to the innovative tech scene in the Åland Islands, I’ve
+            embraced the challenges and opportunities each move presented. My
+            passion for design, development, and entrepreneurship drives me
+            forward, with consistency as the cornerstone of my success. As I
+            continue to explore new ventures and creative projects, I remain
+            committed to the simplicity and clarity that define my work and life
+            philosophy.
+          </p>
+          <p>
+            Thank you for taking the time to learn a bit about me. I’m excited
+            for what the future holds and look forward to the continuous
+            evolution of my projects and personal endeavors. Have a beautiful
+            day.
+          </p>
+          <p>Michael Andreuzza</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

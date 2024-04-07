@@ -1,0 +1,75 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+        <div>
+          <h1>Pricing slider</h1>
+          <p class="text-balance">
+            Interact with the slider to see how it works. You will see how the
+            price changes as you move the slider.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12 max-w-sm mx-auto w-full">
+        <div
+          x-data="{ pageviews: 1000, price: 0 }"
+          class="w-full">
+          <div>
+            <input
+              type="range"
+              id="pageviews"
+              x-model="pageviews"
+              min="1000"
+              max="1000000"
+              step="1000"
+              class="w-full mt-2 border boerder-gray-300 appearance-none rounded-full h-8 px-2 outline-none overflow-hidden"
+              @input="price = (Math.ceil(pageviews / 1000) * 0.001 * 50).toFixed(2)"
+              style="--thumb-color: #f94121;"
+            />
+          </div>
+          <div
+            class="rounded-2xl p-8 mt-4 w-full border lg:flex lg:flex-col lg:justify-center">
+            <p class="flex items-baseline">
+              <span class="text-4xl font-medium tracking-tight text-black flex"
+                >$<input
+                  type="text"
+                  id="price"
+                  x-model="price"
+                  readonly
+                  class="w-auto text-4xl border-none bg-transparent p-0 pointer-events-none"
+                /></span
+              >
+            </p>
+            <div class="flex items-center gap-x-2 mt-4">
+              <label
+                for="pageviews"
+                class="block text-gray-500"
+                >Pageviews</label
+              >
+              <span x-text="pageviews.toLocaleString()"></span>
+            </div>
+            <p class="text-sm lg:text-pretty mt-8 text-gray-500">
+              This plan is tailored for small businesses and startups
+            </p>
+            <div class="mt-4">
+              <button
+                type="submit"
+                class="justify-center flex items-center gap-x-2 rounded-full bg-orange-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 w-full"
+                >Get access</button
+              >
+            </div>
+            <p class="mt-6 text-xs leading-5 text-gray-500 text-pretty">
+              Invoices and receipts available for easy company reimbursement
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

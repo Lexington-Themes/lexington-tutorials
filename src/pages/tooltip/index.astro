@@ -14,6 +14,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       // When the mouse hovers over this div, set "open" to true
       // When the mouse leaves this div, set "open" to false
     -->
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
+        <div>
+          <h1>Tooltip </h1>
+          <p class="text-balance">
+            Hover on the button to see the tooltip.
+           </p>
+        </div>
+      </div>
 
       <div
         x-data="{ open: false, buttonHovered: false }"

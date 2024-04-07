@@ -2,6 +2,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 module.exports = {
+   darkMode: 'class',
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
@@ -18,6 +19,19 @@ module.exports = {
           800: "hsl(4, 87%, 34%)",
           900: "hsl(4, 83%, 28%)",
           950: "hsl(1, 89%, 15%)",
+        },
+         blue: {
+           '50': '#ecf6ff',
+        '100': '#ddefff',
+        '200': '#c1e1ff',
+        '300': '#9ccaff',
+        '400': '#75aaff',
+        '500': '#5589ff',
+        '600': '#4870f6',
+        '700': '#294ed9',
+        '800': '#2443af',
+        '900': '#263f89',
+        '950': '#162350',
         },
       },
       fontFamily: {

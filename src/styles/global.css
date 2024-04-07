@@ -2,7 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* WebKit (Chrome, Safari) */
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: var(--thumb-color); /* Use custom variable for thumb color */
+        cursor: pointer;
+    }
 
+    /* Firefox */
+    input[type="range"]::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border: none;
+        border-radius: 50%;
+        background-color: var(--thumb-color); /* Use custom variable for thumb color */
+        cursor: pointer;
+    }
 
 /* CSS */
 :root {

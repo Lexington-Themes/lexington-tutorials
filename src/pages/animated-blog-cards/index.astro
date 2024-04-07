@@ -50,7 +50,14 @@ const features = [
 <BaseLayout>
   <section
     class="flex flex-col lg:h-svh justify-center items-center overflow-scroll">
-    <div class="flex flex-wrap mx-auto md:flex-nowrap">
+    <div
+      class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
+      <div>
+        <h1>Animated images on hover</h1>
+        <p class="text-balance">Hover over the images to see the animation.</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap mx-auto md:flex-nowrap mt-6 border-t pt-12">
       {
         features.map((feature, index) => (
           <>
