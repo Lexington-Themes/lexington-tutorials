@@ -66,8 +66,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                 >
               </div>
               <p class="text-gray-500 text-xs mt-1 lg:text-pretty">
-                Password must contain at least one capital letter, a special
-                character, and be 1-8 characters long
+                Password must contain at least one capital letter and a special
+                character.
               </p>
               <p
                 x-show="loginPassword && !passwordPattern.test(loginPassword)"
