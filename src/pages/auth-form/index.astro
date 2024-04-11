@@ -5,23 +5,24 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 <BaseLayout>
   <section class="bg-white">
     <div
-      class="w-full mx-auto max-w-xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
+      class="w-full mx-auto max-w-xl flex flex-col justify-center py-24 lg:py-12 2xl:h-svh relative p-8">
       <div
         class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
         <div>
           <h1>Log in form with password validation</h1>
           <p class="text-balance">
-           Fill in the form below to log in to your account, and you will  see the inputs validation in action.
+            Fill in the form below to log in to your account, and you will see
+            the inputs validation in action.
           </p>
         </div>
       </div>
       <div class="mt-6 border-t pt-12">
+        <!--  Starts component -->
         <div
           x-data="{ loginEmail: '', loginPassword: '', passwordPattern: /^(?=.*[A-Z])(?=.*[@#$%^&+=]).{1,8}$/, showPassword: false }">
           <form
             class="w-full divide-neutral-200 rounded-3xl bg-white shadow-2xl border p-8 lg:p-10"
             x-on:submit.prevent="login">
-            <h2 class="text-2xl font-semibold mb-4">Login</h2>
             <div class="py-2 space-y-3">
               <label
                 for="login_email"
@@ -70,7 +71,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               </p>
               <p
                 x-show="loginPassword && !passwordPattern.test(loginPassword)"
-                class="text-red-500 mt-1">
+                class="text-red-500 mt-1 text-xs">
                 Password does not meet requirements
               </p>
             </div>
@@ -83,7 +84,50 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             </div>
           </form>
         </div>
+        <!--  Ends component -->
+        <!-- Starts links to tutorial -->
+        <div
+          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 ">
+          <div
+            class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+            <div class="flex w-0 flex-1 items-center p-4">
+              <div class="w-full">
+                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+                <p class="mt-1 text-sm text-neutral-500">
+                  How to create a Login/Register Form with Tailwind CSS and
+                  Alpinejs
+                </p>
+                <p class="mt-2 text-xs text-orange-500 underline">
+                  <a href="https://lexingtonthemes.com">
+                    by © Lexington Themes</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col divide-y divide-neutral-200">
+                <div class="flex h-0 flex-1">
+                  <a
+                    href="how-to-create-a-login-register-form-with-tailwind-and-alpinejs"
+                    type="button"
+                    class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    >Tutorial</a
+                  >
+                </div>
+                <div class="flex h-0 flex-1">
+                  <a
+                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/auth-form/index.astro"
+                    class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    >Get the code</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Ends links to tutorial -->
       </div>
     </div>
   </section>
 </BaseLayout>
+
