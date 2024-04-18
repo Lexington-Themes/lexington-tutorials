@@ -16,7 +16,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </p>
         </div>
       </div>
-      <!-- Scroll to Top Button -->
+      <!-- Starts component -->
       <div
         x-data="{ isVisible: false }"
         x-init="window.addEventListener('scroll', () => { isVisible = window.scrollY > 100; })"
@@ -29,11 +29,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         x-transition:leave-start="opacity-100 transform translate-y-0"
         x-transition:leave-end="opacity-0 transform translate-y-2">
         <button
+          title="Scroll to top"
+          aria-label="Scroll to top"
           @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
           class="inline-flex items-center gap-x-2 rounded-full bg-orange-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 w-full">
           scroll to top
         </button>
       </div>
+      <!-- Ends component -->
 
       <div class="mt-6 border-t pt-12 max-w-xl mx-auto w-full">
         <div class="prose prose-sm text-gray-500">
@@ -105,6 +108,47 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           <p>Michael Andreuzza</p>
         </div>
       </div>
+
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create a scroll to top with Tailwind CSS and Alpinejs
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-scroll-to-top-button-with-tailwind-css-and-alpinejs"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/scroll-to-top/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
     </div>
   </section>
 </BaseLayout>
