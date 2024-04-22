@@ -5,7 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 <BaseLayout>
   <section class="bg-white relative overflow-hidden">
     <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 lg:py-96 relative p-8">
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
       <div
         class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
         <div>
@@ -28,11 +28,26 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               min="1000"
               max="1000000"
               step="1000"
-              class="w-full mt-2 border boerder-gray-300 appearance-none rounded-full h-8 px-2 outline-none overflow-hidden"
+              class="w-full mt-2 border border-gray-300 appearance-none rounded-full h-8 px-2 outline-none overflow-hidden"
               @input="price = (Math.ceil(pageviews / 1000) * 0.001 * 50).toFixed(2)"
               style="--thumb-color: #f94121;"
             />
           </div>
+          <div class="mt-4 flex items-center gap-x-2 w-full">
+            <label
+              for="pageviews"
+              class="block text-gray-500"
+              >Pageviews</label
+            >
+            <input
+              type="number"
+              id="inputPageviews"
+              x-model="pageviews"
+              class="border border-gray-300 rounded-lg px-2 py-1 w-full h-10 text-gray-700 outline-none focus:ring focus:ring-orange-600"
+              @input="price = (Math.ceil($event.target.value / 1000) * 0.001 * 50).toFixed(2)"
+            />
+          </div>
+
           <div
             class="rounded-2xl p-8 mt-4 w-full border lg:flex lg:flex-col lg:justify-center">
             <p class="flex items-baseline">
@@ -46,6 +61,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                 /></span
               >
             </p>
+
             <div class="flex items-center gap-x-2 mt-4">
               <label
                 for="pageviews"
