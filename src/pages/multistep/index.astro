@@ -1,0 +1,186 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div class="max-w-xl mx-auto">
+        <div
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+          <div>
+            <h1>Multi step form</h1>
+            <p class="text-balance">Fill in the form to see how it works.</p>
+          </div>
+        </div>
+        <!-- Starts component -->
+        <div class="mt-6 border-t pt-12">
+          <div
+            x-data="{ step: 1, formData: { name: '', email: '', username: '', password: '' } }"
+            class="rounded-3xl bg-white shadow-2xl border p-8 lg:p-10 mt-6">
+            <!-- Step 1 -->
+            <div x-show="step === 1">
+              <h2 class="text-lg font-medium text-gray-500">
+                Step 1: Personal Information
+              </h2>
+              <div class="space-y-2 mt-12">
+                <label
+                  for="name"
+                  class="block text-sm text-gray-700"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  x-model="formData.name"
+                  class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="space-y-2 mt-4">
+                <label
+                  for="email"
+                  class="block mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  x-model="formData.email"
+                  class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div class="mt-4">
+                <button
+                  class="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full"
+                  @click="step++"
+                  >Next</button
+                >
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div x-show="step === 2">
+              <h2 class="text-lg font-medium text-gray-500 mb-4">
+                Step 2: Account Information
+              </h2>
+              <div class="space-y-2 mt-12">
+                <label
+                  for="username"
+                  class="block mb-2"
+                  >Username</label
+                >
+                <input
+                  type="text"
+                  id="username"
+                  x-model="formData.username"
+                  class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+                  placeholder="Choose a username"
+                />
+              </div>
+              <div class="space-y-2 mt-4">
+                <label
+                  for="password"
+                  class="block mb-2"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  x-model="formData.password"
+                  class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+                  placeholder="Enter your password"
+                />
+              </div>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <button
+                  class="rounded-full bg-blue-50 px-8 py-2 h-12 text-sm font-semibold text-blue-600 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full"
+                  @click="step--"
+                  >Previous</button
+                >
+                <button
+                  class="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full"
+                  @click="step++"
+                  >Next</button
+                >
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div x-show="step === 3">
+              <h2 class="text-lg font-medium text-gray-500">
+                Step 3: Confirmation
+              </h2>
+              <div class="mt-12 space-y-4 font-medium text-sm text-gray-500">
+                <p>
+                  Name: <span x-text="formData.name"></span>
+                </p>
+                <p>
+                  Email: <span x-text="formData.email"></span>
+                </p>
+                <p>
+                  Username: <span x-text="formData.username"></span>
+                </p>
+              </div>
+              <!-- Add more fields as needed -->
+              <div class="mt-4 flex flex-wrap gap-2">
+                <button
+                  class="rounded-full bg-blue-50 px-8 py-2 h-12 text-sm font-semibold text-blue-600 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full"
+                  @click="step--"
+                  >Previous</button
+                >
+                <button
+                  class="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full"
+                  >Submit</button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Ends component -->
+        <!-- Starts links to tutorial -->
+        <div
+          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+          <div
+            class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+            <div class="flex w-0 flex-1 items-center p-4">
+              <div class="w-full">
+                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+                <p class="mt-1 text-sm text-neutral-500">
+                  How to create a multistep form with Tailwind CSS and Alpinejs
+                </p>
+                <p class="mt-2 text-xs text-orange-600 underline">
+                  <a href="https://lexingtonthemes.com">
+                    by © Lexington Themes</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col divide-y divide-neutral-200">
+                <div class="flex h-0 flex-1">
+                  <a
+                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-multistep-form-with-tailwind-css-and-alpinejs/"
+                    type="button"
+                    class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                    >Tutorial</a
+                  >
+                </div>
+                <div class="flex h-0 flex-1">
+                  <a
+                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/multistep/index.astro"
+                    class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                    >Get the code</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Ends links to tutorial -->
+      </div>
+    </div>
+  </section>
+</BaseLayout>
