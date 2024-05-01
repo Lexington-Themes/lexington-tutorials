@@ -1,0 +1,53 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section
+    class="bg-white relative overflow-hidden"
+    x-data="{ isOpen: false }">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+        <div>
+          <h1>Simple search</h1>
+          <p class="text-balance">Search for the words you are looking for.</p>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12 max-w-sm mx-auto w-full">
+        <!-- Starts component -->
+
+        <div
+          x-data="{
+        searchQuery: '',
+        items: [
+            'Milano', 'Alicante', 'Switzerland', 'Bilbao', 'Åland Islands', 'Stockholm', 'Torrevieja', 'Minneapolis'
+        ].map(item => ({ name: item }))
+    }">
+          <!-- Search Input -->
+          <input
+            type="text"
+            x-model="searchQuery"
+            placeholder="Search..."
+            class="w-full border-gray-300 rounded-md placeholder-gray-400 text-sm focus:border-orange-500 focus:ring-orange-500"
+          />
+
+          <!-- Filtered Items -->
+          <ul
+            class="mt-12 text-sm space-y-2 text-gray-500 list-disc list-inside">
+            <template
+              x-for="item in items"
+              :key="item.name">
+              <li
+                x-show="item.name.toLowerCase().includes(searchQuery.toLowerCase())"
+                x-text="item.name">
+              </li>
+            </template>
+          </ul>
+        </div>
+        <!-- Ends component -->
+      </div>
+    </div>
+  </section>
+</BaseLayout>

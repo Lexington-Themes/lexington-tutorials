@@ -119,7 +119,7 @@ const component = [
     url: "/todo",
     title: "How to create a todo list with Tailwind CSS and Alpinejs",
   },
-   {
+  {
     url: "/pricing-slider",
     title: "How to create a pricing slider with Tailwind CSS and Alpinejs",
   },
@@ -127,7 +127,7 @@ const component = [
     url: "/count-down",
     title: "How to create a countdown with Tailwind CSS and Alpinejs",
   },
-   {
+  {
     url: "/drawer",
     title: "How to create a bottom drawer  with Tailwind CSS and Alpinejs",
   },
@@ -135,14 +135,35 @@ const component = [
     url: "/multistep",
     title: "How to create a multistep form with Tailwind CSS and Alpinejs",
   },
-
+  {
+    url: "/gridtoggle",
+    title: "How to create a grid toggle  with Tailwind CSS and Alpinejs",
+  },
+  /*
+  {
+    url: "/carousel",
+    title: "How to create a carousel  with Tailwind CSS and Alpinejs",
+  },
+  {
+    url: "/search",
+    title: "How to create a search input   with Tailwind CSS and Alpinejs",
+  },
+  {
+    url: "/cart",
+    title: "How to add items to your cart with Tailwind CSS and Alpinejs",
+  },
+  {
+    url: "/contextualmenu",
+    title:
+      "How to creat a contextual menu  with Tailwind CSS and Alpinejs",
+  },*/
 ];
 ---
 
 <BaseLayout>
   <section>
     <div
-      class="items-center w-full px-5 py-24 mx-auto md:px-12 max-w-7xl  flex flex-col justify-center">
+      class="items-center w-full px-5 py-24 mx-auto md:px-12 max-w-7xl flex flex-col justify-center">
       <div>
         <a
           class="text-lg text-black focus:outline-none focus:ring lg:text-2xl tracking-tight uppercase"
@@ -233,20 +254,23 @@ const component = [
         <dl
           class="flex flex-col mt-12 max-w-3xl mx-auto divide-y bg-opacity-90 backdrop-blur-xl">
           {
-            component.map((template, index) => (
-              <div class="py-2 inline-flex items-center gap-4">
-                <dt class="text-neutral-600 hover:text-orange-500 w-full">
-                  <a
-                    href={template.url}
-                    class="inline-flex items-center">
-                    {template.title}
-                  </a>
-                </dt>
-                <dd class="order-first">
-                  {String(index + 1).padStart(2, "0") + "."}
-                </dd>
-              </div>
-            ))
+            component.reverse().map((template, index) => {
+              const reversedIndex = component.length - index;
+              return (
+                <div class="py-2 inline-flex items-center gap-4">
+                  <dt class="text-neutral-600 hover:text-orange-500 w-full">
+                    <a
+                      href={template.url}
+                      class="inline-flex items-center">
+                      {template.title}
+                    </a>
+                  </dt>
+                  <dd class="order-first">
+                    {String(reversedIndex).padStart(2, "0") + "."}
+                  </dd>
+                </div>
+              );
+            })
           }
         </dl>
       </div>

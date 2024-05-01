@@ -1,0 +1,84 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section
+    class="bg-white relative overflow-hidden"
+    x-data="{ isOpen: false }">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+        <div>
+          <h1>Contextual menu</h1>
+          <p class="text-balance">
+            Right-click or long-press inside this area to open the context menu.
+          </p>
+        </div>
+      </div>
+      <div class="mt-12 max-w-sm mx-auto w-full   ">
+        <!-- Starts component -->
+        <div
+          x-data="{ isOpen: false, position: { x: 0, y: 0 }, areaWidth: 0, areaHeight: 0 }"
+          x-init="areaWidth = $refs.area.offsetWidth; areaHeight = $refs.area.offsetHeight">
+          <div
+            class="items-center flex justify-center p-8 lg:p-20 text-center text-gray-500 text-sm"
+            @contextmenu.prevent="isOpen = true; position = contextMenuPosition($event)"
+            @click.away="isOpen = false"
+            x-ref="area">
+            Right click here
+          </div>
+
+          <div
+            x-show="isOpen"
+            x-transition:enter="transition ease-out duration-100"
+            x-transition:enter-start="opacity-0 scale-95"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-75"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-95"
+            x-style="`top: ${Math.min(position.y, areaHeight - $refs.menu.offsetHeight)}px; left: ${Math.min(position.x, areaWidth - $refs.menu.offsetWidth)}px;`"
+            @click.away="isOpen = false"
+            class="absolute z-50 bg-white shadow-lg rounded-md p-2"
+            x-ref="menu">
+            <ul>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                  >Menu Item 1</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                  >Menu Item 2</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                  >Menu Item 3</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <script>
+            function contextMenuPosition(event) {
+              return {
+                x: event.clientX,
+                y: event.clientY,
+              };
+            }
+          </script>
+        </div>
+
+        <!-- Ends component -->
+      </div>
+    </div>
+  </section>
+</BaseLayout>
