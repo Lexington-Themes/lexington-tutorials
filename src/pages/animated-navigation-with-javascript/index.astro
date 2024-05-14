@@ -1,29 +1,12 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro"; // Importing a base layout component.
-const cards = [
-  {
-    href: "#_",
-    imageUrl:
-      "https://i.pinimg.com/564x/eb/b3/bd/ebb3bd6c322463cee8b7b17659792830.jpg",
-  },
-  {
-    href: "#_",
-    imageUrl:
-      "https://i.pinimg.com/564x/9b/0e/e1/9b0ee1146eba537b5b1e207928350e0f.jpg",
-  },
-  {
-    href: "#_",
-    imageUrl:
-      "https://i.pinimg.com/564x/b6/91/52/b691526e863a332d1708eb1d9da0d403.jpg",
-  },
-];
 ---
 
 <BaseLayout>
   <section>
     <!--- Starts component -->
     <div
-      class="fixed z-50 w-full px-8 py-4 transition-all duration-1000 rounded-full mt-4 inset-x-0 mx-auto ease-in-out transform max-w-2xl header">
+      class="fixed z-50 w-full px-3 py-2 transition-all duration-1000 rounded-xl mt-4 inset-x-0 mx-auto ease-in-out transform max-w-2xl header">
       <div
         class="flex flex-col w-full p-2 mx-auto md:items-center md:justify-between md:flex-row">
         <div class="flex flex-row items-center justify-between">
@@ -57,10 +40,9 @@ const cards = [
     </div>
     <!--- Ends component -->
     <div class="bg-white">
-      <div
-        class="px-8 py-24 mx-auto text-center md:px-12 lg:px-24 lg:pt-64 text-zinc-500">
+      <div class="px-8 py-24 mx-auto md:px-12 lg:px-28 lg:pt-64 text-zinc-500">
         <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm">
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-2xl px-6">
           <div>
             <h1>Adaptable navigation</h1>
             <p class="text-balance">
@@ -70,27 +52,102 @@ const cards = [
           </div>
         </div>
 
-        <div
-          class="grid grid-cols-1 gap-8 mx-auto gap-y-28 mt-24 sm:grid-cols-1 max-w-2xl">
-          {
-            cards.map((card) => (
-              <a href={card.href}>
-                <div>
-                  <img
-                    class="duration-500 w-full rounded-3xl shadow hover:shadow-3xl hover:-translate-y-12"
-                    src={card.imageUrl}
-                    alt={card.title}
-                  />
-                </div>
-              </a>
-            ))
-          }
+        <div class="mt-6 max-w-2xl mx-auto w-full px-6">
+          <div class="prose prose-sm 2xl:text-lg text-gray-500 border-t pt-12">
+            <p>Brief Facts About Me</p>
+            <p>
+              In the throbbing heart of London's vibrant streets, amidst the
+              colorful tapestry of the 1980s, I drew my first breaths at St
+              Thomas’ Hospital Medical School. An intricate blend of European
+              heritage defines my roots - my father's lineage tracing back to
+              the rolling hills of Italy, while my mother embodies the fiery
+              spirit of Spain.
+            </p>
+            <p>
+              My upbringing was a harmonious fusion of the majestic landscapes
+              of northern Italy and the sun-drenched shores of southern Spain.
+              From the quaint cobblestone streets of Borgosesia, Vercelli,
+              Italy, to the majestic coastal cliffs of Gorliz, Bilbao, and the
+              tranquil beaches of Torrevieja, Alicante, Spain, my formative
+              years were an immersive journey through diverse cultures and
+              breathtaking scenery.
+            </p>
+            <p>
+              Passion became my guiding star from a tender age; I found solace
+              and expression in the elegant contours of automotive design,
+              sketching visions of sleek machines that seemed to dance with the
+              wind. Equally at home amidst the crashing waves, I became a
+              lifelong devotee of the ocean, finding solace and exhilaration
+              atop a surfboard.
+            </p>
+            <p>
+              The melodies of different languages became my symphony; fluent in
+              the cadences of Castilian Spanish, the eloquence of English, the
+              lyrical beauty of Italian, and the melodious tones of Swedish, I
+              effortlessly traversed linguistic boundaries.
+            </p>
+            <p>
+              Summers bathed in the Mediterranean sun found me standing as a
+              vigilant sentinel along the Spanish coast, serving as a lifeguard,
+              a silent guardian of lives amidst the azure expanse. Driven by the
+              thirst for adventure and discovery, I ventured to the lush
+              landscapes of Harrogate in my twenties, lured by the mystique of
+              British life and culture.
+            </p>
+            <p>
+              Yet, the siren call of my ancestral lands beckoned, and I returned
+              to the warm embrace of Spanish sunshine, seeking solace amidst the
+              familiar lands I had missed. Relocating to Helsinki with my
+              beloved wife in 2011, and now finding sanctuary in the tranquil
+              beauty of the Åland Islands, I stand proudly as both a father and
+              a devoted husband.
+            </p>
+            <p>
+              Inspired by a simple tweak of my Android phone settings, I
+              embarked on a journey into the realm of web development. Launching
+              my inaugural project, Colors and Fonts, in 2018, I have since
+              dedicated myself to the art of digital creation, constantly
+              refining and expanding my digital footprint.
+            </p>
+            <p>
+              Despite encountering challenges, including developing projects on
+              a laptop with a failing screen, I persevered, ultimately seeing
+              two projects acquired in 2022. Initiating ventures such as
+              Lexington Themes and Windstatic, I officially unveiled them to the
+              world in February 2023.
+            </p>
+            <p>
+              Simplicity and clarity have always been the guiding principles of
+              my design philosophy. Consistency, both in life and work, serves
+              as my steadfast companion, guiding my approach to web development,
+              project management, and personal growth.
+            </p>
+            <p>
+              Reflecting on my journey from the varied landscapes of Italy and
+              Spain to the burgeoning tech scene of the Åland Islands, I have
+              embraced the challenges and opportunities that each transition
+              brought forth. Fueled by an unwavering passion for design,
+              development, and entrepreneurship, I march forward, with
+              consistency as the cornerstone of my success. As I continue to
+              explore new ventures and embark on creative endeavors, I remain
+              steadfastly committed to the principles of simplicity and clarity
+              that define both my work and life philosophy.
+            </p>
+            <p>
+              Thank you for taking the time to acquaint yourself with my story.
+              I am filled with anticipation for the adventures that lie ahead,
+              eagerly anticipating the ongoing evolution of my projects and
+              personal endeavors. May your day be filled with beauty and
+              inspiration.
+            </p>
+            <p>Michael Andreuzza</p>
+          </div>
         </div>
       </div>
     </div>
     <!-- Starts links to tutorial -->
     <div
-      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 sr-only">
       <div
         class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
         <div class="flex w-0 flex-1 items-center p-4">
@@ -154,7 +211,7 @@ const cards = [
       header.classList.toggle("bg-black", !atTop);
       header.classList.toggle("bg-opacity-90", !atTop);
       header.classList.toggle("backdrop-blur-xl", !atTop);
-      header.classList.toggle("max-w-4xl", !atTop);
+      header.classList.toggle("max-w-3xl", !atTop);
       updateTextColors(atTop);
       updateTitleColor(atTop);
     }
