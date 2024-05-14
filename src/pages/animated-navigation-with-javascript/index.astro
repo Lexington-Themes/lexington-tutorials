@@ -1,0 +1,175 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"; // Importing a base layout component.
+const cards = [
+  {
+    href: "#_",
+    imageUrl:
+      "https://i.pinimg.com/564x/eb/b3/bd/ebb3bd6c322463cee8b7b17659792830.jpg",
+  },
+  {
+    href: "#_",
+    imageUrl:
+      "https://i.pinimg.com/564x/9b/0e/e1/9b0ee1146eba537b5b1e207928350e0f.jpg",
+  },
+  {
+    href: "#_",
+    imageUrl:
+      "https://i.pinimg.com/564x/b6/91/52/b691526e863a332d1708eb1d9da0d403.jpg",
+  },
+];
+---
+
+<BaseLayout>
+  <section>
+    <!--- Starts component -->
+    <div
+      class="fixed z-50 w-full px-8 py-4 transition-all duration-1000 rounded-full mt-4 inset-x-0 mx-auto ease-in-out transform max-w-2xl header">
+      <div
+        class="flex flex-col w-full p-2 mx-auto md:items-center md:justify-between md:flex-row">
+        <div class="flex flex-row items-center justify-between">
+          <span
+            class="font-bold tracking-tighter text-black uppercase site-title"
+            >✺ Lexington</span
+          >
+          <button class="md:hidden focus:outline-none nav-toggle">
+            <!-- SVG Burger goes here -->
+          </button>
+        </div>
+        <nav
+          class="flex-col flex-grow gap-8 hidden pb-4 md:pb-0 md:flex md:flex-row lg:ml-auto justify-end">
+          <a
+            href="#_"
+            class="text-black nav-link"
+            >About</a
+          >
+          <a
+            href="#_"
+            class="text-black nav-link"
+            >Work</a
+          >
+          <a
+            href="#_"
+            class="text-black nav-link"
+            >Blog</a
+          >
+        </nav>
+      </div>
+    </div>
+    <!--- Ends component -->
+    <div class="bg-white">
+      <div
+        class="px-8 py-24 mx-auto text-center md:px-12 lg:px-24 lg:pt-64 text-zinc-500">
+        <div
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm">
+          <div>
+            <h1>Adaptable navigation</h1>
+            <p class="text-balance">
+              Scroll down to see the navigation change its appearance based on
+              the scroll position.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 gap-8 mx-auto gap-y-28 mt-24 sm:grid-cols-1 max-w-2xl">
+          {
+            cards.map((card) => (
+              <a href={card.href}>
+                <div>
+                  <img
+                    class="duration-500 w-full rounded-3xl shadow hover:shadow-3xl hover:-translate-y-12"
+                    src={card.imageUrl}
+                    alt={card.title}
+                  />
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to create an and animated navigation with Astro, Tailwind CSS,
+              and JavaScript
+            </p>
+            <p class="mt-2 text-xs text-orange-500 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-an-animated-navigation-with-javascript"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-navigation-with-javascript/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector(".header");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const title = document.querySelector(".site-title");
+
+    updateHeader();
+
+    window.addEventListener("scroll", function () {
+      updateHeader();
+    });
+
+    navLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        updateHeader();
+      });
+    });
+
+    function updateHeader() {
+      const atTop = window.pageYOffset <= 50;
+      header.classList.toggle("bg-white", atTop);
+      header.classList.toggle("bg-black", !atTop);
+      header.classList.toggle("bg-opacity-90", !atTop);
+      header.classList.toggle("backdrop-blur-xl", !atTop);
+      header.classList.toggle("max-w-4xl", !atTop);
+      updateTextColors(atTop);
+      updateTitleColor(atTop);
+    }
+
+    function updateTextColors(atTop) {
+      const textColor = atTop ? "text-black" : "text-white";
+      navLinks.forEach(function (link) {
+        link.classList.remove(atTop ? "text-white" : "text-black");
+        link.classList.add(textColor);
+      });
+    }
+
+    function updateTitleColor(atTop) {
+      title.classList.remove(atTop ? "text-white" : "text-black");
+      title.classList.add(atTop ? "text-black" : "text-white");
+    }
+  });
+</script>
