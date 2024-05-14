@@ -1,10 +1,42 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-const component = [
+const tailwind = [
   {
     url: "/animated-images",
     title: "How to create animated image cards with Tailwind CSS and Astrojs",
   },
+  {
+    url: "/simplified-cards",
+    title: "How to create a dynamic feature grid with Astrojs and Tailwind CSS",
+  },
+  {
+    url: "/sticky-changelog",
+    title:
+      "How to create a sticky changelog component with Tailwind CSS and Astrojs",
+  },
+  {
+    url: "/multicolumn-layout",
+    title: "How to create a multicolumn layout with Tailwind CSS",
+  },
+  {
+    url: "/invoice",
+    title: "How to create and print an invoice with Astrojs and Tailwind CSS ",
+  },
+  {
+    url: "/animated-blog-cards",
+    title: "How to creating animated blog cards with Astrojs and Tailwind CSS ",
+  },
+  {
+    url: "/simplified-markup",
+    title:
+      "How to simplify your code and avoid repeating your markup with Astrojs and Tailwind CSS",
+  },
+  {
+    url: "/three-d-button",
+    title: "How to create a 3d button with Tailwind CSS",
+  },
+];
+const alpinejs = [
   {
     url: "/pricing-table",
     title:
@@ -18,10 +50,6 @@ const component = [
   {
     url: "/alpine-sidebar",
     title: "How to create a sidebar navigation Tailwind CSS and and Alpine.js",
-  },
-  {
-    url: "/simplified-cards",
-    title: "How to create a dynamic feature grid with Astrojs and Tailwind CSS",
   },
   {
     url: "/intersection-observer",
@@ -44,17 +72,9 @@ const component = [
       "How to create an interactive testimonial with Astrojs, Tailwind CSS and Alpine.js",
   },
   {
-    url: "/multicolumn-layout",
-    title: "How to create a multicolumn layout with Tailwind CSS",
-  },
-  {
     url: "/flyout-menu",
     title:
       "How to create a flyout menu with Astrojs, Tailwind CSS and Alpinejs",
-  },
-  {
-    url: "/invoice",
-    title: "How to create and print an invoice with Astrojs and Tailwind CSS ",
   },
   {
     url: "/cookie-banner",
@@ -69,15 +89,6 @@ const component = [
     url: "/change-on-scroll",
     title:
       "How to change background on scroll with Tailwind CSS and  Alpinejs ",
-  },
-  {
-    url: "/animated-blog-cards",
-    title: "How to creating animated blog cards with Astrojs and Tailwind CSS ",
-  },
-  {
-    url: "/simplified-markup",
-    title:
-      "How to simplify your code and avoid repeating your markup with Astrojs and Tailwind CSS",
   },
   {
     url: "/tabs",
@@ -156,13 +167,11 @@ const component = [
     title: "How to creat a contextual menu  with Tailwind CSS and Alpinejs",
   },
   {
-    url: "/three-d-button",
-    title: "How to create a 3d button with Tailwind CSS",
-  },
-  {
     url: "/chatbubble",
     title: "How to a create a chat bubble with Tailwind CSS and Alpinejs",
   },
+];
+const javascript = [
   {
     url: "/scroll-progress-bar",
     title:
@@ -184,116 +193,112 @@ const component = [
 <BaseLayout>
   <section>
     <div
-      class="items-center w-full px-5 py-24 mx-auto md:px-12 max-w-7xl flex flex-col justify-center">
+      class="items-center w-full px-5 py-24 mx-auto max-w-7xl flex flex-col justify-center">
       <div>
         <a
           class="text-lg text-black focus:outline-none focus:ring lg:text-2xl tracking-tight uppercase"
-          href="#_">
+          href="https://lexingtonthemes.com/">
           <span
-            class="items-center inline-flex gap-2 group font-extrabold lg:text-lg 2xl:text-xl uppecase">
-            <svg
-              class="h-5 w-5 group-hover:motion-safe:animate-spin group-hover:text-accent-600 duration-200"
-              viewBox="0 0 147 148"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M77.0546 0.147949H69.9463V147.148H77.0546V0.147949Z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M77.0546 0.147949H69.9463V147.148H77.0546V0.147949Z"
-                fill="currentColor"
-                fill-opacity="0.2"
-              ></path>
-              <path
-                d="M147 70.0938H0V77.2021H147V70.0938Z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M147 70.0938H0V77.2021H147V70.0938Z"
-                fill="currentColor"
-                fill-opacity="0.2"
-              ></path>
-              <path
-                d="M24.0282 19.1578L19.002 24.1841L122.946 128.128L127.972 123.101L24.0282 19.1578Z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M24.0282 19.1578L19.002 24.1841L122.946 128.128L127.972 123.101L24.0282 19.1578Z"
-                fill="currentColor"
-                fill-opacity="0.2"
-              ></path>
-              <path
-                d="M122.946 19.1564L19.002 123.1L24.0282 128.126L127.972 24.1827L122.946 19.1564Z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M122.946 19.1564L19.002 123.1L24.0282 128.126L127.972 24.1827L122.946 19.1564Z"
-                fill="currentColor"
-                fill-opacity="0.2"
-              ></path>
-              <path
-                d="M6.7933 42.6484L4.11133 49.2314L140.248 104.695L142.93 98.1115L6.7933 42.6484Z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M6.7933 42.6484L4.11133 49.2314L140.248 104.695L142.93 98.1115L6.7933 42.6484Z"
-                fill="currentColor"
-                fill-opacity="0.2"
-              ></path>
-              <path
-                d="M97.9631 4.26955L42.5 140.406L49.083 143.088L104.546 6.95152L97.9631 4.26955Z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M97.9631 4.26955L42.5 140.406L49.083 143.088L104.546 6.95152L97.9631 4.26955Z"
-                fill="currentColor"
-                fill-opacity="0.2"
-              ></path>
-              <path
-                d="M140.41 42.8958L4.03809 97.7856L6.69233 104.38L143.064 49.4902L140.41 42.8958Z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M140.41 42.8958L4.03809 97.7856L6.69233 104.38L143.064 49.4902L140.41 42.8958Z"
-                fill="currentColor"
-                fill-opacity="0.2"
-              ></path>
-              <path
-                d="M49.3122 4.18875L42.7178 6.84229L97.5928 143.214L104.187 140.561L49.3122 4.18875Z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M49.3122 4.18875L42.7178 6.84229L97.5928 143.214L104.187 140.561L49.3122 4.18875Z"
-                fill="currentColor"
-                fill-opacity="0.2"
-              ></path>
-            </svg>
+            class="items-center inline-flex gap-2 group font-normal lg:text-lg 2xl:text-2xl uppecase">
+            <img
+              class="size-8 rounded-full"
+              src="https://www.michaelandreuzza.com/images/lexington.png"
+              alt=""
+            />
             Lexington tutorials
           </span>
         </a>
-        <dl
-          class="flex flex-col mt-12 max-w-3xl mx-auto divide-y bg-opacity-90 backdrop-blur-xl">
-          {
-            component.reverse().map((template, index) => {
-              const reversedIndex = component.length - index;
-              return (
-                <div class="py-2 inline-flex items-center gap-4">
-                  <dt class="text-neutral-600 hover:text-orange-500 w-full">
-                    <a
-                      href={template.url}
-                      class="inline-flex items-center">
-                      {template.title}
-                    </a>
-                  </dt>
-                  <dd class="order-first">
-                    {String(reversedIndex).padStart(2, "0") + "."}
-                  </dd>
-                </div>
-              );
-            })
-          }
-        </dl>
+        <div
+          class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 mt-24">
+          <div>
+            <div
+              class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+              <h1>Tailwind</h1>
+              <p class="text-balance">Tutorials made with only Tailwind CSS</p>
+            </div>
+            <dl class="flex flex-col mt-12 border-t pt-8 divide-y">
+              {
+                tailwind.reverse().map((template, index) => {
+                  const reversedIndex = tailwind.length - index;
+                  return (
+                    <div class="py-2 inline-flex items-start gap-4">
+                      <dt class="text-neutral-600 hover:text-orange-500 w-full">
+                        <a
+                          href={template.url}
+                          class="inline-flex items-center">
+                          {template.title}
+                        </a>
+                      </dt>
+                      <dd class="order-first">
+                        {String(reversedIndex).padStart(2, "0") + "."}
+                      </dd>
+                    </div>
+                  );
+                })
+              }
+            </dl>
+          </div>
+          <div>
+            <div
+              class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+              <h1>Tailwind & Alpinejs</h1>
+              <p class="text-balance">
+                Tutorials made with only Tailwind CSS and Alpinejs
+              </p>
+            </div>
+            <dl class="flex flex-col mt-12 border-t pt-8 divide-y">
+              {
+                alpinejs.reverse().map((template, index) => {
+                  const reversedIndex = alpinejs.length - index;
+                  return (
+                    <div class="py-2 inline-flex items-start gap-4">
+                      <dt class="text-neutral-500 hover:text-orange-500 w-full">
+                        <a
+                          href={template.url}
+                          class="inline-flex items-center">
+                          {template.title}
+                        </a>
+                      </dt>
+                      <dd class="order-first">
+                        {String(reversedIndex).padStart(2, "0") + "."}
+                      </dd>
+                    </div>
+                  );
+                })
+              }
+            </dl>
+          </div>
+          <div>
+            <div
+              class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+              <h1>Tailwind & JavaScript</h1>
+              <p class="text-balance">
+                Tutorials made with only Tailwind CSS and JavaScript
+              </p>
+            </div>
+            <dl class="flex flex-col mt-12 border-t pt-8 divide-y">
+              {
+                javascript.reverse().map((template, index) => {
+                  const reversedIndex = javascript.length - index;
+                  return (
+                    <div class="py-2 inline-flex items-start gap-4">
+                      <dt class="text-neutral-500 hover:text-orange-500 w-full">
+                        <a
+                          href={template.url}
+                          class="inline-flex items-center">
+                          {template.title}
+                        </a>
+                      </dt>
+                      <dd class="order-first">
+                        {String(reversedIndex).padStart(2, "0") + "."}
+                      </dd>
+                    </div>
+                  );
+                })
+              }
+            </dl>
+          </div>
+        </div>
       </div>
     </div>
   </section>
