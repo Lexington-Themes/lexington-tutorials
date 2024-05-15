@@ -187,6 +187,11 @@ const javascript = [
     title:
       "How to create an and animated navigation with Astro, Tailwind CSS, and JavaScript",
   },
+  {
+    url: "/accordion-javascript",
+    title:
+      "How to create an accordion with Astro, Tailwind CSS, and JavaScript",
+  },
 ];
 ---
 
@@ -221,7 +226,7 @@ const javascript = [
                 tailwind.reverse().map((template, index) => {
                   const reversedIndex = tailwind.length - index;
                   return (
-                    <div class="py-2 inline-flex items-start gap-4">
+                    <div class="py-4 inline-flex text-sm items-start gap-4">
                       <dt class="text-neutral-600 hover:text-orange-500 w-full">
                         <a
                           href={template.url}
@@ -251,7 +256,7 @@ const javascript = [
                 alpinejs.reverse().map((template, index) => {
                   const reversedIndex = alpinejs.length - index;
                   return (
-                    <div class="py-2 inline-flex items-start gap-4">
+                    <div class="py-4 inline-flex text-sm items-start gap-4">
                       <dt class="text-neutral-500 hover:text-orange-500 w-full">
                         <a
                           href={template.url}
@@ -281,7 +286,7 @@ const javascript = [
                 javascript.reverse().map((template, index) => {
                   const reversedIndex = javascript.length - index;
                   return (
-                    <div class="py-2 inline-flex items-start gap-4">
+                    <div class="py-4 inline-flex text-sm items-start gap-4">
                       <dt class="text-neutral-500 hover:text-orange-500 w-full">
                         <a
                           href={template.url}

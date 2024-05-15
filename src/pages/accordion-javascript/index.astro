@@ -1,0 +1,148 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+        <div>
+          <h1>Accordion</h1>
+          <p class="text-balance">
+            Click on accordion items to see the content.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12 max-w-xl mx-auto w-full">
+        <!-- Starts component -->
+        <div
+          id="accordion"
+          class="border rounded-md divide-y overflow-hidden">
+          <!-- Accordion Item 1 -->
+          <div>
+            <button
+              id="accordionBtn1"
+              class="accordion-btn w-full flex justify-between items-center p-4 focus:outline-none text-gray-500 focus:text-blue-500">
+              <span>What time is it?</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="accordion-icon w-6 h-6 transform transition-transform"
+                id="accordionIcon1">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                ></path>
+              </svg>
+            </button>
+            <div
+              id="accordionContent1"
+              class="accordion-content p-4 border-t text-sm bg-gray-50 text-gray-500 hidden">
+              I don't know what time it is.
+            </div>
+          </div>
+          <!-- Accordion Item 2 -->
+          <div>
+            <button
+              id="accordionBtn2"
+              class="accordion-btn w-full flex justify-between items-center p-4 focus:outline-none text-gray-500 focus:text-blue-500">
+              <span>Why not?</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="accordion-icon w-6 h-6 transform transition-transform"
+                id="accordionIcon2">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                ></path>
+              </svg>
+            </button>
+            <div
+              id="accordionContent2"
+              class="accordion-content p-4 text-gray-500 bg-gray-50 text-sm border-t hidden">
+              Because I have lost the notion of time.
+            </div>
+          </div>
+        </div>
+        <!--  Ends component -->
+      </div>
+    </div>
+  </section>
+  <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+            How to create an accordion with Tailwind CSS and JavaScript
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-an-accordion-with-tailwind-css-and-javascript"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/accordion-javascript/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ends links to tutorial -->
+</BaseLayout>
+<script type="module">
+  document.addEventListener("DOMContentLoaded", function () {
+    const accordionBtns = document.querySelectorAll(".accordion-btn");
+    const accordionIcons = document.querySelectorAll(".accordion-icon");
+    const accordionContents = document.querySelectorAll(".accordion-content");
+    accordionBtns.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        toggleAccordion(index);
+      });
+    });
+    function toggleAccordion(index) {
+      accordionIcons.forEach((icon, i) => {
+        if (i === index) {
+          icon.classList.toggle("rotate-45");
+        } else {
+          icon.classList.remove("rotate-45");
+        }
+      });
+      accordionContents.forEach((content, i) => {
+        if (i === index) {
+          content.classList.toggle("hidden");
+        } else {
+          content.classList.add("hidden");
+        }
+      });
+    }
+  });
+</script>
