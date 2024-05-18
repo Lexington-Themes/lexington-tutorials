@@ -1,0 +1,167 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const testimonials = [
+  {
+    id: 1,
+    content:
+      "Pepe is like a unicorn in a field of horses, magically bridging the gap between design and coding. His designs sparkle brighter than a disco ball at a 70s party, hitting that sweet spot between trendy and 'wow, did he really just pull that off?",
+    imageUrl:
+      "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D",
+    name: "Jhonny Mnemonic",
+    title: "Chief Wizard of Nowhere Land",
+  },
+  {
+    id: 2,
+    content:
+      "Working with Pepe is like finding a needle in a haystack – except the needle comes to you, and it's golden. His design eye is sharper than my grandma's kitchen knives, and trust me, those can slice through anything. Can't wait to conjure up more projects with him, maybe something involving flying pigs next time?",
+    imageUrl:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D",
+    name: "Roberta Austina",
+    title: "Grandmaster of Excuse Crafting",
+  },
+  {
+    id: 3,
+    content:
+      "pepe is that rare blend of designer and developer who actually knows what 'deadline' means – a mythical creature in our industry. He whipped up landing pages faster than I could say Banana, with a flair that made me wonder if he moonlights as a magician. If he asks for a rabbit, just give it to him, no questions asked.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Manolito Gafotas",
+    title: "Professional Procrastinator & Part-Time Visionary",
+  },
+];
+---
+
+<BaseLayout>
+  <section
+    id="testimonials-section"
+    class="bg-white">
+    <div
+      class="relative max-w-7xl 2xl:max-w-screen-2xl lg:px-16 md:px-12 mx-auto py-12 px-8 lg:py-48 2xl:py-96 flex flex-col justify-center items-center">
+      <div
+        class="prose text-gray-500 text-center prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+        <div>
+          <h1>Interactive Testimonial</h1>
+          <p class="text-balance">
+            Click on the avatars to see the full testimonial.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12 max-w-xl mx-auto w-full">
+        <!-- Dynamically render testimonials -->
+        {
+          testimonials.map((testimonial, index) => (
+            <div
+              class="testimonial pb-6 text-gray-500 font-medium mx-auto   max-w-2xl h-32 text-balance items-center text-center"
+              data-index={index + 1}
+              style="display: none;">
+              <p>{testimonial.content}</p>
+            </div>
+          ))
+        }
+
+        <div class="flex items-center justify-center mt-12">
+          <!-- Buttons to change the active testimonial -->
+          {
+            testimonials.map((testimonial, index) => (
+              <button
+                class="avatar-button inline-block mx-2 font-bold text-center rounded-full  focus:outline-none focus:ring-2 ring-offset-4  ring-offset-white ring-orange-600 size-12"
+                data-index={index + 1}>
+                <img
+                  class="inline-block size-12 rounded-full object-cover"
+                  src={testimonial.imageUrl}
+                  alt="#_"
+                />
+              </button>
+            ))
+          }
+        </div>
+        <!-- Dynamically render name and role -->
+        {
+          testimonials.map((testimonial, index) => (
+            <div
+              class="testimonial-info text-center py-6"
+              data-index={index + 1}
+              style="display: none;">
+              <h2 class="text-black  font-medium text-base">
+                {testimonial.name}
+              </h2>
+              <a
+                href="#"
+                class="text-xs text-orange-500">
+                {testimonial.title}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-lg ring-1 ring-white ring-opacity-10">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to create an interactive testimonial with Astrojs, Tailwind
+              CSS and JavaScript
+            </p>
+            <p class="mt-2 text-xs text-orange-500 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-an-interactive-testimonial-with-astro-tailwind-css-and-javascript/"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-testimonial/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const testimonials = document.querySelectorAll(".testimonial");
+    const testimonialInfos = document.querySelectorAll(".testimonial-info");
+    const avatarButtons = document.querySelectorAll(".avatar-button");
+
+    const showTestimonial = (index) => {
+      testimonials.forEach((testimonial) => {
+        testimonial.style.display =
+          testimonial.dataset.index == index ? "block" : "none";
+      });
+      testimonialInfos.forEach((info) => {
+        info.style.display = info.dataset.index == index ? "block" : "none";
+      });
+    };
+
+    avatarButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const index = button.dataset.index;
+        showTestimonial(index);
+      });
+    });
+
+    // Show the first testimonial by default
+    showTestimonial(1);
+  });
+</script>

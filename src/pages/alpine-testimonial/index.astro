@@ -1,7 +1,6 @@
 ---
 // Import BaseLayout component
 import BaseLayout from "@/layouts/BaseLayout.astro";
-
 // Define an array of testimonials
 const testimonials = [
   {
@@ -37,70 +36,70 @@ const testimonials = [
 <BaseLayout>
   <section
     x-data="{ testimonialActive: 1 }"
-    class="bg-[#1a1a1f] relative overflow-hidden">
-    <img
-      class="absolute blur-3xl opacity-70  -top-6 animate-pulse"
-      src="/images/blueAurora.svg"
-      alt="#_"
-    />
-
+    class="bg-white">
     <div
-      class="relative max-w-7xl 2xl:max-w-screen-2xl  lg:px-16 md:px-12 mx-auto py-12 px-8 h-svh flex flex-col justify-center items-center">
+      class=" max-w-7xl 2xl:max-w-screen-2xl lg:px-16 md:px-12 mx-auto py-12 px-8 lg:py-48 2xl:py-96 flex flex-col justify-center items-center">
       <div
-        class="lg:border lg:p-20 lg:rounded-[4rem] lg:bg-[#1a1a1f]/50 border-white/5 lg:backdrop-blur-xl lg:shadow-2xl 2xl:p-32">
-        <!-- Dynamically render testimonials -->
-        {
-          testimonials.map((testimonial, index) => (
-            <div
-              class="pb-6 text-gray-200 font-medium mx-auto text-xl h-64 italic serif text-balance items-center text-center lg:text-4xl "
-              x-show={`testimonialActive === ${index + 1}`}
-              style="display: none;">
-              <p>
-                <span class="text-[#a180ea]">"</span>
-                {testimonial.content}
-                <span class="text-[#a180ea]">"</span>
-              </p>
-            </div>
-          ))
-        }
-
-        <div class="flex items-center justify-center mt-12">
-          <!--
+        class="prose text-gray-500 text-center prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+        <div>
+          <h1>Interactive Testimonial</h1>
+          <p class="text-balance">
+            Click on the avatars to see the full testimonial.
+          </p>
+        </div>
+      </div>
+      <div
+        class="relative max-w-7xl 2xl:max-w-screen-2xl lg:px-16 md:px-12 mx-auto py-12 px-8 flex flex-col justify-center items-center">
+        <div>
+          <!-- Dynamically render testimonials -->
+          {
+            testimonials.map((testimonial, index) => (
+              <div
+                class="pb-6 text-gray-500 font-medium mx-auto h-32 max-w-2xl text-balance items-center text-center "
+                x-show={`testimonialActive === ${index + 1}`}
+                style="display: none;">
+                <p>{testimonial.content}</p>
+              </div>
+            ))
+          }
+          <div class="flex items-center justify-center mt-12">
+            <!--
             Buttons to change the active testimonial
             Dynamically render avatars
           -->
+            {
+              testimonials.map((testimonial, index) => (
+                <button
+                  @click.prevent={`testimonialActive = ${index + 1}`}
+                  class="inline-block mx-2 font-bold text-center rounded-full  focus:outline-none focus:ring-2 ring-offset-4  ring-offset-white ring-orange-600 size-12">
+                  <img
+                    class="inline-block size-12 rounded-full object-cover"
+                    src={testimonial.imageUrl}
+                    alt="#_"
+                  />
+                </button>
+              ))
+            }
+          </div>
+          <!-- Dynamically render name and role  -->
           {
             testimonials.map((testimonial, index) => (
-              <button
-                @click.prevent={`testimonialActive = ${index + 1}`}
-                class="inline-block mx-2 font-bold text-center rounded-xl  focus:outline-none focus:ring-2 ring-offset-2  ring-white ring-offset-[#1a1a1f] size-12">
-                <img
-                  class="inline-block size-12 rounded-xl object-cover"
-                  src={testimonial.imageUrl}
-                  alt="#_"
-                />
-              </button>
+              <div
+                class="text-center py-6"
+                x-show={`testimonialActive === ${index + 1}`}
+                style="display: none;">
+                <h2 class="text-black  font-medium text-base">
+                  {testimonial.name}
+                </h2>
+                <a
+                  href="#"
+                  class="text-xs text-orange-500">
+                  {testimonial.title}
+                </a>
+              </div>
             ))
           }
         </div>
-        <!-- Dynamically render name and role  -->
-        {
-          testimonials.map((testimonial, index) => (
-            <div
-              class="text-center py-6"
-              x-show={`testimonialActive === ${index + 1}`}
-              style="display: none;">
-              <h2 class="text-white  font-medium text-base">
-                {testimonial.name}
-              </h2>
-              <a
-                href="#"
-                class="text-xs text-gray-400">
-                {testimonial.title}
-              </a>
-            </div>
-          ))
-        }
       </div>
     </div>
   </section>
