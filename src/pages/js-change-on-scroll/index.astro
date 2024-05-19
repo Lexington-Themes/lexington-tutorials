@@ -3,17 +3,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <!--
-    The header is using Alpine.js for interactivity.
-    x-data initializes the Alpine component with a state object { scroll: false }.
-    @scroll.window is an event listener that updates the scroll state based on the window's scroll position.
-    :class is a binding that applies classes based on the scroll state.
-    -->
   <header
-    x-data="{ scroll: false }"
-    @scroll.window="scroll = (window.pageYOffset > 50) ? true : false"
-    :class="{ 'bg-white': scroll, 'bg-transparent': !scroll }"
-    class="w-full fixed top-0 p-20 text-4xl 2xl:text-8xl flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
+    id="header"
+    class="w-full fixed top-0 p-20 text-4xl 2xl:text-8xl flex flex-col justify-center items-center transition-colors duration-500 ease-in-out bg-transparent">
     <div
       class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
       <div>
@@ -24,30 +16,19 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       </div>
     </div>
   </header>
-  <!--
-    The sections have a fixed height (h-svh) and padding (p-20).
-    The first section has additional top padding (pt-80) to account for the fixed header.
-    Each section changes its background color based on the scroll position.
-    -->
   <section
-    x-data="{ scroll: false }"
-    @scroll.window="scroll = (window.pageYOffset > 50) ? true : false"
-    :class="{ 'bg-[#e9e9e9]': scroll, 'bg-white': !scroll }"
-    class="h-svh text-4xl 2xl:text-8xl p-20 pt-80 flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
+    id="section-1"
+    class="h-svh text-4xl 2xl:text-8xl p-20 pt-80 flex flex-col justify-center items-center transition-colors duration-500 ease-in-out ">
     <h2>Section #01</h2>
   </section>
   <section
-    x-data="{ scroll: false }"
-    @scroll.window="scroll = (window.pageYOffset > 150) ? true : false"
-    :class="{ 'bg-[#f92c1c]': scroll, 'bg-white': !scroll }"
-    class="h-svh text-4xl 2xl:text-8xl p-20 flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
+    id="section-2"
+    class="h-svh text-4xl 2xl:text-8xl p-20 flex flex-col justify-center items-center transition-colors duration-500 ease-in-out ">
     <h2 class="text-white">Section #02</h2>
   </section>
   <section
-    x-data="{ scroll: false }"
-    @scroll.window="scroll = (window.pageYOffset > 250) ? true : false"
-    :class="{ 'bg-[#000000]': scroll, 'bg-white': !scroll }"
-    class="h-svh text-4xl 2xl:text-8xl p-20 flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
+    id="section-3"
+    class="h-svh text-4xl 2xl:text-8xl p-20 flex flex-col justify-center items-center transition-colors duration-500 ease-in-out ">
     <h2 class="text-white">Section #03</h2>
   </section>
   <!-- Starts links to tutorial -->
@@ -60,7 +41,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           <p class="text-sm font-medium text-neutral-900">Tutorial</p>
           <p class="mt-1 text-sm text-neutral-500">
             How to change background color on scroll with Tailwind CSS and
-            Alpinejs
+            JavaScript
           </p>
           <p class="mt-2 text-xs text-orange-500 underline">
             <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
@@ -71,7 +52,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <div class="flex flex-col divide-y divide-neutral-200">
           <div class="flex h-0 flex-1">
             <a
-              href="https://lexingtonthemes.com/tutorials/how-to-change-background-coloron-scroll-with-tailwind-css-and-alpinejs"
+              href="https://lexingtonthemes.com/tutorials/how-to-change-background-coloron-scroll-with-tailwind-css-and-javascript"
               type="button"
               class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
               >Tutorial</a
@@ -79,7 +60,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </div>
           <div class="flex h-0 flex-1">
             <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/change-on-scroll/index.astro"
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-change-on-scroll/index.astro"
               class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
               >Get the code</a
             >
@@ -90,3 +71,40 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   </div>
   <!-- Ends links to tutorial -->
 </BaseLayout>
+<script type="module">
+  document.addEventListener("scroll", () => {
+    const header = document.getElementById("header");
+    const sections = [
+      {
+        element: document.getElementById("section-1"),
+        offset: 50,
+        color: "#e9e9e9",
+      },
+      {
+        element: document.getElementById("section-2"),
+        offset: 150,
+        color: "#f92c1c",
+      },
+      {
+        element: document.getElementById("section-3"),
+        offset: 250,
+        color: "#000000",
+      },
+    ];
+
+    // Delay the style changes by 100ms
+    setTimeout(() => {
+      header.classList.toggle("bg-white", window.scrollY > 50);
+      header.classList.toggle("bg-transparent", window.scrollY <= 50);
+
+      sections.forEach((section) => {
+        if (window.scrollY > section.offset) {
+          section.element.style.backgroundColor = section.color;
+        } else {
+          section.element.style.backgroundColor = "white";
+        }
+      });
+    }, 100); // 100ms delay
+  });
+</script>
+
