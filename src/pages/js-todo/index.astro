@@ -13,100 +13,42 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           <p class="text-balance">
             Click on the button below or press enter to add a new item. Then
             click on the checkbox to mark the item as completed, to remove it
-            from the listm, just click on the X.
+            from the list, just click on the X.
           </p>
         </div>
       </div>
-
       <div class="mt-6 border-t pt-12 max-w-xl mx-auto w-full">
-        <!-- Starts component -->
-        <div
-          x-data="{
-        todos: [],
-        newTodo: '',
-        addTodo() {
-            if (this.newTodo.trim() !== '') {
-                this.todos.push({ text: this.newTodo, completed: false });
-                this.newTodo = '';
-                localStorage.setItem('todos', JSON.stringify(this.todos));
-            }
-        },
-        removeTodo(index) {
-            this.todos.splice(index, 1);
-            localStorage.setItem('todos', JSON.stringify(this.todos));
-        },
-        initializeTodos() {
-            const storedTodos = localStorage.getItem('todos');
-            if (storedTodos) {
-                this.todos = JSON.parse(storedTodos);
-            }
-        }
-    }"
-          x-init="initializeTodos">
+        <div id="todo-component">
           <!-- Input to add new todo -->
           <div class="flex flex-col gap-2 items-center">
             <button
-              @click="addTodo"
+              id="addTodoButton"
               class="rounded-full bg-orange-600 px-8 py-2 h-10 text-sm font-semibold text-white hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 w-full"
               >Add</button
             >
             <input
+              id="newTodoInput"
               type="text"
-              x-model="newTodo"
-              @keydown.enter="addTodo"
               class="w-full border-gray-300 rounded-md placeholder-gray-400 text-sm focus:border-orange-500 focus:ring-orange-500"
               placeholder="Make the logo bigger"
             />
           </div>
-
           <!-- List of todos -->
-          <ul class="divide-y mt-4">
-            <template
-              x-for="(todo, index) in todos"
-              :key="index">
-              <li class="flex items-center space-x-2 w-full py-2">
-                <div class="flex items-center justify-between w-full">
-                  <div>
-                    <input
-                      type="checkbox"
-                      x-model="todo.completed"
-                      class="form-checkbox h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                    <span
-                      x-text="todo.text"
-                      :class="{ 'line-through': todo.completed }"
-                      class="text-lg text-gray-500"
-                    ></span>
-                  </div>
-                  <button
-                    @click="removeTodo(index)"
-                    class="text-black hover:text-red-700 focus:outline-none ml-auto"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      class="w-5 h-5">
-                      <path
-                        d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-              </li>
-            </template>
+          <ul
+            id="todoList"
+            class="divide-y mt-4">
           </ul>
         </div>
-        <!-- Ends component -->
         <!-- Starts links to tutorial -->
         <div
-          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 ">
+          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
           <div
             class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
             <div class="flex w-0 flex-1 items-center p-4">
               <div class="w-full">
                 <p class="text-sm font-medium text-neutral-900">Tutorial</p>
                 <p class="mt-1 text-sm text-neutral-500">
-                  How to create a todo list with Tailwind CSS and Alpinejs
+                  How to create a todo list with Tailwind CSS and JavaScript
                 </p>
                 <p class="mt-2 text-xs text-orange-500 underline">
                   <a href="https://lexingtonthemes.com">
@@ -119,7 +61,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               <div class="flex flex-col divide-y divide-neutral-200">
                 <div class="flex h-0 flex-1">
                   <a
-                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-todo-with-alpine-js-and-tailwind-css/"
+                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-todo-with-javascript-and-tailwind-css/"
                     type="button"
                     class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
                     >Tutorial</a
@@ -127,7 +69,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                 </div>
                 <div class="flex h-0 flex-1">
                   <a
-                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/todo/index.astro"
+                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-todo/index.astro"
                     class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
                     >Get the code</a
                   >
@@ -141,5 +83,69 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </div>
   </section>
 </BaseLayout>
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+    const todoList = document.getElementById("todoList");
+    const newTodoInput = document.getElementById("newTodoInput");
+    const addTodoButton = document.getElementById("addTodoButton");
 
+    const renderTodos = () => {
+      todoList.innerHTML = todos
+        .map(
+          (todo, i) => `
+        <li class="flex items-center space-x-2 w-full py-2">
+          <div class="flex items-center justify-between w-full">
+            <div>
+              <input type="checkbox" ${todo.completed ? "checked" : ""} class="form-checkbox h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600"/>
+              <span class="text-lg text-gray-500 ${todo.completed ? "line-through" : ""}">${todo.text}</span>
+            </div>
+            <button class="text-black hover:text-red-700 focus:outline-none ml-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"></path>
+              </svg>
+            </button>
+          </div>
+        </li>
+      `
+        )
+        .join("");
 
+      document
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach((checkbox, i) => {
+          checkbox.addEventListener("change", () => {
+            todos[i].completed = checkbox.checked;
+            localStorage.setItem("todos", JSON.stringify(todos));
+            renderTodos();
+          });
+        });
+
+      document.querySelectorAll("button.text-black").forEach((button, i) => {
+        button.addEventListener("click", () => {
+          todos.splice(i, 1);
+          localStorage.setItem("todos", JSON.stringify(todos));
+          renderTodos();
+        });
+      });
+    };
+
+    const addTodo = () => {
+      const newTodoText = newTodoInput.value.trim();
+      if (newTodoText) {
+        todos.push({ text: newTodoText, completed: false });
+        newTodoInput.value = "";
+        localStorage.setItem("todos", JSON.stringify(todos));
+        renderTodos();
+      }
+    };
+
+    addTodoButton.addEventListener("click", addTodo);
+    newTodoInput.addEventListener(
+      "keydown",
+      (e) => e.key === "Enter" && addTodo()
+    );
+
+    renderTodos();
+  });
+</script>
