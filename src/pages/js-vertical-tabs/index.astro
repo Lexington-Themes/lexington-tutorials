@@ -1,0 +1,161 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section>
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
+      <div class="mx-w-xl mx-auto text-center">
+        <div
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
+          <div>
+            <h1>Tabs</h1>
+            <p class="text-balance">
+              Test the tabs by clicking on the button below.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12 max-w-xl w-full mx-auto">
+        <!-- Starts component -->
+        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+          <ul class="flex flex-col gap-2 h-full items-center">
+            <li class="w-full flex">
+              <a
+                id="tab1"
+                href="#tab1"
+                class="py-3 px-4 text-sm w-full text-gray-400 rounded-md border border-gray-100">
+                Tab 1
+              </a>
+            </li>
+            <li class="w-full flex">
+              <a
+                id="tab2"
+                href="#tab2"
+                class="py-3 px-4 text-sm w-full text-gray-400 rounded-md border border-gray-100">
+                Tab 2
+              </a>
+            </li>
+            <li class="w-full flex">
+              <a
+                id="tab3"
+                href="#tab3"
+                class="py-3 px-4 text-sm w-full text-gray-400 rounded-md border border-gray-100">
+                Tab 3
+              </a>
+            </li>
+            <li class="w-full flex">
+              <a
+                id="tab4"
+                href="#tab4"
+                class="py-3 px-4 text-sm w-full text-gray-400 rounded-md border border-gray-100">
+                Tab 4
+              </a>
+            </li>
+          </ul>
+          <div class="overflow-hidden h-full">
+            <section
+              id="tab1-content"
+              class="tab-content p-8 bg-blue-50 h-full rounded-xl">
+              <p class="text-sm text-blue-400">Content for tab 1</p>
+            </section>
+            <section
+              id="tab2-content"
+              class="tab-content hidden p-8 bg-blue-200 h-full rounded-xl">
+              <p class="text-sm text-blue-800">Content for tab 2</p>
+            </section>
+            <section
+              id="tab3-content"
+              class="tab-content hidden p-8 bg-blue-400 h-full rounded-xl">
+              <p class="text-sm text-white">Content for tab 3</p>
+            </section>
+            <section
+              id="tab4-content"
+              class="tab-content hidden p-8 bg-blue-600 h-full rounded-xl">
+              <p class="text-sm text-white">Content for tab 4</p>
+            </section>
+          </div>
+        </div>
+        <!-- Ends component -->
+      </div>
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create vertical tabswith Tailwind CSS and JavaScript
+              </p>
+              <p class="mt-2 text-xs text-orange-600 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-vertical-tabs-with-tailwind-css-and-javascript/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-vertical-tabs/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const allLinks = document.querySelectorAll("a");
+    const allTabs = document.querySelectorAll(".tab-content");
+
+    const switchTab = (linkId) => {
+      allTabs.forEach((tab) => {
+        tab.classList.toggle("hidden", tab.id !== `${linkId}-content`);
+      });
+    };
+
+    const handleTabClick = (event) => {
+      event.preventDefault();
+      const linkId = event.target.id;
+      allLinks.forEach((link) => {
+        const isCurrentLink = link.id === linkId;
+        link.classList.toggle("bg-gray-100", isCurrentLink);
+        link.classList.toggle("text-blue-600", isCurrentLink);
+        link.classList.toggle("text-gray-400", !isCurrentLink);
+      });
+      switchTab(linkId);
+    };
+
+    allLinks.forEach((link) => {
+      link.addEventListener("click", handleTabClick);
+    });
+
+    const currentHash = window.location.hash;
+    const activeLink = currentHash
+      ? document.querySelector(`a[href="${currentHash}"]`)
+      : document.querySelector("a");
+    handleTabClick({ target: activeLink });
+  });
+</script>
+
+

@@ -22,43 +22,41 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         </div>
       </div>
       <div class="max-w-3xl mx-auto flex flex-col mt-6 border-t pt-12">
-        <div>
+        <div
+          id="movable-items"
+          class="grid gap-2 grid-cols-2 md:grid-cols-4 mt-4">
+          <!-- Items in the Grid -->
           <div
-            id="movable-items"
-            class="grid gap-2 grid-cols-2 md:grid-cols-4 mt-4">
-            <!-- Items in the Grid -->
-            <div
-              class="bg-blue-100 rounded-lg p-8 movable-item hover:cursor-grab text-blue-900">
-              Item 1
-            </div>
-            <div
-              class="bg-blue-200 rounded-lg p-8 movable-item hover:cursor-grab text-blue-900">
-              Item 2
-            </div>
-            <div
-              class="bg-blue-300 rounded-lg p-8 movable-item text-blue-900 hover:cursor-grab">
-              Item 3
-            </div>
-            <div
-              class="bg-blue-400 rounded-lg p-8 movable-item text-white hover:cursor-grab">
-              Item 4
-            </div>
-            <div
-              class="bg-blue-500 rounded-lg p-8 movable-item text-white hover:cursor-grab">
-              Item 5
-            </div>
-            <div
-              class="bg-blue-600 rounded-lg p-8 movable-item text-white hover:cursor-grab">
-              Item 6
-            </div>
-            <div
-              class="bg-blue-700 rounded-lg p-8 movable-item text-white hover:cursor-grab">
-              Item 7
-            </div>
-            <div
-              class="bg-blue-800 rounded-lg p-8 text-white movable-item hover:cursor-grab">
-              Item 8
-            </div>
+            class="bg-blue-100 rounded-lg p-8 movable-item hover:cursor-grab text-blue-900">
+            Item 1
+          </div>
+          <div
+            class="bg-blue-200 rounded-lg p-8 movable-item hover:cursor-grab text-blue-900">
+            Item 2
+          </div>
+          <div
+            class="bg-blue-300 rounded-lg p-8 movable-item text-blue-900 hover:cursor-grab">
+            Item 3
+          </div>
+          <div
+            class="bg-blue-400 rounded-lg p-8 movable-item text-white hover:cursor-grab">
+            Item 4
+          </div>
+          <div
+            class="bg-blue-500 rounded-lg p-8 movable-item text-white hover:cursor-grab">
+            Item 5
+          </div>
+          <div
+            class="bg-blue-600 rounded-lg p-8 movable-item text-white hover:cursor-grab">
+            Item 6
+          </div>
+          <div
+            class="bg-blue-700 rounded-lg p-8 movable-item text-white hover:cursor-grab">
+            Item 7
+          </div>
+          <div
+            class="bg-blue-800 rounded-lg p-8 text-white movable-item hover:cursor-grab">
+            Item 8
           </div>
         </div>
       </div>
