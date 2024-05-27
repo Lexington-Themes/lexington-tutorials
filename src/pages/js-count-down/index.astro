@@ -1,0 +1,113 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+        <div>
+          <h1>Countdown</h1>
+          <p class="text-balance">
+            A countdown to a specific date. The countdown will update every
+            second.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12 max-w-sm mx-auto w-full">
+        <!-- Starts component -->
+        <div
+          id="countdown"
+          class="flex justify-center border p-12 rounded-xl space-x-4">
+        </div>
+        <!-- Ends component -->
+      </div>
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                ow to create a countdown with Tailwind CSS and JavaScript
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-countdown-with-tailwind-css-and-javascript"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-count-down/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+    </div>
+  </section>
+
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", () => {
+      const countdownContainer = document.getElementById("countdown");
+      const endDate = new Date("2024-12-31T23:59:59").getTime();
+
+      function formatTime(time) {
+        const days = Math.floor(time / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((time % (1000 * 60)) / 1000);
+        return { days, hours, minutes, seconds };
+      }
+
+      function createCountdownElement(value, label) {
+        return `
+          <div class="countdown-item text-center">
+            <div class="countdown-value text-3xl font-medium text-gray-500">${value}</div>
+            <div class="countdown-label text-sm text-orange-500">${label}</div>
+          </div>
+        `;
+      }
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const remainingTime = Math.max(0, endDate - now);
+        const { days, hours, minutes, seconds } = formatTime(remainingTime);
+
+        countdownContainer.innerHTML =
+          remainingTime > 0
+            ? createCountdownElement(days, "Days") +
+              createCountdownElement(hours, "Hours") +
+              createCountdownElement(minutes, "Minutes") +
+              createCountdownElement(seconds, "Seconds")
+            : `<div class="text-center"><div class="text-xl font-bold">Countdown has ended!</div></div>`;
+      }
+
+      setInterval(updateCountdown, 1000);
+    });
+  </script>
+</BaseLayout>
+
+
