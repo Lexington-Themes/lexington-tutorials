@@ -140,17 +140,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       pageviewsText.textContent = parseInt(pageviews, 10).toLocaleString();
     }
 
-    pageviewsInput.addEventListener("input", function () {
-      const pageviews = pageviewsInput.value;
+    function handleInput(event) {
+      const pageviews = event.target.value;
+      pageviewsInput.value = pageviews;
       inputPageviews.value = pageviews;
       updatePriceAndPageviews(pageviews);
-    });
+    }
 
-    inputPageviews.addEventListener("input", function () {
-      const pageviews = inputPageviews.value;
-      pageviewsInput.value = pageviews;
-      updatePriceAndPageviews(pageviews);
-    });
+    pageviewsInput.addEventListener("input", handleInput);
+    inputPageviews.addEventListener("input", handleInput);
 
     // Initialize with default value
     pageviewsInput.value = 0;
@@ -158,5 +156,3 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     updatePriceAndPageviews(0);
   });
 </script>
-
-
