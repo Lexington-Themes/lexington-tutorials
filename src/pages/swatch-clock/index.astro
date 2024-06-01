@@ -1,0 +1,139 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white">
+    <div
+      class="flex flex-col items-center justify-center h-screen mx-auto bg-white max-w-7xl">
+      <div class="flex w-full">
+        <div
+          class="flex items-center h-20 bg-white border-8 border-r-0 border-black rounded-l-2xl w-14">
+          <div class="w-full h-1 mx-auto bg-black"></div>
+        </div>
+        <div class="relative w-full h-20">
+          <div class="flex gap-12 itemz-center">
+            <div
+              class="absolute flex items-center justify-end w-full h-20 gap-8 pr-20 bg-black rounded-r-3xl">
+              <div class="bg-white rounded-full size-2"></div>
+              <div class="bg-white rounded-full size-2"></div>
+              <div class="bg-white rounded-full size-2"></div>
+              <div class="bg-white rounded-full size-2"></div>
+              <div class="bg-white rounded-full size-2"></div>
+              <div class="bg-white rounded-full size-2"></div>
+              <div class="bg-white rounded-full size-2"></div>
+              <div class="bg-white rounded-full size-2"></div>
+            </div>
+          </div>
+          <div
+            class="absolute inline-flex items-center transform -translate-x-1/2 -translate-y-1/2 bg-black rounded-full size-52 ring-8 ring-offset-2 ring-black top-1/2 left-1/2">
+            <svg
+              class="absolute inset-x-0 h-4 mx-auto bottom-8"
+              viewBox="0 0 19 5"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_1528_2)">
+                <path
+                  d="M15.0634 0.898528C15.0634 0.76374 15.1639 0.663262 15.2938 0.663262C15.4212 0.663262 15.5217 0.76374 15.5217 0.898528C15.5217 1.03331 15.4212 1.13379 15.2938 1.13379C15.1639 1.13379 15.0634 1.03331 15.0634 0.898528ZM15.2938 1.18036C15.4482 1.18036 15.5781 1.06027 15.5781 0.898528C15.5781 0.736782 15.4482 0.616699 15.2938 0.616699C15.1394 0.616699 15.0071 0.736782 15.0071 0.898528C15.0071 1.06027 15.1394 1.18036 15.2938 1.18036ZM15.235 0.920584H15.2914L15.3771 1.06027H15.431L15.3404 0.918133C15.3869 0.913232 15.4237 0.886275 15.4237 0.829908C15.4237 0.76374 15.3845 0.736782 15.3085 0.736782H15.1835V1.06027H15.235V0.920584ZM15.235 0.878922V0.778443H15.3012C15.3355 0.778443 15.3722 0.785796 15.3722 0.825007C15.3722 0.876471 15.3355 0.878922 15.2938 0.878922H15.235Z"
+                  fill="white"
+                ></path>
+                <path
+                  d="M2.83176 1.30518H1.15304C0.964342 1.30518 0.790342 1.38115 0.658005 1.51348C0.53057 1.64337 0.461951 1.81492 0.4644 1.99651C0.461951 2.18448 0.53057 2.36191 0.660457 2.49229C0.785441 2.61752 0.954537 2.6854 1.13344 2.68393C1.13099 2.68393 2.17253 2.68393 2.17253 2.68393C2.39554 2.68565 2.56219 2.84371 2.56464 3.05986C2.56219 3.26842 2.38329 3.44658 2.17008 3.44928C2.17253 3.44928 0.452148 3.44928 0.452148 3.44928V3.80928H2.17253C2.57934 3.80389 2.91754 3.46766 2.92489 3.05986C2.91754 2.64055 2.59405 2.32736 2.17253 2.32392H1.13099C1.04766 2.32466 0.971692 2.29427 0.915326 2.23815C0.85406 2.17688 0.8222 2.09111 0.8222 1.99651C0.8222 1.90755 0.85406 1.82717 0.915326 1.7659C0.979044 1.70219 1.06237 1.66543 1.15549 1.66543C1.15304 1.66543 2.83176 1.66543 2.83176 1.66543V1.30518Z"
+                  fill="white"
+                ></path>
+                <path
+                  d="M5.90008 1.29297V2.99227C5.90008 3.12216 5.84862 3.24347 5.75794 3.33365C5.66727 3.4231 5.54963 3.47163 5.4222 3.47065C5.16242 3.47261 4.94921 3.25646 4.94186 2.98835C4.94186 2.99227 4.94186 1.29297 4.94186 1.29297H4.58406V2.99227C4.58406 2.99374 4.58406 2.99497 4.58406 2.99619C4.58651 3.12265 4.53995 3.24126 4.45172 3.33022C4.36105 3.42188 4.23851 3.47163 4.10618 3.47065C3.98364 3.47163 3.87091 3.42433 3.78514 3.33758C3.69447 3.2469 3.64545 3.1251 3.6479 2.99497C3.6479 2.99227 3.6479 1.29297 3.6479 1.29297H3.28765V2.99227C3.2852 3.21749 3.37097 3.43119 3.52781 3.59122C3.68466 3.74733 3.88807 3.83212 4.10618 3.83041C4.33409 3.83237 4.5473 3.74439 4.7066 3.58289C4.72865 3.56034 4.75071 3.53633 4.77032 3.51157C4.92471 3.70763 5.15997 3.83261 5.4222 3.83041C5.64276 3.83212 5.85352 3.74659 6.01281 3.58901C6.17211 3.4307 6.26033 3.21872 6.25788 2.99227V1.29297H5.90008Z"
+                  fill="white"
+                ></path>
+                <path
+                  d="M8.69151 1.28308H7.90484C7.19659 1.27328 6.61088 1.8389 6.60107 2.54371C6.61088 3.27034 7.19659 3.85483 7.90484 3.85165C8.05433 3.85434 8.19647 3.82812 8.33126 3.77813V3.40685H8.28959L8.25529 3.42302C8.14746 3.47155 8.03473 3.49409 7.90974 3.49188C7.3902 3.49409 6.96623 3.0689 6.95888 2.54396C6.96623 2.03397 7.38039 1.63598 7.90239 1.64333C7.90484 1.64333 8.27979 1.64333 8.51015 1.64333V3.7992H8.87041V1.28308H8.69151Z"
+                  fill="white"
+                ></path>
+                <path
+                  d="M10.1768 3.47045C10.0567 3.46922 9.944 3.4207 9.85823 3.3337C9.77981 3.25258 9.73815 3.14794 9.7406 3.03888C9.7406 3.03643 9.7406 2.30025 9.7406 1.64322H10.6008V1.28297H9.7406C9.7406 0.915364 9.7406 0.635986 9.7406 0.635986H9.3828V3.03447C9.37545 3.23616 9.45387 3.43271 9.60091 3.58367C9.7504 3.74051 9.95626 3.828 10.1768 3.83021H10.6866V3.47045H10.1768Z"
+                  fill="white"
+                ></path>
+                <path
+                  d="M12.7941 2.94002C12.6446 3.27748 12.3089 3.49412 11.9413 3.49192C11.6839 3.4929 11.4462 3.39487 11.2673 3.21597C11.0884 3.03756 10.9928 2.80034 10.9953 2.54767C10.9904 2.03229 11.4168 1.60906 11.9413 1.60171C12.2451 1.60906 12.5172 1.7512 12.6838 1.99087L12.9803 1.78551C12.7475 1.44976 12.3701 1.25126 11.9437 1.24146C11.2134 1.25126 10.6301 1.83795 10.635 2.54767C10.6326 2.89469 10.7649 3.22308 11.0124 3.47011C11.26 3.71763 11.5884 3.85315 11.9413 3.85168C12.4485 3.85486 12.9142 3.55466 13.1225 3.08682L12.7941 2.94002Z"
+                  fill="white"
+                ></path>
+                <path
+                  d="M14.4629 1.24131C14.1957 1.2364 13.936 1.33443 13.7326 1.51823V0.635986H13.3723V3.79908H13.7326V2.33137C13.7301 2.13458 13.8061 1.94955 13.9458 1.80986C14.0855 1.67263 14.2693 1.59665 14.4629 1.60156C14.877 1.5942 15.2128 1.92431 15.2201 2.33701C15.2201 2.33382 15.2201 3.79908 15.2201 3.79908H15.5804V2.33382C15.5706 1.71919 15.0682 1.2315 14.4629 1.24131Z"
+                  fill="white"
+                ></path>
+                <path
+                  d="M16.1025 1.35693H18.5434V3.79953H16.1025V1.35693Z"
+                  fill="#DA0021"
+                  stroke="#DA0021"
+                  stroke-width="0.00857739"
+                  stroke-miterlimit="3.864"
+                ></path>
+                <path
+                  d="M18.3743 2.27015H17.6292V1.52808H17.0141V2.27015H16.2495V2.886H17.0141V3.65037H17.6292V2.886H18.3743V2.27015Z"
+                  fill="#FFFEFF"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_1528_2">
+                  <rect
+                    width="19"
+                    height="4.14381"
+                    fill="white"
+                    transform="translate(0 0.162354)"
+                  ></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <div>
+              <div
+                class="absolute w-12 h-0.5 mx-auto -rotate-45 bg-red-500 -mt-4 right-16 size-4">
+              </div>
+              <div
+                class="absolute w-20 h-1 mx-auto rotate-45 bg-white -mt-7 left-9 size-4">
+              </div>
+            </div>
+            <div class="z-50 mx-auto bg-white rounded-full size-6 rk"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              "How to create a swatch clock with Tailwind CSS
+            </p>
+            <p class="mt-2 text-xs text-orange-500 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-a-swatch-clock-with-tailwind-css"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/swatch-clock/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
