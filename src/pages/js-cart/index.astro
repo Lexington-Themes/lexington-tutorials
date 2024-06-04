@@ -1,0 +1,178 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section
+    class="bg-white relative overflow-hidden"
+    x-data="{ isOpen: false }">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+        <div>
+          <h1>Cart</h1>
+          <p class="text-balance">Add items to your cart.</p>
+        </div>
+      </div>
+      <div class="mt-6 border-t pt-12 max-w-sm mx-auto w-full">
+        <!-- Starts component -->
+        <div
+          id="app"
+          class="p-8">
+          <!-- Product List -->
+          <ul id="product-list">
+            <li
+              class="border p-8 flex flex-col gap-4"
+              data-id="1">
+              <div>
+                <span>Tomatoes</span> - <span>$10</span>
+              </div>
+              <button
+                class="add-to-cart rounded-full bg-orange-50 px-8 py-2 h-12 text-sm font-semibold text-orange-600 hover:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+                Add to Cart
+              </button>
+            </li>
+            <!-- Add more products here -->
+          </ul>
+
+          <!-- Cart -->
+          <div
+            class="prose text-gray-500 prose-sm prose-headings:font-normal mt-6 border-t pt-6 prose-headings:text-xl mx-auto max-w-sm w-full">
+            <h4>Your items</h4>
+            <ul id="cart-list">
+              <!-- Cart items will be hardcoded here -->
+            </ul>
+            <div>Total Price: $<span id="total-price">0</span></div>
+          </div>
+        </div>
+
+        <!-- Ends component -->
+      </div>
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to add items to your cart with Tailwind CSS and JavaScript
+            </p>
+            <p class="mt-2 text-xs text-orange-600 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-add-item-to-your-cart-with-tailwind-css-and-javascript/"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-cart/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", function () {
+    const products = [
+      { id: 1, name: "Tomatoes", price: 10 },
+      // Add more products here
+    ];
+
+    const cart = [];
+
+    function renderCart() {
+      const cartList = document.getElementById("cart-list");
+      cartList.innerHTML = "";
+
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <span>${item.name} x${item.quantity}</span> - $<span>${item.price * item.quantity}</span>
+            <button class="increase-quantity px-3 py-1 bg-gray-100 rounded-md text-sm font-semibold text-gray-800 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">+</button>
+            <button class="decrease-quantity px-3 py-1 bg-gray-100 rounded-md text-sm font-semibold text-gray-800 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">-</button>
+            <button class="remove-from-cart px-3 py-1 bg-gray-200 rounded-md text-sm font-semibold text-gray-800 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">Remove</button>
+          `;
+
+        li.querySelector(".increase-quantity").addEventListener("click", () =>
+          increaseQuantity(index)
+        );
+        li.querySelector(".decrease-quantity").addEventListener("click", () =>
+          decreaseQuantity(index)
+        );
+        li.querySelector(".remove-from-cart").addEventListener("click", () =>
+          removeFromCart(index)
+        );
+
+        cartList.appendChild(li);
+      });
+
+      document.getElementById("total-price").textContent = totalPrice();
+    }
+
+    function addToCart(product) {
+      const existingItem = cart.find((item) => item.id === product.id);
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function increaseQuantity(index) {
+      cart[index].quantity++;
+      renderCart();
+    }
+
+    function decreaseQuantity(index) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+      } else {
+        removeFromCart(index);
+      }
+      renderCart();
+    }
+
+    function totalPrice() {
+      return cart.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+    }
+
+    document.querySelectorAll(".add-to-cart").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const productId = parseInt(event.target.closest("li").dataset.id);
+        const product = products.find((p) => p.id === productId);
+        addToCart(product);
+      });
+    });
+
+    renderCart();
+  });
+</script>
