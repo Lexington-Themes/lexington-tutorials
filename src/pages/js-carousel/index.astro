@@ -19,60 +19,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <!-- Starts component -->
         <div
           class="flex flex-col w-full"
-          x-data="{
-        skip: 1,
-        atBeginning: false,
-        atEnd: false,
-        next() {
-            this.to((current, offset) => current + (offset * this.skip))
-        },
-        prev() {
-            this.to((current, offset) => current - (offset * this.skip))
-        },
-        to(strategy) {
-            let slider = this.$refs.slider
-            let current = slider.scrollLeft
-            let offset = slider.firstElementChild.getBoundingClientRect().width
-            slider.scrollTo({ left: strategy(current, offset), behavior: 'smooth' })
-        },
-        focusableWhenVisible: {
-            'x-intersect:enter'() {
-                this.$el.removeAttribute('tabindex')
-            },
-            'x-intersect:leave'() {
-                this.$el.setAttribute('tabindex', '-1')
-            },
-        },
-        disableNextAndPreviousButtons: {
-            'x-intersect:enter.threshold.05'() {
-                let slideEls = this.$el.parentElement.children
-                // If this is the first slide.
-                if (slideEls[0] === this.$el) {
-                    this.atBeginning = true
-                // If this is the last slide.
-                } else if (slideEls[slideEls.length-1] === this.$el) {
-                    this.atEnd = true
-                }
-            },
-            'x-intersect:leave.threshold.05'() {
-                let slideEls = this.$el.parentElement.children
-                // If this is the first slide.
-                if (slideEls[0] === this.$el) {
-                    this.atBeginning = false
-                // If this is the last slide.
-                } else if (slideEls[slideEls.length-1] === this.$el) {
-                    this.atEnd = false
-                }
-            },
-        },
-    }">
+          id="carousel">
           <div
             class="flex flex-col w-full"
             aria-labelledby="carousel-label"
             role="region"
-            tabindex="0"
-            x-on:keydown.left="prev"
-            x-on:keydown.right="next">
+            tabindex="0">
             <h2
               class="sr-only"
               hidden=""
@@ -88,43 +40,36 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             <div class="items-center inline-flex lg:px-2 space-x-2">
               <button
                 class="bg-orange-500 hover:bg-orange-600 size-8 flex focus:bg-orange-400 rounded-full items-center text-white"
-                :class="{ 'opacity-50 ': atBeginning }"
-                :aria-disabled="atBeginning"
-                :tabindex="atEnd ? -1 : 0"
-                x-on:click="prev"
-                tabindex="0"
-                ><span
+                id="prevButton"
+                tabindex="0">
+                <span
                   aria-hidden="true"
-                  class="mx-auto">
-                  &larr;
-                </span><span class="sr-only">Skip to previous slide page</span
-                ></button
-              >
+                  class="mx-auto"
+                  >&larr;</span
+                >
+                <span class="sr-only">Skip to previous slide page</span>
+              </button>
               <button
                 class="bg-orange-500 hover:bg-orange-600 size-8 flex focus:bg-orange-400 rounded-full items-center text-white"
-                :class="{ 'opacity-50 ': atEnd }"
-                :aria-disabled="atEnd"
-                :tabindex="atEnd ? -1 : 0"
-                x-on:click="next"
-                tabindex="0"
-                ><span
+                id="nextButton"
+                tabindex="0">
+                <span
                   aria-hidden="true"
-                  class="mx-auto">
-                  &rarr;
-                </span><span class="sr-only">Skip to next slide page</span
-                ></button
-              >
+                  class="mx-auto"
+                  >&rarr;</span
+                >
+                <span class="sr-only">Skip to next slide page</span>
+              </button>
             </div>
             <ul
               class="flex gap-3 overflow-x-scroll mt-4 scrollbar-hide snap-mandatory snap-x w-full rounded-2xl"
               role="listbox"
               aria-labelledby="carousel-content-label"
               tabindex="0"
-              x-ref="slider">
+              id="slider">
               <li
                 class="items-center justify-center w-full flex flex-col shrink-0 snap-start h-full p-8 rounded-2xl lg:p-10 bg-gray-100"
-                role="option"
-                x-bind="disableNextAndPreviousButtons">
+                role="option">
                 <figure>
                   <div class="max-w-2xl">
                     <div class="flex flex-col gap-12">
@@ -132,7 +77,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                         class="text-base text-gray-900 font-display text-balance">
                         "I've been using this services for years, and they
                         consistently exceed my expectations. The support team is
-                        fantastic! "
+                        fantastic!"
                       </p>
                       <div class="block flex-shrink-0">
                         <div class="flex items-center">
@@ -159,8 +104,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               </li>
               <li
                 class="items-center justify-center w-full flex flex-col shrink-0 snap-start h-full p-8 rounded-2xl lg:p-10 bg-gray-100"
-                role="option"
-                x-bind="disableNextAndPreviousButtons">
+                role="option">
                 <figure>
                   <div class="max-w-2xl">
                     <div class="flex flex-col gap-12">
@@ -168,7 +112,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                         class="text-base text-gray-900 font-display text-balance">
                         "The financial solutions they offer are top-notch. I've
                         seen significant growth in my investments since I
-                        started using their platform. "
+                        started using their platform."
                       </p>
                       <div class="block flex-shrink-0">
                         <div class="flex items-center">
@@ -195,15 +139,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               </li>
               <li
                 class="items-center justify-center w-full flex flex-col shrink-0 snap-start h-full p-8 rounded-2xl lg:p-10 bg-gray-100"
-                role="option"
-                x-bind="disableNextAndPreviousButtons">
+                role="option">
                 <figure>
                   <div class="max-w-2xl">
                     <div class="flex flex-col gap-12">
                       <p
                         class="text-base text-gray-900 font-display text-balance">
                         "Their customer service is unparalleled. They really go
-                        the extra mile to ensure customer satisfaction. "
+                        the extra mile to ensure customer satisfaction."
                       </p>
                       <div class="block flex-shrink-0">
                         <div class="flex items-center">
@@ -231,6 +174,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             </ul>
           </div>
         </div>
+
         <!-- Ends component -->
         <!-- Starts links to tutorial -->
         <div
@@ -241,7 +185,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               <div class="w-full">
                 <p class="text-sm font-medium text-neutral-900">Tutorial</p>
                 <p class="mt-1 text-sm text-neutral-500">
-                  How to create a carousel with Tailwind CSS and Alpinejs
+                  How to create a carousel with Tailwind CSS and JavaScript
                 </p>
                 <p class="mt-2 text-xs text-orange-600 underline">
                   <a href="https://lexingtonthemes.com">
@@ -254,7 +198,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               <div class="flex flex-col divide-y divide-neutral-200">
                 <div class="flex h-0 flex-1">
                   <a
-                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-carousel-with-tailwind-css-and-alpinejs/"
+                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-carousel-with-tailwind-css-and-javascript/"
                     type="button"
                     class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
                     >Tutorial</a
@@ -262,7 +206,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                 </div>
                 <div class="flex h-0 flex-1">
                   <a
-                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/carousel/index.astro"
+                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-carousel/index.astro"
                     class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
                     >Get the code</a
                   >
@@ -276,3 +220,42 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </div>
   </section>
 </BaseLayout>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.getElementById("slider");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+    let skip = 1;
+
+    const updateButtonState = () => {
+      const atBeginning = slider.scrollLeft === 0;
+      const atEnd =
+        slider.scrollLeft + slider.clientWidth >= slider.scrollWidth;
+      prevButton.classList.toggle("opacity-50", atBeginning);
+      prevButton.setAttribute("aria-disabled", atBeginning);
+      prevButton.setAttribute("tabindex", atBeginning ? "-1" : "0");
+      nextButton.classList.toggle("opacity-50", atEnd);
+      nextButton.setAttribute("aria-disabled", atEnd);
+      nextButton.setAttribute("tabindex", atEnd ? "-1" : "0");
+    };
+
+    const scrollTo = (strategy) => {
+      let current = slider.scrollLeft;
+      let offset = slider.firstElementChild.getBoundingClientRect().width;
+      slider.scrollTo({
+        left: strategy(current, offset),
+        behavior: "smooth",
+      });
+    };
+
+    const next = () => scrollTo((current, offset) => current + offset * skip);
+    const prev = () => scrollTo((current, offset) => current - offset * skip);
+
+    prevButton.addEventListener("click", prev);
+    nextButton.addEventListener("click", next);
+    slider.addEventListener("scroll", updateButtonState);
+
+    updateButtonState();
+  });
+</script>
