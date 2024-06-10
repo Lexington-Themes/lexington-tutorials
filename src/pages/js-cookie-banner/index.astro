@@ -1,0 +1,116 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section>
+    <div
+      class="max-w-7xl mx-auto px-8 md:px-12 lg:px-32 py-24 flex flex-col justify-center h-svh">
+      <!-- Starts component -->
+      <div
+        id="cookie-banner"
+        role="dialog"
+        aria-labelledby="cookieBannerTitle"
+        aria-describedby="cookieBannerDesc"
+        class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+        <!-- Cookie banner content container -->
+        <div
+          class="mx-auto p-8 lg:p-10 bg-white rounded-3xl ring-1 ring-gray-200 shadow-2xl max-w-lg text-center">
+          <img
+            src="https://i.pinimg.com/originals/ef/86/cf/ef86cfbac3952cbfdaacb66e8ca3b685.gif"
+            alt="Cookies"
+            class="w-32 h-32 mx-auto rounded-full -mt-24"
+          />
+          <h2
+            id="cookieBannerTitle"
+            class="text-2xl font-medium mt-8">
+            Our website uses cookies
+          </h2>
+          <p
+            id="cookieBannerDesc"
+            class="mt-4 text-gray-500">
+            Our website uses cookies. By continuing, we assume your permission
+            to deploy cookies as detailed in our
+            <a
+              href="#"
+              class="underline hover:text-orange-600 text-black"
+              >Privacy Policy.</a
+            >
+          </p>
+          <!-- Accept cookies button -->
+          <div class="mt-8">
+            <button
+              id="accept-cookies"
+              class="rounded-full bg-orange-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+              Accept all cookies
+            </button>
+          </div>
+          <!-- Manage cookies link -->
+          <div class="mt-4">
+            <a
+              href="#"
+              class="text-sm text-orange-600 hover:text-orange-500"
+              >Manage cookies</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Ends component -->
+    </div>
+  </section>
+  <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 sr-only">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+            How to create a dismissible cookie banner with Tailwind CSS and
+            JavaScript
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-a-dissmisable-cookie-banner-with-tailwind-css-and-javascript/"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/jscookie-banner/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ends links to tutorial -->
+</BaseLayout>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", function () {
+    const cookieBanner = document.getElementById("cookie-banner");
+    const acceptButton = document.getElementById("accept-cookies");
+
+    // Set focus on the accept button once the banner is displayed
+    acceptButton.focus();
+
+    // Hide the cookie banner when the accept button is clicked
+    acceptButton.addEventListener("click", function () {
+      cookieBanner.style.display = "none";
+    });
+  });
+</script>
