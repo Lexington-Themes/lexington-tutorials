@@ -1,0 +1,105 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section>
+    <div
+      class="w-full text-center py-8 mx-auto flex flex-col justify-center h-svh">
+      <!--
+      // Alpine.js component starts here.
+      //
+      // x-data defines the data scope for this component.
+      // In this case, we have a single piece of data: "open", which is a boolean.
+      // When the mouse hovers over this div, set "open" to true
+      // When the mouse leaves this div, set "open" to false
+    -->
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
+        <div>
+          <h1>Tooltip</h1>
+          <p class="text-balance">Hover on the button to see the tooltip.</p>
+        </div>
+      </div>
+      <!-- Starts component -->
+      <div
+        id="tooltip-container"
+        class="relative flex justify-center items-center duration-200">
+        <button
+          id="tooltip-button"
+          type="button"
+          class="inline-flex justify-center mx-auto w-auto rounded-full h-24 items-center border-2 border-gray-300 shadow-sm px-12 py-2 bg-white text-3xl font-medium text-orange-600 focus:outline-none focus:ring-2 hover:border-orange-600 focus:ring-offset-2 focus:ring-orange-600 duration-300">
+          Poke me
+        </button>
+        <div
+          id="tooltip"
+          class="absolute z-10 bottom-full mb-2 w-56 h-20 justify-center items-center flex text-center rounded-md shadow-lg bg-orange-600 text-white"
+          style="display: none;">
+          <div
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="options-menu">
+            <a
+              href="#"
+              class="block px-4 py-2 text-xl mx-auto text-white"
+              role="menuitem">
+              Hello pomelo, I am yourv JS tooltip!
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Ends component -->
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to create a tooltip Tailwind CSS and JavaScript
+            </p>
+            <p class="mt-2 text-xs text-orange-600 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-a-tooltip-with-tailwind-css-and-javascript/"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-tooltip/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const tooltipContainer = document.getElementById("tooltip-container");
+    const tooltip = document.getElementById("tooltip");
+
+    const showTooltip = () => (tooltip.style.display = "flex");
+    const hideTooltip = () => (tooltip.style.display = "none");
+
+    tooltipContainer.addEventListener("mouseenter", showTooltip);
+    tooltipContainer.addEventListener("mouseleave", hideTooltip);
+  });
+</script>
