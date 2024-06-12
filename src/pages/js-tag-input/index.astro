@@ -1,0 +1,128 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white">
+    <div
+      class="w-full mx-auto max-w-xl flex flex-col justify-center lg:h-svh py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
+        <div>
+          <h1>Add you tags</h1>
+          <p class="text-balance">
+            Test the input by adding tags and removing them. You can also add
+            tags by pressing the Enter key.
+          </p>
+        </div>
+      </div>
+      <!-- Starts component -->
+      <div
+        class="w-full mx-auto mt-6 border-t pt-12"
+        id="tags-component">
+        <!-- Tag Input -->
+        <div
+          class="w-full"
+          id="tags-input-wrapper">
+          <!-- Input Field -->
+          <input
+            id="new-tag-input"
+            class="w-full border-gray-300 rounded-md focus:border-orange-500 focus:ring-orange-500 mt-1"
+            type="text"
+            placeholder="Add tags (press Enter to add)"
+          />
+          <!-- Existing Tags -->
+          <div
+            class="mt-4 flex gap-2 flex-wrap"
+            id="tags-list">
+          </div>
+        </div>
+      </div>
+      <!-- Ends component -->
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create a tag input with Tailwind CSS and JacaScript
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-tag-input-with-tailwind-css-and-jacascript/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-tag-input/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+    </div>
+  </section>
+</BaseLayout>
+<script type="module">
+  document.addEventListener("DOMContentLoaded", function () {
+    const newTagInput = document.getElementById("new-tag-input");
+    const tagsList = document.getElementById("tags-list");
+    let tags = [];
+
+    newTagInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        const tag = newTagInput.value.trim();
+        if (tag) {
+          tags.push(tag);
+          newTagInput.value = "";
+          renderTags();
+        }
+      }
+    });
+
+    function renderTags() {
+      tagsList.innerHTML = "";
+      tags.forEach((tag, index) => {
+        const tagElement = document.createElement("div");
+        tagElement.className =
+          "inline-flex items-center gap-x-0.5 rounded-md bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10";
+
+        const tagText = document.createElement("span");
+        tagText.textContent = tag;
+
+        const removeButton = document.createElement("button");
+        removeButton.className = "ml-2";
+        removeButton.innerHTML =
+          '<svg class="h-4 w-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
+        removeButton.addEventListener("click", function () {
+          tags.splice(index, 1);
+          renderTags();
+        });
+
+        tagElement.appendChild(tagText);
+        tagElement.appendChild(removeButton);
+        tagsList.appendChild(tagElement);
+      });
+    }
+  });
+</script>
