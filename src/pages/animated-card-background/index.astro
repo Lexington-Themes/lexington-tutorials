@@ -18,7 +18,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           <!-- Starts component -->
 
           <div
-            class=" h-full w-full bg-white m-auto rounded-xl relative group p-2 z-0 overflow-hidden shadow border cursor-pointer hover:border-transparent">
+            class="h-full w-full bg-white m-auto rounded-xl relative group p-2 z-0 overflow-hidden shadow border cursor-pointer hover:border-transparent">
             <div
               class="h-[7em] w-[20em] bg-blue-950 absolute left-full rounded-full -bottom-[3.5em] group-hover:scale-[550%] z-[-1] duration-[400ms]">
             </div>
@@ -93,27 +93,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   <!-- Ends links to tutorial -->
 </BaseLayout>
 
-<script>
-  // Get references to the elements
-  const showButton = document.getElementById("showButton");
-  const menuItems = document.getElementById("menuItems");
 
-  // Add event listeners for hover and click
-  showButton.addEventListener("mouseenter", () => {
-    menuItems.style.opacity = "1";
-  });
 
-  showButton.addEventListener("mouseleave", () => {
-    menuItems.style.opacity = "0";
-  });
-
-  showButton.addEventListener("click", () => {
-    const currentOpacity = parseFloat(menuItems.style.opacity);
-    if (currentOpacity === 1) {
-      menuItems.style.opacity = "0";
-    } else {
-      menuItems.style.opacity = "1";
-    }
-  });
-</script>
 
