@@ -2,6 +2,36 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
+<style>
+  .blob {
+    filter: blur(6px) contrast(20);
+  }
+  .blob:before,
+  .blob:after {
+    grid-area: 1/1;
+    animation: gooeyBlob 2s infinite;
+  }
+  .blob:after {
+    animation-delay: -1s;
+  }
+  @keyframes gooeyBlob {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(100%, 0);
+    }
+    50% {
+      transform: translate(100%, 100%);
+    }
+    75% {
+      transform: translate(0, 100%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+</style>
 <BaseLayout>
   <section>
     <div class="bg-white dark:bg-gray-800 transition-colors duration-500">
@@ -10,44 +40,31 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <div
           class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
           <div>
-            <h1>Card with animated background</h1>
-            <p class="text-balance">Hover over the card to see the effetc</p>
+            <h1>Animated Tailwind Loader</h1>
+            <p class="text-balance">Just watch....</p>
           </div>
         </div>
         <div class="mt-6 border-t pt-12 max-w-xl w-full">
           <!-- Starts component -->
 
-          <div
-            class="h-full w-full bg-white m-auto rounded-xl relative group p-2 z-0 overflow-hidden shadow border cursor-pointer hover:border-transparent">
-            <div
-              class="h-24 w-96 bg-blue-950 absolute left-full rounded-full -bottom-12 group-hover:scale-[550%] z-[-1] duration-700 easy-in-out">
+          <div class="rotate-45">
+            <div class="flex items-center w-32 mx-auto scale-y-[-1]">
+              <div
+                class="blob grid p-4 before:size-11 after:size-11 content-[''] size-28 before:bg-orange-500 after:bg-orange-500 bg-white mx-auto blob2 scale-x-[-1]">
+              </div>
+              <div
+                class="blob grid p-4 before:size-11 after:size-11 content-[''] size-28 before:bg-orange-500 after:bg-orange-500 bg-white mx-auto relative">
+              </div>
             </div>
-            <div
-              class="h-20 w-44 bg-blue-700 absolute left-full rounded-full -bottom-12 group-hover:scale-[400%] z-[-1] duration-700 easy-in-out">
-            </div>
-            <div
-              class="h-16 w-48 bg-blue-500 absolute left-full rounded-full -bottom-12 group-hover:scale-[300%] z-[-1] duration-700 easy-in-out">
-            </div>
-            <div
-              class="h-16 w-44 bg-blue-950 absolute left-full rounded-full -bottom-12 group-hover:scale-[200%] z-[-1] duration-700 easy-in-out">
-            </div>
-
-            <div class="z-20 m-4">
-              <div class="">
-                <p
-                  class="text-lg font-semibold text-blue-950 group-hover:text-white duration-300">
-                  Uber will pay you $1,000 to ditch your car for five weeks
-                </p>
-                <p
-                  class="text-base text-gray-500 mt-20 group-hover:text-white duration-300 text-pretty">
-                  Traffic got you down? If the idea of locking your car keys in
-                  a drawer and using alternate means of transportation sounds
-                  intriguing, Uber has the challenge for you.
-                </p>
+            <div class="flex items-center w-32 mx-auto">
+              <div
+                class="blob grid p-4 before:size-11 after:size-11 content-[''] size-28 before:bg-orange-500 after:bg-orange-500 bg-white mx-auto blob2 scale-x-[-1]">
+              </div>
+              <div
+                class="blob grid p-4 before:size-11 after:size-11 content-[''] size-28 before:bg-orange-500 after:bg-orange-500 bg-white mx-auto relative">
               </div>
             </div>
           </div>
-
           <!-- Ends component -->
         </div>
       </div>
@@ -55,14 +72,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   </section>
   <!-- Starts links to tutorial -->
   <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 sr-only">
     <div
       class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
       <div class="flex w-0 flex-1 items-center p-4">
         <div class="w-full">
           <p class="text-sm font-medium text-neutral-900">Tutorial</p>
           <p class="mt-1 text-sm text-neutral-500">
-            How to create a card with animated background with Tailwind CSS
+            How to create an animated Tailwind loader with Tailwind CSS
           </p>
           <p class="mt-2 text-xs text-orange-500 underline">
             <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
@@ -73,7 +90,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <div class="flex flex-col divide-y divide-neutral-200">
           <div class="flex h-0 flex-1">
             <a
-              href="https://lexingtonthemes.com/tutorials/how-tocreate-a-card-with-animated-background-with-tailwind-css/"
+              href="https://lexingtonthemes.com/tutorials/how-tocreate-an-animated-loader-with-tailwind-css/"
               type="button"
               class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
               >Tutorial</a
@@ -81,7 +98,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </div>
           <div class="flex h-0 flex-1">
             <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/theme-toggle/index.astro"
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-tailwind-loader/index.astro"
               class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
               >Get the code</a
             >
@@ -92,5 +109,3 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   </div>
   <!-- Ends links to tutorial -->
 </BaseLayout>
-
-
