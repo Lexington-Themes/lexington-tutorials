@@ -1,0 +1,122 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-[#ecedef]">
+    <div
+      class="w-full mx-auto items-center flex flex-col justify-center py-24 lg:py-32 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
+        <div>
+          <h1>Animated Tailwind Envelope</h1>
+          <p class="text-balance">Hover over the envelope....</p>
+        </div>
+      </div>
+      <div class="pt-40 w-full relative">
+        <!-- Starts component -->
+
+        <div class="justify-center">
+          <div
+            class="relative w-[600px] sm:w-[650px] rounded-xl mx-auto group transition-all duration-700 aspect-video flex items-center justify-center">
+            <div
+              class="transition-all flex flex-col items-start px-16 py-10 justify-start duration-300 group-hover:duration-1000 bg-white w-full h-full absolute group-hover:-translate-y-36">
+              <div class="flex justify-between w-full">
+                <div>
+                  <p class="font-medium tex-tsm text-black">
+                    Michael Andreuzza
+                  </p>
+                  <p class="text-xs text-zinc-400">
+                    123 Fake Street
+                    <br />
+                    New York <br /> NY 10001
+                  </p>
+                  <p class="mt-6 text-xs font-medium text-gray-500">
+                    Billed to
+                  </p>
+                  <p class="mt-1 text-sm font-medium text-black">Juan Perez</p>
+                  <p class="text-xs text-zinc-400">
+                    456 Fake Street
+                    <br />
+                    Narnia <br /> NY 10002
+                  </p>
+                </div>
+                <div class="uppercase text-sm font-sembold">Michael and Co</div>
+              </div>
+              <div class="mt-8">
+                <p class="font-medium tex-tsm text-black">Dear Mr. Perez,</p>
+                <p class="text-xs text-zinc-400">
+                  I hope this letter finds you well. This is a reminder that
+                  payment for services rendered by Michael and Co. is now due.
+                  Please find the details of the invoice below:
+                </p>
+              </div>
+            </div>
+            <!--- Stamp -->
+            <div
+              class="bg-[#edeef0] w-16 uppercase text-[#0c0d10] h-full flex items-center z-40 justify-center font-semibold group-hover:opacity-0 transition-all duration-1000 group-hover:-translate-y-96">
+              <div class="-rotate-90">Lexington</div>
+            </div>
+
+            <!--- Top -->
+            <div
+              class="transition-all duration-1000 group-hover:duration-100 z-10 bg-gradient-to-b from-[#808698] to-[#51576c] absolute group-hover:[clip-path:polygon(0_0,_100%_0,_100%_0,_0_0)] w-full h-full [clip-path:polygon(0_0,_100%_0,_95%_55%,_5.5%_55%)]">
+            </div>
+            <!-- left -->
+            <div
+              class="transition-all duration-700 absolute w-full h-full bg-[#4f576e] [clip-path:polygon(0_0,_0%_100%,_8%_51%)]">
+            </div>
+            <!-- right -->
+            <div
+              class="rgt transition-all duration-700 absolute w-full h-full group-hover:rounded-tr-none bg-[#4f576e] [clip-path:polygon(100%_0,_100%_100%,_92%_51%)]">
+            </div>
+            <!--- Bottom -->
+            <div
+              class="transition-all duration-700 absolute w-full h-full bg-gradient-to-b from-[#0c0d10] to-[#4f576e] [clip-path:polygon(4%_50%,_96%_50%,_100%_100%,_0%_100%)]">
+            </div>
+          </div>
+        </div>
+
+        <!-- Ends component -->
+      </div>
+    </div>
+  </section>
+  <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+            How to create an animated envelope with Tailwind CSS
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-an-animated-enevelope-with-tailwind-css/"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-tailwind-envelope/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ends links to tutorial -->
+</BaseLayout>
