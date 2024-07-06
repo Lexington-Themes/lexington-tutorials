@@ -1,0 +1,143 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto items-center flex flex-col justify-center py-24 lg:py-44 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
+        <div>
+          <h1>Animated Tailwind Envelope</h1>
+          <p class="text-balance">Hover over the envelope....</p>
+        </div>
+      </div>
+      <div class="pt-7 w-full relative">
+        <!-- Starts component -->
+        <div
+          class="relative overflow-hidden flex flex-col items-center justify-center py- px-8">
+          <div
+            class="relative overflow-hidden max-w-xs w-full h-full py-32 cursor-pointer bg-zinc-700">
+            <div class="z-10 absolute w-full h-full peer"></div>
+
+            <div
+              class="absolute flex text-xl text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-44 -right-16 w-36 h-44 text-white bg-black/60 backdrop-blur-lg transition-all duration-500">
+              <ul class="text-base">
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler size-4 icons-tabler-outline icon-tabler-brand-github"
+                    ><path
+                      stroke="none"
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    ></path><path
+                      d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+                    ></path></svg
+                  >GitHub
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler size-4 icons-tabler-outline icon-tabler-brand-dribbble"
+                    ><path
+                      stroke="none"
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    ></path><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"
+                    ></path><path d="M9 3.6c5 6 7 10.5 7.5 16.2"></path><path
+                      d="M6.4 19c3.5 -3.5 6 -6.5 14.5 -6.4"></path><path
+                      d="M3.1 10.75c5 0 9.814 -.38 15.314 -5"></path></svg
+                  >Dribbble
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler size-4 icons-tabler-outline icon-tabler-brand-x"
+                    ><path
+                      stroke="none"
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    ></path><path d="M4 4l11.733 16h4.267l-11.733 -16z"
+                    ></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"
+                    ></path></svg
+                  >Twitter
+                </li>
+              </ul>
+            </div>
+            <div
+              class="w-full flex flex-col h-full items-center justify-center">
+              <img
+                class="size-24 rounded-full"
+                src="https://lexingtonthemes.com/mike.jpg"
+                alt=""
+              />
+              <div class="mt-4 text-sm w-1/2 text-white text-center">
+                Hi! I'm Michael
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Ends component -->
+      </div>
+    </div>
+  </section>
+  <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 sr-only">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+            How to create an animated profile card with Tailwind CSS
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-an-animated-profile-card-with-tailwind-css/"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-tailwind-profile-card/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ends links to tutorial -->
+</BaseLayout>
+
