@@ -1,0 +1,108 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto items-center flex flex-col justify-center py-24 lg:py-44 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
+        <div>
+          <h1>Animated Tailwind Toggle</h1>
+          <p>Click on the toggle to see how it works....</p>
+        </div>
+      </div>
+
+      <!-- Starts component -->
+      <div class="flex flex-col-reverse max-w-sm mx-auto py-96">
+        <label
+          class="cursor-pointer relative h-12 w-24 rounded-full bg-zinc-100 ring-1 ring-inset ring-white shadow mx-auto">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="absolute left-[0.5em] top-1/2 flex size-8 -translate-y-1/2 items-center justify-center text-orange-600"
+            ><path
+              stroke="none"
+              d="M0 0h24v24H0z"
+              fill="none"
+            ></path><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"
+            ></path><path
+              d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
+            ></path></svg
+          >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="absolute right-[0.5em] top-1/2 size-8 -translate-y-1/2 rounded-full text-orange-600"
+            ><path
+              stroke="none"
+              d="M0 0h24v24H0z"
+              fill="none"
+            ></path><path
+              d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+            ></path></svg
+          >
+          <input
+            class="peer h-[1em] w-[1em] opacity-0"
+            id=""
+            name=""
+            type="checkbox"
+          />
+          <span
+            class="absolute left-[0.25em] top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-orange-600 to-zinc-400 duration-300 peer-checked:left-[calc(100%-2.75em)]">
+          </span>
+        </label>
+      </div>
+      <!-- Ends component -->
+    </div>
+  </section>
+  <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+            How to create an animated toggle with Tailwind CSS
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-an-animated-toggle-with-tailwind-css/"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-tailwind-toggle/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ends links to tutorial -->
+</BaseLayout>
