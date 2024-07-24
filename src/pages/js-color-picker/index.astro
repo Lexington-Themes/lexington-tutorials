@@ -1,0 +1,125 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section>
+    <div
+      class="max-w-7xl mx-auto px-8 md:px-12 lg:px-32 py-24 flex flex-col justify-center">
+      <div
+        class="prose text-gray-500 prose-sm border-b prose-headings:font-normal prose-headings:text-xl mx-auto">
+        <div>
+          <h1>Color picker</h1>
+          <p class="text-balance">
+            Click on the colors to copy each color code to your clipboard.
+          </p>
+        </div>
+      </div>
+      <!-- Starts component -->
+      <div
+        class="max-w-xl mx-auto w-full mt-12 rounded-3xl bg-white shadow-2xl border overflow-hidden">
+        <div class="p-8 w-full">
+          <div
+            id="colorSwatches"
+            class="flex flex-wrap justify-between gap-2 mb-4">
+          </div>
+          <div
+            id="selectedColor"
+            class="h-32 w-full rounded-xl mt-8">
+          </div>
+          <div class="flex flex-col gap-8 justify-between items-center">
+            <span
+              id="colorCode"
+              class="text-gray-500 mt-4"
+            ></span>
+            <button
+              id="copyButton"
+              class="rounded-full bg-black px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full">
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Ends component -->
+    </div>
+  </section>
+  <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+            How to a create a color picker with Tailwind CSS and JavaScript
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-a-color-picker-with-tailwind-css-and-javascript/"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-color-picker/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ends links to tutorial -->
+</BaseLayout>
+<script type="module">
+  const colors = [
+    { name: "purple", hex: "#f6c760" },
+    { name: "yellow", hex: "#F59E0B" },
+    { name: "orange", hex: "#F97316" },
+    { name: "red", hex: "#df4f43" },
+    { name: "pink", hex: "#ed7eb2" },
+    { name: "indigo", hex: "#50b18a" },
+    { name: "blue", hex: "#86cded" },
+    { name: "green", hex: "#725bf6" },
+  ];
+  const colorSwatches = document.getElementById("colorSwatches");
+  const selectedColor = document.getElementById("selectedColor");
+  const colorCode = document.getElementById("colorCode");
+  const copyButton = document.getElementById("copyButton");
+  colors.forEach(({ hex }) => {
+    const swatch = document.createElement("div");
+    swatch.className = "size-8 rounded-full cursor-pointer";
+    swatch.style.backgroundColor = hex;
+    swatch.addEventListener("click", () => selectColor(hex));
+    colorSwatches.appendChild(swatch);
+  });
+  function selectColor(hex) {
+    selectedColor.style.backgroundColor = hex;
+    colorCode.textContent = hex;
+  }
+  copyButton.addEventListener("click", () => {
+    const textToCopy = colorCode.textContent;
+    navigator.clipboard
+      .writeText(textToCopy)
+      .then(() => {
+        alert("Color code copied to clipboard!");
+        console.log("Copied text:", textToCopy);
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
+  });
+  // Initialize with the first color
+  selectColor(colors[0].hex);
+</script>
