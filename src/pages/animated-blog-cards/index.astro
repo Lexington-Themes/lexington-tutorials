@@ -120,23 +120,3 @@ const features = [
   </section>
 </BaseLayout>
 
-{
-  features.map((feature, index) => (
-    <>
-      <div class="relative flex flex-col items-start m-1 transition  ease-in-out duration-500  delay-150 transform  md:w-96 md:-ml-32 md:hover:-translate-x-32 md:hover:-translate-y-8 shrink-0 ">
-        <article
-          class="mx-auto   rounded-3xl overflow-hidden  bg-cover ring-2 ring-inset ring-white/50 bg-center min-h-150 relative   transform duration-500   group"
-          style={`background-image: url('${feature.bgImage}');`}>
-          <div
-            class={` relative h-full  group-hover:bg-opacity-0 min-h-150  flex flex-wrap flex-col pt-[30rem]  transform duration-500`}>
-            <div class=" group-hover:bg-black/30 duration-500 group-hover:backdrop-blur p-8 lg:p-10 h-full justify-end flex flex-col ">
-              <p class="opacity-0 text-white text-sm 2xl:text-lg group-hover:opacity-80 transform duration-500 ">
-                {feature.description}
-              </p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </>
-  ))
-}

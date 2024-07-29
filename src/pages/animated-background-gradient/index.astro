@@ -1,0 +1,112 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<style>
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .animate-gradient {
+    animation: gradient-shift 15s ease infinite;
+  }
+</style>
+
+<!--
+// This is a representation of how would you write the CSS part on the tailwind.configjs file
+//
+//
+// module.exports = {
+//    theme: {
+//      extend: {
+//        keyframes: {
+//          "gradient-shift": {
+//            "0%, 100%": { backgroundPosition: "0% 50%" },
+//            "50%": { backgroundPosition: "100% 50%" },
+//          },
+//        },
+//        animation: {
+//          gradient: "gradient-shift 15s ease infinite",
+//        },
+//      },
+//    },
+//    plugins: [],
+//  };
+-->
+
+<BaseLayout>
+  <section class="h-screen flex flex-col items-center justify-center">
+    <div class="relative w-full h-full overflow-hidden">
+      <!-- Background layer -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-blue-400 via-indigo-500 to-cyan-500 animate-gradient bg-[length:400%_400%]">
+      </div>
+
+      <!-- Overlay patterns -->
+      <div class="absolute inset-0 opacity-30">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-pulse">
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl animate-pulse">
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 flex items-center justify-center h-full">
+        <div
+          class="prose prose-sm prose-headings:font-normal prose-headings:text-xl bg-white/20 backgdrop-blur p-8 rounded-xl">
+          <div>
+            <h1 class="text-white">Animated background gradient</h1>
+            <p class="text-balance text-white">Just look at the screen...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to create an animated background gradient with Tailwind CSS
+            </p>
+            <p class="mt-2 text-xs text-orange-600 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-animated-background-gradient-with-tailwind-css/"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-background-gradient/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
