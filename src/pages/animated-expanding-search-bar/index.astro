@@ -20,7 +20,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <!-- Starts component -->
       <div class="max-w-md mx-auto mt-6 w-full border-t pt-12">
         <form
-          action="#_"
           class="relative w-full justify-center">
           <input
             type="search"
@@ -54,7 +53,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <!-- Ends component -->
       <!-- Starts links to tutorial -->
       <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 ">
         <div
           class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
           <div class="flex w-0 flex-1 items-center p-4">
@@ -74,7 +73,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             <div class="flex flex-col divide-y divide-neutral-200">
               <div class="flex h-0 flex-1">
                 <a
-                  href="https://lexingtonthemes.com/tutorials/How to create an animated expanding search bar with Tailwind CSS/"
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-an-exapandable-search-bar-with-tailwind-css/"
                   type="button"
                   class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
                   >Tutorial</a
@@ -95,16 +94,4 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </div>
   </section>
 </BaseLayout>
-<script type="module">
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleButton = document.getElementById("toggleButton");
-    const gridContainer = document.getElementById("gridContainer");
-    toggleButton.addEventListener("click", () => {
-      const isFourColumns = gridContainer.classList.toggle("grid-cols-4");
-      gridContainer.classList.toggle("grid-cols-2", !isFourColumns);
-      toggleButton.textContent = isFourColumns
-        ? "Switch to 2 Columns"
-        : "Switch to 4 Columns";
-    });
-  });
-</script>
+
