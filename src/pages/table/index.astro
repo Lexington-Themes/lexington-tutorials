@@ -1,0 +1,153 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div class="max-w-xl mx-auto text-center">
+        <div
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+          <div>
+            <h1>Responsive Table with avatars</h1>
+            <p class="text-balance">Resize the window.</p>
+          </div>
+        </div>
+      </div>
+      <div class=" lg:px-32 mt-24">
+        <!-- Starts component -->
+        <div class="flow-root">
+          <div class="  overflow-x-auto ">
+            <div
+              class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+              <table class="min-w-full divide-y divide-gray-300">
+                <thead>
+                  <tr>
+                    <th
+                      scope="col"
+                      class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-500 sm:pl-0"
+                      >Name</th
+                    >
+                    <th
+                      scope="col"
+                      class="px-3 py-3.5 text-left text-sm font-semibold text-gray-500"
+                      >Title</th
+                    >
+                    <th
+                      scope="col"
+                      class="px-3 py-3.5 text-left text-sm font-semibold text-gray-500"
+                      >Status</th
+                    >
+                    <th
+                      scope="col"
+                      class="px-3 py-3.5 text-left text-sm font-semibold text-gray-500"
+                      >Role</th
+                    >
+                    <th
+                      scope="col"
+                      class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                      <span class="sr-only">Edit</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 bg-white">
+                  <tr>
+                    <td
+                      class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+                      <div class="flex items-center">
+                        <div class="h-11 w-11 flex-shrink-0">
+                          <img
+                            class="h-11 w-11 rounded-full"
+                            src="/avatars/8.png"
+                            alt=""
+                          />
+                        </div>
+                        <div class="ml-4">
+                          <div class="font-medium text-black">
+                            Michael Andreuzza
+                          </div>
+                          <div class="mt-1 text-gray-500">
+                            michael@lexingtonthemes.com
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                      <div class="text-black">Digital Duct Tape Engineer</div>
+                      <div class="mt-1 text-gray-500">Optimization</div>
+                    </td>
+                    <td
+                      class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                      <span
+                        class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-500 "
+                        >Awake (mostly)</span
+                      >
+                    </td>
+                    <td
+                      class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                      Error Message Translator</td
+                    >
+                    <td
+                      class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                      <a
+                        href="#"
+                        class="text-blue-600 hover:text-blue-900"
+                        >Edit<span class="sr-only">,Michael Andreuzza</span></a
+                      >
+                    </td>
+                  </tr>
+
+                  <!-- More people... -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Starts links to tutorial -->
+      </div>
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 sr-only">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create a responsive table with Tailwind CSS
+              </p>
+              <p class="mt-2 text-xs text-orange-600 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-responsive-table-with-tailwind-css/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/table/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+    </div>
+  </section>
+</BaseLayout>
