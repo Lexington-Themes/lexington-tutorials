@@ -4,12 +4,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 <BaseLayout>
   <div class="flex min-h-full flex-col">
-    <!-- 3 column wrapper -->
+    <!-- Main column wrapper -->
     <div class="mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
       <!-- Left sidebar & main wrapper -->
       <div class="flex-1 xl:flex">
         <div
-          class="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
+          class="border-b  px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
           <nav
             class="flex flex-1 flex-col"
             aria-label="Sidebar">
@@ -33,6 +33,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             </ul>
           </nav>
         </div>
+        <!-- Center column -->
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
           <p class="text-sm text-gray-500">Here goes your content.</p>
           <div class="mt-6 border-t pt-6 max-w-xl mx-auto w-full">
@@ -127,8 +128,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </div>
         </div>
       </div>
+      <!-- Right sidebar  -->
       <div
-        class="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6">
+        class="shrink-0 border-t  px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6">
         <nav
           class="flex flex-1 flex-col"
           aria-label="Sidebar">
@@ -151,7 +153,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   </div>
   <!-- Starts links to tutorial -->
   <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 ">
     <div
       class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
       <div class="flex w-0 flex-1 items-center p-4">
