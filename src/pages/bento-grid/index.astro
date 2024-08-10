@@ -1,0 +1,151 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div class="max-w-xl mx-auto text-center">
+        <div
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+          <h1>Bento Grid</h1>
+          <p>Resize the browser to see the effect</p>
+        </div>
+      </div>
+      <!-- Starts component -->
+      <div
+        class="max-w-7xl mt-12 pt-12 border-t mx-auto text-balance text-gray-500">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 lg:grid-cols-6">
+          <!-- Large box spanning 2x2 -->
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl md:col-span-2 md:row-span-2">
+            <p class="text-orange-600">Photography</p>
+            <p class="mt-4 text-sm">
+              Capture moments in stunning detail with our advanced camera
+              technology. Perfect for professionals and enthusiasts alike.
+            </p>
+          </div>
+
+          <!-- Tall box spanning 3 rows -->
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl md:row-span-2">
+            <p class="text-orange-600">Coding</p>
+            <p class="mt-4 text-sm">
+              Build the future with powerful development tools. From web to
+              mobile, create anything you can imagine.
+            </p>
+          </div>
+
+          <!-- Regular box -->
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl md:row-span-3 lg:row-span-2">
+            <p class="text-orange-600">Music</p>
+            <p class="mt-4 text-sm">
+              Experience the power of sound with high-fidelity audio.
+            </p>
+          </div>
+
+          <!-- Wide box spanning 2 columns -->
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl md:col-span-2">
+            <p class="text-orange-600">Video Production</p>
+            <p class="mt-4 text-sm">
+              Create cinematic masterpieces with professional-grade tools.
+            </p>
+          </div>
+
+          <!-- Tall box spanning 2 rows -->
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl md:row-span-2 lg:col-span-2">
+            <p class="text-orange-600">Gaming</p>
+            <p class="mt-4 text-sm">
+              Immerse yourself in new worlds with cutting-edge graphics and
+              gameplay.
+            </p>
+          </div>
+
+          <!-- Regular boxes -->
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl md:col-span-2">
+            <p class="text-orange-600">AI</p>
+            <p class="mt-4 text-sm">Harness the power of artificial intelligence.</p>
+          </div>
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl lg:col-span-2">
+            <p class="text-orange-600">VR</p>
+            <p class="mt-4 text-sm">
+              Step into virtual reality and explore new dimensions.
+            </p>
+          </div>
+
+          <!-- Wide box spanning 3 columns -->
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl md:col-span-3">
+            <p class="text-orange-600">IoT Ecosystem</p>
+            <p class="mt-4 text-sm">
+              Connect your world with smart devices. Create a seamless network
+              of intelligent gadgets.
+            </p>
+          </div>
+
+          <!-- Regular boxes -->
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl lg:col-span-2">
+            <p class="text-orange-600">Cloud</p>
+            <p class="mt-4 text-sm">
+              Scale your projects with powerful cloud solutions.
+            </p>
+          </div>
+          <div
+            class="bg-gray-100 ring-1 ring-inset ring-gray-200  shadow p-6 rounded-2xl col-span-full lg:col-span-1">
+            <p class="text-orange-600">Security</p>
+            <p class="mt-4 text-sm">
+              Protect your digital assets with advanced cybersecurity.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create a bento grid with Tailwind CSS
+              </p>
+              <p class="mt-2 text-xs text-orange-600 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-bento-grid-with-tailwind-css/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/bento-grid/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+    </div>
+  </section>
+</BaseLayout>
