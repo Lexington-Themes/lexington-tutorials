@@ -1,0 +1,103 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section>
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl items-center flex flex-col justify-center  p-8">
+      <img
+        src="https://i.pinimg.com/564x/5b/27/d8/5b27d828f0279dac21a87d56f54a1f08.jpg"
+        class="absolute"
+        alt="#_"
+      />
+      <!--- decorative image -->
+      <div
+        class="flex relative flex-col text-center justify-center items-center h-screen">
+        <div
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
+          <div>
+            <h1>Flyout menu </h1>
+            <p class="text-balance">
+              Click on the button to see the flyout menu.
+            </p>
+            <small>From table up</small>
+          </div>
+        </div>
+        <ul class="flex justify-center text-gray-700 text-sm mt-8">
+          <li
+            class="group relative"
+            tabindex="-1">
+            <button
+              class="justify-center mx-auto px-4 py-2 bg-[#626b82] rounded-full h-12 text-base text-left text-[#efefef] hover:bg-[#1f283a] duration-1000 focus:outline-none focus:shadow-outline focus:ring-[#1f283a] ring-2 ring-ofsset-4
+                         ring-transparent"
+              >Dropdown
+              <span class="ml-6">&#8964;</span>
+            </button>
+            <div
+              class="invisible absolute top-full w-48 transform opacity-0 transition-all duration-300 group-focus-within:visible group-focus-within:opacity-100 z-50 rounded-2xl p-4 shadow-lg ring-1 ring-[#1f283a] ring-opacity-5 bg-white">
+              <ul class="space-y-2">
+                <li class="flex">...</li>
+                <li class="group/secondDropdown relative">
+                  <button class="flex w-full items-center justify-between">
+                    <span>Second Dropdown</span>
+                    <span>&#8250;</span>
+                  </button>
+                  <div
+                    class="invisible absolute top-0 left-full w-40 transform opacity-0 transition-all duration-300 group-focus-within/secondDropdown:visible group-focus-within/secondDropdown:opacity-100 group-hover/secondDropdown:visible group-hover/secondDropdown:opacity-100 z-50">
+                    <ul
+                      class="mt-1 rounded-2xl space-y-2 shadow-lg ring-1 p-4 ring-[#1f283a] ring-opacity-5 bg-white">
+                      <li class="flex">...</li>
+                      <li class="flex">...</li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="flex">...</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Ends component -->
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-gray-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-gray-900">Tutorial</p>
+            <p class="mt-1 text-sm text-gray-500">
+              How to create a dropdown menu with submenu with only with Tailwind
+              CSS
+            </p>
+            <p class="mt-2 text-xs text-orange-600 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-gray-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-a-flyout-menu-with-submenu-with-only-with-tailwind-css/"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/flyout-menu-with-submenu/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
