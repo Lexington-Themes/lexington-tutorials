@@ -29,22 +29,21 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             class="group relative"
             tabindex="-1">
             <button
-              class="justify-center mx-auto px-4 py-2 bg-[#626b82] rounded-full h-12 text-base text-left text-[#efefef] hover:bg-[#1f283a] duration-1000 focus:outline-none focus:shadow-outline focus:ring-[#1f283a] ring-2 ring-ofsset-4
-                         ring-transparent"
-              >Dropdown
+              class="justify-center mx-auto px-4 py-2 bg-[#626b82] rounded-full h-12 text-base text-left text-[#efefef] hover:bg-[#1f283a] duration-1000 focus:outline-none focus:shadow-outline focus:ring-[#1f283a] ring-2 ring-ofsset-4ring-transparent"
+              >Flyout
               <span class="ml-6">&#8964;</span>
             </button>
             <div
               class="invisible absolute top-full w-48 transform opacity-0 transition-all duration-300 group-focus-within:visible group-focus-within:opacity-100 z-50 rounded-2xl p-4 shadow-lg ring-1 ring-[#1f283a] ring-opacity-5 bg-white">
               <ul class="space-y-2">
                 <li class="flex">...</li>
-                <li class="group/secondDropdown relative">
+                <li class="group/secondflyout relative">
                   <button class="flex w-full items-center justify-between">
-                    <span>Second Dropdown</span>
+                    <span>Second Flyout</span>
                     <span>&#8250;</span>
                   </button>
                   <div
-                    class="invisible absolute top-0 left-full w-40 transform opacity-0 transition-all duration-300 group-focus-within/secondDropdown:visible group-focus-within/secondDropdown:opacity-100 group-hover/secondDropdown:visible group-hover/secondDropdown:opacity-100 z-50">
+                    class="invisible absolute top-0 left-full w-40 transform opacity-0 transition-all duration-300 group-focus-within/secondflyout:visible group-focus-within/secondflyout:opacity-100 group-hover/secondflyout:visible group-hover/secondflyout:opacity-100 z-50">
                     <ul
                       class="mt-1 rounded-2xl space-y-2 shadow-lg ring-1 p-4 ring-[#1f283a] ring-opacity-5 bg-white">
                       <li class="flex">...</li>
@@ -62,7 +61,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     <!-- Ends component -->
     <!-- Starts links to tutorial -->
     <div
-      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 sr-only">
       <div
         class="pointer-events-auto flex w-full max-w-md divide-x divide-gray-200 rounded-lg bg-white shadow-xl border">
         <div class="flex w-0 flex-1 items-center p-4">
@@ -100,3 +99,5 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     <!-- Ends links to tutorial -->
   </section>
 </BaseLayout>
+
+
