@@ -16,11 +16,26 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       </div>
       <div class="max-w-md mx-auto mt-12 pt-12 border-t w-full">
         <!-- Starts component -->
-        <div class="prose">
-          <p>
-            This is an example of how to <mark>highlight</mark> important text using
-            the HTML <mark>mark</mark> tag.
-          </p>
+        <div class="prose divide-y border-b">
+          <div class="pb-4">
+            <h3>Basic</h3>
+            <p>
+              To search for the word <mark>highlight</mark>, press Ctrl + F.
+            </p>
+          </div>
+          <div class="pb-4">
+            <h3>Basic with Tailwind CSS</h3>
+            <mark class="bg-blue-600 text-white">
+              This text is highlighted with Tailwind CSS.
+            </mark>
+          </div>
+          <div class="pb-4">
+            <h3>Advanced styling  with Tailwind CSS</h3>
+            <mark
+              class="bg-gradient-to-r from-blue-500 p-2 via-blue-600 to-blue-800 text-white font-bold">
+              This is a more advanced highlight.
+            </mark>
+          </div>
 
           <!-- Ends component -->
         </div>
