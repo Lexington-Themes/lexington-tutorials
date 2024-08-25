@@ -14,47 +14,150 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </div>
         </div>
       </div>
-      <div class="max-w-md mx-auto mt-12 pt-12 border-t w-full">
+      <div class="max-w-md mx-auto border-y w-full divide-y">
         <!-- Starts component -->
-        <form>
-          <label
-            class="block text-sm text-gray-700"
-            for="fruits"
-            >Choose a fruit:</label
-          >
-          <input
-            list="fruits"
-            id="fruit"
-            name="fruit"
-            placeholder="Type to search..."
-            class="block w-full h-12 px-4 py-3 mt-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
-          />
-          <datalist id="fruits">
-            <option value="Apple">
-              <option value="Banana">
-                <option value="Cherry">
-                  <option value="Date">
-                    <option value="Grape"> </option>
-                  </option>
-                </option>
-              </option>
-            </option>
-          </datalist>
-        </form>
+        <div class="py-8">
+          <p>Textual</p>
+          <div class="mt-4">
+            <label
+              class="text-gray-500 text-sm"
+              for="myBrowser"
+              >Choose a browser from this list:</label
+            >
+            <input
+              list="browsers"
+              id="myBrowser"
+              name="myBrowser"
+              class="block w-full h-12 mt-2 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+            />
+            <datalist id="browsers">
+              <option value="Chrome"></option>
+              <option value="Firefox"></option>
+              <option value="Opera"></option>
+              <option value="Safari"></option>
+              <option value="Microsoft Edge"></option>
+            </datalist>
+          </div>
+        </div>
+        <div class="py-8">
+          <p>Range</p>
+          <div class="flex items-center gap-4 mt-4">
+            <label
+              class="block text-sm text-gray-500"
+              for="valueRange"
+              >Select a value:</label
+            >
+            <input
+              type="range"
+              id="valueRange"
+              name="valueRange"
+              min="0"
+              max="100"
+              step="10"
+              list="valueTicks"
+            />
+
+            <datalist id="valueTicks">
+              <option
+                value="0"
+                label="0"
+              ></option>
+              <option
+                value="10"
+                label="10"
+              ></option>
+              <option
+                value="20"
+                label="20"
+              ></option>
+              <option
+                value="30"
+                label="30"
+              ></option>
+            </datalist>
+          </div>
+        </div>
+        <div class="py-8">
+          <p>Color</p>
+          <div class="mt-4">
+            <label
+              class="block text-sm text-gray-500"
+              for="colors"
+              >Are you into Blue?</label
+            >
+            <input
+              type="color"
+              id="colors"
+              list="blueColors"
+              class="block w-full h-12 mt-2 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+            />
+
+            <datalist id="blueColors">
+              <option value="#00008B"></option>
+              <option value="#0000FF"></option>
+              <option value="#4682B4"></option>
+              <option value="#5F9FFF"></option>
+            </datalist>
+          </div>
+        </div>
+        <div class="py-8">
+          <p>Password</p>
+          <div class="mt-4">
+            <label
+              class="block text-sm text-gray-500"
+              for="pwd"
+              >Choose a password suggestion:</label
+            >
+            <input
+              type="password"
+              list="suggestedPasswords"
+              id="pwd"
+              class="block w-full h-12 mt-2 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+            />
+            <datalist id="suggestedPasswords">
+              <option value="G7s!4#q8U@9m"></option>
+              <option value="Tr0ub4dor&3"></option>
+              <option value="P@ssw0rd!2024"></option>
+              <option value="S3cur3P@ss"></option>
+            </datalist>
+          </div>
+        </div>
+        <div class="py-8">
+          <p>Date</p>
+          <div class="mt-4">
+            <label
+              class="block text-sm text-gray-500"
+              for="meetingTime"
+              >Select a preferred meeting time:</label
+            >
+            <input
+              type="time"
+              id="meetingTime"
+              list="meetingHours"
+              class="block w-full h-12 mt-2 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+            />
+
+            <datalist id="meetingHours">
+              <option value="09:00"></option>
+              <option value="10:00"></option>
+              <option value="11:00"></option>
+              <option value="14:00"></option>
+              <option value="15:00"></option>
+              <option value="16:00"></option>
+            </datalist>
+          </div>
+        </div>
 
         <!-- Starts links to tutorial -->
         <div
-          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 ">
           <div
             class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
             <div class="flex w-0 flex-1 items-center p-4">
               <div class="w-full">
-                <p class="text-sm font-medium text-neutral-900">
-                  Tutorial
-                </p>
+                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
                 <p class="mt-1 text-sm text-neutral-500">
-                  How to use the datalist for creating autocomplete
-                  input fields
+                  How to use the datalist for creating autocomplete input fields
                 </p>
                 <p class="mt-2 text-xs text-orange-600 underline">
                   <a href="https://lexingtonthemes.com">
