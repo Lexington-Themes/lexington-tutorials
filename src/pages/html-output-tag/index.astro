@@ -1,0 +1,89 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div class="max-w-xl mx-auto text-center">
+        <div
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+          <div>
+            <h1>HTML Datalist</h1>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-md mx-auto w-full pt-6 mt-6 border-t">
+        <!-- Starts component -->
+        <form
+          class="flex flex-col gap-6 text-sm text-gray-500 prose"
+          oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+          <div class="flex justify-between items-center">
+            <div class="flex gap-2 items-center">
+              +<input
+                type="number"
+                id="b"
+                value="25"
+                class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+              />
+              =
+            </div>
+            <div class="flex gap-2 justify-center bg-gray-50 rounded-full text-blue-600 text-xs size-12  items-center">
+              <output
+                name="x"
+                for="a b"
+              ></output>
+            </div>
+          </div>
+          <input
+            type="range"
+            id="a"
+            value="50"
+          />
+        </form>
+        <!-- Starts links to tutorial -->
+        <div
+          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+          <div
+            class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+            <div class="flex w-0 flex-1 items-center p-4">
+              <div class="w-full">
+                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+                <p class="mt-1 text-sm text-neutral-500">
+                  How to use the HTML output tag for displaying the result of a
+                  calculation
+                </p>
+                <p class="mt-2 text-xs text-orange-600 underline">
+                  <a href="https://lexingtonthemes.com">
+                    by © Lexington Themes</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col divide-y divide-neutral-200">
+                <div class="flex h-0 flex-1">
+                  <a
+                    href="https://lexingtonthemes.com/tutorials/how-to-use-the-output-tag-for-displaying-the-result-of-a-calculation"
+                    type="button"
+                    class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                    >Tutorial</a
+                  >
+                </div>
+                <div class="flex h-0 flex-1">
+                  <a
+                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/html-output-tag/index.astro"
+                    class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                    >Get the code</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Ends links to tutorial -->
+      </div>
+    </div>
+  </section></BaseLayout
+>
