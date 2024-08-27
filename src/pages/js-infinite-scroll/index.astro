@@ -1,0 +1,142 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div class="max-w-xl mx-auto text-center">
+        <div
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+          <h1>Infinite Scrolling</h1>
+        </div>
+      </div>
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none lg:fixed inset-x-0 bottom-0 sm:flex  p-2">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create infinite scrolling with Tailwind CSS and
+                JavaScript
+              </p>
+              <p class="mt-2 text-xs text-orange-600 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-infinite-scrolling-with-tailwind-css-and-javascript"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-infinite-scroll/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+      <div class="max-w-xl mx-auto w-full pt-6 mt-6 border-t">
+        <!-- Starts component -->
+        <div class="mx-auto">
+          <div
+            id="content"
+            class="space-y-4 text-gray-500"
+            aria-live="polite">
+            <!-- Dynamic content will be appended here -->
+          </div>
+          <div
+            id="loader"
+            class="text-center my-8 hidden">
+            <div
+              class="size-8 border-4 border-orange-600 border-t-transparent rounded-full animate-spin">
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <button
+              id="load-more"
+              class="rounded-full bg-orange-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 w-auto"
+              >Load More</button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section></BaseLayout
+>
+<script type="module">
+  document.addEventListener("DOMContentLoaded", function () {
+    const content = document.getElementById("content");
+    const loader = document.getElementById("loader");
+    const loadMoreButton = document.getElementById("load-more");
+    let isLoading = false;
+    let page = 1;
+
+    function loadMoreContent() {
+      if (isLoading) return;
+      isLoading = true;
+      loader.classList.remove("hidden");
+      loadMoreButton.disabled = true;
+
+      // Simulate an API call with setTimeout
+      setTimeout(() => {
+        for (let i = 0; i < 20; i++) {
+          const item = document.createElement("div");
+          item.className =
+            "p-4 bg-white rounded-lg shadow-xl shadow-gray-500/30 text-center border";
+          item.textContent = `Item ${(page - 1) * 25 + i + 1}`;
+          content.appendChild(item);
+        }
+        loader.classList.add("hidden");
+        isLoading = false;
+        loadMoreButton.disabled = false;
+        page++;
+
+        // Announce to screen readers that new content has been loaded
+        const announcement = document.createElement("div");
+        announcement.textContent = "New items have been loaded.";
+        announcement.setAttribute("role", "status");
+        announcement.setAttribute("aria-live", "polite");
+        announcement.style.position = "absolute";
+        announcement.style.left = "-9999px";
+        document.body.appendChild(announcement);
+        setTimeout(() => document.body.removeChild(announcement), 1000);
+      }, 1000);
+    }
+
+    // Intersection Observer for infinite scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isLoading) {
+          loadMoreContent();
+        }
+      },
+      { rootMargin: "100px" }
+    );
+
+    observer.observe(loader);
+
+    // Event listener for the Load More button
+    loadMoreButton.addEventListener("click", loadMoreContent);
+
+    // Initial load
+    loadMoreContent();
+  });
+</script>

@@ -1,37 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-const htmlTags = [
-  {
-    url: "/html-details-tag",
-    title:
-      "How to create interactive and accessible content with the <details> element",
-  },
-  {
-    url: "/html-meter-tag",
-    title:
-      "How to create an accessible measurement display using the meter> tag",
-  },
-  {
-    url: "/html-time-tag",
-    title: "How to use the time tag for displaying time in an accessible way",
-  },
-  {
-    url: "/html-mark-tag",
-    title: "How to use the HTML mark tag for highlighting text",
-  },
-  {
-    url: "/html-ruby-tag",
-    title: "How to use the ruby element for enhanced text annotations in HTML",
-  },
-  {
-    url: "/html-datalist-tag",
-    title: "How to use the HTML datalist tag.",
-  },
-  {
-    url: "/html-output-tag",
-    title: "How to use the HTML output tag for displaying the result of a calculation.",
-  },
-];
+
 const tailwind = [
   {
     url: "/animated-images",
@@ -425,6 +394,11 @@ const javascript = [
     url: "/js-color-picker",
     title: "How to a create a color picker  with Tailwind CSS and JavaScript",
   },
+  {
+    url: "/js-infinite-scroll",
+    title:
+      "How to create infinite scrolling with Tailwind CSS and JavaScript",
+  },
 ];
 ---
 
@@ -447,37 +421,7 @@ const javascript = [
           </span>
         </a>
         <div
-          class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 mt-24">
-          <div>
-            <div
-              class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
-              <h1>HTML Tags</h1>
-              <p class="text-balance">
-                Tutorials with HTML tags and Tailwind CSS
-              </p>
-            </div>
-            <dl class="flex flex-col mt-12 border-t pt-8 divide-y">
-              {
-                htmlTags.reverse().map((template, index) => {
-                  const reversedIndex = tailwind.length - index;
-                  return (
-                    <div class="py-4 inline-flex text-sm items-start gap-4">
-                      <dt class="text-neutral-600 hover:text-orange-500 w-full">
-                        <a
-                          href={template.url}
-                          class="inline-flex items-center">
-                          {template.title}
-                        </a>
-                      </dt>
-                      <dd class="order-first">
-                        {String(reversedIndex).padStart(2, "0") + "."}
-                      </dd>
-                    </div>
-                  );
-                })
-              }
-            </dl>
-          </div>
+          class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 mt-24">
           <div>
             <div
               class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
