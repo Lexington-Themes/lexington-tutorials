@@ -1,0 +1,195 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section>
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
+        <div>
+          <h1>Persistent Tabs</h1>
+          <p class="text-balance">
+            Test byt writing a really difficult password
+          </p>
+        </div>
+      </div>
+      <!-- Starts component -->
+      <div
+        x-data="{
+    password: '',
+    strength: '',
+    showPassword: false,
+    checkStrength() {
+      const password = this.password;
+
+      // Reset the strength if password is empty
+      if (password.length === 0) {
+        this.strength = '';
+        return;
+      }
+
+      // Initialize the strength to weak by default
+      this.strength = 'weak';
+
+      // Define conditions for different levels of password strength
+      const hasLowerCase = /[a-z]/.test(password);
+      const hasUpperCase = /[A-Z]/.test(password);
+      const hasNumber = /\d/.test(password);
+      const hasSpecialChar = /[!@#$%^&*(),.?':{}|<>]/.test(password);
+
+      // Count the number of passed checks
+      const passedChecks = [hasLowerCase, hasUpperCase, hasNumber, hasSpecialChar].filter(Boolean).length;
+
+      // Update strength based on conditions
+      if (password.length >= 8) {
+        if (passedChecks === 4 || password.length >= 12) {
+          this.strength = 'very strong';
+        } else if (passedChecks >= 3) {
+          this.strength = 'strong';
+        } else if (passedChecks >= 2) {
+          this.strength = 'medium';
+        }
+      }
+    }
+}"
+        class="space-y-4 max-w-lg mt-12 border-t pt-6 mx-auto w-full">
+        <!-- Password Input -->
+        <div>
+          <label
+            for="password"
+            class="sr-only"
+            >Password</label
+          >
+          <div class="relative">
+            <input
+              id="password"
+              :type="showPassword ? 'text' : 'password'"
+              x-model="password"
+              @input="checkStrength()"
+              class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+              placeholder="Enter your password"
+            />
+            <button
+              @click="showPassword = !showPassword"
+              type="button"
+              class="absolute inset-y-0 right-0 flex items-center pr-3">
+              <span
+                x-show="!showPassword"
+                class="text-gray-500"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"
+                  ><path
+                    stroke="none"
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  ></path><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"
+                  ></path><path
+                    d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"
+                  ></path></svg
+                ></span
+              >
+              <span
+                x-show="showPassword"
+                class="text-blue-500"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="icon icon-tabler icons-tabler-filled icon-tabler-eye"
+                  ><path
+                    stroke="none"
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  ></path><path
+                    d="M12 4c4.29 0 7.863 2.429 10.665 7.154l.22 .379l.045 .1l.03 .083l.014 .055l.014 .082l.011 .1v.11l-.014 .111a.992 .992 0 0 1 -.026 .11l-.039 .108l-.036 .075l-.016 .03c-2.764 4.836 -6.3 7.38 -10.555 7.499l-.313 .004c-4.396 0 -8.037 -2.549 -10.868 -7.504a1 1 0 0 1 0 -.992c2.831 -4.955 6.472 -7.504 10.868 -7.504zm0 5a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z"
+                  ></path></svg
+                ></span
+              >
+            </button>
+          </div>
+        </div>
+
+        <!-- Password Strength Meter -->
+        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div
+            class="h-full transition-all duration-300 ease-out"
+            :class="{
+      'w-1/4 bg-red-500': strength === 'weak',
+      'w-1/2 bg-yellow-500': strength === 'medium',
+      'w-3/4 bg-green-500': strength === 'strong',
+      'w-full bg-blue-500': strength === 'very strong'
+    }">
+          </div>
+        </div>
+
+        <!-- Password Strength Text -->
+        <p
+          class="text-sm font-medium"
+          :class="{
+    'text-red-500': strength === 'weak',
+    'text-yellow-500': strength === 'medium',
+    'text-green-500': strength === 'strong',
+    'text-blue-500': strength === 'very strong'
+  }">
+          Password strength: <span x-text="strength"></span>
+        </p>
+      </div>
+
+      <!-- Ends component -->
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create a password strength meter with Tailwind CSS and
+                Alpine.js
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-password-strength-meter-with-tailwind-css-and-alpinejs/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/alpine-password-strength-meter/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+    </div>
+  </section>
+</BaseLayout>
