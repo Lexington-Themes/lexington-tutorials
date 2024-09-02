@@ -11,15 +11,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^3.1.4",
-    "@astrojs/preact": "^3.5.1",
+    "@astrojs/mdx": "^3.1.5",
+    "@astrojs/preact": "^3.5.2",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.14",
-    "astro": "^4.14.5",
+    "astro": "^4.15.1",
     "astro-devtool-breakpoints": "^0.3.0",
     "preact": "^10.23.2",
     "tailwind-scrollbar-hide": "^1.1.7",
