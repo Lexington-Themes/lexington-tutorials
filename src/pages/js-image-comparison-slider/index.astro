@@ -1,0 +1,188 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section>
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col min-h-[50vh] lg:h-svh justify-center py-12 lg:py-24 relative p-4 lg:p-8">
+      <div
+        class="prose text-gray-500 prose-sm text-center prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
+        <div>
+          <h1>Image comparison slider</h1>
+          <p class="text-balance">
+            Test by sliding the slider to compare two images
+          </p>
+        </div>
+      </div>
+      <!-- Starts component -->
+
+      <div
+
+        id="image-comparison"
+        class="relative h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden w-full max-w-3xl mx-auto mt-8 pt-6 border-t">
+        <!-- Before Image -->
+        <img
+          src="https://i.pinimg.com/736x/c5/02/db/c502dbc27ec77fb1343e798f855901c7.jpg"
+          alt="Before Image"
+          class="absolute top-0 left-0 w-full h-full object-cover"
+        />
+
+        <!-- After Image (in overlay) -->
+        <div
+          id="image-overlay"
+          class="absolute top-0 left-0 w-1/2 h-full overflow-hidden">
+          <img
+            src="https://i.pinimg.com/564x/56/17/d6/5617d6088a5794f177425ae6780041dd.jpg"
+            alt="After Image"
+            class="absolute top-0 left-0 w-full h-full object-cover"
+          />
+        </div>
+
+        <!-- Slider Handle -->
+        <div
+          id="slider-handle"
+          class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
+          style="left: 50%;">
+          <div
+            class="absolute top-1/2 left-1/2 w-8 h-8 -mt-4 -ml-4 bg-white rounded-full shadow-md flex items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-gray-600">
+              <path d="M18 8L22 12L18 16"></path>
+              <path d="M6 8L2 12L6 16"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <!-- Ends component -->
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create an image comparison slider with Tailwind CSS and
+                Javascript
+              </p>
+              <p class="mt-2 text-xs text-orange-500 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-an-image-comparison-slider-with-tailwind-css-and-javascript/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-image-comparison-slider/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+    </div>
+  </section>
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+      const container = document.getElementById("image-comparison");
+      const overlay = document.getElementById("image-overlay");
+      const handle = document.getElementById("slider-handle");
+
+      let isDragging = false;
+
+      function updateSliderPosition(x) {
+        const containerRect = container.getBoundingClientRect();
+        const containerWidth = containerRect.width;
+        const position = Math.max(
+          0,
+          Math.min(x - containerRect.left, containerWidth)
+        );
+        const percentage = (position / containerWidth) * 100;
+
+        overlay.style.width = `${percentage}%`;
+        handle.style.left = `${percentage}%`;
+      }
+
+      function onMouseDown(e) {
+        isDragging = true;
+        updateSliderPosition(e.clientX);
+      }
+
+      function onMouseMove(e) {
+        if (!isDragging) return;
+        updateSliderPosition(e.clientX);
+      }
+
+      function onMouseUp() {
+        isDragging = false;
+      }
+
+      handle.addEventListener("mousedown", onMouseDown);
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseup", onMouseUp);
+
+      // Touch events
+      handle.addEventListener("touchstart", (e) => {
+        isDragging = true;
+        updateSliderPosition(e.touches[0].clientX);
+      });
+
+      document.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        updateSliderPosition(e.touches[0].clientX);
+      });
+
+      document.addEventListener("touchend", onMouseUp);
+
+      // Keyboard accessibility
+      handle.setAttribute("tabindex", "0");
+      handle.addEventListener("keydown", (e) => {
+        const step = 1;
+        let newPercentage;
+
+        if (e.key === "ArrowLeft") {
+          newPercentage = Math.max(
+            0,
+            parseFloat(overlay.style.width || "50") - step
+          );
+        } else if (e.key === "ArrowRight") {
+          newPercentage = Math.min(
+            100,
+            parseFloat(overlay.style.width || "50") + step
+          );
+        } else {
+          return;
+        }
+
+        overlay.style.width = `${newPercentage}%`;
+        handle.style.left = `${newPercentage}%`;
+        e.preventDefault();
+      });
+    });
+  </script>
+</BaseLayout>

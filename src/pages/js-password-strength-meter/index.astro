@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
-
 <BaseLayout>
   <section>
     <div
@@ -84,7 +83,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             </button>
           </div>
         </div>
-
         <!-- Password Strength Meter -->
         <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
           <div
@@ -101,7 +99,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           Password strength: <span id="strength-label">weak</span>
         </p>
       </div>
-
       <!-- Ends component -->
       <!-- Starts links to tutorial -->
       <div
@@ -156,24 +153,20 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       const strengthLabel = document.getElementById("strength-label");
       const strengthText = document.getElementById("strength-text");
       let showPassword = false;
-
       function checkStrength(password) {
         let strength = "weak";
         let width = "25%";
         let color = "red";
-
         const hasLowerCase = /[a-z]/.test(password);
         const hasUpperCase = /[A-Z]/.test(password);
         const hasNumber = /\d/.test(password);
         const hasSpecialChar = /[!@#$%^&*(),.?':{}|<>]/.test(password);
-
         const passedChecks = [
           hasLowerCase,
           hasUpperCase,
           hasNumber,
           hasSpecialChar,
         ].filter(Boolean).length;
-
         if (password.length >= 8) {
           if (passedChecks === 4 || password.length >= 12) {
             strength = "very strong";
@@ -189,17 +182,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             color = "orange";
           }
         }
-
         strengthBar.style.width = width;
         strengthBar.style.backgroundColor = color;
         strengthLabel.textContent = strength;
         strengthText.style.color = color;
       }
-
       passwordInput.addEventListener("input", (event) => {
         checkStrength(event.target.value);
       });
-
       togglePasswordButton.addEventListener("click", () => {
         showPassword = !showPassword;
         passwordInput.type = showPassword ? "text" : "password";
