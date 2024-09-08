@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
-
 <BaseLayout>
   <section>
     <div
@@ -16,9 +15,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         </div>
       </div>
       <!-- Starts component -->
-
       <div
-
         id="image-comparison"
         class="relative h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden w-full max-w-3xl mx-auto mt-8 pt-6 border-t">
         <!-- Before Image -->
@@ -27,7 +24,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           alt="Before Image"
           class="absolute top-0 left-0 w-full h-full object-cover"
         />
-
         <!-- After Image (in overlay) -->
         <div
           id="image-overlay"
@@ -38,7 +34,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             class="absolute top-0 left-0 w-full h-full object-cover"
           />
         </div>
-
         <!-- Slider Handle -->
         <div
           id="slider-handle"
@@ -112,9 +107,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       const container = document.getElementById("image-comparison");
       const overlay = document.getElementById("image-overlay");
       const handle = document.getElementById("slider-handle");
-
       let isDragging = false;
-
       function updateSliderPosition(x) {
         const containerRect = container.getBoundingClientRect();
         const containerWidth = containerRect.width;
@@ -123,48 +116,38 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           Math.min(x - containerRect.left, containerWidth)
         );
         const percentage = (position / containerWidth) * 100;
-
         overlay.style.width = `${percentage}%`;
         handle.style.left = `${percentage}%`;
       }
-
       function onMouseDown(e) {
         isDragging = true;
         updateSliderPosition(e.clientX);
       }
-
       function onMouseMove(e) {
         if (!isDragging) return;
         updateSliderPosition(e.clientX);
       }
-
       function onMouseUp() {
         isDragging = false;
       }
-
       handle.addEventListener("mousedown", onMouseDown);
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
-
       // Touch events
       handle.addEventListener("touchstart", (e) => {
         isDragging = true;
         updateSliderPosition(e.touches[0].clientX);
       });
-
       document.addEventListener("touchmove", (e) => {
         if (!isDragging) return;
         updateSliderPosition(e.touches[0].clientX);
       });
-
       document.addEventListener("touchend", onMouseUp);
-
       // Keyboard accessibility
       handle.setAttribute("tabindex", "0");
       handle.addEventListener("keydown", (e) => {
         const step = 1;
         let newPercentage;
-
         if (e.key === "ArrowLeft") {
           newPercentage = Math.max(
             0,
@@ -178,7 +161,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         } else {
           return;
         }
-
         overlay.style.width = `${newPercentage}%`;
         handle.style.left = `${newPercentage}%`;
         e.preventDefault();
