@@ -3,7 +3,7 @@
     <div
       class="prose text-gray-500 prose-sm text-center prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
       <div>
-        <h1>Command bar</h1>
+        <h1>Command box</h1>
         <p class="text-balance">Click on the input to see what happends</p>
       </div>
     </div>
@@ -11,10 +11,10 @@
     <div
       class="max-w-xl mx-auto w-full bg-gray-50 p-2 border rounded-xl border-gray-100">
       <div
-        id="command-bar"
+        id="combo-box"
         class="relative">
         <label
-          for="command-input"
+          for="combo-input"
           class="sr-only"
           >Search or use commands</label
         >
@@ -33,18 +33,18 @@
         </svg>
         <input
           type="text"
-          id="command-input"
+          id="combo-input"
           class="w-full h-12 pl-11 pr-4 block px-4 py-3 placeholder-gray-500 bg-white border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
           placeholder="Search for anything"
           role="combobox"
           aria-expanded="false"
-          aria-controls="command-menu"
+          aria-controls="combo-menu"
           aria-activedescendant=""
           aria-autocomplete="list"
         />
       </div>
       <ul
-        id="command-menu"
+        id="combo-menu"
         class="hidden mt-2 overflow-hidden bg-white rounded-lg shadow-xl border border-gray-200"
         role="listbox"
         aria-label="Command options">
@@ -126,7 +126,7 @@
           <div class="w-full">
             <p class="text-sm font-medium text-neutral-900">Tutorial</p>
             <p class="mt-1 text-sm text-neutral-500">
-              How to create a basic command bar with Tailwind CSS and JavaScript
+              How to create a basic command box with Tailwind CSS and JavaScript
             </p>
             <p class="mt-2 text-xs text-orange-500 underline">
               <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
@@ -137,7 +137,7 @@
           <div class="flex flex-col divide-y divide-neutral-200">
             <div class="flex h-0 flex-1">
               <a
-                href="https://lexingtonthemes.com/tutorials/how-to-create-an-interactive-command-bar-with-tailwind-css-and-javascript/"
+                href="https://lexingtonthemes.com/tutorials/how-to-create-an-interactive-combo-box-with-tailwind-css-and-javascript/"
                 type="button"
                 class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >Tutorial</a
@@ -145,7 +145,7 @@
             </div>
             <div class="flex h-0 flex-1">
               <a
-                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-command-bar/index.astro"
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-combo-box/index.astro"
                 class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >Get the code</a
               >
@@ -159,8 +159,8 @@
 </section>
 
 <script type="module">
-  const input = document.getElementById("command-input");
-  const menu = document.getElementById("command-menu");
+  const input = document.getElementById("combo-input");
+  const menu = document.getElementById("combo-menu");
   const options = menu.querySelectorAll('[role="option"]');
   let currentFocus = -1;
 
