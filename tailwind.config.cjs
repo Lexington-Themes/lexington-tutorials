@@ -6,7 +6,7 @@ module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
-      
+
       colors: {
         orange: {
           50: "hsl(22, 100%, 96%)",
@@ -34,6 +34,19 @@ module.exports = {
         '900': '#263f89',
         '950': '#162350',
         },
+         onyx: {
+        50: "#F1F1F4",
+        100: "#E3E3E8",
+        200: "#C8C6D2",
+        300: "#AFADBE",
+        400: "#9490A7",
+        500: "#787490",
+        600: "#605D75",
+        700: "#4B485B",
+        800: "#34323F",
+        900: "#1f1e26",
+        950: "#1c1b22"
+      },
       },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
