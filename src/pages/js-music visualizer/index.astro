@@ -1,0 +1,109 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+<BaseLayout>
+  <section>
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
+        <div>
+          <h1>Music Visualizer</h1>
+          <p class="text-balance">
+           GEt your dancing shoes, press play and enjoy the music visualizer!
+          </p>
+        </div>
+      </div>
+      <!-- Starts component -->
+      <div class="max-w-xl items-center w-full mx-auto">
+        <audio
+          id="audio"
+          controls
+          src="/music/sample.mp3"
+          class="justify-center w-full "
+        ></audio>
+        <canvas
+          id="visualizer"
+
+          class="bg-gray-800 rounded-lg w-full h-72 mt-8"
+        ></canvas>
+      </div>
+      <!-- Ends component -->
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to create a music visualizer with Tailwind CSS and JavaScript
+            </p>
+            <p class="mt-2 text-xs text-orange-500 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-a-music-visualizer-with-tailwind-css-and-javascript/"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-music-visualizer/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
+<script type="module">
+  const audio = document.getElementById("audio");
+  const canvas = document.getElementById("visualizer");
+  const ctx = canvas.getContext("2d");
+  let audioContext;
+  let analyser;
+  let dataArray;
+  function initializeAudio() {
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = audioContext.createAnalyser();
+      analyser.fftSize = 256;
+      const bufferLength = analyser.frequencyBinCount;
+      dataArray = new Uint8Array(bufferLength);
+      const source = audioContext.createMediaElementSource(audio);
+      source.connect(analyser);
+      analyser.connect(audioContext.destination);
+    }
+    requestAnimationFrame(visualize);
+  }
+  audio.addEventListener("play", initializeAudio);
+  function visualize() {
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+    const barWidth = (WIDTH / dataArray.length) * 2.5;
+    analyser.getByteFrequencyData(dataArray);
+    ctx.fillStyle = "rgb(17, 24, 39)";
+    ctx.fillRect(0, 0, WIDTH, HEIGHT);
+    for (let i = 0; i < dataArray.length; i++) {
+      const barHeight = dataArray[i] / 2;
+      const hue = (i / dataArray.length) * 360;
+      ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+      ctx.fillRect(i * barWidth, HEIGHT - barHeight, barWidth, barHeight);
+    }
+    requestAnimationFrame(visualize);
+  }
+</script>
