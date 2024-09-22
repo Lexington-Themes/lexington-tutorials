@@ -1,0 +1,191 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+
+<BaseLayout>
+  <section>
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col min-h-svh justify-start py-24 lg:py-32 relative p-8">
+      <div
+        class="prose text-gray-500 prose-sm text-center prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
+        <h1>Lazy loading image gallery</h1>
+        <p>Click on the keys to type.</p>
+        <p class="md:hidden">This  tutorial os only for desktop</p>
+      </div>
+      <!-- Starts component -->
+      <!-- Virtual Keyboard Container -->
+      <div
+        id="virtual-keyboard"
+        class="bg-gray-50 p-4 rounded-lg border max-w-4xl mx-auto mt-12 hidden md:block">
+        <!-- Keyboard Output Display -->
+        <div
+          id="keyboard-output"
+          class="bg-white p-2 mb-4 h-12 rounded-md border border-gray-200 text-xl">
+        </div>
+
+        <!-- Keyboard Layout -->
+        <div class="grid gap-1">
+          <!-- Number Row -->
+          <div class="grid grid-cols-13 gap-1">
+            <button class="key bg-gray-300 p-2 rounded text-sm">Esc</button>
+            <button class="key bg-white p-2 rounded">1</button>
+            <button class="key bg-white p-2 rounded">2</button>
+            <button class="key bg-white p-2 rounded">3</button>
+            <button class="key bg-white p-2 rounded">4</button>
+            <button class="key bg-white p-2 rounded">5</button>
+            <button class="key bg-white p-2 rounded">6</button>
+            <button class="key bg-white p-2 rounded">7</button>
+            <button class="key bg-white p-2 rounded">8</button>
+            <button class="key bg-white p-2 rounded">9</button>
+            <button class="key bg-white p-2 rounded">0</button>
+            <button class="key bg-gray-300 p-2 rounded col-span-2"
+              >Backspace</button
+            >
+          </div>
+          <!-- QWERTY Row -->
+          <div class="grid grid-cols-13 gap-1">
+            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+              >Tab</button
+            >
+            <button class="key bg-white p-2 rounded">Q</button>
+            <button class="key bg-white p-2 rounded">W</button>
+            <button class="key bg-white p-2 rounded">E</button>
+            <button class="key bg-white p-2 rounded">R</button>
+            <button class="key bg-white p-2 rounded">T</button>
+            <button class="key bg-white p-2 rounded">Y</button>
+            <button class="key bg-white p-2 rounded">U</button>
+            <button class="key bg-white p-2 rounded">I</button>
+            <button class="key bg-white p-2 rounded">O</button>
+            <button class="key bg-white p-2 rounded">P</button>
+            <button class="key bg-white p-2 rounded">Å</button>
+          </div>
+          <!-- ASDF Row -->
+          <div class="grid grid-cols-13 gap-1">
+            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+              >Caps</button
+            >
+            <button class="key bg-white p-2 rounded">A</button>
+            <button class="key bg-white p-2 rounded">S</button>
+            <button class="key bg-white p-2 rounded">D</button>
+            <button class="key bg-white p-2 rounded">F</button>
+            <button class="key bg-white p-2 rounded">G</button>
+            <button class="key bg-white p-2 rounded">H</button>
+            <button class="key bg-white p-2 rounded">J</button>
+            <button class="key bg-white p-2 rounded">K</button>
+            <button class="key bg-white p-2 rounded">L</button>
+            <button class="key bg-gray-300 p-2 rounded col-span-2">Enter</button
+            >
+          </div>
+          <!-- ZXCV Row -->
+          <div class="grid grid-cols-13 gap-1">
+            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+              >Shift</button
+            >
+            <button class="key bg-white p-2 rounded">Z</button>
+            <button class="key bg-white p-2 rounded">X</button>
+            <button class="key bg-white p-2 rounded">C</button>
+            <button class="key bg-white p-2 rounded">V</button>
+            <button class="key bg-white p-2 rounded">B</button>
+            <button class="key bg-white p-2 rounded">N</button>
+            <button class="key bg-white p-2 rounded">M</button>
+            <button class="key bg-white p-2 rounded">,</button>
+            <button class="key bg-white p-2 rounded">.</button>
+            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+              >Shift</button
+            >
+          </div>
+          <!-- Space Row -->
+          <div class="grid grid-cols-13 gap-1">
+            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+              >Ctrl</button
+            >
+            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+              >Alt</button
+            >
+            <button class="key bg-white p-2 rounded col-span-7">Space</button>
+            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+              >Alt</button
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Ends component -->
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 sr-only">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to build a virtual keyboard with Tailwind CSS and JavaScript
+            </p>
+            <p class="mt-2 text-xs text-orange-500 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-a-virtual-keyboard-with-tailwind-css-and-javascript/"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-virtual-keyboard/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
+<script type="module">
+  // Get the keyboard container and output display
+  const keyboard = document.getElementById("virtual-keyboard");
+  const output = document.getElementById("keyboard-output");
+
+  // Add click event listener to the keyboard container
+  keyboard.addEventListener("click", function (e) {
+    // Check if the clicked element is a key
+    if (e.target.classList.contains("key")) {
+      const key = e.target.textContent;
+
+      // Handle different key actions
+      switch (key) {
+        case "Backspace":
+          output.textContent = output.textContent.slice(0, -1);
+          break;
+        case "Enter":
+          output.textContent += "\n";
+          break;
+        case "Space":
+          output.textContent += " ";
+          break;
+        case "Tab":
+        case "Caps":
+        case "Shift":
+        case "Ctrl":
+        case "Alt":
+        case "Esc":
+          // These keys don't produce output
+          break;
+        default:
+          output.textContent += key;
+      }
+    }
+  });
+</script>
