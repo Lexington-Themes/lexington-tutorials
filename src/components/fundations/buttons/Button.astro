@@ -128,7 +128,7 @@ const additionalClasses = className ? className.split(" ") : [];
     ...additionalClasses,
   ]}
   {...rest}>
-
+  <slot name="left-icon" />
   <slot />
- 
+  <slot name="right-icon" />
 </button>
