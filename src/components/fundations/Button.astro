@@ -1,0 +1,134 @@
+---
+const {
+  variant,
+  size,
+  onlyIconSize,
+  gap,
+  class: className,
+  ...rest
+} = Astro.props;
+// Default button
+const defaultClass = [
+  "text-white",
+  "bg-gray-900",
+  "hover:bg-gray-800",
+  "focus:ring-gray-500/50",
+];
+// blue button
+const accentClass = [
+  "text-white",
+  "bg-blue-600",
+  "hover:bg-blue-700",
+  "focus:ring-blue-500/50",
+];
+// Alternative button
+const alternativeaccentClass = [
+  "text-base-500",
+  "bg-white",
+  "hover:text-blue-500",
+  "ring-1",
+  "ring-gray-200",
+  "focus:ring-blue-500",
+];
+// Muted button
+const mutedClass = [
+  "text-base-700",
+  "bg-gray-50",
+  "hover:bg-white",
+  "focus:ring-gray-500/50",
+];
+// Text button
+const textClass = [
+  "text-base-500",
+  "bg-white",
+  "hover:text-blue-600",
+  "hover:bg-gray-50",
+  "focus:ring-blue-500",
+];
+// Link button
+const linkClass = [
+  "text-blue-500",
+  "hover:text-blue-700",
+  "focus:ring-blue-500",
+];
+// Success button
+const infoClass = [
+  "text-blue-700",
+  "bg-blue-600/10",
+  "hover:bg-blue-600/5",
+  "focus:ring-blue-600/20",
+];
+// Success button
+const successClass = [
+  "text-emerald-600",
+  "bg-emerald-600/10",
+  "hover:bg-emerald-600/5",
+  "focus:ring-emerald-600/20",
+];
+// Warning button
+const warningClass = [
+  "text-amber-600",
+  "bg-amber-600/10",
+  "hover:bg-amber-600/5",
+  "focus:ring-amber-600/10",
+];
+// Danger button
+const dangerClass = [
+  "text-rose-600",
+  "bg-rose-600/10",
+  "hover:bg-rose-600/5",
+  "focus:ring-rose-600",
+];
+// Size
+const xs = ["h-8", "px-4", "py-2", "text-xs", "font-medium", "rounded-md"];
+const sm = ["h-9", "px-4", "py-2", "text-sm", "font-medium", "rounded-md"];
+const base = ["h-10", "px-6", "py-3", "text-base", "font-medium", "rounded-lg"];
+const md = ["h-11", "px-6", "py-3", "text-base", "font-medium", "rounded-lg"];
+const lg = ["h-12", "px-6", "py-3", "text-base", "font-medium", "rounded-lg"];
+const xl = ["h-14", "px-6", "py-3", "text-lg", "font-medium", "rounded-lg"];
+// Gap
+const gapXS = ["gap-2"];
+const gapSM = ["gap-4"];
+const gapBase = ["gap-8"];
+const gapMD = ["gap-10"];
+const gapLG = ["gap-12"];
+const additionalClasses = className ? className.split(" ") : [];
+---
+
+<button
+  class:list={[
+    "flex",
+    "items-center",
+    "justify-center",
+    "transition-all",
+    "duration-300",
+    "focus:ring-2",
+    "focus:outline-none",
+    variant === "accent" && accentClass,
+    variant === "default" && defaultClass,
+    variant === "alternative" && alternativeaccentClass,
+    variant === "muted" && mutedClass,
+    variant === "info" && infoClass,
+    variant === "success" && successClass,
+    variant === "warning" && warningClass,
+    variant === "danger" && dangerClass,
+    variant === "text" && textClass,
+    variant === "link" && linkClass,
+    size === "xs" && xs,
+    size === "sm" && sm,
+    size === "base" && base,
+    size === "md" && md,
+    size === "lg" && lg,
+    size === "xl" && xl,
+    gap === "xs" && gapXS,
+    gap === "sm" && gapSM,
+    gap === "base" && gapBase,
+    gap === "md" && gapMD,
+    gap === "lg" && gapLG,
+    ...additionalClasses,
+  ]}
+  {...rest}>
+
+  <slot />
+ 
+</button>

@@ -1,5 +1,11 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+const astro = [
+   {
+    url: "astro-button-component",
+    title: "How to create a button component with variants with Astro JS and Tailwind CSS",
+  },
+]
 
 const tailwind = [
   {
@@ -482,6 +488,34 @@ const javascript = [
         <div
           class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 mt-24">
           <div>
+            <div
+              class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
+              <h1>Astro</h1>
+              <p class="text-balance">Tutorials made for Astro JS</p>
+            </div>
+            <dl class="flex flex-col mt-12 border-t pt-8 divide-y">
+              {
+                astro.reverse().map((template, index) => {
+                  const reversedIndex = tailwind.length - index;
+                  return (
+                    <div class="py-4 inline-flex text-sm items-start gap-4">
+                      <dt class="text-neutral-600 hover:text-orange-500 w-full">
+                        <a
+                          href={template.url}
+                          class="inline-flex items-center">
+                          {template.title}
+                        </a>
+                      </dt>
+                      <dd class="order-first">
+                        {String(reversedIndex).padStart(2, "0") + "."}
+                      </dd>
+                    </div>
+                  );
+                })
+              }
+            </dl>
+          </div>
+            <div>
             <div
               class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
               <h1>Tailwind</h1>
