@@ -1,0 +1,83 @@
+---
+import Button from "@/components/fundations/buttons/Button.astro";
+import PlaceHolderIcon from "@/components/fundations/icons/PlaceHolderIcon.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+<BaseLayout>
+  <section class="bg-white">
+    <div class="w-full mx-auto max-w-xl flex flex-col relative py-24">
+      <div
+        class="prose prose-sm prose-headings:font-normal prose-headings:text-xl">
+        <h1>Typewriter effect</h1>
+      </div>
+      <div class="mt-12">
+          <!-- Starts component -->
+          <p
+            id="typewriter"
+            class="text-4xl  font-medium ">
+            <!-- The text will be inserted here by JavaScript -->
+          </p>
+          <!-- Ends component -->
+      </div>
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to create a 'typewriter effect' text animation with Tailwind
+              CSS and JavaScript
+            </p>
+            <p class="mt-2 text-xs text-orange-500 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-a-typewriter-effect-text-animation-with-tailwind-css-and-javascript/"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-typewriter-effect/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
+<script type="module">
+  const text = "Have a great Monday everyone!";
+  const typewriter = document.getElementById("typewriter");
+  let i = 0;
+  function typeWrite() {
+    if (i < text.length) {
+      typewriter.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWrite, 100); // Adjust speed here (milliseconds)
+    } else {
+      setTimeout(resetTypewriter, 2000); // Wait before resetting
+    }
+  }
+  function resetTypewriter() {
+    typewriter.innerHTML = "";
+    i = 0;
+    typeWrite();
+  }
+  typeWrite();
+</script>
