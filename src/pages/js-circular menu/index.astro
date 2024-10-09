@@ -1,0 +1,125 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div
+        class="prose text-gray-500 text-center prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+        <h1>Animated Circular Menu</h1>
+        <p class="text-balance">
+          Click the menu button to toggle the animated circular menu.
+        </p>
+      </div>
+      <div class="mt-6 border-t pt-12 max-w-sm mx-auto w-full">
+        <!-- Starts component -->
+        <div
+          class="relative w-64 h-64 justify-center mx-auto"
+          id="menuContainer">
+          <button
+            id="menuToggle"
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-300 z-10 transition-all duration-300 hover:scale-110">
+            Menu
+          </button>
+          <nav
+            id="circularMenu"
+            class="absolute top-0 left-0 w-full h-full">
+            <a
+              href="#"
+              class="menu-item absolute opacity-0 invisible bg-blue-950 text-white rounded-full size-24 flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >1</a
+            >
+            <a
+              href="#"
+              class="menu-item absolute opacity-0 invisible bg-blue-950 text-white rounded-full size-24 flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >2</a
+            >
+            <a
+              href="#"
+              class="menu-item absolute opacity-0 invisible bg-blue-950 text-white rounded-full size-24 flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >3</a
+            >
+          </nav>
+        </div>
+        <!-- Ends component -->
+      </div>
+    </div>
+    <!-- Starts links to tutorial -->
+    <div
+      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <div
+        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+        <div class="flex w-0 flex-1 items-center p-4">
+          <div class="w-full">
+            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+            <p class="mt-1 text-sm text-neutral-500">
+              How to create a circular menu with Tailwind CSS and minimal
+              JavaScript
+            </p>
+            <p class="mt-2 text-xs text-orange-600 underline">
+              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+            </p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col divide-y divide-neutral-200">
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://lexingtonthemes.com/tutorials/how-to-create-a-circular-menu-with-tailwind-css-and-minimal-javascript/"
+                type="button"
+                type="button"
+                class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Tutorial</a
+              >
+            </div>
+            <div class="flex h-0 flex-1">
+              <a
+                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-circular menu/index.astro"
+                class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                >Get the code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ends links to tutorial -->
+  </section>
+</BaseLayout>
+
+<script type="module">
+  const menuToggle = document.getElementById("menuToggle");
+  const menuItems = document.querySelectorAll(".menu-item");
+  let isOpen = false;
+
+  menuToggle.addEventListener("click", toggleMenu);
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+    menuItems.forEach((item, index) => {
+      const delay = index * 50; // Stagger the animation
+      setTimeout(() => {
+        if (isOpen) {
+          const angle = (index / menuItems.length) * 2 * Math.PI;
+          const radius = 50; // Reduced radius to bring items closer to the button
+          const x = Math.cos(angle) * radius + 50;
+          const y = Math.sin(angle) * radius + 50;
+          item.style.left = `${x}%`;
+          item.style.top = `${y}%`;
+          item.classList.remove("opacity-0", "invisible");
+          item.style.transform = `translate(-50%, -50%) scale(1)`;
+        } else {
+          item.style.left = "50%";
+          item.style.top = "50%";
+          item.classList.add("opacity-0", "invisible");
+          item.style.transform = `translate(-50%, -50%) scale(0.5)`;
+        }
+      }, delay);
+    });
+
+    // Toggle the menu button text
+    menuToggle.textContent = isOpen ? "Close" : "Menu";
+  }
+</script>
