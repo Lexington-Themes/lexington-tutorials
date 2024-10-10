@@ -1,0 +1,202 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section
+    class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center items-center p-8">
+    <div
+      class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
+      <h1>Particle Text Animation</h1>
+      <p class="text-balance">
+        Watch as the particles form the message "HELLO EVERYONE"
+      </p>
+    </div>
+    <div class="w-full max-w-2xl mx-auto text-center">
+      <div
+        id="text-container"
+        class="font-bold text-black h-96 lg:h-32 flex items-center">
+      </div>
+    </div>
+  </section>
+  <!-- Starts links to tutorial -->
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <div
+      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+      <div class="flex w-0 flex-1 items-center p-4">
+        <div class="w-full">
+          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+          <p class="mt-1 text-sm text-neutral-500">
+            How to create a particle text effect with Tailwind CSS and
+            JavaScript
+          </p>
+          <p class="mt-2 text-xs text-orange-500 underline">
+            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex flex-col divide-y divide-neutral-200">
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://lexingtonthemes.com/tutorials/how-to-create-particle-text-effect-with-tailwind-css-and-javascript"
+              type="button"
+              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Tutorial</a
+            >
+          </div>
+          <div class="flex h-0 flex-1">
+            <a
+              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-particle-text/index.astro"
+              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >Get the code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ends links to tutorial -->
+</BaseLayout>
+
+<script type="module">
+  class ParticleTextAnimation {
+    constructor(containerId, initialText, finalText, particleCount = 500) {
+      this.container = document.getElementById(containerId);
+      this.initialText = initialText;
+      this.finalText = finalText;
+      this.particleCount = particleCount;
+      this.particles = [];
+      this.animationFrame = null;
+
+      this.init();
+    }
+
+    init() {
+      this.createParticles();
+      this.addEventListeners();
+      this.startAnimation();
+    }
+
+    createParticles() {
+      if (!this.container) return;
+      this.container.innerHTML = "";
+      this.particles = [];
+
+      const fragment = document.createDocumentFragment();
+      const containerRect = this.container.getBoundingClientRect();
+
+      for (let i = 0; i < this.particleCount; i++) {
+        const particle = document.createElement("span");
+        particle.textContent = this.getRandomChar(this.initialText);
+        particle.className =
+          "absolute opacity-0 transition-all duration-1000 ease-out";
+        fragment.appendChild(particle);
+
+        this.particles.push({
+          element: particle,
+          x: Math.random() * containerRect.width,
+          y: Math.random() * containerRect.height,
+          speedX: Math.random() * 2 - 1,
+          speedY: Math.random() * 2 - 1,
+        });
+      }
+
+      this.container.appendChild(fragment);
+    }
+
+    getRandomChar(text) {
+      return text[Math.floor(Math.random() * text.length)];
+    }
+
+    animateParticles() {
+      if (!this.container) return;
+      const containerRect = this.container.getBoundingClientRect();
+
+      this.particles.forEach((particle) => {
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        if (particle.x < 0 || particle.x > containerRect.width)
+          particle.speedX *= -1;
+        if (particle.y < 0 || particle.y > containerRect.height)
+          particle.speedY *= -1;
+
+        particle.element.style.transform = `translate(${particle.x}px, ${particle.y}px)`;
+        particle.element.style.opacity = "1";
+      });
+
+      this.animationFrame = requestAnimationFrame(() =>
+        this.animateParticles()
+      );
+    }
+
+    reformText() {
+      if (!this.container) return;
+      const containerRect = this.container.getBoundingClientRect();
+      const fontSize = window.innerWidth < 1024 ? 16 : 54;
+      const letterSpacing = fontSize * 0.8;
+      const textWidth = this.finalText.length * letterSpacing;
+      const startX = (containerRect.width - textWidth) / 2;
+      const startY = containerRect.height / 2;
+
+      this.particles.forEach((particle, index) => {
+        if (index < this.finalText.length) {
+          const targetX = startX + index * letterSpacing;
+          const targetY = startY + (Math.random() - 0.5) * (fontSize / 2);
+          particle.element.style.transform = `translate(${targetX}px, ${targetY}px)`;
+          particle.element.textContent = this.finalText[index];
+          particle.element.style.opacity = "1";
+        } else {
+          particle.element.style.opacity = "0";
+        }
+      });
+    }
+
+    startAnimation() {
+      if (this.animationFrame) {
+        cancelAnimationFrame(this.animationFrame);
+      }
+
+      this.createParticles();
+      this.animateParticles();
+
+      setTimeout(() => {
+        cancelAnimationFrame(this.animationFrame);
+        this.reformText();
+      }, 2000);
+    }
+
+    handleResize() {
+      if (this.container) {
+        const containerRect = this.container.getBoundingClientRect();
+        this.particles.forEach((particle) => {
+          particle.x = Math.random() * containerRect.width;
+          particle.y = Math.random() * containerRect.height;
+        });
+        if (this.animationFrame) {
+          cancelAnimationFrame(this.animationFrame);
+          this.animateParticles();
+        } else {
+          this.reformText();
+        }
+      }
+    }
+
+    addEventListeners() {
+      if (this.container) {
+        this.container.addEventListener("click", () => this.startAnimation());
+      }
+      window.addEventListener("resize", () => this.handleResize());
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    new ParticleTextAnimation(
+      "text-container",
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "HELLO EVERYONE"
+    );
+  });
+</script>
