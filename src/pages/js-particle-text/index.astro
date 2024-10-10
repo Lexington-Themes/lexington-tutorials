@@ -15,11 +15,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     <div class="w-full max-w-2xl mx-auto text-center">
       <div
         id="text-container"
-        class="font-bold text-black h-96 lg:h-32 flex items-center">
+        class="h-96 lg:h-32 flex items-center">
       </div>
     </div>
   </section>
-  <!-- Starts links to tutorial -->
+
+  <!-- Links to tutorial -->
   <div
     class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
     <div
@@ -36,28 +37,20 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </p>
         </div>
       </div>
-      <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://lexingtonthemes.com/tutorials/how-to-create-particle-text-effect-with-tailwind-css-and-javascript"
-              type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Tutorial</a
-            >
-          </div>
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-particle-text/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Get the code</a
-            >
-          </div>
-        </div>
+      <div class="flex flex-col divide-y divide-neutral-200">
+        <a
+          href="https://lexingtonthemes.com/tutorials/how-to-create-particle-text-effect-with-tailwind-css-and-javascript"
+          class="flex items-center justify-center px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:outline-none"
+          >Tutorial</a
+        >
+        <a
+          href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-particle-text/index.astro"
+          class="flex items-center justify-center px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none"
+          >Get the code</a
+        >
       </div>
     </div>
   </div>
-  <!-- Ends links to tutorial -->
 </BaseLayout>
 
 <script type="module">
@@ -80,16 +73,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     }
 
     createParticles() {
-      if (!this.container) return;
-      this.container.innerHTML = "";
-      this.particles = [];
-
       const fragment = document.createDocumentFragment();
       const containerRect = this.container.getBoundingClientRect();
 
       for (let i = 0; i < this.particleCount; i++) {
         const particle = document.createElement("span");
-        particle.textContent = this.getRandomChar(this.initialText);
+        particle.textContent = this.getRandomChar();
         particle.className =
           "absolute opacity-0 transition-all duration-1000 ease-out";
         fragment.appendChild(particle);
@@ -106,12 +95,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       this.container.appendChild(fragment);
     }
 
-    getRandomChar(text) {
-      return text[Math.floor(Math.random() * text.length)];
+    getRandomChar() {
+      return this.initialText[
+        Math.floor(Math.random() * this.initialText.length)
+      ];
     }
 
     animateParticles() {
-      if (!this.container) return;
       const containerRect = this.container.getBoundingClientRect();
 
       this.particles.forEach((particle) => {
@@ -123,17 +113,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         if (particle.y < 0 || particle.y > containerRect.height)
           particle.speedY *= -1;
 
-        particle.element.style.transform = `translate(${particle.x}px, ${particle.y}px)`;
-        particle.element.style.opacity = "1";
+        Object.assign(particle.element.style, {
+          transform: `translate(${particle.x}px, ${particle.y}px)`,
+          opacity: "1",
+        });
       });
 
-      this.animationFrame = requestAnimationFrame(() =>
-        this.animateParticles()
+      this.animationFrame = requestAnimationFrame(
+        this.animateParticles.bind(this)
       );
     }
 
     reformText() {
-      if (!this.container) return;
       const containerRect = this.container.getBoundingClientRect();
       const fontSize = window.innerWidth < 1024 ? 16 : 54;
       const letterSpacing = fontSize * 0.8;
@@ -145,9 +136,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         if (index < this.finalText.length) {
           const targetX = startX + index * letterSpacing;
           const targetY = startY + (Math.random() - 0.5) * (fontSize / 2);
-          particle.element.style.transform = `translate(${targetX}px, ${targetY}px)`;
+
+          Object.assign(particle.element.style, {
+            transform: `translate(${targetX}px, ${targetY}px)`,
+            opacity: "1",
+          });
           particle.element.textContent = this.finalText[index];
-          particle.element.style.opacity = "1";
         } else {
           particle.element.style.opacity = "0";
         }
@@ -155,10 +149,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     }
 
     startAnimation() {
-      if (this.animationFrame) {
-        cancelAnimationFrame(this.animationFrame);
-      }
-
+      cancelAnimationFrame(this.animationFrame);
       this.createParticles();
       this.animateParticles();
 
@@ -169,26 +160,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     }
 
     handleResize() {
-      if (this.container) {
-        const containerRect = this.container.getBoundingClientRect();
-        this.particles.forEach((particle) => {
-          particle.x = Math.random() * containerRect.width;
-          particle.y = Math.random() * containerRect.height;
-        });
-        if (this.animationFrame) {
-          cancelAnimationFrame(this.animationFrame);
-          this.animateParticles();
-        } else {
-          this.reformText();
-        }
-      }
+      const containerRect = this.container.getBoundingClientRect();
+      this.particles.forEach((particle) => {
+        particle.x = Math.random() * containerRect.width;
+        particle.y = Math.random() * containerRect.height;
+      });
+      cancelAnimationFrame(this.animationFrame);
+      this.animateParticles();
     }
 
     addEventListeners() {
-      if (this.container) {
-        this.container.addEventListener("click", () => this.startAnimation());
-      }
-      window.addEventListener("resize", () => this.handleResize());
+      this.container.addEventListener("click", this.startAnimation.bind(this));
+      window.addEventListener("resize", this.handleResize.bind(this));
     }
   }
 
