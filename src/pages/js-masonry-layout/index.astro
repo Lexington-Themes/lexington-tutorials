@@ -1,0 +1,142 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+const heroImages = [
+  "/3d/1.jpeg",
+  "/3d/2.jpeg",
+  "/3d/3.jpeg",
+  "/3d/4.jpeg",
+  "/3d/5.jpeg",
+  "/3d/6.jpeg",
+  "/3d/7.jpeg",
+  "/3d/8.jpeg",
+  "/3d/9.jpeg",
+  "/3d/10.jpeg",
+  "/3d/11.jpeg",
+  "/3d/12.jpeg",
+  "/3d/13.jpeg",
+  "/3d/14.jpeg",
+  "/3d/15.jpeg",
+];
+---
+
+<BaseLayout>
+  <section class="bg-white relative overflow-hidden">
+    <div
+      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      <div class="max-w-xl mx-auto text-center">
+        <div
+          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+          <div>
+            <h1>Masonry</h1>
+          </div>
+        </div>
+      </div>
+      <!-- Starts component -->
+      <div class="mx-auto flex flex-col mt-6 border-t pt-12">
+        <!-- Grid Layout -->
+        <div
+          id="masonry-grid"
+          class="gap-4">
+          {
+            heroImages.map((imagePath) => (
+              <img
+                src={imagePath}
+                class="rounded-2xl"
+                alt="#_"
+              />
+            ))
+          }
+        </div>
+      </div>
+      <!-- Ends component -->
+      <!-- Starts links to tutorial -->
+      <div
+        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        <div
+          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border">
+          <div class="flex w-0 flex-1 items-center p-4">
+            <div class="w-full">
+              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+              <p class="mt-1 text-sm text-neutral-500">
+                How to create a masonry grid layout with Tailwind CSS and
+                JavaScript
+              </p>
+              <p class="mt-2 text-xs text-orange-600 underline">
+                <a href="https://lexingtonthemes.com">
+                  by © Lexington Themes</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-col divide-y divide-neutral-200">
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-masonry-grid-layout-with-tailwind-css-and-javascript/"
+                  type="button"
+                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg border border-transparent px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Tutorial</a
+                >
+              </div>
+              <div class="flex h-0 flex-1">
+                <a
+                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-masonry-layout/index.astro"
+                  class="flex w-full items-center justify-center rounded-none rounded-br-lg border border-transparent px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  >Get the code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ends links to tutorial -->
+    </div>
+  </section>
+</BaseLayout>
+<div
+  id="masonry-grid"
+  class="gap-4">
+  {
+    heroImages.map((imagePath) => (
+      <img
+        src={imagePath}
+        class="rounded-2xl"
+        alt="#_"
+      />
+    ))
+  }
+</div>
+<script type="module">
+  const masonryGrid = document.getElementById("masonry-grid");
+  const columnWidth = 300; // Adjust this value as needed
+  const gap = 18; // Adjust this value to change the gap (in pixels)
+  function createMasonryGrid() {
+    const gridWidth = masonryGrid.offsetWidth;
+    const columns = Math.floor(gridWidth / columnWidth) || 1;
+    // Reset the grid layout
+    masonryGrid.style.columnCount = columns.toString();
+    masonryGrid.style.columnGap = `${gap}px`;
+    // Remove any existing grid styles
+    masonryGrid.style.display = "block";
+    masonryGrid.style.gridTemplateColumns = "";
+    masonryGrid.style.gridTemplateRows = "";
+    const items = Array.from(masonryGrid.children);
+    items.forEach((item) => {
+      // Reset item styles
+      item.style.gridRowStart = "";
+      item.style.gridColumnStart = "";
+      // Add styles for masonry layout
+      item.style.breakInside = "avoid";
+      item.style.marginBottom = `${gap}px`; // Set the vertical gap between items
+    });
+  }
+  // Initial layout
+  createMasonryGrid();
+  // Update layout on window resize
+  window.addEventListener("resize", createMasonryGrid);
+  // Update layout when all images are loaded
+  window.addEventListener("load", createMasonryGrid);
+  // Optional: Update layout when new images are added
+  const observer = new MutationObserver(createMasonryGrid);
+  observer.observe(masonryGrid, { childList: true, subtree: true });
+</script>
