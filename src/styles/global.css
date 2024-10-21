@@ -1,48 +1,95 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
+@theme {
+  --font-family-sans: "Inter", sans-serif;
+  --color-*: initial;
+  --color-black: #010101;
+  --color-white: #ffffff;
+  --color-thumbnail: oklch(0.9109 0.0078 264.25);
+  --color-accent-50: hsl(27, 100%, 96%);
+  --color-accent-100: hsl(29, 100%, 92%);
+  --color-accent-200: hsl(26, 100%, 83%);
+  --color-accent-300: hsl(25, 100%, 72%);
+  --color-accent-400: hsl(21, 100%, 61%);
+  --color-accent-500: hsl(19, 100%, 55%);
+  --color-accent-600: hsl(15, 95%, 48%);
+  --color-accent-700: hsl(12, 93%, 40%);
+  --color-accent-800: hsl(9, 84%, 34%);
+  --color-accent-900: hsl(10, 79%, 28%);
+  --color-accent-950: hsl(8, 86%, 15%);
+  --color-neutral-50: oklch(0.985 0 0);
+  --color-neutral-100: oklch(0.97 0 0);
+  --color-neutral-200: oklch(0.922 0 0);
+  --color-neutral-300: oklch(0.87 0 0);
+  --color-neutral-400: oklch(0.708 0 0);
+  --color-neutral-500: oklch(0.556 0 0);
+  --color-neutral-600: oklch(0.439 0 0);
+  --color-neutral-700: oklch(0.371 0 0);
+  --color-neutral-800: oklch(0.269 0 0);
+  --color-neutral-900: oklch(0.205 0 0);
+  --color-neutral-950: oklch(0.145 0 0);
+  --border-color: oklch(0.922 0 0);
+  --grid-cols-1: repeat(1, minmax(0, 1fr));
+  --grid-cols-2: repeat(2, minmax(0, 1fr));
+  --grid-cols-3: repeat(3, minmax(0, 1fr));
+  --grid-cols-4: repeat(4, minmax(0, 1fr));
+  --grid-cols-5: repeat(5, minmax(0, 1fr));
+  --grid-cols-6: repeat(6, minmax(0, 1fr));
+  --grid-cols-7: repeat(7, minmax(0, 1fr));
+  --grid-cols-8: repeat(8, minmax(0, 1fr));
+  --grid-cols-9: repeat(9, minmax(0, 1fr));
+  --grid-cols-10: repeat(10, minmax(0, 1fr));
+  --grid-cols-11: repeat(11, minmax(0, 1fr));
+  --grid-cols-12: repeat(12, minmax(0, 1fr));
+  --grid-cols-13: repeat(13, minmax(0, 1fr));
+  --grid-cols-14: repeat(14, minmax(0, 1fr));
+  --grid-cols-15: repeat(15, minmax(0, 1fr));
+  --grid-cols-16: repeat(16, minmax(0, 1fr));
+  --grid-cols-17: repeat(17, minmax(0, 1fr));
+  --grid-cols-18: repeat(18, minmax(0, 1fr));
+  --grid-cols-19: repeat(19, minmax(0, 1fr));
+  --grid-cols-20: repeat(20, minmax(0, 1fr));
+}
+
+.divide > *:not(:last-child),
+.divide-y > *:not(:last-child),
+.divide-x > *:not(:last-child) {
+   border-color: var(--border-color);
+}
+
+.border-t,
+.border-b,
+.border-l,
+.border-r,
+.border-y,
+.border-x,
+.border {
+  border-color: var(--border-color);
+}
 
 /* WebKit (Chrome, Safari) */
-    input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background-color: var(--thumb-color); /* Use custom variable for thumb color */
-        cursor: pointer;
-    }
-
-    /* Firefox */
-    input[type="range"]::-moz-range-thumb {
-        width: 16px;
-        height: 16px;
-        border: none;
-        border-radius: 50%;
-        background-color: var(--thumb-color); /* Use custom variable for thumb color */
-        cursor: pointer;
-    }
-
-/* CSS */
-:root {
-  font-family: Inter, sans-serif;
-  font-feature-settings:
-  "liga" 1,
-  "calt" 1, /* Contextual Alternates */
-  "dlig" 1, /* Discretionary Ligatures */
-  "ss07" 1, /* fSquare punctuation */
-  "ss08" 1, /* Square quotes */
-  "zero" 1, /* Slashed zero */
-  "tnum" 1, /* Tabular numbers */
-    "cv03" 1, /* Open six */
-    "cv04" 1, /* Open nine */
-    "cv01" 1, /* Alternate one */
-    "cv09", /* Flat-top three */
-    "cv02" 1; /* Open 4 */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(
+    --thumb-color
+  ); /* Use custom variable for thumb color */
+  cursor: pointer;
 }
-@supports (font-variation-settings: normal) {
-  /* Use variable font if supported */
-  :root {
-    font-family: InterVariable, sans-serif;
-  }
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(
+    --thumb-color
+  ); /* Use custom variable for thumb color */
+  cursor: pointer;
 }

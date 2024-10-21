@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-
+import tailwindcss from '@tailwindcss/vite';
 import devtoolBreakpoints from "astro-devtool-breakpoints";
-
-
 export default defineConfig({
-  site: 'https://lexingtonthemes.com',
-  integrations: [tailwind(), sitemap(), devtoolBreakpoints()]
+   vite: {
+    plugins: [tailwindcss()],
+  },
+  site: 'https://tutorials.lexingtonthemes.com',
+  integrations: [ sitemap(), devtoolBreakpoints()]
 });
