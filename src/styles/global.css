@@ -4,7 +4,7 @@
 
 @theme {
   --font-family-sans: "Inter", sans-serif;
---color-transparent: transparent;
+  --color-transparent: transparent;
   --color-black: #010101;
   --color-white: #ffffff;
   --color-thumbnail: oklch(0.9109 0.0078 264.25);
@@ -32,18 +32,16 @@
   --color-neutral-950: oklch(0.145 0 0);
   --border-color: oklch(0.922 0 0);
   --color-blue-50: #ecf6ff;
-  --color-blue-100: #ddefff;
-  --color-blue-200: #c1e1ff;
-  --color-blue-300: #9ccaff;
-  --color-blue-400: #75aaff;
-  --color-blue-500: #5589ff;
-  --color-blue-600: #4870f6;
-  --color-blue-700: #294ed9;
-  --color-blue-800: #2443af;
-  --color-blue-900: #263f89;
-  --color-blue-950: #162350;
-  --grid-cols-1: repeat(1, minmax(0, 1fr));
-  --grid-cols-2: repeat(2, minmax(0, 1fr));
+--color-blue-100: #ddefff;
+--color-blue-200: #c1e1ff;
+--color-blue-300: #9ccaff;
+--color-blue-400: #75aaff;
+--color-blue-500: #5589ff;
+--color-blue-600: #4870f6;
+--color-blue-700: #294ed9;
+--color-blue-800: #2443af;
+--color-blue-900: #263f89;
+--color-blue-950: #162350;
   --grid-cols-3: repeat(3, minmax(0, 1fr));
   --grid-cols-4: repeat(4, minmax(0, 1fr));
   --grid-cols-5: repeat(5, minmax(0, 1fr));
