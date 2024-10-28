@@ -1,36 +1,4 @@
 ---
-/**
- * Text Component Props:
- *
- * Props:
- * - tag (optional): Specifies the HTML tag to render.
- *   Possible values: "p", "span", "small", "div", "strong", "em",
- *                    "blockquote", "dd", "dt", "summary", "label",
- *                    "h1", "h2", "h3", "h4", "h5", "h6". Defaults to "p".
- *
- * - variant (optional): Determines the style variant of the text.
- *   Possible values:
- *     - display2xl
- *     - displayXL
- *     - displayLG
- *     - displayMD
- *     - displaySM
- *     - displayXS
- *     - textXL
- *     - textLG
- *     - textMD
- *     - textSM
- *     - textXS
- *   Defaults to "textMD".
- *
- * - level (optional): Determines the heading level for the tag if using heading tags (h1-h6). Defaults to 2.
- *
- * - class (optional): Additional CSS classes to apply to the component.
- *
- * - for (optional): Used for the 'label' tag to associate the label with a form element (id of the input).
- *
- * - id (optional): Unique identifier for the label element.
- */
 
 // Text.astro
 export interface Props {
@@ -43,8 +11,6 @@ export interface Props {
     | "strong"
     | "em"
     | "blockquote"
-    | "dd"
-    | "dt"
     | "summary"
     | "label"
     | "h1"
