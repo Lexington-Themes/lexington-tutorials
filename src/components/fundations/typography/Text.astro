@@ -1,6 +1,6 @@
 ---
 
-// Text.astro
+
 export interface Props {
   tag?:
     | "p"
@@ -19,15 +19,15 @@ export interface Props {
     | "h4"
     | "h5"
     | "h6";
-  variant?: string; // Consider renaming it 'textVariant' for clarity
-  level?: number; // Added level prop for heading levels
+  variant?: string;
+  level?: number;
   class?: string;
-  for?: string; // Add 'for' attribute for label tags
-  id?: string; // Add 'id' attribute for label tags
-  href?: string; // Add 'href' attribute for anchor tags
+  for?: string;
+  id?: string;
+  href?: string;
 }
 
-// Define the text styles with all specified variants
+
 const textStyles: { [key: string]: string } = {
   display6XL:
     "text-4xl leading-tight tracking-tight sm:text-7xl md:text-9xl lg:text-[12rem]",
@@ -56,23 +56,23 @@ const textStyles: { [key: string]: string } = {
 };
 
 const {
-  tag: Tag = "p", // default to paragraph
-  variant = "textMD", // default to textMD variant
-  level = 2, // default to level 2 for headings
+  tag: Tag = "p",
+  variant = "textMD",
+  level = 2,
   class: className = "",
-  for: htmlFor, // Capture 'for' attribute
+  for: htmlFor,
   ...rest
 } = Astro.props;
 
-// Get the base classes for the variant
-const baseClasses = textStyles[variant] || textStyles.textMD; // Default to textMD if not found
-// Combine base classes with any additional custom classes
+
+const baseClasses = textStyles[variant] || textStyles.textMD;
+
 const combinedClasses = `${baseClasses} ${className}`.trim();
 
-// Adjust the tag based on the level for headings
-let resolvedTag: string = Tag; // Ensure resolvedTag is a string
+
+let resolvedTag: string = Tag;
 if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(Tag)) {
-  resolvedTag = `h${Math.min(Math.max(level, 1), 6)}`; // Enforce level to be between 1 and 6
+  resolvedTag = `h${Math.min(Math.max(level, 1), 6)}`;
 }
 ---
 
