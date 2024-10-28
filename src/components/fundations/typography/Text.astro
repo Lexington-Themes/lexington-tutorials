@@ -1,0 +1,119 @@
+---
+/**
+ * Text Component Props:
+ *
+ * Props:
+ * - tag (optional): Specifies the HTML tag to render.
+ *   Possible values: "p", "span", "small", "div", "strong", "em",
+ *                    "blockquote", "dd", "dt", "summary", "label",
+ *                    "h1", "h2", "h3", "h4", "h5", "h6". Defaults to "p".
+ *
+ * - variant (optional): Determines the style variant of the text.
+ *   Possible values:
+ *     - display2xl
+ *     - displayXL
+ *     - displayLG
+ *     - displayMD
+ *     - displaySM
+ *     - displayXS
+ *     - textXL
+ *     - textLG
+ *     - textMD
+ *     - textSM
+ *     - textXS
+ *   Defaults to "textMD".
+ *
+ * - level (optional): Determines the heading level for the tag if using heading tags (h1-h6). Defaults to 2.
+ *
+ * - class (optional): Additional CSS classes to apply to the component.
+ *
+ * - for (optional): Used for the 'label' tag to associate the label with a form element (id of the input).
+ *
+ * - id (optional): Unique identifier for the label element.
+ */
+
+// Text.astro
+export interface Props {
+  tag?:
+    | "p"
+    | "a"
+    | "span"
+    | "small"
+    | "div"
+    | "strong"
+    | "em"
+    | "blockquote"
+    | "dd"
+    | "dt"
+    | "summary"
+    | "label"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6";
+  variant?: string; // Consider renaming it 'textVariant' for clarity
+  level?: number; // Added level prop for heading levels
+  class?: string;
+  for?: string; // Add 'for' attribute for label tags
+  id?: string; // Add 'id' attribute for label tags
+  href?: string; // Add 'href' attribute for anchor tags
+}
+
+// Define the text styles with all specified variants
+const textStyles: { [key: string]: string } = {
+  display6XL:
+    "text-4xl leading-tight tracking-tight sm:text-7xl md:text-9xl lg:text-[12rem]",
+  display5XL:
+    "text-4xl leading-tight tracking-tight sm:text-7xl md:text-8xl lg:text-[10rem]",
+  display4XL:
+    "text-4xl leading-tight tracking-tight sm:text-7xl md:text-8xl lg:text-9xl",
+  display3XL:
+    "text-4xl leading-tight tracking-tight sm:text-6xl md:text-7xl lg:text-8xl",
+  display2XL:
+    "text-4xl leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl",
+  displayXL:
+    "text-3xl leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl",
+  displayLG:
+    "text-2xl leading-tight tracking-tight sm:text-3xl md:text-4xl lg:text-5xl",
+  displayMD:
+    "text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl lg:text-4xl",
+  displaySM: "text-lg leading-tight sm:text-xl md:text-2xl lg:text-3xl",
+  displayXS: "text-base leading-tight sm:text-lg md:text-xl lg:text-2xl",
+  textXL: "text-lg leading-normal sm:text-xl md:text-2xl",
+  textLG: "text-base leading-normal sm:text-lg md:text-xl",
+  textBase: "text-base leading-normal",
+  textMD: "text-md leading-normal ",
+  textSM: "text-sm leading-normal ",
+  textXS: "text-xs leading-normal ",
+};
+
+const {
+  tag: Tag = "p", // default to paragraph
+  variant = "textMD", // default to textMD variant
+  level = 2, // default to level 2 for headings
+  class: className = "",
+  for: htmlFor, // Capture 'for' attribute
+  ...rest
+} = Astro.props;
+
+// Get the base classes for the variant
+const baseClasses = textStyles[variant] || textStyles.textMD; // Default to textMD if not found
+// Combine base classes with any additional custom classes
+const combinedClasses = `${baseClasses} ${className}`.trim();
+
+// Adjust the tag based on the level for headings
+let resolvedTag: string = Tag; // Ensure resolvedTag is a string
+if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(Tag)) {
+  resolvedTag = `h${Math.min(Math.max(level, 1), 6)}`; // Enforce level to be between 1 and 6
+}
+---
+
+<Tag
+  class={combinedClasses}
+  {...rest}>
+  <slot name="left-icon" />
+  <slot />
+  <slot name="right-icon" />
+</Tag>
