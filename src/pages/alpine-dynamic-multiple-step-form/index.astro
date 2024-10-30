@@ -1,0 +1,239 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white">
+    <div class="px-8 lg:px-24 py-36">
+      <h1 class="text-center text-gray-500">Dynamic multiple step form</h1>
+
+      <div
+        class="mt-6 border-t border-neutral-200 pt-6 max-w-xl mx-auto w-full">
+        <!-- Starts component -->
+        <div
+          class="bg-white rounded-xl border border-gray-200 shadow-xl p-8 w-full space-y-6"
+          x-data="{
+        currentStep: 1,
+        formData: {
+            name: '',
+            email: '',
+            interests: [],
+            experience: ''
+        },
+        errors: {},
+        validateStep() {
+            this.errors = {};
+            if (this.currentStep === 1) {
+                if (!this.formData.name) {
+                    this.errors.name = 'Name is required';
+                }
+                if (!this.formData.email) {
+                    this.errors.email = 'Email is required';
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.formData.email)) {
+                    this.errors.email = 'Invalid email format';
+                }
+            }
+            if (this.currentStep === 2 && this.formData.interests.length === 0) {
+                this.errors.interests = 'Select at least one interest';
+            }
+            return Object.keys(this.errors).length === 0;
+        }
+    }">
+          <!-- Progress Bar -->
+          <div class="space-y-4">
+            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div
+                class="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                :style="`width: ${((currentStep - 1) * 50)}%`">
+              </div>
+            </div>
+            <div class="flex justify-between text-sm text-gray-600">
+              <span :class="{ 'text-blue-600 font-medium': currentStep === 1 }"
+                >Personal Info</span
+              >
+              <span :class="{ 'text-blue-600 font-medium': currentStep === 2 }"
+                >Interests</span
+              >
+              <span :class="{ 'text-blue-600 font-medium': currentStep === 3 }"
+                >Experience</span
+              >
+            </div>
+          </div>
+          <!-- Step 1: Personal Information -->
+          <div
+            x-show="currentStep === 1"
+            class="space-y-4"
+            x-cloak>
+            <h2 class="text-2xl font-bold text-gray-800">
+              Personal Information
+            </h2>
+            <div class="space-y-2">
+              <label class="block text-gray-700 font-medium">Name</label>
+              <input
+                type="text"
+                x-model="formData.name"
+                :class="{'border-red-500 focus:border-red-500': errors.name}"
+                class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs transition-colors"
+              />
+              <span
+                x-show="errors.name"
+                x-text="errors.name"
+                class="text-red-500 text-sm"
+              ></span>
+            </div>
+            <div class="space-y-2">
+              <label class="block text-gray-700 font-medium">Email</label>
+              <input
+                type="email"
+                x-model="formData.email"
+                :class="{'!border-red-500 ring-red-500': errors.email}"
+                class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs transition-colors"
+              />
+              <span
+                x-show="errors.email"
+                x-text="errors.email"
+                class="text-red-500 text-sm"
+              ></span>
+            </div>
+            <button
+              @click="validateStep() && currentStep++"
+              class="w-full bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition-colors">
+              Next Step
+            </button>
+          </div>
+          <!-- Step 2: Interests -->
+          <div
+            x-show="currentStep === 2"
+            class="space-y-4"
+            x-cloak>
+            <h2 class="text-2xl font-bold text-gray-800">Your Interests</h2>
+            <div class="space-y-3">
+              <label class="block text-gray-700 font-medium"
+                >Select your interests</label
+              >
+              <div class="space-y-2">
+                <label
+                  class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    x-model="formData.interests"
+                    value="web"
+                    class="size-4 text-blue-500 focus:ring-blue-500 border-gray-200 rounded"
+                  />
+                  <span class="text-gray-700">Web Development</span>
+                </label>
+                <label
+                  class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    x-model="formData.interests"
+                    value="mobile"
+                    class="size-4 text-blue-500 focus:ring-blue-500 border-gray-200 rounded"
+                  />
+                  <span class="text-gray-700">Mobile Development</span>
+                </label>
+                <label
+                  class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    x-model="formData.interests"
+                    value="data"
+                    class="size-4 text-blue-500 focus:ring-blue-500 border-gray-200 rounded"
+                  />
+                  <span class="text-gray-700">Data Science</span>
+                </label>
+              </div>
+              <span
+                x-show="errors.interests"
+                x-text="errors.interests"
+                class="text-red-500 text-sm"
+              ></span>
+            </div>
+            <div class="flex space-x-3">
+              <button
+                @click="currentStep--"
+                class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-full hover:bg-gray-200 transition-colors">
+                Back
+              </button>
+              <button
+                @click="validateStep() && currentStep++"
+                class="w-full bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition-colors">
+                Next Step
+              </button>
+            </div>
+          </div>
+          <!-- Step 3: Experience -->
+          <div
+            x-show="currentStep === 3"
+            class="space-y-4"
+            x-cloak>
+            <h2 class="text-2xl font-bold text-gray-800">Your Experience</h2>
+            <div class="space-y-2">
+              <label class="block text-gray-700 font-medium"
+                >Tell us about your experience</label
+              >
+              <textarea
+                x-model="formData.experience"
+                class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs h-32 transition-colors"
+              ></textarea>
+            </div>
+            <div class="flex space-x-3">
+              <button
+                @click="currentStep--"
+                class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-full hover:bg-gray-200 transition-colors">
+                Back
+              </button>
+              <button
+                @click="alert('Form submitted with: ' + JSON.stringify(formData, null, 2))"
+                class="w-full bg-emerald-500 text-white py-2 px-4 rounded-full hover:bg-emerald-600 transition-colors">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+        <!--  Ends component -->
+        <!-- Starts links to tutorial -->
+        <div
+          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+          <div
+            class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
+            <div class="flex w-0 flex-1 items-center p-4">
+              <div class="w-full">
+                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
+                <p class="mt-1 text-sm text-neutral-500">
+                  How to create a dynamic multiple step form with Tailwind CSS
+                  and Alpine JS
+                </p>
+                <p class="mt-2 text-xs text-orange-500 underline">
+                  <a href="https://lexingtonthemes.com">
+                    by © Lexington Themes</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col divide-y divide-neutral-200">
+                <div class="flex h-0 flex-1">
+                  <a
+                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-dynamic-multiple-step-form-with-tailwind-css-and-alpinejs"
+                    type="button"
+                    class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    >Tutorial</a
+                  >
+                </div>
+                <div class="flex h-0 flex-1">
+                  <a
+                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/alpine-dynamic-multiple-step-form/index.astro"
+                    class="flex w-full items-center justify-center rounded-none rounded-br-lg px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    >Get the code</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Ends links to tutorial -->
+      </div>
+    </div>
+  </section>
+</BaseLayout>
