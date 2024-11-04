@@ -1,0 +1,116 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="bg-white h-svh w-screen relative overflow-hidden">
+    <div
+      id="bubble-container"
+      class="absolute inset-0 z-0">
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-24 py-24 text-black">
+      <h1 class="text-xl font-bold">Bubble Animation</h1>
+      <p class="mt-4 text-sm text-gray-500">
+        Enjoy the colorful floating bubbles!
+      </p>
+      <div class="flex items-center gap-6 mt-4 text-sm">
+        <a
+          href="https://lexingtonthemes.com/tutorials/how-to-create-a-bubble-animation-with-tailwind-css-and-alpinejs"
+          class="text-orange-600 hover:text-black"
+          >Tutorials</a
+        >
+        <a
+          href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-bubble-animation/index.astro"
+          class="text-black hover:text-orange-600"
+          >Get the code</a
+        >
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) translateX(0);
+    }
+    100% {
+      transform: translateY(-100vh)
+        translateX(calc(sin(var(--random-offset)) * 50px));
+    }
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: background-color 0.3s ease-in-out;
+    will-change: transform;
+  }
+</style>
+
+<script>
+  function createBubble() {
+    const bubble = document.createElement("div");
+    bubble.classList.add("bubble");
+
+    // Random size between 20px and 80px
+    const size = Math.random() * 60 + 20;
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+
+    // Random starting position
+    const startPosition = Math.random() * 100;
+    bubble.style.left = `${startPosition}%`;
+
+    // Random animation duration
+    const duration = Math.random() * 15 + 10;
+    bubble.style.setProperty("--random-offset", Math.random() * 360 + "deg");
+
+    // Apply the animation
+    bubble.style.animation = `float ${duration}s linear infinite`;
+
+    // Array of Tailwind color classes
+    const colors = [
+      "bg-[#f1dfd9]",
+      "bg-[#f4c0d8]",
+      "bg-[#c9b0df]",
+      "bg-[#b767d4]",
+      "bg-[#84adc2]",
+      "bg-[#c8589e]",
+    ];
+
+    // Initial color
+    bubble.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+
+    // Change color every 2 seconds
+    setInterval(() => {
+      bubble.classList.remove(...colors);
+      bubble.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+    }, 2000);
+
+    // Add bubble to container
+    const container = document.getElementById("bubble-container");
+    if (container) {
+      container.appendChild(bubble);
+    }
+
+    // Remove bubble after animation completes
+    setTimeout(() => {
+      bubble.remove();
+    }, duration * 1000);
+  }
+
+  // Create new bubbles periodically
+  function startBubbleAnimation() {
+    // Create initial set of bubbles
+    for (let i = 0; i < 10; i++) {
+      createBubble();
+    }
+    // Continue creating bubbles every 300ms
+    setInterval(createBubble, 300);
+  }
+
+  // Start animation when the page loads
+  window.addEventListener("load", startBubbleAnimation);
+</script>
