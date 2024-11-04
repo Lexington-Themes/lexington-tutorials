@@ -29,25 +29,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   </section>
 </BaseLayout>
 
-<style is:global>
-  @keyframes float {
-    0% {
-      transform: translateY(100vh) translateX(0);
-    }
-    100% {
-      transform: translateY(-100vh)
-        translateX(calc(sin(var(--random-offset)) * 50px));
-    }
-  }
 
-  .bubble {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.7;
-    transition: background-color 0.3s ease-in-out;
-    will-change: transform;
-  }
-</style>
 
 <script>
   function createBubble() {
@@ -70,7 +52,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     // Apply the animation
     bubble.style.animation = `float ${duration}s linear infinite`;
 
-    
+
 
     // Array of Tailwind color classes
     const colors = [
