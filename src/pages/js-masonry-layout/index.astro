@@ -93,19 +93,7 @@ const heroImages = [
     </div>
   </section>
 </BaseLayout>
-<div
-  id="masonry-grid"
-  class="gap-4">
-  {
-    heroImages.map((imagePath) => (
-      <img
-        src={imagePath}
-        class="rounded-2xl"
-        alt="#_"
-      />
-    ))
-  }
-</div>
+
 <script type="module">
   const masonryGrid = document.getElementById("masonry-grid");
   const columnWidth = 300; // Adjust this value as needed
