@@ -1,4 +1,4 @@
-![Tutorials image](/public/images/tutorias.png)
+![Tutorials image](/public/images/tutorials.png)
 # Tutorials from Lexington Themes
 
 This collection offers a range of code snippets tailored for Astro.js and Tailwind CSS projects. Each snippet is designed specifically for use with Astro and Tailwind CSS, ensuring seamless integration.
