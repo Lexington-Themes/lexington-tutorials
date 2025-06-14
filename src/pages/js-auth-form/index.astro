@@ -1,171 +1,111 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white">
-    <div
-      class="w-full mx-auto max-w-xl flex flex-col justify-center py-24 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
-        <div>
-          <h1>Log in form with password validation</h1>
-          <p class="text-balance">
-            Fill in the form below to log in to your account, and you will see
-            the inputs validation in action.
+  <section>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-login-register-form-with-tailwind-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-auth-form/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper id="loginFormContainer" class="py-24">
+      <form id="loginForm" class="mx-auto w-fit">
+        <div class="py-2 space-y-3">
+          <label for="login_email" class="block text-sm text-base-700"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="login_email"
+            class="block w-full h-12 px-4 py-3 text-xs border-0 rounded-lg appearance-none placeholder-base-500 bg-base-100 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-inset focus:ring-2"
+            placeholder="Enter your email"
+            required
+          />
+          <p id="emailError" class="hidden mt-1 text-xs text-red-500">
+            Email is required
           </p>
         </div>
-      </div>
-      <div class="mt-6 border-t border-neutral-200 pt-12">
-        <!--  Starts component -->
-        <div
-          id="loginFormContainer"
-          class="w-full divide-neutral-200 rounded-3xl bg-white shadow-2xl border p-8 lg:p-10">
-          <form
-            id="loginForm"
-            class="w-full">
-            <div class="py-2 space-y-3">
-              <label
-                for="login_email"
-                class="block text-sm text-gray-700"
-                >Email</label
-              >
-              <input
-                type="email"
-                id="login_email"
-                class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
-                placeholder="Enter your email"
-                required
-              />
-              <p
-                id="emailError"
-                class="hidden text-red-500 text-xs mt-1">
-                Email is required
-              </p>
-            </div>
-            <div class="py-2 space-y-3">
-              <label
-                for="login_password"
-                class="block text-sm text-gray-700"
-                >Password</label
-              >
-              <div class="relative">
-                <input
-                  type="password"
-                  id="login_password"
-                  class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-2 focus:ring-inset text-xs"
-                  placeholder="Enter your password"
-                  required
-                />
-                <span
-                  id="togglePassword"
-                  class="absolute inset-y-0 right-0 flex items-center pr-4 text-xs text-gray-400 cursor-pointer"
-                  >Show</span
-                >
-              </div>
-              <p class="text-gray-500 text-xs mt-1 lg:text-pretty">
-                Password must contain at least one capital letter and a special
-                character.
-              </p>
-              <p
-                id="passwordError"
-                class="hidden text-red-500 mt-1 text-xs">
-                Password does not meet requirements
-              </p>
-            </div>
-            <div class="mt-4">
-              <button
-                type="submit"
-                class="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full"
-                >Login</button
-              >
-            </div>
-          </form>
-        </div>
-        <!--  Ends component -->
-        <!-- Starts links to tutorial -->
-        <div
-          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-          <div
-            class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-            <div class="flex w-0 flex-1 items-center p-4">
-              <div class="w-full">
-                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-                <p class="mt-1 text-sm text-neutral-500">
-                  How to create a Login/Register Form with Tailwind CSS and
-                  JavaScript
-                </p>
-                <p class="mt-2 text-xs text-orange-500 underline">
-                  <a href="https://lexingtonthemes.com">
-                    by © Lexington Themes</a
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="flex">
-              <div class="flex flex-col divide-y divide-neutral-200">
-                <div class="flex h-0 flex-1">
-                  <a
-                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-login-register-form-with-tailwind-and-javascript/"
-                    type="button"
-                    class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >Tutorial</a
-                  >
-                </div>
-                <div class="flex h-0 flex-1">
-                  <a
-                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-auth-form/index.astro"
-                    class="flex w-full items-center justify-center rounded-none rounded-br-lg px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >Get the code</a
-                  >
-                </div>
-              </div>
-            </div>
+        <div class="py-2 space-y-3">
+          <label for="login_password" class="block text-sm text-base-700"
+            >Password</label
+          >
+          <div class="relative">
+            <input
+              type="password"
+              id="login_password"
+              class="block w-full h-12 px-4 py-3 text-xs border-0 rounded-lg appearance-none placeholder-base-500 bg-base-100 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-2 focus:ring-inset"
+              placeholder="Enter your password"
+              required
+            />
+            <span
+              id="togglePassword"
+              class="absolute inset-y-0 right-0 flex items-center pr-4 text-xs cursor-pointer text-base-400"
+              >Show</span
+            >
           </div>
+          <p class="mt-1 text-xs text-base-500 lg:text-pretty">
+            Password must contain at least one capital letter and a special
+            character.
+          </p>
+          <p id="passwordError" class="hidden mt-1 text-xs text-red-500">
+            Password does not meet requirements
+          </p>
         </div>
-        <!-- Ends links to tutorial -->
-      </div>
-    </div>
+        <div class="mt-4">
+          <button
+            type="submit"
+            class="w-full h-12 px-8 py-2 text-sm font-semibold text-white rounded-full bg-accent-600 hover:bg-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+            >Login</button
+          >
+        </div>
+      </form>
+    </Wrapper>
+    <!--  Ends component -->
   </section>
+
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", () => {
+      const loginForm = document.getElementById("loginForm");
+      const loginEmail = document.getElementById("login_email");
+      const loginPassword = document.getElementById("login_password");
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
+      const togglePassword = document.getElementById("togglePassword");
+
+      const passwordPattern = /^(?=.*[A-Z])(?=.*\W).+$/;
+      let showPassword = false;
+
+      togglePassword.addEventListener("click", () => {
+        showPassword = !showPassword;
+        loginPassword.type = showPassword ? "text" : "password";
+        togglePassword.textContent = showPassword ? "Hide" : "Show";
+      });
+
+      loginForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!loginEmail.value) {
+          emailError.classList.remove("hidden");
+        } else {
+          emailError.classList.add("hidden");
+        }
+
+        if (!passwordPattern.test(loginPassword.value)) {
+          passwordError.classList.remove("hidden");
+        } else {
+          passwordError.classList.add("hidden");
+        }
+
+        if (loginEmail.value && passwordPattern.test(loginPassword.value)) {
+          // Perform login action here
+          alert("Login successful");
+        }
+      });
+    });
+  </script>
 </BaseLayout>
-
-<script type="module">
-  document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.getElementById("loginForm");
-    const loginEmail = document.getElementById("login_email");
-    const loginPassword = document.getElementById("login_password");
-    const emailError = document.getElementById("emailError");
-    const passwordError = document.getElementById("passwordError");
-    const togglePassword = document.getElementById("togglePassword");
-
-    const passwordPattern = /^(?=.*[A-Z])(?=.*\W).+$/;
-    let showPassword = false;
-
-    togglePassword.addEventListener("click", () => {
-      showPassword = !showPassword;
-      loginPassword.type = showPassword ? "text" : "password";
-      togglePassword.textContent = showPassword ? "Hide" : "Show";
-    });
-
-    loginForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      if (!loginEmail.value) {
-        emailError.classList.remove("hidden");
-      } else {
-        emailError.classList.add("hidden");
-      }
-
-      if (!passwordPattern.test(loginPassword.value)) {
-        passwordError.classList.remove("hidden");
-      } else {
-        passwordError.classList.add("hidden");
-      }
-
-      if (loginEmail.value && passwordPattern.test(loginPassword.value)) {
-        // Perform login action here
-        alert("Login successful");
-      }
-    });
-  });
-</script>

@@ -1,34 +1,37 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
+  <section>
     <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+      class="relative flex flex-col justify-center w-full p-8 py-24 mx-auto 2xl:max-w-7xl"
+    >
       <div class="max-w-xl mx-auto text-center">
         <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+          class="w-full max-w-sm mx-auto prose text-base-500 prose-sm prose-headings:font-normal prose-headings:text-xl"
+        >
           <div>
             <h1>HTML Datalist</h1>
           </div>
         </div>
       </div>
-      <div class="max-w-md mx-auto border-y w-full divide-y">
+      <div class="w-full max-w-md mx-auto border-y divide-y">
         <!-- Starts component -->
         <div class="py-8">
           <p>Textual</p>
           <div class="mt-4">
-            <label
-              class="text-gray-500 text-sm"
-              for="myBrowser"
+            <label class="text-sm text-base-500" for="myBrowser"
               >Choose a browser from this list:</label
             >
             <input
               list="browsers"
               id="myBrowser"
               name="myBrowser"
-              class="block w-full h-12 mt-2 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+              class="block w-full h-12 px-4 py-3 mt-2 text-xs border-0 rounded-lg appearance-none placeholder-base-500 bg-base-100 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-inset focus:ring-2"
             />
             <datalist id="browsers">
               <option value="Chrome"></option>
@@ -41,10 +44,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         </div>
         <div class="py-8">
           <p>Range</p>
-          <div class="flex items-center gap-4 mt-4">
-            <label
-              class="block text-sm text-gray-500"
-              for="valueRange"
+          <div class="flex items-center mt-4 gap-4">
+            <label class="block text-sm text-base-500" for="valueRange"
               >Select a value:</label
             >
             <input
@@ -58,38 +59,24 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             />
 
             <datalist id="valueTicks">
-              <option
-                value="0"
-                label="0"
-              ></option>
-              <option
-                value="10"
-                label="10"
-              ></option>
-              <option
-                value="20"
-                label="20"
-              ></option>
-              <option
-                value="30"
-                label="30"
-              ></option>
+              <option value="0" label="0"></option>
+              <option value="10" label="10"></option>
+              <option value="20" label="20"></option>
+              <option value="30" label="30"></option>
             </datalist>
           </div>
         </div>
         <div class="py-8">
           <p>Color</p>
           <div class="mt-4">
-            <label
-              class="block text-sm text-gray-500"
-              for="colors"
+            <label class="block text-sm text-base-500" for="colors"
               >Are you into Blue?</label
             >
             <input
               type="color"
               id="colors"
               list="blueColors"
-              class="block w-full h-12 mt-2 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+              class="block w-full h-12 px-4 py-3 mt-2 text-xs border-0 rounded-lg appearance-none placeholder-base-500 bg-base-100 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-inset focus:ring-2"
             />
 
             <datalist id="blueColors">
@@ -103,16 +90,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <div class="py-8">
           <p>Password</p>
           <div class="mt-4">
-            <label
-              class="block text-sm text-gray-500"
-              for="pwd"
+            <label class="block text-sm text-base-500" for="pwd"
               >Choose a password suggestion:</label
             >
             <input
               type="password"
               list="suggestedPasswords"
               id="pwd"
-              class="block w-full h-12 mt-2 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+              class="block w-full h-12 px-4 py-3 mt-2 text-xs border-0 rounded-lg appearance-none placeholder-base-500 bg-base-100 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-inset focus:ring-2"
             />
             <datalist id="suggestedPasswords">
               <option value="G7s!4#q8U@9m"></option>
@@ -125,16 +110,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <div class="py-8">
           <p>Date</p>
           <div class="mt-4">
-            <label
-              class="block text-sm text-gray-500"
-              for="meetingTime"
+            <label class="block text-sm text-base-500" for="meetingTime"
               >Select a preferred meeting time:</label
             >
             <input
               type="time"
               id="meetingTime"
               list="meetingHours"
-              class="block w-full h-12 mt-2 px-4 py-3 placeholder-gray-500 bg-gray-100 border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+              class="block w-full h-12 px-4 py-3 mt-2 text-xs border-0 rounded-lg appearance-none placeholder-base-500 bg-base-100 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-inset focus:ring-2"
             />
 
             <datalist id="meetingHours">
@@ -150,16 +133,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
         <!-- Starts links to tutorial -->
         <div
-          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+          class="fixed inset-x-0 bottom-0 p-2 pointer-events-none sm:flex sm:justify-center"
+        >
           <div
-            class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-            <div class="flex w-0 flex-1 items-center p-4">
+            class="flex w-full max-w-md bg-white border rounded-lg shadow-xl pointer-events-auto divide-x divide-base-200 border-base-200"
+          >
+            <div class="flex items-center flex-1 w-0 p-4">
               <div class="w-full">
-                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-                <p class="mt-1 text-sm text-neutral-500">
+                <p class="text-sm font-medium text-base-900">Tutorial</p>
+                <p class="mt-1 text-sm text-base-500">
                   How to use the HTML datalist tag
                 </p>
-                <p class="mt-2 text-xs text-orange-600 underline">
+                <p class="mt-2 text-xs underline text-accent-600">
                   <a href="https://lexingtonthemes.com">
                     by © Lexington Themes</a
                   >
@@ -167,19 +152,19 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               </div>
             </div>
             <div class="flex">
-              <div class="flex flex-col divide-y divide-neutral-200">
-                <div class="flex h-0 flex-1">
+              <div class="flex flex-col divide-y divide-base-200">
+                <div class="flex flex-1 h-0">
                   <a
                     href="https://lexingtonthemes.com/tutorials/how-to-use-the-datalist-for-creating-autocomplete-input-fields"
                     type="button"
-                    class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                    class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-tr-lg text-accent-600 hover:text-accent-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-accent-600"
                     >Tutorial</a
                   >
                 </div>
-                <div class="flex h-0 flex-1">
+                <div class="flex flex-1 h-0">
                   <a
                     href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/html-datalist-tag/index.astro"
-                    class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                    class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-br-lg text-base-700 hover:text-base-500 focus:outline-none focus:ring-2 focus:ring-accent-600"
                     >Get the code</a
                   >
                 </div>

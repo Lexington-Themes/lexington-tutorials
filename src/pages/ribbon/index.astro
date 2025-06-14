@@ -1,97 +1,57 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
-      <div class="max-w-xl mx-auto text-center">
-        <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
-          <div>
-            <h1>Tailwind CSS Ribbon</h1>
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-ribbon-for-a-pricing-card-with-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/ribbon/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-48">
+      <!-- Starts component -->
+      <div
+        class="relative max-w-xs p-8 mx-auto overflow-hidden bg-base-50 lg:p-10 shadow-base-500/30 rounded-xl"
+      >
+        <div class="absolute top-0 right-0 w-16 h-16">
+          <div
+            class="absolute transform rotate-45 bg-accent-600 text-center text-white font-semibold py-1 right-[-35px] top-[32px] w-[170px]"
+          >
+            50% off
           </div>
         </div>
-      </div>
-      <!-- Starts component -->
-      <div class="flex border-t  border-neutral-200  max-w-xl mx-auto pt-12 mt-12">
-        <div
-          class="relative overflow-hidden p-8 lg:p-10 max-w-xs bg-white shadow-xl shadow-gray-500/30 border rounded-xl">
-          <div class="absolute right-0 top-0 h-16 w-16">
-            <div
-              class="absolute transform rotate-45 bg-orange-600 text-center text-white font-semibold py-1 right-[-35px] top-[32px] w-[170px]">
-              50% off
-            </div>
-          </div>
-          <section class="flex flex-col h-full justify-between">
-            <div>
-              <div class="flex flex-col gap-2 w-full">
-                <div class="flex flex-col gap-2">
-                  <p
-                    class="text-base font-medium uppercase tracking-tight text-gray-900">
-                    full access
-                  </p>
-                  <p
-                    class="font-semibold text-4xl tracking-tighter text-gray-900 mt-8">
-                    $9/month
-                  </p>
-                </div>
-                <p class="text-sm text-gray-500 mt-4">
-                  This subscription tier caters to individuals and hobbyists
-                  seeking fundamental features.
+        <section class="flex flex-col justify-between h-full">
+          <div>
+            <div class="flex flex-col w-full gap-2">
+              <div class="flex flex-col gap-2">
+                <p
+                  class="text-base font-medium tracking-tight uppercase text-base-900"
+                >
+                  full access
+                </p>
+                <p
+                  class="mt-8 text-4xl font-semibold tracking-tighter text-base-900"
+                >
+                  $9/month
                 </p>
               </div>
-            </div>
-            <div class="mt-8 flex w-full">
-              <a
-                class="rounded-full bg-orange-50 px-8 py-2 h-12 text-sm font-semibold text-orange-600 hover:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 items-center flex w-full justify-center"
-                >Get started</a
-              >
-            </div>
-          </section>
-        </div>
-      </div>
-      <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 ">
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create a ribbon for a pricing card with Tailwind CSS
-              </p>
-              <p class="mt-2 text-xs text-orange-600 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
+              <p class="mt-4 text-sm text-base-500">
+                This subscription tier caters to individuals and hobbyists
+                seeking fundamental features.
               </p>
             </div>
           </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-ribbon-for-a-pricing-card-with-tailwind-css/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/ribbon/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                  >Get the code</a
-                >
-              </div>
-            </div>
+          <div class="flex w-full mt-8">
+            <a
+              class="flex items-center justify-center w-full h-12 px-8 py-2 text-sm font-semibold rounded-full bg-accent-50 text-accent-600 hover:bg-accent-100 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              >Get started</a
+            >
           </div>
-        </div>
+        </section>
       </div>
-      <!-- Ends links to tutorial -->
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>

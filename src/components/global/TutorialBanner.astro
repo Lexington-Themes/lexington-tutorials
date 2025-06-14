@@ -1,0 +1,22 @@
+---
+// Props
+interface Props {
+  tutorialUrl: string;
+  codeUrl: string;
+}
+const { tutorialUrl, codeUrl } = Astro.props;
+import Button from "@/components/fundations/elements/Button.astro";
+---
+
+<div
+  class="fixed inset-x-0 z-50 flex flex-col justify-between p-1 mx-auto rounded-full bottom-2 w-fit gap-x-8 gap-y-4 bg-base-300 ring-1 ring-base-900/10 md:flex-row md:items-center"
+>
+  <div class="flex items-center flex-none gap-x-2">
+    <Button isLink={true} size="sm" variant="default" href={tutorialUrl}
+      >Tutorial</Button
+    >
+    <Button isLink={true} size="sm" variant="muted" href={codeUrl}
+      >Get the code
+    </Button>
+  </div>
+</div>

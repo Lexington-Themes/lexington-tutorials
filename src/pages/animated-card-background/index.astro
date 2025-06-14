@@ -1,96 +1,55 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
   <section>
-    <div class="bg-white transition-colors duration-500">
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-tocreate-a-card-with-animated-background-with-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/theme-toggle/index.astro"
+    />
+
+    <Wrapper class="py-24 lg:py-48">
       <div
-        class="w-full mx-auto 2xl:max-w-7xl items-center flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
+        class="relative z-0 w-full h-full max-w-xl p-2 m-auto overflow-hidden cursor-pointer bg-base-50 rounded-xl group hover:border-transparent"
+      >
         <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
-          <div>
-            <h1>Card with animated background</h1>
-            <p class="text-balance">Hover over the card to see the effetc</p>
-          </div>
+          class="h-24 w-96 bg-base-950 absolute left-full rounded-full -bottom-12 group-hover:scale-[550%] z-[-1] duration-700 easy-in-out"
+        >
         </div>
-        <div class="mt-6 border-t  border-neutral-200  pt-12 max-w-xl w-full">
-          <!-- Starts component -->
+        <div
+          class="h-20 w-44 bg-base-700 absolute left-full rounded-full -bottom-12 group-hover:scale-[400%] z-[-1] duration-700 easy-in-out"
+        >
+        </div>
+        <div
+          class="h-16 w-48 bg-base-500 absolute left-full rounded-full -bottom-12 group-hover:scale-[300%] z-[-1] duration-700 easy-in-out"
+        >
+        </div>
+        <div
+          class="h-16 w-44 bg-base-950 absolute left-full rounded-full -bottom-12 group-hover:scale-[200%] z-[-1] duration-700 easy-in-out"
+        >
+        </div>
 
-          <div
-            class="h-full w-full bg-white m-auto rounded-xl relative group p-2 z-0 overflow-hidden shadow border cursor-pointer hover:border-transparent">
-            <div
-              class="h-24 w-96 bg-blue-950 absolute left-full rounded-full -bottom-12 group-hover:scale-[550%] z-[-1] duration-700 easy-in-out">
-            </div>
-            <div
-              class="h-20 w-44 bg-blue-700 absolute left-full rounded-full -bottom-12 group-hover:scale-[400%] z-[-1] duration-700 easy-in-out">
-            </div>
-            <div
-              class="h-16 w-48 bg-blue-500 absolute left-full rounded-full -bottom-12 group-hover:scale-[300%] z-[-1] duration-700 easy-in-out">
-            </div>
-            <div
-              class="h-16 w-44 bg-blue-950 absolute left-full rounded-full -bottom-12 group-hover:scale-[200%] z-[-1] duration-700 easy-in-out">
-            </div>
-
-            <div class="z-20 m-4">
-              <div class="">
-                <p
-                  class="text-lg font-semibold text-blue-950 group-hover:text-white duration-300">
-                  Uber will pay you $1,000 to ditch your car for five weeks
-                </p>
-                <p
-                  class="text-base text-gray-500 mt-20 group-hover:text-white duration-300 text-pretty">
-                  Traffic got you down? If the idea of locking your car keys in
-                  a drawer and using alternate means of transportation sounds
-                  intriguing, Uber has the challenge for you.
-                </p>
-              </div>
-            </div>
+        <div class="z-20 m-4">
+          <div class="">
+            <p
+              class="text-lg font-semibold text-base-950 group-hover:text-white duration-300"
+            >
+              Uber will pay you $1,000 to ditch your car for five weeks
+            </p>
+            <p
+              class="mt-20 text-base text-base-500 group-hover:text-white duration-300 text-pretty"
+            >
+              Traffic got you down? If the idea of locking your car keys in a
+              drawer and using alternate means of transportation sounds
+              intriguing, Uber has the challenge for you.
+            </p>
           </div>
-
-          <!-- Ends component -->
         </div>
       </div>
-    </div>
+    </Wrapper>
   </section>
-  <!-- Starts links to tutorial -->
-  <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-    <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
-        <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
-            How to create a card with animated background with Tailwind CSS
-          </p>
-          <p class="mt-2 text-xs text-orange-500 underline">
-            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-          </p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://lexingtonthemes.com/tutorials/how-tocreate-a-card-with-animated-background-with-tailwind-css/"
-              type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Tutorial</a
-            >
-          </div>
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/theme-toggle/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Get the code</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Ends links to tutorial -->
 </BaseLayout>
-
-

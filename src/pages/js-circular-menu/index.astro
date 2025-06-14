@@ -1,0 +1,78 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
+---
+
+<BaseLayout>
+  <section>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-circular-menu-with-tailwind-css-and-minimal-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-circular%20menu/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-48">
+      <div class="relative justify-center w-64 h-64 mx-auto" id="menuContainer">
+        <button
+          id="menuToggle"
+          class="absolute z-10 flex items-center justify-center text-xs text-white rounded-full top-1/2 left-1/2 transform shrink-0 -translate-x-1/2 -translate-y-1/2 bg-accent-500 size-20 focus:outline-none focus:ring-2 focus:ring-accent-300 transition-all duration-300 hover:scale-110"
+        >
+          Menu
+        </button>
+        <nav id="circularMenu" class="absolute top-0 left-0 w-full h-full">
+          <a
+            href="#"
+            class="absolute flex items-center justify-center invisible text-white rounded-full opacity-0 menu-item bg-accent-950 size-24 transition-all duration-300 hover:scale-110"
+            >1</a
+          >
+          <a
+            href="#"
+            class="absolute flex items-center justify-center invisible text-white rounded-full opacity-0 menu-item bg-accent-950 size-24 transition-all duration-300 hover:scale-110"
+            >2</a
+          >
+          <a
+            href="#"
+            class="absolute flex items-center justify-center invisible text-white rounded-full opacity-0 menu-item bg-accent-950 size-24 transition-all duration-300 hover:scale-110"
+            >3</a
+          >
+        </nav>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>
+
+<script type="module">
+  const menuToggle = document.getElementById("menuToggle");
+  const menuItems = document.querySelectorAll(".menu-item");
+  let isOpen = false;
+
+  menuToggle.addEventListener("click", toggleMenu);
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+    menuItems.forEach((item, index) => {
+      const delay = index * 50; // Stagger the animation
+      setTimeout(() => {
+        if (isOpen) {
+          const angle = (index / menuItems.length) * 2 * Math.PI;
+          const radius = 50; // Reduced radius to bring items closer to the button
+          const x = Math.cos(angle) * radius + 50;
+          const y = Math.sin(angle) * radius + 50;
+          item.style.left = `${x}%`;
+          item.style.top = `${y}%`;
+          item.classList.remove("opacity-0", "invisible");
+          item.style.transform = `translate(-50%, -50%) scale(1)`;
+        } else {
+          item.style.left = "50%";
+          item.style.top = "50%";
+          item.classList.add("opacity-0", "invisible");
+          item.style.transform = `translate(-50%, -50%) scale(0.5)`;
+        }
+      }, delay);
+    });
+
+    // Toggle the menu button text
+    menuToggle.textContent = isOpen ? "Close" : "Menu";
+  }
+</script>

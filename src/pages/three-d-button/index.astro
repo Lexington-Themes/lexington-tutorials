@@ -1,72 +1,30 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
-
 <BaseLayout>
   <section class="bg-[#f7f7f7]">
-    <div
-      class="px-8 py-24 mx-auto md:px-12 relative lg:px-32 max-w-screen-xl flex lg:py-48 flex-col lg:h-svh justify-center">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
-        <div>
-          <h1>3D button</h1>
-          <p class="text-balance">Hover over button to the see the effect.</p>
-        </div>
-        <div class="mx-auto border-t  border-neutral-200  w-full pt-8 mt-8 text-center">
-          <!-- Starts component -->
-          <button
-            class="bg-[linear-gradient(#e9e9e9,#e9e9e9_50%,#fff)] group w-full h-16 inline-flex transition-all duration-300 overflow-visible p-1 rounded-full group">
-            <div
-              class="w-full h-full bg-[linear-gradient(to_top,#ececec,#fff)] overflow-hidden shadow-[0_0_1px_rgba(0,0,0,0.07),0_0_1px_rgba(0,0,0,0.05),0_3px_3px_rgba(0,0,0,0.25),0_1px_3px_rgba(0,0,0,0.12)] p-1 rounded-full hover:shadow-none duration-300">
-              <div
-                class="w-full h-full text-xl gap-x-0.5 gap-y-0.5 justify-center text-[#101010] bg-[linear-gradient(#f4f4f4,#fefefe)] group-hover:bg-[linear-gradient(#e2e2e2,#fefefe)] group-hover:text-orange-600 duration-200 items-center text-[18px] font-medium gap-4 inline-flex overflow-hidden px-4 py-2 rounded-full black">
-                Jenson button
-              </div>
-            </div>
-          </button>
-          <!-- Ends component -->
-          <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-3d-button-with-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/three-d-button/index.astro"
+    />
+    <Wrapper class="flex flex-col items-center justify-center py-24 lg:py-62">
+      <!-- Starts component -->
+      <button
+        class="bg-[linear-gradient(#e9e9e9,#e9e9e9_50%,#fff)] group w-fit h-16 inline-flex transition-all duration-300 overflow-visible p-1 rounded-full group"
+      >
+        <div
+          class="w-full h-full bg-[linear-gradient(to_top,#ececec,#fff)] overflow-hidden shadow-[0_0_1px_rgba(0,0,0,0.07),0_0_1px_rgba(0,0,0,0.05),0_3px_3px_rgba(0,0,0,0.25),0_1px_3px_rgba(0,0,0,0.12)] p-1 rounded-full hover:shadow-none duration-300"
+        >
           <div
-            class="pointer-events-none fixed inset-x-0 bottom-0 text-left sm:flex sm:justify-center p-2">
-            <div
-              class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-              <div class="flex w-0 flex-1 items-center p-4">
-                <div class="w-full">
-                  <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-                  <p class="mt-1 text-sm text-neutral-500">
-                    How to create a 3D Button with Tailwind CSS
-                  </p>
-                  <p class="mt-2 text-xs text-orange-500 underline">
-                    <a href="https://lexingtonthemes.com">
-                      by © Lexington Themes</a
-                    >
-                  </p>
-                </div>
-              </div>
-              <div class="flex">
-                <div class="flex flex-col divide-y divide-neutral-200">
-                  <div class="flex h-0 flex-1">
-                    <a
-                      href="https://lexingtonthemes.com/tutorials/how-to-create-a-3d-button-with-tailwind-css/"
-                      type="button"
-                      class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      >Tutorial</a
-                    >
-                  </div>
-                  <div class="flex h-0 flex-1">
-                    <a
-                      href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/three-d-button/index.astro"
-                      class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      >Get the code</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
+            class="w-full h-full text-xl gap-x-0.5 gap-y-0.5 justify-center text-[#101010] bg-[linear-gradient(#f4f4f4,#fefefe)] group-hover:bg-[linear-gradient(#e2e2e2,#fefefe)] group-hover:text-accent-600 duration-200 items-center text-[18px] font-medium gap-4 inline-flex overflow-hidden px-4 py-2 rounded-full black"
+          >
+            Jenson button
           </div>
-          <!-- Ends links to tutorial -->
         </div>
-      </div>
-    </div>
+      </button>
+    </Wrapper>
   </section>
 </BaseLayout>

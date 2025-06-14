@@ -1,6 +1,9 @@
 ---
 // Import the BaseLayout component from the layouts directory. This component is likely used as a wrapper for the page, providing consistent structure and styling.
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 // Define an array of objects named 'features'. Each object represents a feature of your platform or product,
 // including properties for title, background image URL, description, background color, and title hover color.
 const features = [
@@ -46,29 +49,28 @@ const features = [
   },
 ];
 ---
-
 <BaseLayout>
-  <section
-    class="flex flex-col lg:h-svh justify-center items-center overflow-scroll">
-    <div
-      class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
-      <div>
-        <h1>Animated images on hover</h1>
-        <p class="text-balance">Hover over the images to see the animation.</p>
-      </div>
-    </div>
-    <div class="flex flex-wrap mx-auto md:flex-nowrap mt-6 border-t  border-neutral-200  pt-12">
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-animated-blog-cards-with-astrojs-and-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-blog-cards/index.astro"
+    />
+    <Wrapper
+      class="relative flex flex-wrap py-24 mx-auto overflow-hidden md:flex-nowrap border-base-200"
+    >
       {
         features.map((feature, index) => (
           <>
-            <div class="relative flex flex-col items-start m-1 transition  ease-in-out duration-500  delay-150 transform  md:w-96 md:-ml-32 md:hover:-translate-x-32 md:hover:-translate-y-8 shrink-0 ">
+            <div class="relative flex flex-col items-start m-1 transition  ease-in-out duration-500 delay-150 transform md:w-96 md:-ml-32 md:hover:-translate-x-32 md:hover:-translate-y-8 shrink-0">
               <article
-                class="mx-auto   rounded-3xl overflow-hidden  bg-cover ring-2 ring-inset ring-white/50 bg-center min-h-150 relative   transform duration-500   group"
-                style={`background-image: url('${feature.bgImage}');`}>
+                class="relative mx-auto overflow-hidden bg-center bg-cover  rounded-3xl ring-2 ring-inset ring-white/50 min-h-150 transform duration-500 group"
+                style={`background-image: url('${feature.bgImage}');`}
+              >
                 <div
-                  class={` relative h-full  group-hover:bg-opacity-0 min-h-150  flex flex-wrap flex-col pt-[30rem]  transform duration-500`}>
-                  <div class=" group-hover:bg-black/30 duration-500 group-hover:backdrop-blur p-8 lg:p-10 h-full justify-end flex flex-col ">
-                    <p class="opacity-0 text-white text-sm 2xl:text-lg group-hover:opacity-80 transform duration-500 ">
+                  class={` relative h-full  group-hover:bg-opacity-0 min-h-150  flex flex-wrap flex-col pt-[30rem]  transform duration-500`}
+                >
+                  <div class="flex flex-col justify-end h-full p-8  group-hover:bg-black/30 duration-500 group-hover:backdrop-blur lg:p-10">
+                    <p class="text-sm text-white opacity-0 2xl:text-lg group-hover:opacity-80 transform duration-500 ">
                       {feature.description}
                     </p>
                   </div>
@@ -78,45 +80,6 @@ const features = [
           </>
         ))
       }
-    </div>
-    <!-- Starts links to tutorial -->
-    <div
-      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-      <div
-        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-        <div class="flex w-0 flex-1 items-center p-4">
-          <div class="w-full">
-            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-            <p class="mt-1 text-sm text-neutral-500">
-              How to create a tooltip Tailwind CSS and Alpinejs
-            </p>
-            <p class="mt-2 text-xs text-orange-600 underline">
-              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-            </p>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex flex-col divide-y divide-neutral-200">
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://lexingtonthemes.com/tutorials/how-to-create-animated-blog-cards-with-astrojs-and-tailwind-css/"
-                type="button"
-                class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                >Tutorial</a
-              >
-            </div>
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-blog-cards/index.astro"
-                class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                >Get the code</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Ends links to tutorial -->
+    </Wrapper>
   </section>
 </BaseLayout>
-

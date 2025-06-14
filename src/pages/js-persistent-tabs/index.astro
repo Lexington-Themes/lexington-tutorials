@@ -1,58 +1,60 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
   <section>
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
-        <div>
-          <h1>Persistent Tabs</h1>
-          <p class="text-balance">
-            Test the tabs by clicking on one and then refreshing the page
-          </p>
-        </div>
-      </div>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-persistent-tabs-with-tailwind-css-and-javascript"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-persistent-tabs/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper class="py-24 lg:p-48">
       <!-- Starts component -->
-      <div
-        id="tabsComponent"
-        class="mx-auto w-full mt-6 border-t  border-neutral-200  pt-12 max-w-lg">
+      <div id="tabsComponent" class="max-w-lg mx-auto">
         <!-- Tab List -->
         <ul
           role="tablist"
-          class="-mb-px flex items-stretch gap-2 text-slate-500">
+          class="flex items-stretch -mb-px gap-2 text-base-500"
+        >
           <!-- Tab 1 -->
           <li role="presentation">
             <button
-              class="tab-button flex gap-2 items-center rounded-full px-6 h-10 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500"
+              class="flex items-center h-10 px-6 py-2 text-sm font-medium rounded-full tab-button gap-2 focus:outline-none focus:ring-2 focus:ring-accent-500"
               role="tab"
               id="tab-1"
-              aria-controls="panel-1">
+              aria-controls="panel-1"
+            >
               My account
             </button>
           </li>
           <!-- Tab 2 -->
           <li role="presentation">
             <button
-              class="tab-button flex gap-2 items-center rounded-full px-6 h-10 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500"
+              class="flex items-center h-10 px-6 py-2 text-sm font-medium rounded-full tab-button gap-2 focus:outline-none focus:ring-2 focus:ring-accent-500"
               role="tab"
               id="tab-2"
-              aria-controls="panel-2">
+              aria-controls="panel-2"
+            >
               Billing
             </button>
           </li>
         </ul>
         <!-- Panels -->
         <div
-          class="rounded-b-md border rounded-xl overflow-hidden border-gray-200 mt-2 bg-white">
+          class="pt-2 mt-2 overflow-hidden border-t border-base-200"
+        >
           <!-- Panel 1 -->
           <section
             role="tabpanel"
             id="panel-1"
             aria-labelledby="tab-1"
-            class="p-8 tab-panel">
+            class="tab-panel"
+          >
             Content 1
           </section>
           <!-- Panel 2 -->
@@ -60,53 +62,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             role="tabpanel"
             id="panel-2"
             aria-labelledby="tab-2"
-            class="p-8 tab-panel">
+            class="tab-panel"
+          >
             Content 2
           </section>
         </div>
       </div>
-      <!-- Ends component -->
-      <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to a create persistent tabs with Tailwind CSS and JavaScript
-              </p>
-              <p class="mt-2 text-xs text-orange-500 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-persistent-tabs-with-tailwind-css-and-javascript"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-persistent-tabs/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Get the code</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Ends links to tutorial -->
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>
 
@@ -120,8 +82,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       tabButtons.forEach((button, i) => {
         button.setAttribute("aria-selected", i === index);
         button.setAttribute("tabindex", i === index ? "0" : "-1");
-        button.classList.toggle("bg-orange-50", i === index);
-        button.classList.toggle("text-orange-600", i === index);
+        button.classList.toggle("bg-accent-50", i === index);
+        button.classList.toggle("text-accent-600", i === index);
       });
 
       tabPanels.forEach((panel, i) => {

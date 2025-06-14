@@ -1,61 +1,61 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
-      <div class="max-w-xl mx-auto text-center">
-        <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
-          <div>
-            <h1>Layout switcher</h1>
-            <p class="text-balance">
-              Click the button below to switch between 2 and 4 columns.
-            </p>
-          </div>
-        </div>
-      </div>
+  <section>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-grid-toggle-with-tailwind-css-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-gridtoggle/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper class="py-24 lg:py-48">
       <!-- Starts component -->
-      <div class="max-w-3xl mx-auto flex flex-col mt-6 border-t  border-neutral-200  pt-12">
-        <div class="flex justify-center">
-          <!-- Toggle Button -->
-          <button
-            id="toggleButton"
-            class="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-auto">
-            Switch to 2 Columns
-          </button>
-        </div>
-        <!-- Grid Layout -->
-        <div
-          id="gridContainer"
-          class="grid grid-cols-4 gap-2 mt-4">
-          <!-- Items in the Grid -->
-          <div class="bg-gray-100 rounded-lg p-8">Item 1</div>
-          <div class="bg-gray-100 rounded-lg p-8">Item 2</div>
-          <div class="bg-gray-100 rounded-lg p-8">Item 3</div>
-          <div class="bg-gray-100 rounded-lg p-8">Item 4</div>
-          <div class="bg-gray-100 rounded-lg p-8">Item 5</div>
-          <div class="bg-gray-100 rounded-lg p-8">Item 6</div>
-          <div class="bg-gray-100 rounded-lg p-8">Item 7</div>
-          <div class="bg-gray-100 rounded-lg p-8">Item 8</div>
-        </div>
+
+      <div class="flex justify-center">
+        <!-- Toggle Button -->
+        <button
+          id="toggleButton"
+          class="w-auto h-10 px-6 text-sm font-semibold text-white rounded-full bg-accent-600 hover:bg-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+        >
+          Switch to 2 Columns
+        </button>
+      </div>
+      <!-- Grid Layout -->
+      <div
+        id="gridContainer"
+        class="max-w-md mx-auto mt-4 grid grid-cols-4 gap-2"
+      >
+        <!-- Items in the Grid -->
+        <div class="p-4 text-xs text-center rounded-lg bg-base-100">Item 1</div>
+        <div class="p-4 text-xs text-center rounded-lg bg-base-100">Item 2</div>
+        <div class="p-4 text-xs text-center rounded-lg bg-base-100">Item 3</div>
+        <div class="p-4 text-xs text-center rounded-lg bg-base-100">Item 4</div>
+        <div class="p-4 text-xs text-center rounded-lg bg-base-100">Item 5</div>
+        <div class="p-4 text-xs text-center rounded-lg bg-base-100">Item 6</div>
+        <div class="p-4 text-xs text-center rounded-lg bg-base-100">Item 7</div>
+        <div class="p-4 text-xs text-center rounded-lg bg-base-100">Item 8</div>
       </div>
 
       <!-- Ends component -->
       <!-- Starts links to tutorial -->
       <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+        class="fixed inset-x-0 bottom-0 p-2 pointer-events-none sm:flex sm:justify-center"
+      >
         <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
+          class="flex w-full max-w-md bg-white border rounded-lg shadow-xl pointer-events-auto divide-x divide-base-200 border-base-200"
+        >
+          <div class="flex items-center flex-1 w-0 p-4">
             <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
+              <p class="text-sm font-medium text-base-900">Tutorial</p>
+              <p class="mt-1 text-sm text-base-500">
                 How to create a grid toggle with Tailwind CSS and JavaScript
               </p>
-              <p class="mt-2 text-xs text-orange-600 underline">
+              <p class="mt-2 text-xs underline text-accent-600">
                 <a href="https://lexingtonthemes.com">
                   by © Lexington Themes</a
                 >
@@ -63,19 +63,19 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             </div>
           </div>
           <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
+            <div class="flex flex-col divide-y divide-base-200">
+              <div class="flex flex-1 h-0">
                 <a
                   href="https://lexingtonthemes.com/tutorials/how-to-create-a-grid-toggle-with-tailwind-css-and-javascript/"
                   type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-tr-lg text-accent-600 hover:text-accent-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-accent-600"
                   >Tutorial</a
                 >
               </div>
-              <div class="flex h-0 flex-1">
+              <div class="flex flex-1 h-0">
                 <a
                   href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-gridtoggle/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-br-lg text-base-700 hover:text-base-500 focus:outline-none focus:ring-2 focus:ring-accent-600"
                   >Get the code</a
                 >
               </div>
@@ -84,7 +84,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         </div>
       </div>
       <!-- Ends links to tutorial -->
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>
 <script type="module">
@@ -101,4 +101,3 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     });
   });
 </script>
-

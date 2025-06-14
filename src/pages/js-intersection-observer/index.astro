@@ -1,116 +1,74 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <!-- Introductory section with a title -->
-  <section class="bg-white">
-    <div
-      class="px-8 py-48 md:px-12 lg:px-24 flex flex-col h-screen justify-center max-w-screen-xl mx-auto">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
-        <div>
-          <h1>Intersection observer</h1>
-          <p class="text-balance">
-            Scroll down to see the animated images with the intersection
-            observer.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-animate-objects-with-tailwind-css-and-javascript-intersection-observer-api/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-intersection-observer/index.astro"
+    />
+    <!-- Ends links to tutorial -->
+    <!-- Introductory section with a title -->
+    <section>
+      <Wrapper class="h-screen px-8 py-48 text-center">
+        <div>Scroll down</div>
+      </Wrapper>
+    </section>
 
-  <!-- Section for the first image with a rotation around the Y-axis -->
-  <section class="overflow-hidden">
-    <div class="flex flex-col h-screen my-24">
-      <div class="mt-12 ">
+    <!-- Section for the first image with a rotation around the Y-axis -->
+    <section class="overflow-hidden">
+      <Wrapper class="flex flex-col h-screen py-24">
         <img
           id="rotateYImage"
-          class="transition-transform duration-1000 w-64 ease-in-out md:w-full mx-auto rounded-3xl md:max-w-xl"
+          class="w-64 mx-auto transition-transform duration-1000 ease-in-out md:w-full rounded-3xl md:max-w-xl"
           src="https://i.pinimg.com/564x/78/d1/c0/78d1c06554aead1dc1d1490f08d39ffd.jpg"
         />
-      </div>
-    </div>
-  </section>
+      </Wrapper>
+    </section>
 
-  <!-- Section for the second image with a rotation around the X-axis -->
-  <section class="overflow-hidden">
-    <div class="flex flex-col h-screen my-24">
-      <div class="">
+    <!-- Section for the second image with a rotation around the X-axis -->
+    <section class="overflow-hidden">
+      <Wrapper class="flex flex-col h-screen py-24">
         <img
           id="rotateXImage"
-          class="transition-transform duration-1000 w-64 ease-in-out md:w-full mx-auto rounded-3xl md:max-w-xl"
+          class="w-64 mx-auto transition-transform duration-1000 ease-in-out md:w-full rounded-3xl md:max-w-xl"
           src="https://i.pinimg.com/564x/78/d1/c0/78d1c06554aead1dc1d1490f08d39ffd.jpg"
         />
-      </div>
-    </div>
-</section>
-<!-- Starts links to tutorial -->
-<div
-  class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-  <div
-    class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-    <div class="flex w-0 flex-1 items-center p-4">
-      <div class="w-full">
-        <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-        <p class="mt-1 text-sm text-neutral-500">
-          How to animate objects with Tailwind CSS and the JavaScript intersection
-          observer API
-        </p>
-        <p class="mt-2 text-xs text-orange-500 underline">
-          <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-        </p>
-      </div>
-    </div>
-    <div class="flex">
-      <div class="flex flex-col divide-y divide-neutral-200">
-        <div class="flex h-0 flex-1">
-          <a
-            href="https://lexingtonthemes.com/tutorials/how-to-animate-objects-with-tailwind-css-and-javascript-intersection-observer-api/"
-            type="button"
-            class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >Tutorial</a
-          >
-        </div>
-        <div class="flex h-0 flex-1">
-          <a
-            href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-intersection-observer/index.astro"
-            class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >Get the code</a
-          >
-        </div>
-      </div>
-    </div>
+      </Wrapper>
+    </section>
   </div>
-</div>
-<!-- Ends links to tutorial -->
-</BaseLayout>
 
-<script type="module">
-  document.addEventListener("DOMContentLoaded", function () {
-    const rotateYImage = document.getElementById("rotateYImage");
-    const rotateXImage = document.getElementById("rotateXImage");
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+      const rotateYImage = document.getElementById("rotateYImage");
+      const rotateXImage = document.getElementById("rotateXImage");
 
-    const createObserver = (element, rotateProperty, targetDegree, step) => {
-      let degree = 0;
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const interval = setInterval(() => {
-              if (degree < targetDegree) {
-                degree += step;
-                element.style.transform = `perspective(1000px) ${rotateProperty}(${degree}deg)`;
-              } else {
-                clearInterval(interval);
-              }
-            }, 50);
-          }
+      const createObserver = (element, rotateProperty, targetDegree, step) => {
+        let degree = 0;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const interval = setInterval(() => {
+                if (degree < targetDegree) {
+                  degree += step;
+                  element.style.transform = `perspective(1000px) ${rotateProperty}(${degree}deg)`;
+                } else {
+                  clearInterval(interval);
+                }
+              }, 50);
+            }
+          });
         });
-      });
-      observer.observe(element);
-    };
+        observer.observe(element);
+      };
 
-    createObserver(rotateYImage, "rotateY", 360, 5);
-    createObserver(rotateXImage, "rotateX", 30, 1);
-  });
-</script>
+      createObserver(rotateYImage, "rotateY", 360, 5);
+      createObserver(rotateXImage, "rotateX", 30, 1);
+    });
+  </script>
+</BaseLayout>

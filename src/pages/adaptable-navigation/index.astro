@@ -1,6 +1,9 @@
 ---
 // Astro frontmatter: JavaScript runs at build time in Astro, before the HTML is generated.
-import BaseLayout from "@/layouts/BaseLayout.astro"; // Importing a base layout component.
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro"; // Importing a base layout component.
 // Define an array of objects, each representing a card with an image URL.
 const cards = [
   {
@@ -23,129 +26,62 @@ const cards = [
 
 <BaseLayout>
   <section x-data="{ atTop: true }">
-    <!-- Alpine JS initializes data properties for the component. `atTop` determines if the page is scrolled past a certain point. -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-an-animated-navigation-with-alpine-js"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/adaptable-navigation/index.astro"
+    />
     <div
-      class="fixed z-50 w-full px-8 py-4 transition-all duration-1000 rounded-full mt-4 max-w-2xl inset-x-0 mx-auto ease-in-out transform bg-black"
-      :class="{ 'bg-black bg-opacity-90 backdrop-blur-xl max-w-4xl ': !atTop, 'max-w-2xl': atTop }"
-      @scroll.window="atTop = (window.pageYOffset > 50 ? false : true)">
-      <!-- This div is styled to change its appearance based on the scroll position, toggling classes for background, opacity, blur, and width. -->
+      class="fixed inset-x-0 z-50 w-full max-w-2xl px-8 py-4 mx-auto bg-black rounded-full transition-all duration-1000 top-20 ease-in-out transform"
+      :class="{ 'bg-black bg-opacity-90 backdrop-blur-xl max-w-4xl ': !atTop, 'max-w-2xl bg-white': atTop }"
+      @scroll.window="atTop = (window.pageYOffset > 50 ? false : true)"
+    >
       <div
         x-data="{ open: false }"
-        class="flex flex-col w-full p-2 mx-auto md:items-center md:justify-between md:flex-row">
-        <!-- Another Alpine JS component for handling the navigation menu's open/close state. -->
-
+        class="flex flex-col w-full p-2 mx-auto md:items-center md:justify-between md:flex-row"
+      >
         <div class="flex flex-row items-center justify-between">
           <span
             class="font-bold tracking-tighter text-black uppercase"
-            :class="{ 'text-black': atTop, 'text-white': !atTop }">
-            <!-- This span changes color based on the scroll position, using the `atTop` state. -->
-
+            :class="{ 'text-black': atTop, 'text-white': !atTop }"
+          >
             ✺ Lexington
           </span>
-          <button class="md:hidden focus:outline-none">
-            <!---- SVG Burger goes here ---->
-          </button>
+          <button class="md:hidden focus:outline-none"> </button>
         </div>
         <nav
           :class="{'flex': open, 'hidden': !open}"
-          class="flex-col flex-grow gap-8 hidden pb-4 md:pb-0 md:flex md:flex-row lg:ml-auto justify-end">
-          <!-- This navigation changes its display based on the `open` state, showing on mobile when `open` is true. -->
-          <a
-            :class="{ 'text-black': atTop, 'text-white': !atTop }"
-            href="#_"
+          class="flex-col justify-end flex-grow hidden pb-4 gap-8 md:pb-0 md:flex md:flex-row lg:ml-auto"
+        >
+          <a :class="{ 'text-black': atTop, 'text-white': !atTop }" href="#_"
             >About</a
           >
-          <!-- Links within the navigation also change color based on the scroll position. -->
-          <a
-            :class="{ 'text-black': atTop, 'text-white': !atTop }"
-            href="#_"
+          <a :class="{ 'text-black': atTop, 'text-white': !atTop }" href="#_"
             >Work</a
           >
-          <a
-            :class="{ 'text-black': atTop, 'text-white': !atTop }"
-            href="#_"
+          <a :class="{ 'text-black': atTop, 'text-white': !atTop }" href="#_"
             >Blog</a
           >
         </nav>
       </div>
     </div>
-    <div class="bg-white">
-      <div
-        class="px-8 py-24 mx-auto text-center md:px-12 lg:px-24 lg:pt-64 text-zinc-500">
-        <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm">
-          <div>
-            <h1>Adaptable navigation</h1>
-            <p class="text-balance">
-             Scroll down to see the navigation change its appearance based on the scroll position.
-            </p>
-          </div>
-        </div>
 
-        <!--
-// Grid layout for displaying cards.
-//
-// Mapping over `cards` array defined in Astro frontmatter to render each card.
-//
-// Each card is an image with hover effects.
--->
-
-        <div
-          class="grid grid-cols-1 gap-8 mx-auto gap-y-28 mt-24 sm:grid-cols-1 max-w-2xl">
-          {
-            cards.map((card) => (
-              <a href={card.href}>
-                <div>
-                  <img
-                    class="duration-500 w-full rounded-3xl shadow hover:shadow-3xl hover:-translate-y-12"
-                    src={card.imageUrl}
-                    alt={card.title}
-                  />
-                </div>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-    <!-- Starts links to tutorial -->
-    <div
-      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <Wrapper class="py-24">
       <div
-        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-        <div class="flex w-0 flex-1 items-center p-4">
-          <div class="w-full">
-            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-            <p class="mt-1 text-sm text-neutral-500">
-              How to create an adaptable navigation with Astro, Tailwind CSS,
-              and Alpine JS
-            </p>
-            <p class="mt-2 text-xs text-orange-500 underline">
-              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-            </p>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex flex-col divide-y divide-neutral-200">
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://lexingtonthemes.com/tutorials/how-to-create-an-animated-navigation-with-alpine-js"
-                type="button"
-                class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Tutorial</a
-              >
-            </div>
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/adaptable-navigation/index.astro"
-                class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Get the code</a
-              >
-            </div>
-          </div>
-        </div>
+        class="max-w-2xl mx-auto grid grid-cols-1 gap-8 gap-y-28 sm:grid-cols-1"
+      >
+        {
+          cards.map((card) => (
+            <a href={card.href}>
+              <div>
+                <img
+                  class="w-full shadow duration-500 rounded-3xl hover:shadow-3xl hover:-translate-y-12"
+                  src={card.imageUrl}
+                />
+              </div>
+            </a>
+          ))
+        }
       </div>
-    </div>
-    <!-- Ends links to tutorial -->
+    </Wrapper>
   </section>
 </BaseLayout>

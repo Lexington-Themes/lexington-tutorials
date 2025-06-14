@@ -11,15 +11,15 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/sitemap": "^3.4.1",
+    "@astrolib/seo": "^1.0.0-beta.8",
     "@tailwindcss/typography": "^0.5.16",
-    "astro": "^5.4.3",
-    "tailwind-scrollbar-hide": "^2.0.0"
+    "astro": "^5.9.3",
+    "tailwind-scrollbar-hide": "^4.0.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/vite": "^4.0.13",
-    "tailwindcss": "^4.0.13"
+    "@tailwindcss/vite": "^4.1.10",
+    "tailwindcss": "^4.1.10"
   }
 }

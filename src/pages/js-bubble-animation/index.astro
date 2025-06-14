@@ -1,35 +1,23 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white h-svh w-screen relative overflow-hidden">
-    <div
-      id="bubble-container"
-      class="absolute inset-0 z-0">
-    </div>
-    <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-24 py-24 text-black">
-      <h1 class="text-xl font-bold">Bubble Animation</h1>
-      <p class="mt-4 text-sm text-gray-500">
-        Enjoy the colorful floating bubbles!
-      </p>
-      <div class="flex items-center gap-6 mt-4 text-sm">
-        <a
-          href="https://lexingtonthemes.com/tutorials/how-to-create-a-bubble-animation-with-tailwind-css-and-javascript"
-          class="text-orange-600 hover:text-black"
-          >Tutorial</a
-        >
-        <a
-          href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-bubble-animation/index.astro"
-          class="text-black hover:text-orange-600"
-          >Get the code</a
-        >
-      </div>
-    </div>
+  <section>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-bubble-animation-with-tailwind-css-and-javascript"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-bubble-animation/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper class="relative overflow-hidden h-svh">
+      <div id="bubble-container" class="absolute inset-0 z-0"></div></Wrapper
+    >
   </section>
 </BaseLayout>
-
-
 
 <script type="module">
   function createBubble() {
@@ -51,8 +39,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
     // Apply the animation
     bubble.style.animation = `float ${duration}s linear infinite`;
-
-
 
     // Array of Tailwind color classes
     const colors = [

@@ -1,132 +1,74 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
   <section>
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
-        <div>
-          <h1>Kanban Board</h1>
-          <p class="text-balance">
-            Start by adding a task on the to do card, then prss itro or click
-            the ADD button
-          </p>
-        </div>
-      </div>
-      <!-- Starts component -->
-      <div class="container mx-auto p-4 max-w-7xl">
-        <div
-          class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-24 items-start"
-          id="kanban-board">
-          <div class="flex flex-col gap-2 bg-gray-50 p-8 rounded-3xl h-full">
-            <h2 class="block text-sm text-gray-700">To Do</h2>
-            <div
-              id="todo"
-              class="space-y-2">
-            </div>
-            <form
-              class="mt-4 flex flex-col"
-              data-column="todo">
-              <input
-                type="text"
-                class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-white border border-gray-200 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
-                placeholder="New task..."
-              />
-              <button
-                type="submit"
-                class="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full mt-2"
-                >Add Task</button
-              >
-            </form>
-          </div>
-          <div class="flex flex-col gap-2 bg-gray-50 p-8 rounded-3xl h-full">
-            <h2 class="block text-sm text-gray-700">In Progress</h2>
-            <div
-              id="inProgress"
-              class="space-y-2">
-            </div>
-            <form
-              class="mt-4 flex flex-col"
-              data-column="inProgress">
-              <input
-                type="text"
-                class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-white border border-gray-200 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
-                placeholder="New task..."
-              />
-              <button
-                type="submit"
-                class="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full mt-2"
-                >Add Task</button
-              >
-            </form>
-          </div>
-          <div class="flex flex-col gap-2 bg-gray-50 p-8 rounded-3xl h-full">
-            <h2 class="block text-sm text-gray-700">Done</h2>
-            <div
-              id="done"
-              class="space-y-2">
-            </div>
-            <form
-              class="mt-4 flex flex-col"
-              data-column="done">
-              <input
-                type="text"
-                class="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-white border border-gray-200 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
-                placeholder="New task..."
-              />
-              <button
-                type="submit"
-                class="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full mt-2"
-                >Add Task</button
-              >
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- Ends component -->
-    </div>
     <!-- Starts links to tutorial -->
-    <div
-      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-basic-kanban-board-with-tailwind-css-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-kanban-board/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-48">
+      <!-- Starts component -->
+
       <div
-        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-        <div class="flex w-0 flex-1 items-center p-4">
-          <div class="w-full">
-            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-            <p class="mt-1 text-sm text-neutral-500">
-              How to create a basic Kanban board with Tailwind CSS and
-              JavaScript
-            </p>
-            <p class="mt-2 text-xs text-orange-500 underline">
-              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-            </p>
-          </div>
+        class="items-start mt-24 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+        id="kanban-board"
+      >
+        <div class="flex flex-col h-full gap-2">
+          <h2 class="block text-sm text-base-700">To Do</h2>
+          <div id="todo" class="space-y-2"></div>
+          <form class="flex flex-col" data-column="todo">
+            <input
+              type="text"
+              class="block w-full h-10 px-4 py-3 text-xs bg-white border rounded-lg appearance-none placeholder-base-500 border-base-200 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-inset focus:ring-2"
+              placeholder="New task..."
+            />
+            <button
+              type="submit"
+              class="w-full h-10 px-8 py-2 mt-2 text-sm font-semibold text-white rounded-full bg-accent-600 hover:bg-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              >Add Task</button
+            >
+          </form>
         </div>
-        <div class="flex">
-          <div class="flex flex-col divide-y divide-neutral-200">
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://lexingtonthemes.com/tutorials/how-to-create-a-basic-kanban-board-with-tailwind-css-and-javascript/"
-                type="button"
-                class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Tutorial</a
-              >
-            </div>
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-kanban-board/index.astro"
-                class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Get the code</a
-              >
-            </div>
-          </div>
+        <div class="flex flex-col h-full gap-2">
+          <h2 class="block text-sm text-base-700">In Progress</h2>
+          <div id="inProgress" class="space-y-2"></div>
+          <form class="flex flex-col" data-column="inProgress">
+            <input
+              type="text"
+              class="block w-full h-10 px-4 py-3 text-xs bg-white border rounded-lg appearance-none placeholder-base-500 border-base-200 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-inset focus:ring-2"
+              placeholder="New task..."
+            />
+            <button
+              type="submit"
+              class="w-full h-10 px-8 py-2 mt-2 text-sm font-semibold text-white rounded-full bg-accent-600 hover:bg-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              >Add Task</button
+            >
+          </form>
+        </div>
+        <div class="flex flex-col h-full gap-2">
+          <h2 class="block text-sm text-base-700">Done</h2>
+          <div id="done" class="space-y-2"></div>
+          <form class="flex flex-col" data-column="done">
+            <input
+              type="text"
+              class="block w-full h-10 px-4 py-3 text-xs bg-white border rounded-lg appearance-none placeholder-base-500 border-base-200 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-inset focus:ring-2"
+              placeholder="New task..."
+            />
+            <button
+              type="submit"
+              class="w-full h-10 px-8 py-2 mt-2 text-sm font-semibold text-white rounded-full bg-accent-600 hover:bg-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              >Add Task</button
+            >
+          </form>
         </div>
       </div>
-    </div>
-    <!-- Ends links to tutorial -->
+    </Wrapper>
   </section>
   <script type="module">
     const columns = ["todo", "inProgress", "done"];
@@ -153,7 +95,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         tasks[column].forEach((task, index) => {
           const taskElement = document.createElement("div");
           taskElement.className =
-            "bg-white p-2 rounded shadow flex justify-between items-center";
+            "flex items-center justify-between p-2 bg-white rounded shadow";
           taskElement.innerHTML = `
           <p class="flex-grow">${task}</p>
           <div class="flex items-center space-x-1">
@@ -161,7 +103,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               column !== "todo"
                 ? `<button data-action="move" data-from="${column}" data-to="${
                     columns[columns.indexOf(column) - 1]
-                  }" data-index="${index}" class="inline-flex items-center justify-center text-blue-500 hover:text-blue-600 p-1 rounded">
+                  }" data-index="${index}" class="inline-flex items-center justify-center p-1 rounded text-accent-500 hover:text-accent-600">
                &larr;
                   </button>`
                 : ""
@@ -170,12 +112,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               column !== "done"
                 ? `<button data-action="move" data-from="${column}" data-to="${
                     columns[columns.indexOf(column) + 1]
-                  }" data-index="${index}" class="inline-flex items-center justify-center text-green-500 hover:text-green-600 p-1">
+                  }" data-index="${index}" class="inline-flex items-center justify-center p-1 text-green-500 hover:text-green-600">
                    &rarr;
                   </button>`
                 : ""
             }
-            <button data-action="delete" data-column="${column}" data-index="${index}" class="inline-flex items-center justify-center text-red-500 hover:text-red-600 p-1">
+            <button data-action="delete" data-column="${column}" data-index="${index}" class="inline-flex items-center justify-center p-1 text-red-500 hover:text-red-600">
              &#10540;
             </button>
           </div>

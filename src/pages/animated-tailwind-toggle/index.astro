@@ -1,24 +1,23 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto items-center flex flex-col justify-center py-24 lg:py-44 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
-        <div>
-          <h1>Animated Tailwind Toggle</h1>
-          <p>Click on the toggle to see how it works....</p>
-        </div>
-      </div>
-
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-an-animated-toggle-with-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-tailwind-toggle/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-62">
       <!-- Starts component -->
-      <div class="flex max-w-sm w-full mx-auto py-24 border-t">
+      <div class="flex w-full max-w-sm mx-auto">
         <label
           for="theme-toggle"
-          class="flex items-center cursor-pointer relative h-12 w-24 rounded-full bg-zinc-100 ring-1 ring-inset ring-white shadow mx-auto">
+          class="relative flex items-center w-24 h-12 mx-auto rounded-full shadow cursor-pointer bg-zinc-100 ring-1 ring-inset ring-white"
+        >
           <span class="sr-only">Toggle theme</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -28,13 +27,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="absolute left-[0.5em] top-1/2 flex size-8 -translate-y-1/2 items-center justify-center text-orange-600"
-            aria-hidden="true">
-            <path
-              stroke="none"
-              d="M0 0h24v24H0z"
-              fill="none"
-            ></path>
+            class="absolute left-[0.5em] top-1/2 flex size-8 -translate-y-1/2 items-center justify-center text-accent-600"
+            aria-hidden="true"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
             <path
               d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
@@ -48,19 +44,16 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="absolute right-[0.5em] top-1/2 size-8 -translate-y-1/2 rounded-full text-orange-600"
-            aria-hidden="true">
-            <path
-              stroke="none"
-              d="M0 0h24v24H0z"
-              fill="none"
-            ></path>
+            class="absolute right-[0.5em] top-1/2 size-8 -translate-y-1/2 rounded-full text-accent-600"
+            aria-hidden="true"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path
               d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
             ></path>
           </svg>
           <input
-            class="peer sr-only"
+            class="sr-only peer"
             id="theme-toggle"
             name="theme-toggle"
             type="checkbox"
@@ -68,50 +61,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           />
           <span
             id="theme-toggle-label"
-            class="absolute left-[0.25em] top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-orange-600 to-zinc-400 transition-all duration-300 peer-checked:left-[calc(100%-2.75em)] peer-focus:ring-2 peer-focus:ring-blue-400"
-            aria-hidden="true"
-          ></span>
+            class="absolute left-[0.25em] top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-accent-600 to-zinc-400 transition-all duration-300 peer-checked:left-[calc(100%-2.75em)] peer-focus:ring-2 peer-focus:ring-accent-400"
+            aria-hidden="true"></span>
         </label>
       </div>
       <!-- Ends component -->
-    </div>
+    </Wrapper>
   </section>
-  <!-- Starts links to tutorial -->
-  <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-    <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
-        <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
-            How to create an animated toggle with Tailwind CSS
-          </p>
-          <p class="mt-2 text-xs text-orange-500 underline">
-            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-          </p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://lexingtonthemes.com/tutorials/how-to-create-an-animated-toggle-with-tailwind-css/"
-              type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Tutorial</a
-            >
-          </div>
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-tailwind-toggle/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Get the code</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Ends links to tutorial -->
 </BaseLayout>

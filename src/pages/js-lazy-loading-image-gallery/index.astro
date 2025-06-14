@@ -1,63 +1,27 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
+
 <BaseLayout>
   <section>
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col min-h-svh justify-start py-24 lg:py-32 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm text-center prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
-        <h1>Lazy loading image gallery</h1>
-      </div>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-lazy-loading-image-gallery-with-tailwind-css-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-lazy-loading-image-gallery/index.astro"
+    />
+    <Wrapper class="py-24">
       <!-- Starts component -->
-      <div class="mx-auto px-4 relative mt-12 w-full">
-        <div
-          id="gallery"
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <!-- Images will be dynamically inserted here -->
-        </div>
+      <div
+        id="gallery"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+      >
+        <!-- Images will be dynamically inserted here -->
       </div>
       <!-- Ends component -->
-    </div>
-    <!-- Starts links to tutorial -->
-    <div
-      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-      <div
-        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-        <div class="flex w-0 flex-1 items-center p-4">
-          <div class="w-full">
-            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-            <p class="mt-1 text-sm text-neutral-500">
-              How to build a lazy-loading image gallery with Tailwind CSS and
-              JavaScript
-            </p>
-            <p class="mt-2 text-xs text-orange-500 underline">
-              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-            </p>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex flex-col divide-y divide-neutral-200">
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://lexingtonthemes.com/tutorials/how-to-create-a-lazy-loading-image-gallery-with-tailwind-css-and-javascript/"
-                type="button"
-                class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Tutorial</a
-              >
-            </div>
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-lazy-loading-image-gallery/index.astro"
-                class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Get the code</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Ends links to tutorial -->
+    </Wrapper>
   </section>
 </BaseLayout>
 <script type="module">
@@ -74,14 +38,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   ];
   function createImageElement(url, index) {
     const div = document.createElement("div");
-    div.className = "relative overflow-hidden   aspect-w-16 aspect-h-9";
+    div.className = "relative overflow-hidden  aspect-w-16 aspect-h-9";
     const img = document.createElement("img");
     img.className =
-      "lazy-image w-full h-full object-cover transition-opacity duration-300 opacity-0";
+      "object-cover w-full h-full opacity-0 lazy-image transition-opacity duration-300";
     img.dataset.src = url;
     img.alt = `Image ${index + 1}`;
     const placeholder = document.createElement("div");
-    placeholder.className = "absolute inset-0 bg-gray-200 animate-pulse w-full h-full";
+    placeholder.className =
+      "absolute inset-0 w-full h-full bg-base-200 animate-pulse";
     div.appendChild(placeholder);
     div.appendChild(img);
     return div;

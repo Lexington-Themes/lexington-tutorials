@@ -1,110 +1,111 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
-
 
 <BaseLayout>
   <section>
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col min-h-svh justify-start py-24 lg:py-32 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm text-center prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
-        <h1>Lazy loading image gallery</h1>
-        <p>Click on the keys to type.</p>
-        <p class="md:hidden">This  tutorial os only for desktop</p>
-      </div>
-      <!-- Starts component -->
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-virtual-keyboard-with-tailwind-css-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-virtual-keyboard/index.astro"
+    />
+    <Wrapper class="py-24">
       <!-- Virtual Keyboard Container -->
       <div
         id="virtual-keyboard"
-        class="bg-gray-50 p-4 rounded-lg border max-w-4xl mx-auto mt-12 hidden md:block">
+        class="hidden max-w-4xl p-4 mx-auto mt-12 border rounded-lg bg-base-50 border-base-200 md:block"
+      >
         <!-- Keyboard Output Display -->
         <div
           id="keyboard-output"
-          class="bg-white p-2 mb-4 h-12 rounded-md border border-gray-200 text-xl">
+          class="h-12 p-2 mb-4 text-xl bg-white border rounded-md border-base-200"
+        >
         </div>
 
         <!-- Keyboard Layout -->
         <div class="grid gap-1">
           <!-- Number Row -->
           <div class="grid grid-cols-13 gap-1">
-            <button class="key bg-gray-300 p-2 rounded text-sm">Esc</button>
-            <button class="key bg-white p-2 rounded">1</button>
-            <button class="key bg-white p-2 rounded">2</button>
-            <button class="key bg-white p-2 rounded">3</button>
-            <button class="key bg-white p-2 rounded">4</button>
-            <button class="key bg-white p-2 rounded">5</button>
-            <button class="key bg-white p-2 rounded">6</button>
-            <button class="key bg-white p-2 rounded">7</button>
-            <button class="key bg-white p-2 rounded">8</button>
-            <button class="key bg-white p-2 rounded">9</button>
-            <button class="key bg-white p-2 rounded">0</button>
-            <button class="key bg-gray-300 p-2 rounded col-span-2"
+            <button class="p-2 text-sm rounded key bg-base-300">Esc</button>
+            <button class="p-2 bg-white rounded key">1</button>
+            <button class="p-2 bg-white rounded key">2</button>
+            <button class="p-2 bg-white rounded key">3</button>
+            <button class="p-2 bg-white rounded key">4</button>
+            <button class="p-2 bg-white rounded key">5</button>
+            <button class="p-2 bg-white rounded key">6</button>
+            <button class="p-2 bg-white rounded key">7</button>
+            <button class="p-2 bg-white rounded key">8</button>
+            <button class="p-2 bg-white rounded key">9</button>
+            <button class="p-2 bg-white rounded key">0</button>
+            <button class="p-2 rounded key bg-base-300 col-span-2"
               >Backspace</button
             >
           </div>
           <!-- QWERTY Row -->
           <div class="grid grid-cols-13 gap-1">
-            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+            <button class="p-2 text-sm rounded key bg-base-300 col-span-2"
               >Tab</button
             >
-            <button class="key bg-white p-2 rounded">Q</button>
-            <button class="key bg-white p-2 rounded">W</button>
-            <button class="key bg-white p-2 rounded">E</button>
-            <button class="key bg-white p-2 rounded">R</button>
-            <button class="key bg-white p-2 rounded">T</button>
-            <button class="key bg-white p-2 rounded">Y</button>
-            <button class="key bg-white p-2 rounded">U</button>
-            <button class="key bg-white p-2 rounded">I</button>
-            <button class="key bg-white p-2 rounded">O</button>
-            <button class="key bg-white p-2 rounded">P</button>
-            <button class="key bg-white p-2 rounded">Å</button>
+            <button class="p-2 bg-white rounded key">Q</button>
+            <button class="p-2 bg-white rounded key">W</button>
+            <button class="p-2 bg-white rounded key">E</button>
+            <button class="p-2 bg-white rounded key">R</button>
+            <button class="p-2 bg-white rounded key">T</button>
+            <button class="p-2 bg-white rounded key">Y</button>
+            <button class="p-2 bg-white rounded key">U</button>
+            <button class="p-2 bg-white rounded key">I</button>
+            <button class="p-2 bg-white rounded key">O</button>
+            <button class="p-2 bg-white rounded key">P</button>
+            <button class="p-2 bg-white rounded key">Å</button>
           </div>
           <!-- ASDF Row -->
           <div class="grid grid-cols-13 gap-1">
-            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+            <button class="p-2 text-sm rounded key bg-base-300 col-span-2"
               >Caps</button
             >
-            <button class="key bg-white p-2 rounded">A</button>
-            <button class="key bg-white p-2 rounded">S</button>
-            <button class="key bg-white p-2 rounded">D</button>
-            <button class="key bg-white p-2 rounded">F</button>
-            <button class="key bg-white p-2 rounded">G</button>
-            <button class="key bg-white p-2 rounded">H</button>
-            <button class="key bg-white p-2 rounded">J</button>
-            <button class="key bg-white p-2 rounded">K</button>
-            <button class="key bg-white p-2 rounded">L</button>
-            <button class="key bg-gray-300 p-2 rounded col-span-2">Enter</button
+            <button class="p-2 bg-white rounded key">A</button>
+            <button class="p-2 bg-white rounded key">S</button>
+            <button class="p-2 bg-white rounded key">D</button>
+            <button class="p-2 bg-white rounded key">F</button>
+            <button class="p-2 bg-white rounded key">G</button>
+            <button class="p-2 bg-white rounded key">H</button>
+            <button class="p-2 bg-white rounded key">J</button>
+            <button class="p-2 bg-white rounded key">K</button>
+            <button class="p-2 bg-white rounded key">L</button>
+            <button class="p-2 rounded key bg-base-300 col-span-2">Enter</button
             >
           </div>
           <!-- ZXCV Row -->
           <div class="grid grid-cols-13 gap-1">
-            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+            <button class="p-2 text-sm rounded key bg-base-300 col-span-2"
               >Shift</button
             >
-            <button class="key bg-white p-2 rounded">Z</button>
-            <button class="key bg-white p-2 rounded">X</button>
-            <button class="key bg-white p-2 rounded">C</button>
-            <button class="key bg-white p-2 rounded">V</button>
-            <button class="key bg-white p-2 rounded">B</button>
-            <button class="key bg-white p-2 rounded">N</button>
-            <button class="key bg-white p-2 rounded">M</button>
-            <button class="key bg-white p-2 rounded">,</button>
-            <button class="key bg-white p-2 rounded">.</button>
-            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+            <button class="p-2 bg-white rounded key">Z</button>
+            <button class="p-2 bg-white rounded key">X</button>
+            <button class="p-2 bg-white rounded key">C</button>
+            <button class="p-2 bg-white rounded key">V</button>
+            <button class="p-2 bg-white rounded key">B</button>
+            <button class="p-2 bg-white rounded key">N</button>
+            <button class="p-2 bg-white rounded key">M</button>
+            <button class="p-2 bg-white rounded key">,</button>
+            <button class="p-2 bg-white rounded key">.</button>
+            <button class="p-2 text-sm rounded key bg-base-300 col-span-2"
               >Shift</button
             >
           </div>
           <!-- Space Row -->
           <div class="grid grid-cols-13 gap-1">
-            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+            <button class="p-2 text-sm rounded key bg-base-300 col-span-2"
               >Ctrl</button
             >
-            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+            <button class="p-2 text-sm rounded key bg-base-300 col-span-2"
               >Alt</button
             >
-            <button class="key bg-white p-2 rounded col-span-7">Space</button>
-            <button class="key bg-gray-300 p-2 rounded text-sm col-span-2"
+            <button class="p-2 bg-white rounded key col-span-7">Space</button>
+            <button class="p-2 text-sm rounded key bg-base-300 col-span-2"
               >Alt</button
             >
           </div>
@@ -112,45 +113,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       </div>
 
       <!-- Ends component -->
-    </div>
-    <!-- Starts links to tutorial -->
-    <div
-      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-      <div
-        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-        <div class="flex w-0 flex-1 items-center p-4">
-          <div class="w-full">
-            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-            <p class="mt-1 text-sm text-neutral-500">
-              How to build a virtual keyboard with Tailwind CSS and JavaScript
-            </p>
-            <p class="mt-2 text-xs text-orange-500 underline">
-              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-            </p>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex flex-col divide-y divide-neutral-200">
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://lexingtonthemes.com/tutorials/how-to-create-a-virtual-keyboard-with-tailwind-css-and-javascript/"
-                type="button"
-                class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Tutorial</a
-              >
-            </div>
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-virtual-keyboard/index.astro"
-                class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Get the code</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Ends links to tutorial -->
+    </Wrapper>
   </section>
 </BaseLayout>
 <script type="module">

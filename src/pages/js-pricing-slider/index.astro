@@ -1,126 +1,74 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
   <section>
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-pricing-slider-with-tailwind-css-and-javascript"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-pricing-slider/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper class="py-24">
+      <!-- Starts component -->
+      <div class="mx-auto w-fit">
         <div>
-          <h1>Pricing slider</h1>
-          <p class="text-balance">
-            Interact with the slider to see how it works. You will see how the
-            price changes as you move the slider.
+          <input
+            type="range"
+            id="pageviews"
+            min="0"
+            max="1000000"
+            step="1000"
+            class="w-full h-8 px-2 mt-2 overflow-hidden border rounded-full outline-none appearance-none border-base-300"
+            style="--thumb-color: #f94121;"
+          />
+        </div>
+        <div class="flex items-center w-full mt-4 gap-x-2">
+          <label for="pageviews" class="block text-base-500">Pageviews</label>
+          <input
+            type="number"
+            id="inputPageviews"
+            class="w-full h-10 px-2 py-1 border rounded-lg outline-none border-base-300 text-base-700 focus:ring focus:ring-accent-600"
+          />
+        </div>
+        <div
+          class="w-full pt-8 mt-8 border-t border-base-200 lg:flex lg:flex-col lg:justify-center"
+        >
+          <p class="flex items-baseline">
+            <span class="flex text-4xl font-medium tracking-tight text-black"
+              >$<input
+                type="text"
+                id="price"
+                readonly
+                class="w-auto p-0 text-4xl bg-transparent border-none pointer-events-none"
+              /></span
+            >
+          </p>
+          <div class="flex items-center mt-4 gap-x-2">
+            <label for="pageviews" class="block text-base-500">Pageviews</label>
+            <span id="pageviewsText" class="text-base-500"></span>
+          </div>
+          <p class="mt-8 text-sm lg:text-pretty text-base-500">
+            This plan is tailored for small businesses and startups
+          </p>
+          <div class="mt-4">
+            <button
+              type="submit"
+              class="justify-center flex items-center gap-x-2 rounded-full bg-accent-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600 w-full"
+              >Get access</button
+            >
+          </div>
+          <p class="mt-6 text-xs leading-5 text-base-500 text-pretty">
+            Invoices and receipts available for easy company reimbursement
           </p>
         </div>
       </div>
-      <div class="mt-6 border-t  border-neutral-200  pt-12 max-w-sm mx-auto w-full">
-        <!-- Starts component -->
-        <div class="w-full">
-          <div>
-            <input
-              type="range"
-              id="pageviews"
-              min="0"
-              max="1000000"
-              step="1000"
-              class="w-full mt-2 border border-gray-300 appearance-none rounded-full h-8 px-2 outline-none overflow-hidden"
-              style="--thumb-color: #f94121;"
-            />
-          </div>
-          <div class="mt-4 flex items-center gap-x-2 w-full">
-            <label
-              for="pageviews"
-              class="block text-gray-500"
-              >Pageviews</label
-            >
-            <input
-              type="number"
-              id="inputPageviews"
-              class="border border-gray-300 rounded-lg px-2 py-1 w-full h-10 text-gray-700 outline-none focus:ring focus:ring-orange-600"
-            />
-          </div>
-          <div
-            class="rounded-2xl p-8 mt-4 w-full border lg:flex lg:flex-col lg:justify-center">
-            <p class="flex items-baseline">
-              <span class="text-4xl font-medium tracking-tight text-black flex"
-                >$<input
-                  type="text"
-                  id="price"
-                  readonly
-                  class="w-auto text-4xl border-none bg-transparent p-0 pointer-events-none"
-                /></span
-              >
-            </p>
-            <div class="flex items-center gap-x-2 mt-4">
-              <label
-                for="pageviews"
-                class="block text-gray-500"
-                >Pageviews</label
-              >
-              <span
-                id="pageviewsText"
-                class="text-gray-500"
-              ></span>
-            </div>
-            <p class="text-sm lg:text-pretty mt-8 text-gray-500">
-              This plan is tailored for small businesses and startups
-            </p>
-            <div class="mt-4">
-              <button
-                type="submit"
-                class="justify-center flex items-center gap-x-2 rounded-full bg-orange-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 w-full"
-                >Get access</button
-              >
-            </div>
-            <p class="mt-6 text-xs leading-5 text-gray-500 text-pretty">
-              Invoices and receipts available for easy company reimbursement
-            </p>
-          </div>
-        </div>
-        <!-- Ends component -->
-      </div>
-    </div>
-    <!-- Starts links to tutorial -->
-    <div
-      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-      <div
-        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-        <div class="flex w-0 flex-1 items-center p-4">
-          <div class="w-full">
-            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-            <p class="mt-1 text-sm text-neutral-500">
-              How to create a pricing slider with Tailwind CSS and JavaScript
-            </p>
-            <p class="mt-2 text-xs text-orange-500 underline">
-              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-            </p>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex flex-col divide-y divide-neutral-200">
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://lexingtonthemes.com/tutorials/how-to-create-a-pricing-slider-with-tailwind-css-and-javascript"
-                type="button"
-                class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Tutorial</a
-              >
-            </div>
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-pricing-slider/index.astro"
-                class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Get the code</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Ends links to tutorial -->
+      <!-- Ends component -->
+    </Wrapper>
   </section>
 </BaseLayout>
 

@@ -1,6 +1,9 @@
 ---
 // Import the BaseLayout component from the layouts directory. This component is likely used as a wrapper for the page, providing consistent structure and styling.
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 // Define an array of objects named 'features'. Each object represents a feature of your platform or product,
 // including properties for title, background image URL, description, background color, and title hover color.
 const features = [
@@ -9,15 +12,15 @@ const features = [
     bgImage:
       "https://i.pinimg.com/736x/2b/74/7b/2b747b71b782a8833f2b3ad9b0e37cd1.jpg",
     description: "Crafting an effortless journey with user-first.",
-    bgColor: "bg-black", // Background color class for Tailwind CSS.
-    titleColor: "group-hover:text-orange-500", // Tailwind CSS class for text color change on group hover.
+    bgColor: "bg-base-50", // Background color class for Tailwind CSS.
+    titleColor: "group-hover:text-accent-500", // Tailwind CSS class for text color change on group hover.
   },
   {
     title: " Interaction",
     bgImage:
       "https://i.pinimg.com/564x/3c/c2/6c/3cc26c0140c2f0dc70d8aa48416c41dc.jpg",
     description: "Our platform is designed for simplicity and ease.",
-    bgColor: "bg-black", // Background color class for Tailwind CSS.
+    bgColor: "bg-base-50", // Background color class for Tailwind CSS.
     titleColor: "group-hover:text-indigo-400", // Tailwind CSS class for text color change on group hover.
   },
   {
@@ -25,7 +28,7 @@ const features = [
     bgImage:
       "https://i.pinimg.com/564x/fa/4f/cf/fa4fcfd2db636f98eb0f2b5aecce0c28.jpg",
     description: "Our design philosophy centers around the user.",
-    bgColor: "bg-black", // Background color class for Tailwind CSS.
+    bgColor: "bg-base-50", // Background color class for Tailwind CSS.
     titleColor: "group-hover:text-cyan-400", // Tailwind CSS class for text color change on group hover.
   },
   // Additional feature objects...
@@ -33,42 +36,19 @@ const features = [
 ---
 
 <BaseLayout>
-  <section class="bg-white">
-    <div
-      class="max-w-screen-xl 2xl:max-w-screen-2xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 flex flex-col justify-center lg:h-screen"
-    >
-    <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto ">
-        <div>
-          <h1>Dynamic feature grid</h1>
-          <p class="text-balance">
-            Hover over the images to see the animation.
-
-          </p>
-        </div>
-      </div>
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-dynamic-feature-grid-with-astrojs-and-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/simplified-cards/index.astro"
+    />
+    <Wrapper class="py-24">
       <!-- Starts component -->
-      <div
-        class="grid grid-cols-1 gap-2 mt-12 list-none md:grid-cols-3 lg:mt-24 max-w-5xl mx-auto"
-        role="list"
-      >
-        <!---
-            // Loop through the features array to render each feature dynamically.
-            //
-            // Apply dynamic background color using the bgColor property from the feature object. Also, make the background slightly transparent on hover to
-            // reveal the background image more clearly.
-            //
-            // The title's color changes on hover, using the titleColor property from the feature object. This demonstrates how to dynamically apply Tailwind
-            // CSS classes based on component state or properties.
-            //
-            //  {String(index + 1).padStart(2, "0") + "⏤"} Converts the current index (from iterating over the features array) to a string and adds 1 to it,
-            // and adds a dash at the end of the number
-            -->
+      <div class="grid grid-cols-1 gap-2 md:grid-cols-3" role="list">
         {
           features.map((feature, index) => (
             <>
               <article
-                class="mx-auto  shadow-xl bg-cover bg-center min-h-150 relative border-8 border-black  transform duration-500 hover:-translate-y-12   group"
+                class="relative mx-auto bg-center bg-cover  min-h-150 transform duration-500 hover:-translate-y-12 group"
                 style={`background-image: url('${feature.bgImage}');`}
               >
                 <div
@@ -82,7 +62,7 @@ const features = [
                     >
                       {String(index + 1).padStart(2, "0") + "⏤"} {feature.title}
                     </h1>
-                    <p class="opacity-0 text-white text-xl group-hover:opacity-80 transform duration-500 ">
+                    <p class="text-xl text-white opacity-0 group-hover:opacity-80 transform duration-500 ">
                       {feature.description}
                     </p>
                   </div>
@@ -93,49 +73,6 @@ const features = [
         }
       </div>
       <!-- ends component -->
-      <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2"
-      >
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border"
-        >
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create a dynamic feature grid with Astrojs and Tailwind
-                CSS
-              </p>
-              <p class="mt-2 text-xs text-orange-500 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-dynamic-feature-grid-with-astrojs-and-tailwind-css/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/simplified-cards/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Get the code</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Ends links to tutorial -->
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>

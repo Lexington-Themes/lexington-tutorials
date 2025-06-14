@@ -1,6 +1,9 @@
 ---
 // Import BaseLayout
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 // Defining arrays to avoid writing the same code again.
 // You can use your own system
 const blogEntries = [
@@ -78,27 +81,28 @@ const tableOfContents = [
 <BaseLayout>
   <!-- Starts component -->
   <div>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-multi-column-layout-with-tailwind-css"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/multicolumn-layout/index.astro"
+    />
     <!-- Sidebar Navigation for Blog Entries (Starts hidden and becomes visible on larger screens) -->
     <div
-      class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+      class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col"
+    >
       <!-- This div will hold the navigation and is set to scroll if content overflows -->
-      <div class="overflow-y-auto border-r">
+      <div class="overflow-y-auto border-r border-base-200">
         <!-- Navigation for the blog entries list -->
-        <nav class="flex flex-1 flex-col">
-          <ul
-            role="list"
-            class="border-b divide-y">
+        <nav class="flex flex-col flex-1">
+          <ul role="list" class='border-base-200"border-b' divide-y">
             <!-- Mapping through the blog entries to display them in the sidebar -->
             {
               blogEntries.map((entry) => (
                 <li class="bg-white ">
                   <div class="relative flex items-start p-4 space-x-3 group">
                     <div class="flex-1 min-w-0">
-                      <div class="text-sm font-medium leading-6 text-black hover:text-blue-400">
-                        <a
-                          href="#"
-                          class="flex flex-col gap-2 w-full">
-                          <div class=" text-xs font-normal up text-zinc-400">
+                      <div class="text-sm font-medium text-black leading-6 hover:text-accent-400">
+                        <a href="#" class="flex flex-col w-full gap-2">
+                          <div class="text-xs font-normal  up text-zinc-400">
                             {entry.date}
                           </div>
                           <span class="uppercase">{entry.title}</span>
@@ -116,24 +120,26 @@ const tableOfContents = [
     </div>
     <!-- Sidebar Navigation for Blog Entries (Ends) -->
     <!-- Main Content Area (Gets pushed to the right on larger screens where sidebar is visible) -->
-    <main class="lg:pl-72 bg-white">
+    <main class="bg-white lg:pl-72">
       <!-- Right padding for the main content to make room for the TOC on the largest screens -->
       <div class="xl:pr-96">
         <!-- Padding and margin handling for the main content area -->
-        <div class="px-4 py-10 sm:px-6 lg:px-8 xl:px-12">
+        <div class="px-4 py-10 lg:py-32 sm:px-6 lg:px-8 xl:px-12">
           <!-- Main blog post content -->
           <div
-            class="prose text-black 2xl:prose-2xl max-w-none 2xl:max-w-screen-xl mx-auto prose-headings:text-black prose-headings:font-normal prose-p:text-zinc-400 prose-strong:text-black">
+            class="mx-auto text-black prose 2xl:prose-2xl max-w-none 2xl:max-w-screen-xl prose-headings:text-black prose-headings:font-normal prose-p:text-zinc-400 prose-strong:text-black"
+          >
             <h1>The power of HTML semantic tags</h1>
-            <div class="pb-5 border-b">
+            <div class="pb-5 border-b border-base-200">
               <div
-                class="inline-flex items-center justify-between w-full font-mono text-xs text-black uppercase">
+                class="inline-flex items-center justify-between w-full font-mono text-xs text-black uppercase"
+              >
                 <span>Fri Aug 11 2023</span>
                 <span>Author - Michael Andreuzza</span>
               </div>
             </div>
             <img
-              class="w-full h-64 2xl:h-[30rem] border object-cover object-top invert"
+              class="w-full h-64 2xl:h-[30rem] border-base-200 border object-cover object-top"
               src="https://i.pinimg.com/originals/70/65/4f/70654fd75f2991e168ec22b75fdbd6a5.gif"
               alt=""
             />
@@ -325,11 +331,12 @@ const tableOfContents = [
     <!-- Main Content Area (Ends) -->
     <!-- Table of Contents (TOC) Section (Visible on extra-large screens) -->
     <aside
-      class="fixed inset-y-0 right-0 py-10 hidden w-96 overflow-y-auto border-l px-4 sm:px-6 lg:px-8 bg-white xl:block">
+      class="fixed inset-y-0 right-0 hidden px-4 py-10 overflow-y-auto bg-white border-l border-base-200 w-96 sm:px-6 lg:px-8 xl:block"
+    >
       <!-- Navigation for the table of contents -->
       <nav aria-label="Table of contents">
         <h2 class="text-black">Table of Contents</h2>
-        <ul class="prose prose-sm mt-4">
+        <ul class="mt-4 prose prose-sm">
           <!-- Mapping through the table of contents to create links to the different sections of the blog post -->
 
           {
@@ -337,7 +344,8 @@ const tableOfContents = [
               <li>
                 <a
                   href={`#${section.id}`}
-                  class="text-black hover:text-blue-800">
+                  class="text-black hover:text-accent-800"
+                >
                   {section.title}
                 </a>
               </li>
@@ -349,43 +357,4 @@ const tableOfContents = [
     <!-- Table of Contents (TOC) Section (Ends) -->
   </div>
   <!-- Ends component -->
-  <!-- Starts links to tutorial -->
-  <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-    <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
-        <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
-            How to create a multicolumn layout with Tailwind CSS
-          </p>
-          <p class="mt-2 text-xs text-orange-500 underline">
-            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-          </p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://lexingtonthemes.com/tutorials/how-to-create-a-multi-column-layout-with-tailwind-css"
-              type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Tutorial</a
-            >
-          </div>
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/multicolumn-layout/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Get the code</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Ends links to tutorial -->
 </BaseLayout>
-

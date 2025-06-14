@@ -1,5 +1,8 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <script
@@ -7,91 +10,91 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ></script>
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
-      <div class="max-w-xl mx-auto text-center">
+  <section>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-drag-and-drop-with-tailwind-css-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-drag-and-drop/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper class="py-24 lg:py-48">
+      <div id="movable-items" class="grid gap-2 grid-cols-2 md:grid-cols-4">
+        <!-- Items in the Grid -->
         <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
-          <div>
-            <h1>Drag and Drop</h1>
-            <p class="text-balance">
-              Drag from any of the items to the desired location.
-            </p>
-          </div>
+          class="p-8 rounded-lg bg-accent-100 movable-item hover:cursor-grab text-accent-900"
+        >
+          Item 1
+        </div>
+        <div
+          class="p-8 rounded-lg bg-accent-200 movable-item hover:cursor-grab text-accent-900"
+        >
+          Item 2
+        </div>
+        <div
+          class="p-8 rounded-lg bg-accent-300 movable-item text-accent-900 hover:cursor-grab"
+        >
+          Item 3
+        </div>
+        <div
+          class="p-8 text-white rounded-lg bg-accent-400 movable-item hover:cursor-grab"
+        >
+          Item 4
+        </div>
+        <div
+          class="p-8 text-white rounded-lg bg-accent-500 movable-item hover:cursor-grab"
+        >
+          Item 5
+        </div>
+        <div
+          class="p-8 text-white rounded-lg bg-accent-600 movable-item hover:cursor-grab"
+        >
+          Item 6
+        </div>
+        <div
+          class="p-8 text-white rounded-lg bg-accent-700 movable-item hover:cursor-grab"
+        >
+          Item 7
+        </div>
+        <div
+          class="p-8 text-white rounded-lg bg-accent-800 movable-item hover:cursor-grab"
+        >
+          Item 8
         </div>
       </div>
-      <div class="max-w-3xl mx-auto flex flex-col mt-6 border-t  border-neutral-200  pt-12">
-        <div
-          id="movable-items"
-          class="grid gap-2 grid-cols-2 md:grid-cols-4 mt-4">
-          <!-- Items in the Grid -->
-          <div
-            class="bg-blue-100 rounded-lg p-8 movable-item hover:cursor-grab text-blue-900">
-            Item 1
-          </div>
-          <div
-            class="bg-blue-200 rounded-lg p-8 movable-item hover:cursor-grab text-blue-900">
-            Item 2
-          </div>
-          <div
-            class="bg-blue-300 rounded-lg p-8 movable-item text-blue-900 hover:cursor-grab">
-            Item 3
-          </div>
-          <div
-            class="bg-blue-400 rounded-lg p-8 movable-item text-white hover:cursor-grab">
-            Item 4
-          </div>
-          <div
-            class="bg-blue-500 rounded-lg p-8 movable-item text-white hover:cursor-grab">
-            Item 5
-          </div>
-          <div
-            class="bg-blue-600 rounded-lg p-8 movable-item text-white hover:cursor-grab">
-            Item 6
-          </div>
-          <div
-            class="bg-blue-700 rounded-lg p-8 movable-item text-white hover:cursor-grab">
-            Item 7
-          </div>
-          <div
-            class="bg-blue-800 rounded-lg p-8 text-white movable-item hover:cursor-grab">
-            Item 8
-          </div>
-        </div>
-      </div>
-    </div>
+    </Wrapper>
   </section>
   <!-- Starts links to tutorial -->
   <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    class="fixed inset-x-0 bottom-0 p-2 pointer-events-none sm:flex sm:justify-center"
+  >
     <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
+      class="flex w-full max-w-md bg-white border rounded-lg shadow-xl pointer-events-auto divide-x divide-base-200 border-base-200"
+    >
+      <div class="flex items-center flex-1 w-0 p-4">
         <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
+          <p class="text-sm font-medium text-base-900">Tutorial</p>
+          <p class="mt-1 text-sm text-base-500">
             How to create a drag and drop with Tailwind CSS and JavaScript
           </p>
-          <p class="mt-2 text-xs text-orange-600 underline">
+          <p class="mt-2 text-xs underline text-accent-600">
             <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
           </p>
         </div>
       </div>
       <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
+        <div class="flex flex-col divide-y divide-base-200">
+          <div class="flex flex-1 h-0">
             <a
               href="https://lexingtonthemes.com/tutorials/how-to-create-a-drag-and-drop-with-tailwind-css-and-javascript/"
               type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-tr-lg text-accent-600 hover:text-accent-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-accent-600"
               >Tutorial</a
             >
           </div>
-          <div class="flex h-0 flex-1">
+          <div class="flex flex-1 h-0">
             <a
               href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-drag-and-drop/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-br-lg text-base-700 hover:text-base-500 focus:outline-none focus:ring-2 focus:ring-accent-600"
               >Get the code</a
             >
           </div>

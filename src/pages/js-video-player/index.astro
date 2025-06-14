@@ -1,40 +1,41 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
   <section>
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col min-h-svh justify-start py-24 lg:py-32 relative p-8">
-      <div
-        class="prose text-zinc-500 prose-sm text-center prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
-        <h1>Custom video player</h1>
-        <p>Press play</p>
-        <p class="md:hidden">This tutorial os only for desktop</p>
-      </div>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-custom-video-player-with-tailwind-css-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-video-player/index.astro"
+    />
+    <Wrapper class="py-24">
       <!-- Starts component -->
 
       <div
-        class="max-w-3xl mx-auto w-full bg-white rounded-2xl mt-12 overflow-hidden">
-        <div class="relative aspect-video w-full">
+        class="w-full max-w-3xl mx-auto mt-12 overflow-hidden bg-white rounded-2xl"
+      >
+        <div class="relative aspect-video">
           <video
             id="video"
-            class="w-full h-full object-contain"
-            src="/videos/video.mp4"
-          ></video>
+            class="w-full"
+            src="https://vantaa.lexingtonthemes.com/videos/intro2.mp4"></video>
           <div
             id="controls"
-            class="absolute bottom-0 left-0 right-0 bg-zinc-950 text-white p-4">
+            class="absolute bottom-0 left-0 right-0 p-4 text-white bg-zinc-950"
+          >
             <div class="flex items-center justify-between">
-              <button
-                id="playPauseBtn"
-                class="focus:outline-none">
+              <button id="playPauseBtn" class="focus:outline-none">
                 <svg
                   class="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg">
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -45,8 +46,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </button>
               <div class="flex-grow mx-4">
@@ -59,56 +59,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                   value="0"
                 />
               </div>
-              <div
-                id="time"
-                class="text-sm">
-                0:00 / 0:00
-              </div>
+              <div id="time" class="text-sm">0:00 / 0:00</div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Ends component -->
-    </div>
-    <!-- Starts links to tutorial -->
-    <div
-      class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-      <div
-        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-        <div class="flex w-0 flex-1 items-center p-4">
-          <div class="w-full">
-            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-            <p class="mt-1 text-sm text-neutral-500">
-              How to build a custom video player with Tailwind CSS and
-              JavaScript
-            </p>
-            <p class="mt-2 text-xs text-orange-500 underline">
-              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-            </p>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex flex-col divide-y divide-neutral-200">
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://lexingtonthemes.com/tutorials/how-to-create-custom-video-player-with-tailwind-css-and-javascript/"
-                type="button"
-                class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Tutorial</a
-              >
-            </div>
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-video-player/index.astro"
-                class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Get the code</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </Wrapper>
+
     <!-- Ends links to tutorial -->
   </section>
 </BaseLayout>

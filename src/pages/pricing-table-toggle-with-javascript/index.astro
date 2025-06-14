@@ -1,5 +1,10 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
+// Components
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 const pricingPlans = [
   {
     name: "Starter Pack",
@@ -55,55 +60,52 @@ const pricingPlans = [
 ---
 
 <BaseLayout>
-  <section
-    x-data="{annual: false}"
-    class="relative flex flex-col overflow-hidden items-center justify-center h-svh bg-zinc-950">
-    <img
-      class="absolute inset-0"
-      src="/images/blueBlob.svg"
-      alt="alt text"
+  <section class="relative overflow-hidden bg-zinc-50">
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-interactive-pricing-toggle-with-tailwind-css-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/pricing-table-toggle-with-javascript/index.astro"
     />
-    <div
-      class="prose text-white prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto relative">
-      <div class="text-center">
-        <h1 class="text-white">Pricing toggle</h1>
-        <p class="text-balance">toggle the pricing to see how it works.</p>
-      </div>
-    </div>
-    <div class="relative items-center px-8 py-12 mx-auto md:px-12 max-w-7xl">
-      <div class="md:max-w-sm mx-auto">
+    <!-- Ends links to tutorial -->
+    <img class="absolute inset-0" src="/images/blueBlob.svg" alt="alt text" />
+    <Wrapper class="relative py-24">
+      <div class="mx-auto w-fit">
         <div
-          class="inline-flex w-full border rounded-full mt-6 overflow-hidden border-white/20 p-0.5 z-0">
+          class="inline-flex w-full border rounded-full mt-6 overflow-hidden border-white/20 p-0.5 z-0"
+        >
           <button
             id="monthlyBtn"
-            class="font-medium rounded-full transition h-12 w-full py-2 block px-8 text-xs bg-black/50 text-white">
+            class="block w-full h-12 px-8 py-2 text-xs font-medium text-white rounded-full transition bg-black/50"
+          >
             Monthly
           </button>
           <button
             id="annualBtn"
-            class="font-medium rounded-full transition h-12 w-full py-2 block px-8 text-xs border-white text-white">
+            class="block w-full h-12 px-8 py-2 text-xs font-medium text-white border-white rounded-full transition"
+          >
             Annual
           </button>
         </div>
       </div>
-      <div class="grid grid-cols-1 gap-2 mt-12 lg:grid-cols-3">
+      <div class="mt-12 grid grid-cols-1 gap-2 lg:grid-cols-3">
         {
           pricingPlans.map((plan) => (
             <div
               data-monthly-price={plan.monthlyPrice}
               data-annual-price={plan.annualPrice}
-              class={`pricing-card flex flex-col justify-between p-8 shadow-2xl  rounded-3xl ${plan.cardBgClass} backdrop-blur-3xl shadow-gray-900/50`}>
+              class={`pricing-card flex flex-col justify-between p-8 shadow-2xl  rounded-3xl ${plan.cardBgClass} backdrop-blur-3xl shadow-base-900/50`}
+            >
               <div>
                 <div class="flex flex-col justify-between gap-3">
                   <p class="text-xl font-medium tracking-tight text-white">
                     {plan.name}
                   </p>
                   <p class="text-white">
-                    <span class="text-2xl actualPrice tracking-tight">
+                    <span class="text-2xl tracking-tight actualPrice">
                       <span>${plan.monthlyPrice}</span>
                       <span>${plan.annualPrice}</span>
                     </span>
-                    <span class="text-base actualCycle font-medium">
+                    <span class="text-base font-medium actualCycle">
                       /m
                       <span style="display: none;">(billed annually)</span>
                     </span>
@@ -123,12 +125,9 @@ const pricingPlans = [
                         stroke="currentColor"
                         fill="none"
                         stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                          stroke="none"
-                          d="M0 0h24v24H0z"
-                          fill="none"
-                        />
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                         <path d="M9 12l2 2l4 -4" />
                       </svg>
@@ -136,7 +135,7 @@ const pricingPlans = [
                     </li>
                   ))}
                   {plan.unavailableFeatures.map((feature) => (
-                    <li class="inline-flex items-center gap-2 opacity-50">
+                    <li class="inline-flex items-center opacity-50 gap-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="icon icon-tabler icon-tabler-circle-x"
@@ -147,12 +146,9 @@ const pricingPlans = [
                         stroke="currentColor"
                         fill="none"
                         stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                          stroke="none"
-                          d="M0 0h24v24H0z"
-                          fill="none"
-                        />
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                         <path d="M10 10l4 4m0 -4l-4 4" />
                       </svg>
@@ -166,7 +162,8 @@ const pricingPlans = [
                   href={plan.link}
                   title={plan.name}
                   aria-label="get started"
-                  class={`flex items-center justify-center w-full  h-12 px-4 py-2 text-base font-medium transition-all duration-200 rounded-xl ${plan.buttonClass}`}>
+                  class={`flex items-center justify-center w-full  h-12 px-4 py-2 text-base font-medium transition-all duration-200 rounded-xl ${plan.buttonClass}`}
+                >
                   Get started
                 </a>
               </div>
@@ -174,83 +171,36 @@ const pricingPlans = [
           ))
         }
       </div>
-    </div>
+    </Wrapper>
   </section>
-  <!-- Starts links to tutorial -->
-  <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-    <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
-        <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
-            How to create a progress-bar with Tailwind CSS and JavaScript
-          </p>
-          <p class="mt-2 text-xs text-orange-500 underline">
-            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-          </p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://lexingtonthemes.com/tutorials/how-to-create-interactive-pricing-toggle-with-tailwind-css-and-javascript/"
-              type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Tutorial</a
-            >
-          </div>
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/pricing-table-toggle-with-javascript/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Get the code</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Ends links to tutorial -->
 </BaseLayout>
 <script type="module">
   document.addEventListener("DOMContentLoaded", function () {
     const monthlyBtn = document.getElementById("monthlyBtn");
     const annualBtn = document.getElementById("annualBtn");
-
     monthlyBtn.addEventListener("click", toggleBillingCycle);
     annualBtn.addEventListener("click", toggleBillingCycle);
-
     function toggleBillingCycle() {
       const isAnnual = this.id === "annualBtn";
       const activeBtn = isAnnual ? annualBtn : monthlyBtn;
       const inactiveBtn = isAnnual ? monthlyBtn : annualBtn;
-
       activeBtn.classList.add("bg-black/50", "text-white");
       inactiveBtn.classList.remove("bg-black/50", "text-black");
-
       updatePricingDisplay(isAnnual);
     }
-
     function updatePricingDisplay(isAnnual) {
       const plans = document.querySelectorAll(".pricing-card");
-
       plans.forEach((plan) => {
         const priceElement = plan.querySelector(".actualPrice");
         const billingCycleElement = plan.querySelector(".actualCycle");
-
         const monthlyPrice = plan.dataset.monthlyPrice;
         const annualPrice = plan.dataset.annualPrice;
-
         priceElement.textContent = isAnnual ? annualPrice : monthlyPrice;
         billingCycleElement.textContent = isAnnual
           ? "(monthly billed annually)"
           : "/m";
       });
     }
-
     updatePricingDisplay(false);
   });
 </script>

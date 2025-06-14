@@ -1,139 +1,97 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
   <section>
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl items-center flex flex-col justify-center relative p-8">
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-flyout-menu-with-astrojs-tailwind-css-and-javascript"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-flyout-menu/index.astro"
+    />
+    <!-- Ends links to tutorial -->
+    <Wrapper class="py-24">
       <!-- Decorative image -->
-      <img
-        src="https://i.pinimg.com/564x/5b/27/d8/5b27d828f0279dac21a87d56f54a1f08.jpg"
-        class="absolute"
-        alt="#"
-      />
-      <div class="relative flex">
-        <div
-          class="flex flex-col text-center justify-center items-center h-screen">
-          <div
-            class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
-            <div>
-              <h1>Flyout menu</h1>
-              <p class="text-balance">
-                Click on the button to see the flyout menu.
-              </p>
-            </div>
-          </div>
-          <div class="text-center">
-            <!-- Button to toggle the dropdown menu visibility -->
-            <button
-              id="flyoutButton"
-              class="justify-center mx-auto px-4 py-2 bg-[#626b82] rounded-full h-12 text-base text-left text-[#efefef] hover:bg-[#1f283a] duration-1000 focus:outline-none focus:shadow-outline focus:ring-[#1f283a] ring-2 ring-ofsset-4 ring-transparent">
-              I am your flyout menu
-            </button>
-            <!-- Dropdown Menu -->
-            <div
-              id="flyoutMenu"
-              class="absolute z-10 max-w-xs w-screen px-2 mt-3 transform -translate-x-1/2 left-1/2 hidden">
-              <div
-                class="overflow-hidden rounded-2xl shadow-lg ring-1 ring-[#1f283a] ring-opacity-5">
-                <!-- Container for link items -->
-                <div
-                  class="relative grid text-left gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
-                  <div class="space-y-4">
 
-                    <a href="#">
-                      <div class="py-2 group">
-                        <p
-                          class="text-base font-medium text-[#1f283a] group-hover:text-[#3e4960]">
-                          Explore design work
-                        </p>
-                        <p class="mt-1 text-sm text-[#626b82]">
-                          Trending designs to inspire you
-                        </p>
-                      </div>
-                    </a>
-                    <a href="#">
-                      <div class="py-2 group">
-                        <p
-                          class="text-base font-medium text-[#1f283a] group-hover:text-[#3e4960]">
-                          Blog
-                        </p>
-                        <p class="mt-1 text-sm text-[#626b82]">
-                          Interviews, tutorials and more
-                        </p>
-                      </div>
-                    </a>
-                    <a href="#">
-                      <div class="py-2 group">
-                        <p
-                          class="text-base font-medium text-[#1f283a] group-hover:text-[#3e4960]">
-                          Secure
-                        </p>
-                        <p class="mt-1 text-sm text-[#626b82]">
-                          Secure your data efficiently
-                        </p>
-                      </div>
-                    </a>
-                    <a href="#">
-                      <div class="py-2 group">
-                        <p
-                          class="text-base font-medium text-[#1f283a] group-hover:text-[#3e4960]">
-                          Users
-                        </p>
-                        <p class="mt-1 text-sm text-[#626b82]">
-                          User engagement strategies
-                        </p>
-                      </div>
-                    </a>
-                  </div>
+      <div class="flex flex-col items-center h-svh">
+        <div>
+          <!-- Button to toggle the dropdown menu visibility -->
+          <Button size="sm" variant="accent" id="flyoutButton">
+            I am your flyout menu
+          </Button>
+          <!-- Dropdown Menu -->
+          <div
+            id="flyoutMenu"
+            class="absolute z-10 hidden w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2"
+          >
+            <div
+              class="overflow-hidden shadow-lg rounded-2xl ring-1 ring-base-200 ring-opacity-5"
+            >
+              <!-- Container for link items -->
+              <div
+                class="relative px-5 py-6 text-left bg-white grid gap-6 sm:gap-8 sm:p-8"
+              >
+                <div class="space-y-4">
+                  <a href="#">
+                    <div class="py-2 group">
+                      <p
+                        class="text-base font-medium text-base-500 group-hover:text-base-600"
+                      >
+                        Explore design work
+                      </p>
+                      <p class="mt-1 text-sm text-base-500">
+                        Trending designs to inspire you
+                      </p>
+                    </div>
+                  </a>
+                  <a href="#">
+                    <div class="py-2 group">
+                      <p
+                        class="text-base font-medium text-base-500 group-hover:text-base-600"
+                      >
+                        Blog
+                      </p>
+                      <p class="mt-1 text-sm text-base-500">
+                        Interviews, tutorials and more
+                      </p>
+                    </div>
+                  </a>
+                  <a href="#">
+                    <div class="py-2 group">
+                      <p
+                        class="text-base font-medium text-base-500 group-hover:text-base-600"
+                      >
+                        Secure
+                      </p>
+                      <p class="mt-1 text-sm text-base-500">
+                        Secure your data efficiently
+                      </p>
+                    </div>
+                  </a>
+                  <a href="#">
+                    <div class="py-2 group">
+                      <p
+                        class="text-base font-medium text-base-500 group-hover:text-base-600"
+                      >
+                        Users
+                      </p>
+                      <p class="mt-1 text-sm text-base-500">
+                        User engagement strategies
+                      </p>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Wrapper>
   </section>
-  <!-- Starts links to tutorial -->
-  <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-    <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
-        <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
-            How to create a flyout menu with Astrojs, Tailwind CSS and
-            JavaScript
-          </p>
-          <p class="mt-2 text-xs text-orange-500 underline">
-            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-          </p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://lexingtonthemes.com/tutorials/how-to-create-a-flyout-menu-with-astrojs-tailwind-css-and-javascript"
-              type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Tutorial</a
-            >
-          </div>
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-flyout-menu/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Get the code</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Ends links to tutorial -->
 </BaseLayout>
 <script type="module">
   document.addEventListener("DOMContentLoaded", function () {

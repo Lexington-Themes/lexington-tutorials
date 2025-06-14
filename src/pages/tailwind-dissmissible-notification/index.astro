@@ -1,130 +1,70 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
-      <div class="max-w-xl mx-auto text-center">
-        <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
-          <div>
-            <h1>JavaScript-free dismissible notification</h1>
-            <p>Click on the button to see the notification disappear.</p>
-          </div>
-        </div>
-      </div>
-      <div class="max-w-xl mx-auto mt-12 pt-12 border-t  border-neutral-200  w-full">
-        <!-- Starts component -->
-        <div>
-          <!-- Notification with Toggle -->
-          <div class="relative">
-            <!-- Hidden checkbox to control visibility -->
-            <input
-              type="checkbox"
-              id="notification-toggle"
-              class="hidden peer"
-            />
-            <!-- Notification -->
-            <div
-              id="notification"
-              class="relative rounded-lg bg-white shadow-lg ring-1 ring-gray-200 peer-checked:hidden">
-              <div class="p-4">
-                <div class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="text-green-400"
-                      ><path
-                        stroke="none"
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                      ></path><path
-                        d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"
-                      ></path><path d="M9 12l2 2l4 -4"></path></svg
-                    >
-                  </div>
-                  <div class="ml-3 w-0 flex-1 pt-0.5">
-                    <p class="text-sm font-medium text-gray-900">
-                     Well done, you've successfully saved the file!
-                    </p>
-
-                  </div>
-                  <div class="ml-4 flex flex-shrink-0">
-                    <label
-                      for="notification-toggle"
-                      class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 border">
-                      <svg
-                        class="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true">
-                        <path
-                          d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
-                        ></path>
-                      </svg>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Ends component -->
-      </div>
-
-      <!-- Starts links to tutorial -->
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-javascript-free-dismissible-notification-with-only-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/tailwind-dissmissible-notification/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-62 relative">
+      <!-- Hidden checkbox to control visibility -->
+      <input type="checkbox" id="notification-toggle" class="hidden peer" />
+      <!-- Notification -->
       <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 ">
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create a JavaScript-Free dismissible notification with
-                only Tailwind CSS
-              </p>
-              <p class="mt-2 text-xs text-orange-600 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
+        id="notification"
+        class="relative bg-white rounded-lg shadow-lg ring-1 ring-base-200 peer-checked:hidden max-w-xl mx-auto"
+      >
+        <div class="p-4">
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-green-400"
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                  d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path
+                  d="M9 12l2 2l4 -4"></path></svg
+              >
+            </div>
+            <div class="ml-3 w-0 flex-1 pt-0.5">
+              <p class="text-sm font-medium text-base-900">
+                Well done, you've successfully saved the file!
               </p>
             </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-javascript-free-dismissible-notification-with-only-tailwind-css/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                  >Tutorial</a
+            <div class="flex flex-shrink-0 ml-4">
+              <label
+                for="notification-toggle"
+                class="flex text-base-400 hover:text-base-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              >
+                <svg
+                  class="w-5 h-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
                 >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/tailwind-dissmissible-notification/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                  >Get the code</a
-                >
-              </div>
+                  <path
+                    d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+                  ></path>
+                </svg>
+              </label>
             </div>
           </div>
         </div>
       </div>
-      <!-- Ends links to tutorial -->
-    </div>
+
+    
+    </Wrapper>
   </section>
 </BaseLayout>
-
-

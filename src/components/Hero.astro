@@ -25,15 +25,15 @@ const features = [
 <section class="relative bg-[black]">
 
   <div
-    class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-24 relative space-y-24"
+    class="relative px-8 py-12 mx-auto max-w-7xl md:px-12 lg:px-32 lg:py-24 space-y-24"
   >
-    <div class="grid grid-cols-1 gap-4 mt-6 list-none lg:grid-cols-2 lg:gap-24">
+    <div class="mt-6 list-none grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-24">
       <div>
         <p
           class="text-sm text-transparent uppercase bg-gradient-to-r from-indigo-300 to-indigo-400 bg-clip-text"
         >
           Embrace the future of payments
-        </p><p class="text-3xl mt-8 font-normal text-white trackingt-tight">
+        </p><p class="mt-8 text-3xl font-normal text-white trackingt-tight">
           Seamlessly embrace the convenience and security
         </p>
         <p class="mt-4 text-base text-vulcan-300">
@@ -44,21 +44,21 @@ const features = [
         <div class="flex flex-wrap mt-10">
           <a
             href="/system/overview"
-            class="rounded-lg px-4 border py-2 text-sm font-semibold transition-all flex items-center justify-center bg-vulcan-900 text-white hover:text-indigo-400 h-10 border-vulcan-700"
+            class="flex items-center justify-center h-10 px-4 py-2 text-sm font-semibold text-white border rounded-lg transition-all bg-vulcan-900 hover:text-indigo-400 border-vulcan-700"
             >See all pages</a
           >
         </div>
       </div>
-      <div class="lg:mt-0 mt-12 h-full">
+      <div class="h-full mt-12 lg:mt-0">
         <img
           alt="Lexington thumbnail"
-          class="rounded-2xl shadow-2xl shadow-vulcan-950/50 w-full"
+          class="w-full shadow-2xl rounded-2xl shadow-vulcan-950/50"
           src="/assets/card2.svg"
         />
       </div>
     </div>
     <ul
-      class="grid grid-cols-2 gap-6 mt-12 list-none md:grid-cols-4 lg:gap-12 lg:mt-24"
+      class="mt-12 list-none grid grid-cols-2 gap-6 md:grid-cols-4 lg:gap-12 lg:mt-24"
       role="list"
     >
       {
@@ -68,7 +68,7 @@ const features = [
               <p class="text-sm font-medium text-indigo-400">
                 {feature.number}
               </p>
-              <p class="text-lg mt-6 font-medium text-white lg:text-xl">
+              <p class="mt-6 text-lg font-medium text-white lg:text-xl">
                 {feature.title}
               </p>
             </div>

@@ -1,86 +1,38 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 lg:py-32 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto w-full">
-        <div>
-          <h1>Todo list</h1>
-          <p class="text-balance">
-            Click on the button below or press enter to add a new item. Then
-            click on the checkbox to mark the item as completed, to remove it
-            from the list, just click on the X.
-          </p>
+  <section>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-todo-with-javascript-and-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-todo/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper class="py-24 lg:py-62">
+      <div id="todo-component" class="max-w-md mx-auto">
+        <!-- Input to add new todo -->
+        <div class="flex flex-col items-center gap-2">
+          <button
+            id="addTodoButton"
+            class="w-full h-10 px-8 py-2 text-sm font-semibold text-white rounded-full bg-accent-600 hover:bg-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+            >Add</button
+          >
+          <input
+            id="newTodoInput"
+            type="text"
+            class="w-full text-sm border-base-300 rounded-md placeholder-base-400 focus:border-accent-500 focus:ring-accent-500"
+            placeholder="Make the logo bigger"
+          />
         </div>
+        <!-- List of todos -->
+        <ul id="todoList" class="mt-4 divide-y"></ul>
       </div>
-      <div class="mt-6 border-t  border-neutral-200  pt-12 max-w-xl mx-auto w-full">
-        <div id="todo-component">
-          <!-- Input to add new todo -->
-          <div class="flex flex-col gap-2 items-center">
-            <button
-              id="addTodoButton"
-              class="rounded-full bg-orange-600 px-8 py-2 h-10 text-sm font-semibold text-white hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 w-full"
-              >Add</button
-            >
-            <input
-              id="newTodoInput"
-              type="text"
-              class="w-full border-gray-300 rounded-md placeholder-gray-400 text-sm focus:border-orange-500 focus:ring-orange-500"
-              placeholder="Make the logo bigger"
-            />
-          </div>
-          <!-- List of todos -->
-          <ul
-            id="todoList"
-            class="divide-y mt-4">
-          </ul>
-        </div>
-        <!-- Starts links to tutorial -->
-        <div
-          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-          <div
-            class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-            <div class="flex w-0 flex-1 items-center p-4">
-              <div class="w-full">
-                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-                <p class="mt-1 text-sm text-neutral-500">
-                  How to create a todo list with Tailwind CSS and JavaScript
-                </p>
-                <p class="mt-2 text-xs text-orange-500 underline">
-                  <a href="https://lexingtonthemes.com">
-                    by © Lexington Themes</a
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="flex">
-              <div class="flex flex-col divide-y divide-neutral-200">
-                <div class="flex h-0 flex-1">
-                  <a
-                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-todo-with-javascript-and-tailwind-css/"
-                    type="button"
-                    class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >Tutorial</a
-                  >
-                </div>
-                <div class="flex h-0 flex-1">
-                  <a
-                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-todo/index.astro"
-                    class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >Get the code</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Ends links to tutorial -->
-      </div>
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>
 <script type="module">
@@ -94,13 +46,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       todoList.innerHTML = todos
         .map(
           (todo, i) => `
-        <li class="flex items-center space-x-2 w-full py-2">
+        <li class="flex items-center w-full py-2 space-x-2">
           <div class="flex items-center justify-between w-full">
             <div>
-              <input type="checkbox" ${todo.completed ? "checked" : ""} class="form-checkbox h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600"/>
-              <span class="text-lg text-gray-500 ${todo.completed ? "line-through" : ""}">${todo.text}</span>
+              <input type="checkbox" ${todo.completed ? "checked" : ""} class="w-4 h-4 rounded form-checkbox border-base-300 text-accent-600 focus:ring-accent-600"/>
+              <span class="text-lg text-base-500 ${todo.completed ? "line-through" : ""}">${todo.text}</span>
             </div>
-            <button class="text-black hover:text-red-700 focus:outline-none ml-auto">
+            <button class="ml-auto text-black hover:text-red-700 focus:outline-none">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                 <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"></path>
               </svg>
@@ -149,4 +101,3 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     renderTodos();
   });
 </script>
-

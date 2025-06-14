@@ -1,26 +1,27 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
+
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
-      <div class="max-w-xl mx-auto text-center">
-        <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
-          <div>
-            <h1>Bootom navigation</h1>
-            <p class="text-balance">Look at the nav and resize the window</p>
-          </div>
-        </div>
-      </div>
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-bottom-navigation-with-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/bottom-navigation/index.astro"
+    />
+
+    <div class="py-24 lg:py-48">
       <!-- Starts component -->
       <div
-        class="fixed bottom-0 sm:bottom-5 sm:shadow-lg sm:shadow-gray-500/30 hover:shadow-md left-0 duration-300 overflow-hidden border-t  border-neutral-200  sm:border z-50 w-full h-16 bg-white sm:max-w-md sm:rounded-xl inset-x-0 mx-auto">
-        <div class="grid h-full grid-cols-5 mx-auto">
+        class="fixed inset-x-0 left-0 z-50 w-full h-16 mx-auto overflow-hidden bg-white border-t bottom-40 sm:shadow-lg sm:shadow-base-500/30 hover:shadow-md duration-300 border-base-200 sm:border sm:max-w-md sm:rounded-xl"
+      >
+        <div class="h-full mx-auto grid grid-cols-5">
           <button
             type="button"
-            class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  gap-1 hover:text-orange-500 text-gray-500">
+            class="inline-flex flex-col items-center justify-center px-5 hover:bg-base-50 gap-1 hover:text-accent-500 text-base-500"
+          >
             <svg
               class="size-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +35,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </button>
           <button
             type="button"
-            class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  gap-1 hover:text-orange-500 text-gray-500">
+            class="inline-flex flex-col items-center justify-center px-5 hover:bg-base-50 gap-1 hover:text-accent-500 text-base-500"
+          >
             <svg
               class="size-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +50,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </button>
           <button
             type="button"
-            class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  gap-1 hover:text-orange-500 text-gray-500">
+            class="inline-flex flex-col items-center justify-center px-5 hover:bg-base-50 gap-1 hover:text-accent-500 text-base-500"
+          >
             <svg
               class="size-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +65,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </button>
           <button
             type="button"
-            class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  gap-1 hover:text-orange-500 text-gray-500">
+            class="inline-flex flex-col items-center justify-center px-5 hover:bg-base-50 gap-1 hover:text-accent-500 text-base-500"
+          >
             <svg
               class="size-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +80,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </button>
           <button
             type="button"
-            class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  gap-1 hover:text-orange-500 text-gray-500">
+            class="inline-flex flex-col items-center justify-center px-5 hover:bg-base-50 gap-1 hover:text-accent-500 text-base-500"
+          >
             <svg
               class="size-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -92,16 +97,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       </div>
       <!-- Starts links to tutorial -->
       <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 sr-only">
+        class="fixed inset-x-0 bottom-0 p-2 pointer-events-none sr-only sm:flex sm:justify-center"
+      >
         <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
+          class="flex w-full max-w-md bg-white border rounded-lg shadow-xl pointer-events-auto divide-x divide-base-200 border-base-200"
+        >
+          <div class="flex items-center flex-1 w-0 p-4">
             <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
+              <p class="text-sm font-medium text-base-900">Tutorial</p>
+              <p class="mt-1 text-sm text-base-500">
                 How to create a bottom navigation with Tailwind CSS
               </p>
-              <p class="mt-2 text-xs text-orange-600 underline">
+              <p class="mt-2 text-xs underline text-accent-600">
                 <a href="https://lexingtonthemes.com">
                   by © Lexington Themes</a
                 >
@@ -109,19 +116,19 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             </div>
           </div>
           <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
+            <div class="flex flex-col divide-y divide-base-200">
+              <div class="flex flex-1 h-0">
                 <a
                   href="https://lexingtonthemes.com/tutorials/how-to-create-a-bottom-navigation-with-tailwind-css/"
                   type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-tr-lg text-accent-600 hover:text-accent-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-accent-600"
                   >Tutorial</a
                 >
               </div>
-              <div class="flex h-0 flex-1">
+              <div class="flex flex-1 h-0">
                 <a
                   href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/bottom-navigation/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
+                  class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-br-lg text-base-700 hover:text-base-500 focus:outline-none focus:ring-2 focus:ring-accent-600"
                   >Get the code</a
                 >
               </div>

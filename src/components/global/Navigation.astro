@@ -1,0 +1,136 @@
+---
+// Fundations
+import Logo from "@/components/assets/Logo.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const navigationLinks = [
+  {
+    title: "All Tutorials",
+    href: "/",
+  },
+  {
+    title: "Templates",
+    href: "/https://lexingtonthemes.com/",
+  },
+  {
+    title: "Components",
+    href: "/https://oxbowui.com/",
+  },
+];
+---
+
+<div
+  id="nav-wrapper"
+  class="fixed inset-x-0 top-0 z-50 w-full mx-auto bg-white border-b border-dashed border-base-200"
+>
+  <Wrapper id="second-wrapper" variant="standard" class="py-4">
+    <div
+      id="navigation-wrapper"
+      class="relative flex flex-col md:items-center md:justify-between md:flex-row"
+    >
+      <div class="flex flex-row items-center justify-between">
+        <a href="/">
+          <span class="sr-only">Go to homepage</span>
+          <Logo class="h-6 text-base-800" />
+        </a>
+        <button
+          id="menu-toggle"
+          class="inline-flex items-center justify-center p-2 text-base-600 hover:text-base-800 focus:outline-none focus:text-base-500 md:hidden"
+        >
+          <svg
+            class="size-6"
+            stroke="currentColor"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              id="menu-icon"
+              class="inline-flex"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+            <path
+              id="close-icon"
+              class="hidden"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <nav
+        id="navigation-menu"
+        class="fixed inset-0 flex flex-col justify-between h-full py-12 bg-white opacity-0 pointer-events-none md:bg-none md:bg-transparent lg:p-0 md:p-0 transform transition-all duration-300 ease-in-out -translate-y-4 md:relative md:inset-auto md:opacity-100 md:pointer-events-auto md:translate-y-0"
+      >
+        <div
+          class="absolute inset-0 mx-2 pointer-events-none bg-sand-50 border-x border-base-200 md:hidden"
+        >
+        </div>
+        <button
+          id="menu-close"
+          class="absolute top-4 right-4 md:hidden focus:outline-none text-base-800"
+          aria-label="Close menu"
+        >
+          <svg
+            class="size-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <div
+          class="relative flex flex-col items-start justify-start w-full h-full px-8 list-none md:ml-auto gap-12 md:px-0 md:flex-row md:items-center md:justify-center md:text-left md:gap-4"
+        >
+          <a href="/" class="md:hidden">
+            <span class="sr-only">Go to homepage</span>
+            <Logo class="h-12 text-base-800" />
+          </a>
+          <div class="flex flex-col gap-2 md:gap-4 md:flex-row">
+            {
+              navigationLinks.map((link, index) => (
+                <a
+                  href={link.href}
+                  class="text-2xl  md:text-xs hover:text-base-600 text-base-500"
+                >
+                  {link.title}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </nav>
+    </div>
+  </Wrapper>
+</div>
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuClose = document.getElementById("menu-close");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const navigationMenu = document.getElementById("navigation-menu");
+    // Toggle mobile menu
+    function toggleMenu(open) {
+      console.log(`Toggling menu. Open: ${open}`); // Debug log to check the state of the toggle
+      navigationMenu.classList.toggle("opacity-100", open);
+      navigationMenu.classList.toggle("translate-y-0", open);
+      navigationMenu.classList.toggle("pointer-events-auto", open);
+      navigationMenu.classList.toggle("opacity-0", !open);
+      navigationMenu.classList.toggle("-translate-y-4", !open);
+      navigationMenu.classList.toggle("pointer-events-none", !open);
+      menuIcon.classList.toggle("hidden", open);
+      closeIcon.classList.toggle("hidden", !open);
+    }
+    // Event Listeners
+    menuToggle.addEventListener("click", () => toggleMenu(true));
+    menuClose.addEventListener("click", () => toggleMenu(false));
+  });
+</script>

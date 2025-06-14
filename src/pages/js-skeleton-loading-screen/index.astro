@@ -1,76 +1,38 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white">
-    <div class="w-full mx-auto max-w-xl flex flex-col justify-center py-32 p-8">
+  <!-- Starts links to tutorial -->
+  <TutorialBanner
+    tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-skeleton-loading-screen-with-tailwind-css-and-javascript/"
+    codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-skeleton-loading-screen/index.astro"
+  />
+  <!--  Starts component -->
+  <section>
+    <Wrapper class="py-24">
       <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
-        <h1>Skeleton loading screen</h1>
-        <p>Reload the page to see how it works</p>
+        id="content"
+        class="max-w-xl mx-auto overflow-hidden rounded-lg bg-base-50"
+      >
+        <!-- Skeleton loader will be here -->
       </div>
-      <div class="mt-6 border-t  border-neutral-200  pt-12">
-        <!-- Starts component -->
-        <div
-          id="content"
-          class="max-w-xl mx-auto bg-white border shadow rounded-lg overflow-hidden">
-          <!-- Skeleton loader will be here -->
-        </div>
-
-        <!-- Ends component -->
-      </div>
-    </div>
-    <!-- Starts links to tutorial -->
-    <div class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex p-2">
-      <div
-        class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-        <div class="flex w-0 flex-1 items-center p-4">
-          <div class="w-full">
-            <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-            <p class="mt-1 text-sm text-neutral-500">
-              How to create a skeleton loading screen with Tailwind CSS and
-              Javascript
-            </p>
-            <p class="mt-2 text-xs text-orange-500 underline">
-              <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-            </p>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex flex-col divide-y divide-neutral-200">
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://lexingtonthemes.com/tutorials/how-to-create-a-skeleton-loading-screen-with-tailwind-css-and-javascript/"
-                type="button"
-                class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Tutorial</a
-              >
-            </div>
-            <div class="flex h-0 flex-1">
-              <a
-                href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-skeleton-loading-screen/index.astro"
-                class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >Get the code</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Ends links to tutorial -->
+    </Wrapper>
   </section>
 </BaseLayout>
 <script>
   function createSkeletonLoader() {
     return `
-                <div class="animate-pulse p-4 space-y-4">
-                    <div class="h-4 bg-gray-200 rounded w-3/4"></div>
-                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-                    <div class="h-20 bg-gray-200 rounded "></div>
+                <div class="p-4 animate-pulse space-y-4">
+                    <div class="w-3/4 h-4 rounded bg-base-200"></div>
+                    <div class="w-1/2 h-4 rounded bg-base-200"></div>
+                    <div class="h-20 rounded bg-base-200 "></div>
                    <div class="flex flex-col gap-2>
-                        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
-                        <div class="h-4 bg-gray-200 rounded w-4/6"></div>
+                        <div class="w-5/6 h-4 rounded bg-base-200"></div>
+                        <div class="w-4/6 h-4 rounded bg-base-200"></div>
                    </div>
                 </div>
             `;
@@ -81,7 +43,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                 <div class="p-4 prose">
                     <h4>Actual Content</h4>
                     <p>This is the real content that has finished loading.</p>
-                    <img src="https://i.pinimg.com/564x/a4/ae/54/a4ae54bdd21cbbdb2ccc377ab07b6c6f.jpg" alt="Placeholder" class="w-full rounded mt-4">
+                    <img src="https://i.pinimg.com/564x/a4/ae/54/a4ae54bdd21cbbdb2ccc377ab07b6c6f.jpg" alt="Placeholder" class="w-full mt-4 rounded">
                     <p>Additional text content goes here. It can be as long as needed.</p>
                 </div>
             `;
@@ -97,5 +59,3 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     contentDiv.innerHTML = createContent();
   }, 2000); // Change content after 2 seconds
 </script>
-
-

@@ -1,5 +1,8 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 const avatars = [
   { id: 1, src: "/avatars/8.png", alt: "Avatar 1" },
   { id: 2, src: "/avatars/7.png", alt: "Avatar 2" },
@@ -9,74 +12,26 @@ const avatars = [
 ---
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
-      <div class="max-w-xl mx-auto text-center">
-        <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
-          <div>
-            <h1>Animated Avatar Widget</h1>
-            <p class="text-balance">Hover over the avatars to see the magic.</p>
-          </div>
-        </div>
-      </div>
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-animated-avatar-stack-widget-with-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-avatar-widget/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-62 flex flex-col items-center justify-center">
       <!-- Starts component -->
-      <div class="flex border-t  border-neutral-200  max-w-xl mx-auto pt-12 mt-12">
-        <div class="isolate flex -space-x-2">
-          {
-            avatars.map((avatar, index) => (
-              <img
-                class={`relative inline-block size-24 rounded-full object-cover ring-2 ring-white transition-all duration-300 ease-in-out hover:-translate-y-3 hover:scale-110`}
-                style={{ zIndex: avatars.length - index }}
-                src={avatar.src}
-                alt={avatar.alt}
-              />
-            ))
-          }
-        </div>
+
+      <div class="flex isolate -space-x-2">
+        {
+          avatars.map((avatar, index) => (
+            <img
+              class={`relative inline-block size-24 rounded-full object-cover ring-2 ring-white transition-all duration-300 ease-in-out hover:-translate-y-3 hover:scale-110`}
+              style={{ zIndex: avatars.length - index }}
+              src={avatar.src}
+              alt={avatar.alt}
+            />
+          ))
+        }
       </div>
-      <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create an animated avatar stack widget with Tailwind CSS
-              </p>
-              <p class="mt-2 text-xs text-orange-600 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-animated-avatar-stack-widget-with-tailwind-css/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-avatar-widget/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                  >Get the code</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Ends links to tutorial -->
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>
-

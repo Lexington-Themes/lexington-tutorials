@@ -1,124 +1,79 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section
-    class="bg-white relative overflow-hidden"
-    x-data="{ isOpen: false }">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
+  <section x-data="{ isOpen: false }">
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-contextual-menu-with-tailwind-css-and-alpinejs/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/contextualmenu/index.astro"
+    />
+    <Wrapper class="py-24">
+      <!-- Starts component -->
       <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
-        <div>
-          <h1>Contextual menu</h1>
-          <p class="text-balance">
-            Right-click or long-press inside this area to open the context menu.
-          </p>
-        </div>
-      </div>
-      <div class="mt-12 max-w-sm mx-auto w-full border">
-        <!-- Starts component -->
+        class="h-full bg-base-50"
+        x-data="{ isOpen: false, position: { x: 0, y: 0 }, areaWidth: 0, areaHeight: 0 }"
+        x-init="areaWidth = $refs.area.offsetWidth; areaHeight = $refs.area.offsetHeight"
+      >
         <div
-          x-data="{ isOpen: false, position: { x: 0, y: 0 }, areaWidth: 0, areaHeight: 0 }"
-          x-init="areaWidth = $refs.area.offsetWidth; areaHeight = $refs.area.offsetHeight">
-          <div
-            class="items-center flex justify-center p-8 lg:p-20 text-center text-gray-500 text-sm"
-            @contextmenu.prevent="isOpen = true; position = contextMenuPosition($event)"
-            @click.away="isOpen = false"
-            x-ref="area">
-            Right click here
-          </div>
-
-          <div
-            x-show="isOpen"
-            x-transition:enter="transition ease-out duration-100"
-            x-transition:enter-start="opacity-0 scale-95"
-            x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-75"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-95"
-            x-style="`top: ${Math.min(position.y, areaHeight - $refs.menu.offsetHeight)}px; left: ${Math.min(position.x, areaWidth - $refs.menu.offsetWidth)}px;`"
-            @click.away="isOpen = false"
-            class="absolute z-50 bg-white shadow-lg rounded-md p-2"
-            x-ref="menu">
-            <ul>
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                  >Menu Item 1</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                  >Menu Item 2</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                  >Menu Item 3</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <script>
-            function contextMenuPosition(event) {
-              return {
-                x: event.clientX,
-                y: event.clientY,
-              };
-            }
-          </script>
+          class="flex items-center justify-center h-full p-8 text-sm text-center lg:py-40 text-base-500"
+          @contextmenu.prevent="isOpen = true; position = contextMenuPosition($event)"
+          @click.away="isOpen = false"
+          x-ref="area"
+        >
+          Right click here
         </div>
 
-        <!-- Ends component -->
-        <!-- Starts links to tutorial -->
         <div
-          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-          <div
-            class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-            <div class="flex w-0 flex-1 items-center p-4">
-              <div class="w-full">
-                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-                <p class="mt-1 text-sm text-neutral-500">
-                  How to creat a contextual menu with Tailwind CSS and Alpinejs
-                </p>
-                <p class="mt-2 text-xs text-orange-500 underline">
-                  <a href="https://lexingtonthemes.com">
-                    by © Lexington Themes</a
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="flex">
-              <div class="flex flex-col divide-y divide-neutral-200">
-                <div class="flex h-0 flex-1">
-                  <a
-                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-contextual-menu-with-tailwind-css-and-alpinejs/"
-                    type="button"
-                    class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >Tutorial</a
-                  >
-                </div>
-                <div class="flex h-0 flex-1">
-                  <a
-                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/contextualmenu/index.astro"
-                    class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >Get the code</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
+          x-show="isOpen"
+          x-transition:enter="transition ease-out duration-100"
+          x-transition:enter-start="opacity-0 scale-95"
+          x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-75"
+          x-transition:leave-start="opacity-100 scale-100"
+          x-transition:leave-end="opacity-0 scale-95"
+          x-style="`top: ${Math.min(position.y, areaHeight - $refs.menu.offsetHeight)}px; left: ${Math.min(position.x, areaWidth - $refs.menu.offsetWidth)}px;`"
+          @click.away="isOpen = false"
+          class="absolute z-50 p-2 bg-white shadow-lg rounded-md"
+          x-ref="menu"
+        >
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 text-base-800 hover:bg-base-200"
+                >Menu Item 1</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 text-base-800 hover:bg-base-200"
+                >Menu Item 2</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 text-base-800 hover:bg-base-200"
+                >Menu Item 3</a
+              >
+            </li>
+          </ul>
         </div>
-        <!-- Ends links to tutorial -->
+
+        <script>
+          function contextMenuPosition(event) {
+            return {
+              x: event.clientX,
+              y: event.clientY,
+            };
+          }
+        </script>
       </div>
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>

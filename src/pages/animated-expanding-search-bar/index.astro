@@ -1,97 +1,45 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
-      <div class="max-w-xl mx-auto text-center">
-        <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
-          <div>
-            <h1>Expandable search field</h1>
-            <p class="text-balance">
-              Click on the search bar to see it expand.
-            </p>
-          </div>
-        </div>
-      </div>
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-an-exapandable-search-bar-with-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-expanding-search-bar/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-62">
       <!-- Starts component -->
-      <div class="max-w-md mx-auto mt-6 w-full border-t  border-neutral-200  pt-12">
-        <form class="relative w-full justify-center">
-          <input
-            type="search"
-            class="peer cursor-pointer relative z-10 h-12 w-32 rounded-xl border border-gray-200 bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-orange-300 focus:ring-orange-600 focus:pl-32 focus:pr-4 duration-300 items-center flex"
-          />
-          <div
-            class="absolute inset-y-0 my-auto h-6 w-32 px-3.5 peer-focus:text-orange-500">
-            <div class="flex items-center gap-2 justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="size-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-search"
-                ><path
-                  stroke="none"
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                ></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"
-                ></path><path d="M21 21l-6 -6"></path></svg
-              >
-              <span>Search</span>
-            </div>
-          </div>
-        </form>
-      </div>
-      <!-- Ends component -->
-      <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+      <form class="relative justify-center w-full max-w-md mx-auto">
+        <input
+          type="search"
+          class="relative z-10 flex items-center w-32 h-12 pl-12 bg-transparent border outline-none cursor-pointer peer rounded-xl border-base-200 focus:w-full focus:cursor-text focus:border-accent-300 focus:ring-accent-600 focus:pl-32 focus:pr-4 duration-300"
+        />
         <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create a grid toggle with Tailwind CSS and JavaScript
-              </p>
-              <p class="mt-2 text-xs text-orange-600 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-an-exapandable-search-bar-with-tailwind-css/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-expanding-search-bar/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-600"
-                  >Get the code</a
-                >
-              </div>
-            </div>
+          class="absolute inset-y-0 my-auto h-6 w-32 px-3.5 peer-focus:text-accent-500"
+        >
+          <div class="flex items-center justify-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-search"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path
+                d="M21 21l-6 -6"></path></svg
+            >
+            <span>Search</span>
           </div>
         </div>
-      </div>
-      <!-- Ends links to tutorial -->
-    </div>
+      </form>
+    </Wrapper>
   </section>
 </BaseLayout>
-
-

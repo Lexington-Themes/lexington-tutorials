@@ -1,6 +1,9 @@
 ---
 // Import BaseLayout
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 // This block maps over the pricingPlans array to generate pricing plan cards.
 // Each card displays information based on whether the 'annual' state is true or false,
 // which toggles between showing monthly and annual prices.
@@ -19,7 +22,7 @@ const pricingPlans = [
     // Tailwind CSS classes for styling the card's background.
     cardBgClass: "bg-black/20 backdrop-blur-3xl",
     // Tailwind CSS classes for styling the button within the card.
-    buttonClass: "text-white bg-white/10 hover:bg-white/5 ",
+    buttonClass: "text-white bg-base-800 hover:bg-base-500 ",
     // Array of features included in the plan.
     features: ["5 mb/PDF", "75 pages/PDF", "10 messages/Day", "Up to 3 PDFs"],
     // Array of features not available in the plan.
@@ -38,7 +41,7 @@ const pricingPlans = [
     // Tailwind CSS classes for the second plan's card background styling.
     cardBgClass: "bg-black/50 backdrop-blur-3xl",
     // Tailwind CSS classes for the second plan's button styling.
-    buttonClass: "text-black bg-white hover:bg-white/5 hover:text-white ",
+    buttonClass: "text-white bg-base-800 hover:bg-base-500 ",
     // Array of features included in the second plan.
     features: [
       "10 mb/PDF",
@@ -63,7 +66,7 @@ const pricingPlans = [
     // Tailwind CSS classes for the third plan's card background styling.
     cardBgClass: "bg-black/20 backdrop-blur-3xl",
     // Tailwind CSS classes for the third plan's button styling.
-    buttonClass: "text-white bg-white/10 hover:bg-white/5 ",
+    buttonClass: "text-white bg-base-800 hover:bg-base-500 ",
     // Array of features included in the third plan.
     features: [
       "32 mb/PDF",
@@ -81,21 +84,15 @@ const pricingPlans = [
 ---
 
 <BaseLayout>
-  <section
-    x-data="{annual: false}"
-    class="relative flex flex-col overflow-hidden overflow-y-auto h-svh items-center justify-center bg-zinc-950">
-    <!-- Background image -->
-    <img
-      class="absolute w-full h-full lg:w-auto lg:h-auto"
-      src="/images/blueBlob.svg"
-      alt="alt text"
-    />
+  <!-- Starts links to tutorial -->
+  <TutorialBanner
+    tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-interactive-pricing-table-astro-tailwind-alpine/"
+    codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/pricing-table/index.astro"
+  />
+  <section x-data="{annual: false}" class="">
     <!-- Ends Background image -->
-    
-    <div class="relative items-center px-8 py-12 mx-auto md:px-12 max-w-7xl">
+    <Wrapper class="py-24">
       <!-- Pricing Toggle Buttons -->
-      
-
       <!--------------------------------------------------------------------------------------------------------------------------------------------------------
 //Alpinejs part
 //
@@ -115,7 +112,7 @@ const pricingPlans = [
 //
 // This paragraph displays the description of each pricing plan.
 // It uses Tailwind CSS classes for margin, font size, and text color.
-///// <p class="mt-8 text-xs text-white/80">{plan.description}</p>
+///// <p class="mt-8 text-xs text-base-500/80">{plan.description}</p>
 //
 //
 // Maps over the 'features' array of the current plan to generate list items (li) for each feature.
@@ -127,33 +124,32 @@ const pricingPlans = [
 // These items are styled with reduced opacity to indicate that they are not available in this plan.
 ///// {plan.unavailableFeatures.map((feature)
 -------------------------------------------------------------------------------------------------------------------------------------------------------->
-      <div class="grid grid-cols-1 gap-2 mt-12 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-2 lg:grid-cols-3">
         {
           pricingPlans.map((plan) => (
             <div
-              class={`flex flex-col justify-between p-8 shadow-2xl  rounded-3xl ${plan.cardBgClass} backdrop-blur-3xl shadow-gray-900/50`}>
+              class={`flex flex-col justify-between p-8  rounded-3xl bg-base-50`}
+            >
               <div>
                 <div class="flex flex-col justify-between gap-3">
-                  <p class="text-xl font-medium tracking-tight text-white">
+                  <p class="text-xl font-medium tracking-tight text-base-500">
                     {plan.name}
                   </p>
-                  <p class="text-white">
+                  <p class="text-base-500">
                     <span class="text-2xl tracking-tight">
                       <span x-show="!annual">${plan.monthlyPrice}</span>
                       <span x-show="annual">${plan.annualPrice}</span>
                     </span>
                     <span class="text-base font-medium">
                       /m
-                      <span
-                        x-show="annual"
-                        style="display: none;">
+                      <span x-show="annual" style="display: none;">
                         (billed annually)
                       </span>
                     </span>
                   </p>
                 </div>
-                <p class="mt-8 text-xs text-white/80">{plan.description}</p>
-                <ul class="flex flex-col order-last mt-8 text-sm text-white gap-y-3">
+                <p class="mt-8 text-xs text-base-500/80">{plan.description}</p>
+                <ul class="flex flex-col order-last mt-8 text-sm text-base-500 gap-y-3">
                   {plan.features.map((feature) => (
                     <li class="inline-flex items-center gap-2">
                       <svg
@@ -166,12 +162,9 @@ const pricingPlans = [
                         stroke="currentColor"
                         fill="none"
                         stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                          stroke="none"
-                          d="M0 0h24v24H0z"
-                          fill="none"
-                        />
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                         <path d="M9 12l2 2l4 -4" />
                       </svg>
@@ -179,7 +172,7 @@ const pricingPlans = [
                     </li>
                   ))}
                   {plan.unavailableFeatures.map((feature) => (
-                    <li class="inline-flex items-center gap-2 opacity-50">
+                    <li class="inline-flex items-center opacity-50 gap-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="icon icon-tabler icon-tabler-circle-x"
@@ -190,12 +183,9 @@ const pricingPlans = [
                         stroke="currentColor"
                         fill="none"
                         stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                          stroke="none"
-                          d="M0 0h24v24H0z"
-                          fill="none"
-                        />
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                         <path d="M10 10l4 4m0 -4l-4 4" />
                       </svg>
@@ -209,7 +199,8 @@ const pricingPlans = [
                   href="#_"
                   title={plan.name}
                   aria-label="get started"
-                  class={`flex items-center justify-center w-full  h-12 px-4 py-2 text-base font-medium transition-all duration-200 rounded-xl ${plan.buttonClass}`}>
+                  class={`flex items-center justify-center w-full  h-12 px-4 py-2 text-base font-medium transition-all duration-200 rounded-xl ${plan.buttonClass}`}
+                >
                   Get started
                 </a>
               </div>
@@ -218,46 +209,6 @@ const pricingPlans = [
         }
       </div>
       <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8">
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create an interactive pricing table with Astro, Tailwind
-                CSS, and Alpine JS
-              </p>
-              <p class="mt-2 text-xs text-orange-500 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-interactive-pricing-table-astro-tailwind-alpine/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/pricing-table/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Get the code</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Ends links to tutorial -->
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>

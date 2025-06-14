@@ -1,58 +1,54 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
-
 <BaseLayout>
-  <section
-    class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center items-center p-8">
-    <div
-      class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
-      <h1>Particle Text Animation</h1>
-      <p class="text-balance">
-        Watch as the particles form the message "HELLO EVERYONE"
-      </p>
-    </div>
-    <div class="w-full max-w-2xl mx-auto text-center">
-      <div
-        id="text-container"
-        class="h-96 lg:h-32 flex items-center">
-      </div>
-    </div>
+  <section>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-circular-menu-with-tailwind-css-and-minimal-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-circular%20menu/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-62">
+      <div id="text-container" class="flex items-center h-96 lg:h-24"></div>
+    </Wrapper>
   </section>
-
   <!-- Links to tutorial -->
   <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    class="fixed inset-x-0 bottom-0 p-2 pointer-events-none sm:flex sm:justify-center"
+  >
     <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
+      class="flex w-full max-w-md bg-white border rounded-lg shadow-xl pointer-events-auto divide-x divide-base-200 border-base-200"
+    >
+      <div class="flex items-center flex-1 w-0 p-4">
         <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
+          <p class="text-sm font-medium text-base-900">Tutorial</p>
+          <p class="mt-1 text-sm text-base-500">
             How to create a particle text effect with Tailwind CSS and
             JavaScript
           </p>
-          <p class="mt-2 text-xs text-orange-500 underline">
+          <p class="mt-2 text-xs underline text-accent-500">
             <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
           </p>
         </div>
       </div>
-      <div class="flex flex-col divide-y divide-neutral-200">
+      <div class="flex flex-col divide-y divide-base-200">
         <a
           href="https://lexingtonthemes.com/tutorials/how-to-create-particle-text-effect-with-tailwind-css-and-javascript"
-          class="flex items-center justify-center px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:outline-none"
+          class="flex items-center justify-center px-4 py-3 text-sm font-medium text-accent-600 hover:text-accent-500 focus:outline-none"
           >Tutorial</a
         >
         <a
           href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-particle-text/index.astro"
-          class="flex items-center justify-center px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none"
+          class="flex items-center justify-center px-4 py-3 text-sm font-medium text-base-700 hover:text-base-500 focus:outline-none"
           >Get the code</a
         >
       </div>
     </div>
   </div>
 </BaseLayout>
-
 <script type="module">
   class ParticleTextAnimation {
     constructor(containerId, initialText, finalText, particleCount = 500) {
@@ -62,27 +58,22 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       this.particleCount = particleCount;
       this.particles = [];
       this.animationFrame = null;
-
       this.init();
     }
-
     init() {
       this.createParticles();
       this.addEventListeners();
       this.startAnimation();
     }
-
     createParticles() {
       const fragment = document.createDocumentFragment();
       const containerRect = this.container.getBoundingClientRect();
-
       for (let i = 0; i < this.particleCount; i++) {
         const particle = document.createElement("span");
         particle.textContent = this.getRandomChar();
         particle.className =
           "absolute opacity-0 transition-all duration-1000 ease-out";
         fragment.appendChild(particle);
-
         this.particles.push({
           element: particle,
           x: Math.random() * containerRect.width,
@@ -91,39 +82,31 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           speedY: Math.random() * 2 - 1,
         });
       }
-
       this.container.appendChild(fragment);
     }
-
     getRandomChar() {
       return this.initialText[
         Math.floor(Math.random() * this.initialText.length)
       ];
     }
-
     animateParticles() {
       const containerRect = this.container.getBoundingClientRect();
-
       this.particles.forEach((particle) => {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
-
         if (particle.x < 0 || particle.x > containerRect.width)
           particle.speedX *= -1;
         if (particle.y < 0 || particle.y > containerRect.height)
           particle.speedY *= -1;
-
         Object.assign(particle.element.style, {
           transform: `translate(${particle.x}px, ${particle.y}px)`,
           opacity: "1",
         });
       });
-
       this.animationFrame = requestAnimationFrame(
         this.animateParticles.bind(this)
       );
     }
-
     reformText() {
       const containerRect = this.container.getBoundingClientRect();
       const fontSize = window.innerWidth < 1024 ? 16 : 54;
@@ -131,12 +114,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       const textWidth = this.finalText.length * letterSpacing;
       const startX = (containerRect.width - textWidth) / 2;
       const startY = containerRect.height / 2;
-
       this.particles.forEach((particle, index) => {
         if (index < this.finalText.length) {
           const targetX = startX + index * letterSpacing;
           const targetY = startY + (Math.random() - 0.5) * (fontSize / 2);
-
           Object.assign(particle.element.style, {
             transform: `translate(${targetX}px, ${targetY}px)`,
             opacity: "1",
@@ -147,18 +128,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         }
       });
     }
-
     startAnimation() {
       cancelAnimationFrame(this.animationFrame);
       this.createParticles();
       this.animateParticles();
-
       setTimeout(() => {
         cancelAnimationFrame(this.animationFrame);
         this.reformText();
       }, 2000);
     }
-
     handleResize() {
       const containerRect = this.container.getBoundingClientRect();
       this.particles.forEach((particle) => {
@@ -168,13 +146,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       cancelAnimationFrame(this.animationFrame);
       this.animateParticles();
     }
-
     addEventListeners() {
       this.container.addEventListener("click", this.startAnimation.bind(this));
       window.addEventListener("resize", this.handleResize.bind(this));
     }
   }
-
   document.addEventListener("DOMContentLoaded", () => {
     new ParticleTextAnimation(
       "text-container",

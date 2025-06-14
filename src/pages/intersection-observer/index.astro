@@ -1,6 +1,9 @@
 ---
 // Import the BaseLayout component from the layouts directory to structure the page
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <style>
@@ -12,18 +15,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 <BaseLayout>
   <!-- Introductory section with a title -->
   <section class="">
-    <div
-      class="px-8 py-48 md:px-12 lg:px-24 flex flex-col h-screen justify-center max-w-screen-xl mx-auto">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
-        <div>
-          <h1>Intersection observer</h1>
-          <p class="text-balance">
-         Scroll down to see the animted images with the intersection observer.
-          </p>
-        </div>
-      </div>
-    </div>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-animate-objects-with-tailwind-css-and-alpinejs-intersection-observer/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/intersection-observer/index.astro"
+    />
+    <!-- Ends links to tutorial -->
+    <Wrapper class="py-24 text-center">Scroll </Wrapper>
   </section>
   <!--
   // Section for the first image with a rotation around the Y-axis
@@ -34,65 +32,69 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   // Applies the dynamic rotation style to the image. The rotation is more subtle due to the lower target degree
   -->
   <section class="overflow-hidden">
-    <div class="flex flex-col h-screen my-24">
+    <Wrapper class="flex flex-col h-screen my-24">
       <div
         x-data="{ degree: 0, target: 360, rotate() { let interval = setInterval(() => { if (this.degree < this.target) { this.degree += 5; } else { clearInterval(interval); } }, 50); } }"
         x-intersect.once="rotate()"
-        class="perspective-container mt-12">
+        class="mt-12 perspective-container"
+      >
         <img
           :style="`transform: perspective(1000px) rotateY(${degree}deg)`"
-          class="transition-transform duration-1000 w-64 ease-in-out md:w-full mx-auto rounded-3xl md:max-w-xl"
+          class="w-64 mx-auto transition-transform duration-1000 ease-in-out md:w-full rounded-3xl md:max-w-xl"
           src="https://i.pinimg.com/564x/78/d1/c0/78d1c06554aead1dc1d1490f08d39ffd.jpg"
         />
       </div>
-    </div>
+    </Wrapper>
   </section>
 
   <section class="overflow-hidden">
-    <div class="flex flex-col h-screen my-24">
+    <Wrapper class="flex flex-col h-screen my-24">
       <div
         x-data="{ degree: 0, target: 30, animate() { let interval = setInterval(() => { if (this.degree < this.target) { this.degree += 1; } else { clearInterval(interval); } }, 50); } }"
         x-intersect.once="animate()"
-        class="perspective-container">
+        class="perspective-container"
+      >
         <img
           :style="`transform: perspective(1000px) rotateX(${degree}deg)`"
-          class="transition-transform duration-1000 w-64 ease-in-out md:w-full mx-auto rounded-3xl md:max-w-xl"
+          class="w-64 mx-auto transition-transform duration-1000 ease-in-out md:w-full rounded-3xl md:max-w-xl"
           src="https://i.pinimg.com/564x/78/d1/c0/78d1c06554aead1dc1d1490f08d39ffd.jpg"
         />
       </div>
-    </div>
+    </Wrapper>
   </section>
   <!-- Starts links to tutorial -->
   <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+    class="fixed inset-x-0 bottom-0 p-2 pointer-events-none sm:flex sm:justify-center"
+  >
     <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
+      class="flex w-full max-w-md bg-white border rounded-lg shadow-xl pointer-events-auto divide-x divide-base-200 border-base-200"
+    >
+      <div class="flex items-center flex-1 w-0 p-4">
         <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
+          <p class="text-sm font-medium text-base-900">Tutorial</p>
+          <p class="mt-1 text-sm text-base-500">
             How to animate objects with Tailwind CSS and Alpinejs intersection
             observer
           </p>
-          <p class="mt-2 text-xs text-orange-500 underline">
+          <p class="mt-2 text-xs underline text-accent-500">
             <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
           </p>
         </div>
       </div>
       <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
+        <div class="flex flex-col divide-y divide-base-200">
+          <div class="flex flex-1 h-0">
             <a
               href="https://lexingtonthemes.com/tutorials/how-to-animate-objects-with-tailwind-css-and-alpinejs-intersection-observer/"
               type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-tr-lg text-accent-600 hover:text-accent-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-accent-500"
               >Tutorial</a
             >
           </div>
-          <div class="flex h-0 flex-1">
+          <div class="flex flex-1 h-0">
             <a
               href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/intersection-observer/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium rounded-none rounded-br-lg text-base-700 hover:text-base-500 focus:outline-none focus:ring-2 focus:ring-accent-500"
               >Get the code</a
             >
           </div>

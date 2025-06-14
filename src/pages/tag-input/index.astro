@@ -1,24 +1,20 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white">
-    <div
-      class="w-full mx-auto max-w-xl flex flex-col justify-center lg:h-svh py-24 lg:py-96 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
-        <div>
-          <h1>Add you tags</h1>
-          <p class="text-balance">
-            Test the input by adding tags and removing them. You can also add
-            tags by pressing the Enter key.
-          </p>
-        </div>
-      </div>
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-tag-input-with-alpine-js-and-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/tag-input/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-48">
       <!-- Starts component -->
       <div
-        class="w-full mx-auto mt-6 border-t  border-neutral-200  pt-12"
+        class="mx-auto w-fit"
         x-data="{
         tags: [],
         addTag(tag) {
@@ -29,11 +25,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         removeTag(index) {
             this.tags.splice(index, 1);
         }
-    }">
+    }"
+      >
         <!-- Tag Input -->
-        <div
-          class="w-full"
-          x-data="{ newTag: '', tags: [] }">
+        <div class="w-full" x-data="{ newTag: '', tags: [] }">
           <!-- Input Field -->
           <input
             x-model="newTag"
@@ -43,32 +38,29 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                 newTag = '';
             }
         "
-            class="w-full border-gray-300 rounded-md focus:border-orange-500 focus:ring-orange-500 mt-1"
+            class="w-full mt-1 border-base-300 rounded-md focus:border-accent-500 focus:ring-accent-500"
             type="text"
             placeholder="Add tags (press Enter to add)"
           />
           <!-- Existing Tags -->
-          <div class="mt-4 flex gap-2 flex-wrap">
-            <template
-              x-for="(tag, index) in tags"
-              :key="index">
+          <div class="flex flex-wrap mt-4 gap-2">
+            <template x-for="(tag, index) in tags" :key="index">
               <div
-                class="inline-flex items-center gap-x-0.5 rounded-md bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
+                class="inline-flex items-center gap-x-0.5 rounded-md bg-accent-50 px-2 py-1 text-xs font-medium text-accent-700 ring-1 ring-inset ring-accent-700/10"
+              >
                 <span x-text="tag"></span>
-                <button
-                  @click="tags.splice(index, 1)"
-                  class="ml-2">
+                <button @click="tags.splice(index, 1)" class="ml-2">
                   <svg
-                    class="h-4 w-4 text-red-500"
+                    class="w-4 h-4 text-red-500"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor">
+                    stroke="currentColor"
+                  >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    ></path>
+                      d="M6 18L18 6M6 6l12 12"></path>
                   </svg>
                 </button>
               </div>
@@ -76,48 +68,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </div>
         </div>
       </div>
-      <!-- Ends component -->
-      <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2 ">
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create a tag input with Tailwind CSS and Alpinejs
-              </p>
-              <p class="mt-2 text-xs text-orange-500 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-tag-input-with-alpine-js-and-tailwind-css/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/tag-input/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Get the code</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Ends links to tutorial -->
-
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>

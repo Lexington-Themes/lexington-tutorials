@@ -1,26 +1,26 @@
 ---
-import BaselLayout from "@/layouts/BaseLayout.astro";
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
-<BaselLayout>
+
+---
+<BaseLayout>
   <section class="overflow-hidden">
-    <div class="w-full flex flex-col py-32 p-8">
-      <div
-        class="prose text-gray-500 prose-sm text-center prose-headings:font-normal prose-headings:text-xl w-full max-w-lg mx-auto">
-        <div>
-          <h1>Command box</h1>
-          <p class="text-balance">Click on the input to see what happends</p>
-        </div>
-      </div>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-an-interactive-combo-box-with-tailwind-css-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-combo-box/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper class="py-24 lg:py-62">
       <!-- Starts component -->
       <div
-        class="max-w-xl mx-auto w-full bg-gray-50 p-2 border rounded-xl border-gray-100">
-        <div
-          id="combo-box"
-          class="relative">
-          <label
-            for="combo-input"
-            class="sr-only"
-            >Search or use commands</label
+        class="w-full max-w-xl p-2 mx-auto border bg-base-50 rounded-xl border-base-100"
+      >
+        <div id="combo-box" class="relative">
+          <label for="combo-input" class="sr-only">Search or use commands</label
           >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -30,15 +30,16 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="absolute top-3.5 left-4 h-5 w-5 text-gray-400"
-            aria-hidden="true">
+            class="absolute top-3.5 left-4 h-5 w-5 text-base-400"
+            aria-hidden="true"
+          >
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
             <path d="M21 21l-6 -6"></path>
           </svg>
           <input
             type="text"
             id="combo-input"
-            class="w-full h-12 pl-11 pr-4 block px-4 py-3 placeholder-gray-500 bg-white border-0 rounded-lg appearance-none text-blue-500 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
+            class="block w-full h-12 px-4 py-3 pr-4 text-xs bg-white border-0 rounded-lg appearance-none pl-11 placeholder-base-500 text-accent-500 focus:border-accent-500 focus:bg-white focus:outline-none focus:ring-accent-500 focus:ring-inset focus:ring-2"
             placeholder="Search for anything"
             role="combobox"
             aria-expanded="false"
@@ -49,14 +50,16 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
         </div>
         <ul
           id="combo-menu"
-          class="hidden mt-2 overflow-hidden bg-white rounded-lg shadow-xl border border-gray-200"
+          class="hidden mt-2 overflow-hidden bg-white border rounded-lg shadow-xl border-base-200"
           role="listbox"
-          aria-label="Command options">
+          aria-label="Command options"
+        >
           <li
             id="option-1"
-            class="flex items-center p-3 gap-4 text-sm text-gray-600 cursor-pointer hover:bg-gray-50 hover:text-blue-500"
+            class="flex items-center p-3 text-sm cursor-pointer gap-4 text-base-600 hover:bg-base-50 hover:text-accent-500"
             role="option"
-            aria-selected="false">
+            aria-selected="false"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="size-4"
@@ -66,7 +69,8 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              aria-hidden="true">
+              aria-hidden="true"
+            >
               <path d="M3 12l3 3l3 -3l-3 -3z"></path>
               <path d="M15 12l3 3l3 -3l-3 -3z"></path>
               <path d="M9 6l3 3l3 -3l-3 -3z"></path>
@@ -76,9 +80,10 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
           </li>
           <li
             id="option-2"
-            class="flex items-center p-3 gap-4 text-sm text-gray-600 cursor-pointer hover:bg-gray-50 hover:text-blue-500"
+            class="flex items-center p-3 text-sm cursor-pointer gap-4 text-base-600 hover:bg-base-50 hover:text-accent-500"
             role="option"
-            aria-selected="false">
+            aria-selected="false"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="size-4"
@@ -88,7 +93,8 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              aria-hidden="true">
+              aria-hidden="true"
+            >
               <path d="M12 5l0 14"></path>
               <path d="M5 12l14 0"></path>
             </svg>
@@ -96,9 +102,10 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
           </li>
           <li
             id="option-3"
-            class="flex items-center p-3 gap-4 text-sm text-gray-600 cursor-pointer hover:bg-gray-50 hover:text-blue-500"
+            class="flex items-center p-3 text-sm cursor-pointer gap-4 text-base-600 hover:bg-base-50 hover:text-accent-500"
             role="option"
-            aria-selected="false">
+            aria-selected="false"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="size-4"
@@ -108,7 +115,8 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              aria-hidden="true">
+              aria-hidden="true"
+            >
               <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
               <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
               <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -120,46 +128,7 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
           </li>
         </ul>
       </div>
-      <!-- Ends component -->
-      <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create a basic command box with Tailwind CSS and JavaScript
-              </p>
-              <p class="mt-2 text-xs text-orange-500 underline">
-                <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-an-interactive-combo-box-with-tailwind-css-and-javascript/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-combo-box/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Get the code</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Ends links to tutorial -->
-    </div>
+    </Wrapper>
   </section>
 
   <script type="module">
@@ -200,11 +169,11 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
     function updateFocus() {
       options.forEach((option, index) => {
         if (index === currentFocus) {
-          option.classList.add("bg-blue-50");
+          option.classList.add("bg-accent-50");
           option.setAttribute("aria-selected", "true");
           input.setAttribute("aria-activedescendant", option.id);
         } else {
-          option.classList.remove("bg-blue-50");
+          option.classList.remove("bg-accent-50");
           option.setAttribute("aria-selected", "false");
         }
       });
@@ -224,5 +193,4 @@ import BaselLayout from "@/layouts/BaseLayout.astro";
       });
     });
   </script>
-
-</BaselLayout>
+</BaseLayout>

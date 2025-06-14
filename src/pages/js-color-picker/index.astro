@@ -1,86 +1,38 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
   <section>
-    <div
-      class="max-w-7xl mx-auto px-8 md:px-12 lg:px-32 py-24 flex flex-col justify-center">
-      <div
-        class="prose text-gray-500 prose-sm border-b prose-headings:font-normal prose-headings:text-xl mx-auto">
-        <div>
-          <h1>Color picker</h1>
-          <p class="text-balance">
-            Click on the colors to copy each color code to your clipboard.
-          </p>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-color-picker-with-tailwind-css-and-javascript/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-color-picker/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper class="py-24 lg:py-48">
+      <div class="max-w-sm mx-auto">
+        <div
+          id="colorSwatches"
+          class="flex flex-wrap justify-between mb-4 gap-2"
+        >
+        </div>
+        <div id="selectedColor" class="w-full h-32 mt-8 rounded-xl"></div>
+        <div class="flex flex-col items-center justify-between gap-8">
+          <span id="colorCode" class="mt-4 text-base-500"></span>
+          <button
+            id="copyButton"
+            class="w-full h-12 px-8 py-2 text-sm font-semibold text-white bg-black rounded-full hover:bg-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+          >
+            Copy
+          </button>
         </div>
       </div>
-      <!-- Starts component -->
-      <div
-        class="max-w-xl mx-auto w-full mt-12 rounded-3xl bg-white shadow-2xl border overflow-hidden">
-        <div class="p-8 w-full">
-          <div
-            id="colorSwatches"
-            class="flex flex-wrap justify-between gap-2 mb-4">
-          </div>
-          <div
-            id="selectedColor"
-            class="h-32 w-full rounded-xl mt-8">
-          </div>
-          <div class="flex flex-col gap-8 justify-between items-center">
-            <span
-              id="colorCode"
-              class="text-gray-500 mt-4"
-            ></span>
-            <button
-              id="copyButton"
-              class="rounded-full bg-black px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full">
-              Copy
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- Ends component -->
-    </div>
+    </Wrapper>
   </section>
-  <!-- Starts links to tutorial -->
-  <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-    <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
-        <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
-            How to a create a color picker with Tailwind CSS and JavaScript
-          </p>
-          <p class="mt-2 text-xs text-orange-500 underline">
-            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-          </p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://lexingtonthemes.com/tutorials/how-to-create-a-color-picker-with-tailwind-css-and-javascript/"
-              type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Tutorial</a
-            >
-          </div>
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-color-picker/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Get the code</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Ends links to tutorial -->
 </BaseLayout>
 <script type="module">
   const colors = [
@@ -99,7 +51,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   const copyButton = document.getElementById("copyButton");
   colors.forEach(({ hex }) => {
     const swatch = document.createElement("div");
-    swatch.className = "size-8 rounded-full cursor-pointer";
+    swatch.className = "rounded-full cursor-pointer size-8";
     swatch.style.backgroundColor = hex;
     swatch.addEventListener("click", () => selectColor(hex));
     colorSwatches.appendChild(swatch);

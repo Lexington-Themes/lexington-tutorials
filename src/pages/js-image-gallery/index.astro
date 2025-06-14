@@ -1,130 +1,80 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white">
-    <div
-      class="w-full mx-auto max-w-xl flex flex-col lg:h-svh justify-center py-24 lg:py-96 relative p-8">
-      <div
-        class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl">
-        <div>
-          <h1>Image gallery</h1>
-          <p class="text-balance">
-            Click on the image to view it in full screen and click outside the
-          </p>
-        </div>
-      </div>
-      <div class="mt-6 border-t  border-neutral-200  pt-12">
-        <!-- Starts component -->
-        <div id="image-gallery">
-          <div class="grid grid-cols-3 gap-4">
-            <div
-              class="cursor-pointer"
-              data-image-url="https://i.pinimg.com/564x/59/41/a0/5941a02c048f6226031a0487451c2651.jpg">
-              <img
-                src="https://i.pinimg.com/564x/59/41/a0/5941a02c048f6226031a0487451c2651.jpg"
-                alt="Image 1"
-                class="w-full h-auto aspect-[3/4] object-cover"
-              />
-            </div>
-            <div
-              class="cursor-pointer"
-              data-image-url="https://i.pinimg.com/736x/70/25/f6/7025f63ebdd1caa11b47889c4c4d8fcd.jpg">
-              <img
-                src="https://i.pinimg.com/736x/70/25/f6/7025f63ebdd1caa11b47889c4c4d8fcd.jpg"
-                alt="Image 2"
-                class="w-full h-auto aspect-[3/4] object-cover"
-              />
-            </div>
-            <div
-              class="cursor-pointer"
-              data-image-url="https://i.pinimg.com/564x/4e/a7/ff/4ea7ff230ad9f3bc1c30b1b6cbaccad3.jpg">
-              <img
-                src="https://i.pinimg.com/564x/4e/a7/ff/4ea7ff230ad9f3bc1c30b1b6cbaccad3.jpg"
-                alt="Image 3"
-                class="w-full h-auto aspect-[3/4] object-cover"
-              />
-            </div>
-            <!-- Add more image placeholders as needed -->
-          </div>
-
-          <!-- Modal -->
+  <section>
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-image-gallery-with-tailwind-css-and-javascript"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-image-gallery/index.astro"
+    />
+    <!--  Starts component -->
+    <Wrapper class="py-24 lg:py-48">
+      <!-- Starts component -->
+      <div id="image-gallery">
+        <div class="grid grid-cols-3 gap-4">
           <div
-            id="modal"
-            class="fixed inset-0 items-center justify-center bg-gray-200 bg-opacity-80 transition-opacity duration-300 hidden"
-            role="dialog"
-            aria-modal="true">
-            <div
-              class="prose text-gray-500 mx-auto prose-sm prose-headings:font-normal prose-headings:text-xl">
-              <div class="text-center max-w-sm mx-auto">
-                <h1>The modal</h1>
-                <p class="text-balance">
-                  To close the modal, click outside the modal, press ESC, or
-                  click the close button.
-                </p>
-              </div>
-            </div>
-            <div
-              id="modal-content"
-              class="max-w-full max-h-full overflow-auto py-12">
-              <button
-                id="modal-close-button"
-                class="rounded-full bg-orange-600 px-8 py-2 h-12 text-sm font-semibold flex items-center text-white hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 justify-center mx-auto w-auto focus:ring-offset-2"
-                >Close</button
-              >
-              <img
-                id="modal-image"
-                alt="Full Size Image"
-                class="max-w-full max-h-96 mx-auto mt-12"
-              />
-            </div>
+            class="cursor-pointer"
+            data-image-url="https://i.pinimg.com/564x/59/41/a0/5941a02c048f6226031a0487451c2651.jpg"
+          >
+            <img
+              src="https://i.pinimg.com/564x/59/41/a0/5941a02c048f6226031a0487451c2651.jpg"
+              alt="Image 1"
+              class="w-full h-auto aspect-[3/4] object-cover"
+            />
           </div>
+          <div
+            class="cursor-pointer"
+            data-image-url="https://i.pinimg.com/736x/70/25/f6/7025f63ebdd1caa11b47889c4c4d8fcd.jpg"
+          >
+            <img
+              src="https://i.pinimg.com/736x/70/25/f6/7025f63ebdd1caa11b47889c4c4d8fcd.jpg"
+              alt="Image 2"
+              class="w-full h-auto aspect-[3/4] object-cover"
+            />
+          </div>
+          <div
+            class="cursor-pointer"
+            data-image-url="https://i.pinimg.com/564x/4e/a7/ff/4ea7ff230ad9f3bc1c30b1b6cbaccad3.jpg"
+          >
+            <img
+              src="https://i.pinimg.com/564x/4e/a7/ff/4ea7ff230ad9f3bc1c30b1b6cbaccad3.jpg"
+              alt="Image 3"
+              class="w-full h-auto aspect-[3/4] object-cover"
+            />
+          </div>
+          <!-- Add more image placeholders as needed -->
         </div>
 
-        <!-- Ends component -->
-        <!-- Starts links to tutorial -->
+        <!-- Modal -->
         <div
-          class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
+          id="modal"
+          class="fixed inset-0 items-center justify-center hidden bg-base-200/80 transition-opacity duration-300"
+          role="dialog"
+          aria-modal="true"
+        >
           <div
-            class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-            <div class="flex w-0 flex-1 items-center p-4">
-              <div class="w-full">
-                <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-                <p class="mt-1 text-sm text-neutral-500">
-                  How to create a image gallery with Tailwind CSS and JavaScript
-                </p>
-                <p class="mt-2 text-xs text-orange-500 underline">
-                  <a href="https://lexingtonthemes.com">
-                    by © Lexington Themes</a
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="flex">
-              <div class="flex flex-col divide-y divide-neutral-200">
-                <div class="flex h-0 flex-1">
-                  <a
-                    href="https://lexingtonthemes.com/tutorials/how-to-create-a-image-gallery-with-tailwind-css-and-javascript"
-                    type="button"
-                    class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >Tutorial</a
-                  >
-                </div>
-                <div class="flex h-0 flex-1">
-                  <a
-                    href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-image-gallery/index.astro"
-                    class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >Get the code</a
-                  >
-                </div>
-              </div>
-            </div>
+            id="modal-content"
+            class="max-w-full max-h-full py-4 overflow-auto"
+          >
+            <button
+              id="modal-close-button"
+              class="flex items-center justify-center w-auto h-12 px-8 py-2 mx-auto text-sm font-semibold text-white rounded-full bg-accent-600 hover:bg-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              >Close</button
+            >
+            <img
+              id="modal-image"
+              alt="Full Size Image"
+              class="max-w-full mx-auto mt-4 max-h-80"
+            />
           </div>
         </div>
-        <!-- Ends links to tutorial -->
       </div>
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>
 <script type="module">

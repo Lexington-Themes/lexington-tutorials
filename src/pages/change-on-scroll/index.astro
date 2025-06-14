@@ -1,92 +1,52 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <!--
-    The header is using Alpine JS for interactivity.
-    x-data initializes the Alpine component with a state object { scroll: false }.
-    @scroll.window is an event listener that updates the scroll state based on the window's scroll position.
-    :class is a binding that applies classes based on the scroll state.
-    -->
-  <header
-    x-data="{ scroll: false }"
-    @scroll.window="scroll = (window.pageYOffset > 50) ? true : false"
-    :class="{ 'bg-white': scroll, 'bg-transparent': !scroll }"
-    class="w-full fixed top-0 p-20 text-4xl 2xl:text-8xl flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
+  <TutorialBanner
+    tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-change-background-coloron-scroll-with-tailwind-css-and-alpinejs"
+    codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/change-on-scroll/index.astro"
+  />
+  <Wrapper class="relative py-24">
     <div
-      class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto">
-      <div>
-        <h1>Background change on scroll</h1>
-        <p class="text-balance">
-          Scroll down to see the background color change while scroll.
-        </p>
-      </div>
+      x-data="{ scroll: false }"
+      @scroll.window="scroll = (window.pageYOffset > 50) ? true : false"
+      :class="{ 'bg-white': scroll, 'bg-transparent': !scroll }"
+      class="w-full text-center transition-colors duration-500 ease-in-out"
+    >
+      Scroll
     </div>
-  </header>
-  <!--
-    The sections have a fixed height (h-svh) and padding (p-20).
-    The first section has additional top padding (pt-80) to account for the fixed header.
-    Each section changes its background color based on the scroll position.
-    -->
-  <section
-    x-data="{ scroll: false }"
-    @scroll.window="scroll = (window.pageYOffset > 50) ? true : false"
-    :class="{ 'bg-[#e9e9e9]': scroll, 'bg-white': !scroll }"
-    class="h-svh text-4xl 2xl:text-8xl p-20 pt-80 flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
-    <h2>Section #01</h2>
-  </section>
-  <section
-    x-data="{ scroll: false }"
-    @scroll.window="scroll = (window.pageYOffset > 150) ? true : false"
-    :class="{ 'bg-[#f92c1c]': scroll, 'bg-white': !scroll }"
-    class="h-svh text-4xl 2xl:text-8xl p-20 flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
-    <h2 class="text-white">Section #02</h2>
-  </section>
-  <section
-    x-data="{ scroll: false }"
-    @scroll.window="scroll = (window.pageYOffset > 250) ? true : false"
-    :class="{ 'bg-[#000000]': scroll, 'bg-white': !scroll }"
-    class="h-svh text-4xl 2xl:text-8xl p-20 flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
-    <h2 class="text-white">Section #03</h2>
-  </section>
-  <!-- Starts links to tutorial -->
-  <div
-    class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-    <div
-      class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-      <div class="flex w-0 flex-1 items-center p-4">
-        <div class="w-full">
-          <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-          <p class="mt-1 text-sm text-neutral-500">
-            How to change background color on scroll with Tailwind CSS and
-            Alpinejs
-          </p>
-          <p class="mt-2 text-xs text-orange-500 underline">
-            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-          </p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex flex-col divide-y divide-neutral-200">
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://lexingtonthemes.com/tutorials/how-to-change-background-coloron-scroll-with-tailwind-css-and-alpinejs"
-              type="button"
-              class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Tutorial</a
-            >
-          </div>
-          <div class="flex h-0 flex-1">
-            <a
-              href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/change-on-scroll/index.astro"
-              class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >Get the code</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Ends links to tutorial -->
+    <!--
+      The sections have a fixed height (h-svh) and padding (p-20).
+      The first section has additional top padding (pt-80) to account for the fixed header.
+      Each section changes its background color based on the scroll position.
+      -->
+    <section
+      x-data="{ scroll: false }"
+      @scroll.window="scroll = (window.pageYOffset > 50) ? true : false"
+      :class="{ 'bg-[#e9e9e9]': scroll, 'bg-white': !scroll }"
+      class="flex flex-col items-center justify-center p-20 text-4xl h-svh 2xl:text-8xl pt-80 transition-colors duration-500 ease-in-out"
+    >
+      <h2>Section #01</h2>
+    </section>
+    <section
+      x-data="{ scroll: false }"
+      @scroll.window="scroll = (window.pageYOffset > 150) ? true : false"
+      :class="{ 'bg-[#f92c1c]': scroll, 'bg-white': !scroll }"
+      class="flex flex-col items-center justify-center p-20 text-4xl h-svh 2xl:text-8xl transition-colors duration-500 ease-in-out"
+    >
+      <h2 class="text-white">Section #02</h2>
+    </section>
+    <section
+      x-data="{ scroll: false }"
+      @scroll.window="scroll = (window.pageYOffset > 250) ? true : false"
+      :class="{ 'bg-[#000000]': scroll, 'bg-white': !scroll }"
+      class="flex flex-col items-center justify-center p-20 text-4xl h-svh 2xl:text-8xl transition-colors duration-500 ease-in-out"
+    >
+      <h2 class="text-white">Section #03</h2>
+    </section>
+  </Wrapper>
 </BaseLayout>

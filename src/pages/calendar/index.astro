@@ -1,23 +1,23 @@
 ---
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
-  <section class="bg-white relative overflow-hidden">
-    <div
-      class="w-full mx-auto 2xl:max-w-7xl flex flex-col justify-center py-24 relative p-8">
-      <div class="max-w-xl mx-auto text-center">
+  <section>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-calendar-layout-with-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/calendar/index.astro"
+    />
+    <Wrapper
+      class="relative flex flex-col justify-center w-full p-8 py-24 mx-auto 2xl:max-w-7xl"
+    >
+      <div class="w-full max-w-sm mx-auto">
         <div
-          class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-xl mx-auto max-w-sm w-full">
-          <div>
-            <h1>Calendar</h1>
-          </div>
-        </div>
-      </div>
-      <!-- Starts component -->
-      <div class="max-w-sm w-full mx-auto">
-        <div
-          class="mt-10 grid grid-cols-7 text-center text-xs leading-6 text-gray-500">
+          class="mt-10 text-xs text-center grid grid-cols-7 leading-6 text-base-500"
+        >
           <div>M</div>
           <div>T</div>
           <div>W</div>
@@ -27,298 +27,341 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           <div>S</div>
         </div>
         <div
-          class="mt-4 border bg-gray-200 gap-px grid grid-cols-7 text-sm rounded-lg overflow-hidden shadow-md shadow-gray-500/20">
+          class="mt-4 overflow-hidden text-sm ring ring-inset ring-base-200 rounded-lg shadow bg-base-200 gap-px grid grid-cols-7 shadow-base-500/30"
+        >
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">29</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">30</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">29</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">31</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">1</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">2</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">3</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">4</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">5</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">6</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">7</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">8</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">9</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">10</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">11</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">12</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center font-semibold text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto font-semibold text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">13</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-white bg-blue-600 hover:bg-blue-700">
+              class="flex items-center justify-center w-full mx-auto text-white size-10 bg-accent-600 hover:bg-accent-700"
+            >
               <time datetime="#_">14</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">15</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">16</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">17</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">18</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">19</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">20</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">21</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">22</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">23</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">24</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">25</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">26</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">27</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">28</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">29</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">30</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-black hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto text-black size-10 hover:text-accent-600"
+            >
               <time datetime="#_">31</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">1</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">2</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">3</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">4</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">5</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">6</time>
             </button>
           </div>
           <div class="bg-white">
             <button
               type="button"
-              class="mx-auto flex size-10 w-full items-center justify-center text-gray-400 hover:text-blue-600">
+              class="flex items-center justify-center w-full mx-auto size-10 text-base-400 hover:text-accent-600"
+            >
               <time datetime="#_">7</time>
             </button>
           </div>
@@ -330,7 +373,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           <div class="flex items-center gap-1">
             <button
               type="button"
-              class="flex flex-none hover:border-blue-500 items-center rounded-full hover:bg-blue-600 hover:text-white border justify-center p-1.5 text-gray-500">
+              class="flex flex-none hover:ring-accent-500 items-center rounded-full hover:bg-accent-600 hover:text-white ring justify-center p-1.5 text-base-500"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -340,17 +384,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left size-4"
-                ><path
-                  stroke="none"
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                ></path><path d="M5 12l14 0"></path><path d="M5 12l4 4"
-                ></path><path d="M5 12l4 -4"></path></svg
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                  d="M5 12l14 0"></path><path d="M5 12l4 4"></path><path
+                  d="M5 12l4 -4"></path></svg
               >
             </button>
             <button
               type="button"
-              class="flex flex-none hover:border-blue-500 items-center rounded-full hover:bg-blue-600 hover:text-white border justify-center p-1.5 text-gray-500">
+              class="flex flex-none hover:ring-accent-500 items-center rounded-full hover:bg-accent-600 hover:text-white ring justify-center p-1.5 text-base-500"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -360,58 +402,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right size-4"
-                ><path
-                  stroke="none"
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                ></path><path d="M5 12l14 0"></path><path d="M15 16l4 -4"
-                ></path><path d="M15 8l4 4"></path></svg
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                  d="M5 12l14 0"></path><path d="M15 16l4 -4"></path><path
+                  d="M15 8l4 4"></path></svg
               >
             </button>
           </div>
         </div>
       </div>
-      <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create a calendar layout with Tailwind CSS
-              </p>
-              <p class="mt-2 text-xs text-orange-500 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-calendar-layout-with-tailwind-css/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/calendar/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg  px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Get the code</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Ends links to tutorial -->
-    </div>
+    </Wrapper>
   </section>
 </BaseLayout>
-

@@ -1,173 +1,70 @@
 ---
-import Text from "@/components/fundations/typography/Text.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
 ---
 
 <BaseLayout>
   <section>
-    <div class="px-8 lg:px-24 py-36">
-      <h1>Astro Typography component</h1>
-      <div
-        class="mt-6 border-y border-neutral-200 max-w-screen divide-y mx-auto w-full">
-        <!-- Starts component -->
-        <div class="flex flex-col gap-4 py-8 mx-auto divide-y">
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="display6XL"
-              >Display 6XL
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="display5XL"
-              >Display 5XL
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="display4XL"
-              >Display 4XL
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="display3XL"
-              >Display 3XL
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="display2XL"
-              >Display 2XL
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="displayXL"
-              >Display XL
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="displayLG"
-              >Display LG
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="displayMD"
-              >Display MD
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="displaySM"
-              >Display SM
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="displayXS"
-              >Display XS
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="textXL"
-              >Text XL
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="textLG"
-              >Text LG
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="textBase"
-              >Text Base
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="textMD"
-              >Text MD
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="textSM"
-              >Text SM
-            </Text>
-          </div>
-          <div class="py-4">
-            <Text
-              tag="p"
-              variant="textXS"
-              >Text XS
-            </Text>
-          </div>
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-typography-component-with-variants-with-astro-js-and-tailwind-css/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/astro-typography-component/index.astro"
+    />
+    <Wrapper class="py-24">
+      <!-- Starts component -->
+      <div class="flex flex-col mx-auto divide-y divide-base-200">
+        <div class="py-4">
+          <Text tag="p" variant="textXS">Text XS</Text>
         </div>
-        <!-- Ends component -->
-      </div>
-      <!-- Starts links to tutorial -->
-      <div
-        class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center p-2">
-        <div
-          class="pointer-events-auto flex w-full max-w-md divide-x divide-neutral-200 rounded-lg bg-white shadow-xl border border-neutral-200">
-          <div class="flex w-0 flex-1 items-center p-4">
-            <div class="w-full">
-              <p class="text-sm font-medium text-neutral-900">Tutorial</p>
-              <p class="mt-1 text-sm text-neutral-500">
-                How to create a typography component with variants with Astro JS
-                and Tailwind CSS
-              </p>
-              <p class="mt-2 text-xs text-orange-500 underline">
-                <a href="https://lexingtonthemes.com">
-                  by © Lexington Themes</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex flex-col divide-y divide-neutral-200">
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://lexingtonthemes.com/tutorials/how-to-create-a-typography-component-with-variants-with-astro-js-and-tailwind-css/"
-                  type="button"
-                  class="flex w-full items-center justify-center rounded-none rounded-tr-lg px-4 py-3 text-sm font-medium text-orange-600 hover:text-orange-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Tutorial</a
-                >
-              </div>
-              <div class="flex h-0 flex-1">
-                <a
-                  href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/astro-typography-component/index.astro"
-                  class="flex w-full items-center justify-center rounded-none rounded-br-lg px-4 py-3 text-sm font-medium text-neutral-700 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >Get the code</a
-                >
-              </div>
-            </div>
-          </div>
+        <div class="py-4">
+          <Text tag="p" variant="textSM">Text SM</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="textMD">Text MD</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="textBase">Text Base</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="textLG">Text LG</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="textXL">Text XL</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="displayXS">Display XS</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="displaySM">Display SM</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="displayMD">Display MD</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="displayLG">Display LG</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="displayXL">Display XL</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display2XL">Display 2XL</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display3XL">Display 3XL</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display4XL">Display 4XL</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display5XL">Display 5XL</Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display6XL">Display 6XL</Text>
         </div>
       </div>
-      <!-- Ends links to tutorial -->
-    </div>
+      <!-- Ends component -->
+    </Wrapper>
   </section>
 </BaseLayout>
-
