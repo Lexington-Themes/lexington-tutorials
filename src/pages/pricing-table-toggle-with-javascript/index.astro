@@ -68,7 +68,7 @@ const pricingPlans = [
     />
     <!-- Ends links to tutorial -->
     <Wrapper class="relative py-24 relative overflow-hidden ">
-      <img class="absolute inset-0" src="/images/blueBlob.svg" alt="alt text" />
+      <img class="absolute inset-0 opacity-50" src="/images/blueBlob.svg" alt="alt text" />
       <div class="mx-auto w-fit relative">
         <div
           class="inline-flex w-full border rounded-full mt-6 overflow-hidden border-white/20 p-0.5 z-0"
@@ -100,19 +100,19 @@ const pricingPlans = [
                   <p class="text-xl font-medium tracking-tight text-base-900">
                     {plan.name}
                   </p>
-                  <p class="text-white">
+                  <p class="text-bas-900">
                     <span class="text-2xl tracking-tight actualPrice">
                       <span>${plan.monthlyPrice}</span>
                       <span>${plan.annualPrice}</span>
                     </span>
                     <span class="text-base font-medium actualCycle">
                       /m
-                      <span style="display: none;">(billed annually)</span>
+                      <span style="display: none;">( annually)</span>
                     </span>
                   </p>
                 </div>
                 <p class="mt-8 text-xs text-base-900/80">{plan.description}</p>
-                <ul class="flex flex-col order-last mt-8 text-sm text-white gap-y-3">
+                <ul class="flex flex-col order-last mt-8 text-sm text-base-500 gap-y-3">
                   {plan.features.map((feature) => (
                     <li class="inline-flex items-center gap-2">
                       <svg
