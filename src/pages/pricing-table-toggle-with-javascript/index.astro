@@ -67,7 +67,7 @@ const pricingPlans = [
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/pricing-table-toggle-with-javascript/index.astro"
     />
     <!-- Ends links to tutorial -->
-    <Wrapper class="relative py-24 relative overflow-hidden bg-base-950">
+    <Wrapper class="relative py-24 relative overflow-hidden ">
       <img class="absolute inset-0" src="/images/blueBlob.svg" alt="alt text" />
       <div class="mx-auto w-fit relative">
         <div
@@ -97,7 +97,7 @@ const pricingPlans = [
             >
               <div>
                 <div class="flex flex-col justify-between gap-3">
-                  <p class="text-xl font-medium tracking-tight text-white">
+                  <p class="text-xl font-medium tracking-tight text-base-900">
                     {plan.name}
                   </p>
                   <p class="text-white">
@@ -111,7 +111,7 @@ const pricingPlans = [
                     </span>
                   </p>
                 </div>
-                <p class="mt-8 text-xs text-white/80">{plan.description}</p>
+                <p class="mt-8 text-xs text-base-900/80">{plan.description}</p>
                 <ul class="flex flex-col order-last mt-8 text-sm text-white gap-y-3">
                   {plan.features.map((feature) => (
                     <li class="inline-flex items-center gap-2">
