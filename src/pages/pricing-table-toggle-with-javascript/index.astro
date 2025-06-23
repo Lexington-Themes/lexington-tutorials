@@ -13,7 +13,7 @@ const pricingPlans = [
     annualPrice: "8",
     description:
       "This plan is ideal for individual users and hobbyists who are looking for essential functionalities to support their projects.",
-    cardBgClass: "bg-black/20 backdrop-blur-3xl",
+    cardBgClass: "bg-base-50",
     buttonClass: "text-white bg-white/10 hover:bg-white/5 ",
     features: ["5 mb/PDF", "75 pages/PDF", "10 messages/Day", "Up to 3 PDFs"],
     unavailableFeatures: ["Gpt-3.5-turbo model", "Test mode", "Doc summary"],
@@ -43,7 +43,7 @@ const pricingPlans = [
     annualPrice: "40",
     description:
       "Tailored for medium-sized businesses, this plan offers advanced tools and features to support your growing demands.",
-    cardBgClass: "bg-black/20 backdrop-blur-3xl",
+    cardBgClass: "bg-base-50",
     buttonClass: "text-white bg-white/10 hover:bg-white/5 ",
     features: [
       "32 mb/PDF",
@@ -93,7 +93,7 @@ const pricingPlans = [
             <div
               data-monthly-price={plan.monthlyPrice}
               data-annual-price={plan.annualPrice}
-              class={`pricing-card flex flex-col justify-between p-8 shadow-2xl  rounded-3xl ${plan.cardBgClass} backdrop-blur-3xl shadow-base-900/50`}
+              class={`pricing-card flex flex-col justify-between p-8   rounded-3xl ${plan.cardBgClass} backdrop-blur-3xl `}
             >
               <div>
                 <div class="flex flex-col justify-between gap-3">
