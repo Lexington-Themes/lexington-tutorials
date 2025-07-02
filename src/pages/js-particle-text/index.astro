@@ -8,46 +8,14 @@ import TutorialBanner from "@/components/global/TutorialBanner.astro";
   <section>
     <!-- Starts links to tutorial -->
     <TutorialBanner
-      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-circular-menu-with-tailwind-css-and-minimal-javascript/"
-      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-circular%20menu/index.astro"
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-particle-text-effect-with-tailwind-css-and-javascript"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-particle-text/index.astro"
     />
     <Wrapper class="py-24 lg:py-62">
       <div id="text-container" class="flex items-center h-96 lg:h-24"></div>
     </Wrapper>
   </section>
-  <!-- Links to tutorial -->
-  <div
-    class="fixed inset-x-0 bottom-0 p-2 pointer-events-none sm:flex sm:justify-center"
-  >
-    <div
-      class="flex w-full max-w-md bg-white border rounded-lg shadow-xl pointer-events-auto divide-x divide-base-200 border-base-200"
-    >
-      <div class="flex items-center flex-1 w-0 p-4">
-        <div class="w-full">
-          <p class="text-sm font-medium text-base-900">Tutorial</p>
-          <p class="mt-1 text-sm text-base-500">
-            How to create a particle text effect with Tailwind CSS and
-            JavaScript
-          </p>
-          <p class="mt-2 text-xs underline text-accent-500">
-            <a href="https://lexingtonthemes.com"> by © Lexington Themes</a>
-          </p>
-        </div>
-      </div>
-      <div class="flex flex-col divide-y divide-base-200">
-        <a
-          href="https://lexingtonthemes.com/tutorials/how-to-create-particle-text-effect-with-tailwind-css-and-javascript"
-          class="flex items-center justify-center px-4 py-3 text-sm font-medium text-accent-600 hover:text-accent-500 focus:outline-none"
-          >Tutorial</a
-        >
-        <a
-          href="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/js-particle-text/index.astro"
-          class="flex items-center justify-center px-4 py-3 text-sm font-medium text-base-700 hover:text-base-500 focus:outline-none"
-          >Get the code</a
-        >
-      </div>
-    </div>
-  </div>
+ 
 </BaseLayout>
 <script type="module">
   class ParticleTextAnimation {
