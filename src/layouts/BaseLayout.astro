@@ -10,12 +10,33 @@ import Navigation from "@/components/global/Navigation.astro";
 // Hides nav and footer on selected screens by passing
 // the hideNav and hideFooter props
 // <BaseLayout hideNav={true} hideFooter={true}>
-const { hideNav = false, hideFooter = false } = Astro.props;
+
+// Accept SEO props to pass to BaseHead
+interface Props {
+  hideNav?: boolean;
+  hideFooter?: boolean;
+  seo?: {
+    title?: string;
+    description?: string;
+    canonical?: string;
+    ogImage?: string;
+    ogImageAlt?: string;
+    article?: {
+      publishedTime?: string;
+      modifiedTime?: string;
+      author?: string;
+      tags?: string[];
+    };
+    jsonLd?: object | object[];
+  };
+}
+
+const { hideNav = false, hideFooter = false, seo } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead />
+    <BaseHead seo={seo} />
   </head>
   <body class="relative flex flex-col bg-white min-h-svh">
     {!hideNav && <Navigation />}

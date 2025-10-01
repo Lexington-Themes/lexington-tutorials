@@ -4,8 +4,46 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
 // Define an array of objects, each representing a link with a href, title, and description.
 // These are used to dynamically generate link elements in the UI.
+// SEO Configuration
+const seoConfig = {
+  title: "Create Flyout Menu with Tailwind CSS",
+  description: "Learn to build flyout menu components using Tailwind CSS. Includes responsive design and modern styling.",
+  canonical: "/flyout-menu",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Flyout Menu with Tailwind CSS",
+      description: "Learn to build flyout menu components using Tailwind CSS. Includes responsive design and modern styling.",
+      url: "/flyout-menu",
+      datePublished: "2025-10-01T06:26:58.390Z",
+      dateModified: "2025-10-01T06:26:58.390Z",
+      keywords: ["Tailwind CSS","Flyout Menu","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create Flyout Menu with Tailwind CSS", url: "/flyout-menu" },
+    ]),
+    generateHowToSchema({
+      name: "Create Flyout Menu with Tailwind CSS",
+      description: "Learn to build flyout menu components using Tailwind CSS. Includes responsive design and modern styling.",
+      totalTime: "PT20M",
+      steps: [
+        { name: "Set up HTML structure", text: "Create the base component container and elements" },
+        { name: "Add interactivity", text: "Initialize state management and event handlers" },
+        { name: "Style with Tailwind CSS", text: "Apply utility classes for responsive layout" },
+        { name: "Add accessibility features", text: "Implement ARIA attributes and keyboard navigation" },
+        { name: "Test the component", text: "Verify functionality across browsers and devices" },
+      ],
+    }),
+  ],
+};
+
 const links = [
   {
     href: "#",
@@ -31,8 +69,10 @@ const links = [
 ];
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create Flyout Menu with Tailwind CSS</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-flyout-menu-with-astrojs-tailwind-css-and-alpinejs"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/flyout-menu/index.astro"

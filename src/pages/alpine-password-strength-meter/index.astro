@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create a Password Strength Meter with Alpine.js",
+  description: "Learn to build password strength meter components using Alpine.js and Tailwind CSS. Includes strength calculation and visual feedback.",
+  canonical: "/alpine-password-strength-meter",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create a Password Strength Meter with Alpine.js",
+      description: "Learn to build password strength meter components using Alpine.js and Tailwind CSS. Includes strength calculation and visual feedback.",
+      url: "/alpine-password-strength-meter",
+      datePublished: "2025-10-01T06:22:29.063Z",
+      dateModified: "2025-10-01T06:22:29.063Z",
+      keywords: ["Tailwind CSS","Alpine.js","Password Strength Meter","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create a Password Strength Meter with Alpine.js", url: "/alpine-password-strength-meter" },
+    ]),
+    generateHowToSchema({
+      name: "Create a Password Strength Meter with Alpine.js",
+      description: "Learn to build password strength meter components using Alpine.js and Tailwind CSS. Includes strength calculation and visual feedback.",
+      totalTime: "PT15M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base password strength meter container and elements"
+            },
+            {
+                  "name": "Add Alpine.js interactivity",
+                  "text": "Initialize Alpine.js to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create a Password Strength Meter with Alpine.js</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-password-strength-meter-with-tailwind-css-and-alpinejs/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/alpine-password-strength-meter/index.astro"

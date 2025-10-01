@@ -1,0 +1,107 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "How to Create [COMPONENT] with Tailwind CSS and [FRAMEWORK]",
+  description:
+    "Learn how to build [COMPONENT] using Tailwind CSS and [FRAMEWORK]. [BRIEF DESCRIPTION OF WHAT THEY'LL LEARN].",
+  canonical: "/[PAGE-URL]",
+  jsonLd: [
+    generateArticleSchema({
+      title: "How to Create [COMPONENT] with Tailwind CSS and [FRAMEWORK]",
+      description: "Complete guide to building [COMPONENT] with [FRAMEWORK]",
+      url: "/[PAGE-URL]",
+      datePublished: "2024-XX-XXTXX:XX:XXZ", // Use current date in ISO 8601 format
+      dateModified: "2024-XX-XXTXX:XX:XXZ",
+      keywords: [
+        "Tailwind CSS",
+        "[FRAMEWORK]", // e.g., Alpine.js, JavaScript, Astro
+        "[COMPONENT]", // e.g., Modal, Carousel, Accordion
+        "[FEATURE]", // e.g., Animation, Interactive
+        "Tutorial",
+        "Web Development",
+      ],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "[PAGE NAME]", url: "/[PAGE-URL]" },
+    ]),
+    generateHowToSchema({
+      name: "Create [COMPONENT] with Tailwind CSS and [FRAMEWORK]",
+      description: "Step-by-step guide to building [COMPONENT]",
+      totalTime: "PTXXM", // e.g., PT15M for 15 minutes, PT1H for 1 hour
+      steps: [
+        {
+          name: "[STEP 1 TITLE]",
+          text: "[STEP 1 DESCRIPTION]",
+        },
+        {
+          name: "[STEP 2 TITLE]",
+          text: "[STEP 2 DESCRIPTION]",
+        },
+        {
+          name: "[STEP 3 TITLE]",
+          text: "[STEP 3 DESCRIPTION]",
+        },
+        // Add more steps as needed
+      ],
+    }),
+  ],
+};
+---
+
+<BaseLayout seo={seoConfig}>
+  <section>
+    <TutorialBanner
+      tutorialUrl="[LEXINGTON THEMES TUTORIAL URL]"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/[PAGE-URL]/index.astro"
+    />
+    <Wrapper class="py-24 lg:py-48">
+      <!-- Your component code here -->
+    </Wrapper>
+  </section>
+</BaseLayout>
+
+<!--
+INSTRUCTIONS FOR USING THIS TEMPLATE:
+
+1. Replace all [PLACEHOLDERS] with your actual content:
+   - [COMPONENT]: e.g., "Modal", "Carousel", "Accordion"
+   - [FRAMEWORK]: e.g., "Alpine.js", "JavaScript", "Astro"
+   - [PAGE-URL]: e.g., "modal-tutorial", "carousel"
+   - [PAGE NAME]: e.g., "Modal Tutorial", "Carousel"
+   - [BRIEF DESCRIPTION]: A short overview of what users will learn
+   - [FEATURE]: Additional descriptive keywords
+   - [STEP X TITLE]: The name of each step in your tutorial
+   - [STEP X DESCRIPTION]: What users will do in that step
+   - PTXXM: Duration in ISO 8601 format (PT15M = 15 minutes)
+   - Date: Current date in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+
+2. Adjust the number of steps in the HowTo schema based on your tutorial
+
+3. Add relevant keywords that describe your component and tutorial
+
+4. Keep title under 60 characters
+
+5. Keep description between 150-160 characters
+
+6. Update dateModified when you make significant changes to the page
+
+EXAMPLES OF GOOD TITLES:
+- "How to Create a Modal Dialog with Tailwind CSS and Alpine.js"
+- "Build a Responsive Carousel with Tailwind CSS and JavaScript"
+- "Create an Animated Accordion with Tailwind CSS"
+
+EXAMPLES OF GOOD DESCRIPTIONS:
+- "Learn to build an accessible modal dialog using Tailwind CSS and Alpine.js. Includes animations, keyboard navigation, and focus management."
+- "Step-by-step guide to creating a responsive image carousel with smooth scrolling, navigation controls, and touch support using Tailwind CSS."
+-->

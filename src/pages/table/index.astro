@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create a Responsive Table with Tailwind CSS",
+  description: "Learn to build table components using Tailwind CSS and Tailwind CSS. Includes responsive design and sorting.",
+  canonical: "/table",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create a Responsive Table with Tailwind CSS",
+      description: "Learn to build table components using Tailwind CSS and Tailwind CSS. Includes responsive design and sorting.",
+      url: "/table",
+      datePublished: "2025-10-01T06:22:29.088Z",
+      dateModified: "2025-10-01T06:22:29.088Z",
+      keywords: ["Tailwind CSS","Table","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create a Responsive Table with Tailwind CSS", url: "/table" },
+    ]),
+    generateHowToSchema({
+      name: "Create a Responsive Table with Tailwind CSS",
+      description: "Learn to build table components using Tailwind CSS and Tailwind CSS. Includes responsive design and sorting.",
+      totalTime: "PT20M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base table container and elements"
+            },
+            {
+                  "name": "Add Tailwind CSS interactivity",
+                  "text": "Initialize Tailwind CSS to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create a Responsive Table with Tailwind CSS</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-responsive-table-with-tailwind-css/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/table/index.astro"

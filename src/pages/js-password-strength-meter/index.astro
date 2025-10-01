@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create a Password Strength Meter with JavaScript",
+  description: "Learn to build password strength meter components using JavaScript and Tailwind CSS. Includes strength calculation and visual feedback.",
+  canonical: "/js-password-strength-meter",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create a Password Strength Meter with JavaScript",
+      description: "Learn to build password strength meter components using JavaScript and Tailwind CSS. Includes strength calculation and visual feedback.",
+      url: "/js-password-strength-meter",
+      datePublished: "2025-10-01T06:22:29.079Z",
+      dateModified: "2025-10-01T06:22:29.079Z",
+      keywords: ["Tailwind CSS","JavaScript","Vanilla JS","Password Strength Meter","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create a Password Strength Meter with JavaScript", url: "/js-password-strength-meter" },
+    ]),
+    generateHowToSchema({
+      name: "Create a Password Strength Meter with JavaScript",
+      description: "Learn to build password strength meter components using JavaScript and Tailwind CSS. Includes strength calculation and visual feedback.",
+      totalTime: "PT15M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base password strength meter container and elements"
+            },
+            {
+                  "name": "Add JavaScript interactivity",
+                  "text": "Initialize JavaScript to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create a Password Strength Meter with JavaScript</h1>
+
     <!-- Starts links to tutorial -->
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-password-strength-meter-with-tailwind-css-and-javascript/"

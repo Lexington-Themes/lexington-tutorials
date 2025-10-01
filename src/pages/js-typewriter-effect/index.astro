@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create Js Typewriter Effect with JavaScript",
+  description: "Learn to build js typewriter effect components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+  canonical: "/js-typewriter-effect",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Js Typewriter Effect with JavaScript",
+      description: "Learn to build js typewriter effect components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      url: "/js-typewriter-effect",
+      datePublished: "2025-10-01T06:22:29.082Z",
+      dateModified: "2025-10-01T06:22:29.082Z",
+      keywords: ["Tailwind CSS","JavaScript","Vanilla JS","Js Typewriter Effect","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create Js Typewriter Effect with JavaScript", url: "/js-typewriter-effect" },
+    ]),
+    generateHowToSchema({
+      name: "Create Js Typewriter Effect with JavaScript",
+      description: "Learn to build js typewriter effect components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      totalTime: "PT20M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base js typewriter effect container and elements"
+            },
+            {
+                  "name": "Add JavaScript interactivity",
+                  "text": "Initialize JavaScript to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create Js Typewriter Effect with JavaScript</h1>
+
     <!-- Starts links to tutorial -->
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-typewriter-effect-text-animation-with-tailwind-css-and-javascript/"

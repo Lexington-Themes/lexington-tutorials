@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create Animated Tailwind Input with Tailwind CSS",
+  description: "Learn to build animated tailwind input components using Tailwind CSS and Tailwind CSS. Includes responsive design and modern styling.",
+  canonical: "/animated-tailwind-input",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Animated Tailwind Input with Tailwind CSS",
+      description: "Learn to build animated tailwind input components using Tailwind CSS and Tailwind CSS. Includes responsive design and modern styling.",
+      url: "/animated-tailwind-input",
+      datePublished: "2025-10-01T06:22:29.067Z",
+      dateModified: "2025-10-01T06:22:29.067Z",
+      keywords: ["Tailwind CSS","Animated Tailwind Input","Tutorial","Web Development","Animation"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create Animated Tailwind Input with Tailwind CSS", url: "/animated-tailwind-input" },
+    ]),
+    generateHowToSchema({
+      name: "Create Animated Tailwind Input with Tailwind CSS",
+      description: "Learn to build animated tailwind input components using Tailwind CSS and Tailwind CSS. Includes responsive design and modern styling.",
+      totalTime: "PT20M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base animated tailwind input container and elements"
+            },
+            {
+                  "name": "Add Tailwind CSS interactivity",
+                  "text": "Initialize Tailwind CSS to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create Animated Tailwind Input with Tailwind CSS</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-an-animated-input-with-tailwind-css/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-tailwind-input/index.astro"

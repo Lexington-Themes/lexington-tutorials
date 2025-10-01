@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create an Image Gallery with Alpine.js",
+  description: "Learn to build gallery components using Alpine.js and Tailwind CSS. Includes responsive grid and lightbox.",
+  canonical: "/image-gallery",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create an Image Gallery with Alpine.js",
+      description: "Learn to build gallery components using Alpine.js and Tailwind CSS. Includes responsive grid and lightbox.",
+      url: "/image-gallery",
+      datePublished: "2025-10-01T06:22:29.073Z",
+      dateModified: "2025-10-01T06:22:29.073Z",
+      keywords: ["Tailwind CSS","Alpine.js","Gallery","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create an Image Gallery with Alpine.js", url: "/image-gallery" },
+    ]),
+    generateHowToSchema({
+      name: "Create an Image Gallery with Alpine.js",
+      description: "Learn to build gallery components using Alpine.js and Tailwind CSS. Includes responsive grid and lightbox.",
+      totalTime: "PT25M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base gallery container and elements"
+            },
+            {
+                  "name": "Add Alpine.js interactivity",
+                  "text": "Initialize Alpine.js to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create an Image Gallery with Alpine.js</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-image-gallery-with-tailwind-css-and-alpinejs"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/image-gallery/index.astro"

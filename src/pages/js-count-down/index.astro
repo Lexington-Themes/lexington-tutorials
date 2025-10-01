@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "How to Create Js Count Down with JavaScript and Tailwind CSS",
+  description: "Learn to build js count down components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+  canonical: "/js-count-down",
+  jsonLd: [
+    generateArticleSchema({
+      title: "How to Create Js Count Down with JavaScript and Tailwind CSS",
+      description: "Learn to build js count down components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      url: "/js-count-down",
+      datePublished: "2025-10-01T06:22:29.076Z",
+      dateModified: "2025-10-01T06:22:29.076Z",
+      keywords: ["Tailwind CSS","JavaScript","Vanilla JS","Js Count Down","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "How to Create Js Count Down with JavaScript and Tailwind CSS", url: "/js-count-down" },
+    ]),
+    generateHowToSchema({
+      name: "How to Create Js Count Down with JavaScript and Tailwind CSS",
+      description: "Learn to build js count down components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      totalTime: "PT20M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base js count down container and elements"
+            },
+            {
+                  "name": "Add JavaScript interactivity",
+                  "text": "Initialize JavaScript to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">How to Create Js Count Down with JavaScript and Tailwind CSS</h1>
+
     <!-- Starts links to tutorial -->
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-countdown-with-tailwind-css-and-javascript"

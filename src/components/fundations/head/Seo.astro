@@ -1,31 +1,101 @@
 ---
 import { AstroSeo } from "@astrolib/seo";
+
+// Define interface for SEO props
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  article?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    author?: string;
+    tags?: string[];
+  };
+  jsonLd?: object | object[];
+}
+
+// Default values
+const SITE_URL = "https://tutorials.lexingtonthemes.com";
+const DEFAULT_TITLE = "Lexington Themes Tutorials – Astro + Tailwind & JS";
+const DEFAULT_DESCRIPTION =
+  "Explore a library of front‑end tutorials built with Astro, Tailwind CSS, Alpine.js, and plain JavaScript—carousel, forms, tables, and more.";
+const DEFAULT_OG_IMAGE = `${SITE_URL}/images/openGraph.png`;
+
+// Get props with defaults
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  canonical,
+  ogImage = DEFAULT_OG_IMAGE,
+  ogImageAlt = "Lexington Themes Tutorial Showcase",
+  article,
+  jsonLd,
+} = Astro.props;
+
+// Build canonical URL
+let canonicalURL = canonical
+  ? canonical.startsWith("http")
+    ? canonical
+    : `${SITE_URL}${canonical}`
+  : new URL(Astro.url.pathname, SITE_URL).href;
+
+// Remove trailing slashes from all pages EXCEPT homepage (SEO best practice)
+// Homepage: https://tutorials.lexingtonthemes.com/ (with slash) ✓
+// Other pages: https://tutorials.lexingtonthemes.com/alpine-modal (no slash) ✓
+if (canonicalURL.endsWith("/") && canonicalURL !== `${SITE_URL}/`) {
+  canonicalURL = canonicalURL.slice(0, -1);
+}
+
+// Use title as-is (no site suffix to keep under 60 chars)
+const fullTitle = title;
+
+// Determine Open Graph type
+const ogType = article ? "article" : "website";
 ---
 
 <AstroSeo
-  title="Lexington Themes Tutorials – Astro + Tailwind & JS"
-  description="Explore a library of front‑end tutorials built with Astro, Tailwind CSS, Alpine.js, and plain JavaScript—carousel, forms, tables, and more."
-  canonical="https://tutorials.lexingtonthemes.com/"
+  title={fullTitle}
+  description={description}
+  canonical={canonicalURL}
   openGraph={{
-    url: "https://tutorials.lexingtonthemes.com/",
-    title: "Lexington Themes Tutorials – Astro + Tailwind & JS",
-    description:
-      "Explore a library of front‑end tutorials built with Astro, Tailwind CSS, Alpine.js, and plain JavaScript—carousel, forms, tables, and more.",
+    url: canonicalURL,
+    title: fullTitle,
+    description: description,
     images: [
       {
-        url: "https://tutorials.lexingtonthemes.com/images/openGraph.png",
+        url: ogImage,
         width: 1200,
         height: 630,
-        alt: "Lexington Themes Tutorial Showcase",
-        type: "image/jpeg",
+        alt: ogImageAlt,
+        type: "image/png",
       },
     ],
     site_name: "Lexington Tutorials",
-    type: "website",
+    type: ogType,
     locale: "en_US",
+    ...(article && {
+      article: {
+        publishedTime: article.publishedTime,
+        modifiedTime: article.modifiedTime,
+        authors: article.author ? [article.author] : undefined,
+        tags: article.tags,
+      },
+    }),
   }}
   twitter={{
     handle: "@LexingtonThemes",
     cardType: "summary_large_image",
   }}
 />
+
+{
+  jsonLd && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])}
+    />
+  )
+}

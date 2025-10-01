@@ -3,7 +3,45 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
 // Define an array of image objects to make the component more dynamic and easily editable.
+// SEO Configuration
+const seoConfig = {
+  title: "Create Animated Images with Tailwind CSS",
+  description: "Learn to build animated images components using Tailwind CSS. Includes responsive design and modern styling.",
+  canonical: "/animated-images",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Animated Images with Tailwind CSS",
+      description: "Learn to build animated images components using Tailwind CSS. Includes responsive design and modern styling.",
+      url: "/animated-images",
+      datePublished: "2025-10-01T06:26:58.390Z",
+      dateModified: "2025-10-01T06:26:58.390Z",
+      keywords: ["Tailwind CSS","Animated Images","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create Animated Images with Tailwind CSS", url: "/animated-images" },
+    ]),
+    generateHowToSchema({
+      name: "Create Animated Images with Tailwind CSS",
+      description: "Learn to build animated images components using Tailwind CSS. Includes responsive design and modern styling.",
+      totalTime: "PT20M",
+      steps: [
+        { name: "Set up HTML structure", text: "Create the base component container and elements" },
+        { name: "Add interactivity", text: "Initialize state management and event handlers" },
+        { name: "Style with Tailwind CSS", text: "Apply utility classes for responsive layout" },
+        { name: "Add accessibility features", text: "Implement ARIA attributes and keyboard navigation" },
+        { name: "Test the component", text: "Verify functionality across browsers and devices" },
+      ],
+    }),
+  ],
+};
+
 const images = [
   {
     url: "https://images.unsplash.com/photo-1530035415911-95194de4ebcc?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -24,8 +62,10 @@ const images = [
 ];
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create Animated Images with Tailwind CSS</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-animated-images-with-tailwind-css-and-astro-js/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-images/index.astro"

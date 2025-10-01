@@ -4,10 +4,78 @@ import Text from "@/components/fundations/elements/Text.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create Typography Components with Variants in Astro.js",
+  description:
+    "Learn to build reusable typography components with Astro.js and Tailwind CSS. Includes multiple text variants and semantic HTML tags.",
+  canonical: "/astro-typography-component",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Typography Components with Variants in Astro.js",
+      description:
+        "Learn to build reusable typography components with Astro.js and Tailwind CSS. Includes multiple text variants and semantic HTML tags.",
+      url: "/astro-typography-component",
+      datePublished: "2025-10-01T06:27:00.000Z",
+      dateModified: "2025-10-01T06:27:00.000Z",
+      keywords: [
+        "Astro.js",
+        "Typography",
+        "Tailwind CSS",
+        "Component",
+        "Text Variants",
+        "Tutorial",
+      ],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      {
+        name: "Astro Typography Component Tutorial",
+        url: "/astro-typography-component",
+      },
+    ]),
+    generateHowToSchema({
+      name: "Create Typography Components with Variants in Astro.js",
+      description:
+        "Build reusable typography components with multiple text styles",
+      totalTime: "PT15M",
+      steps: [
+        {
+          name: "Create Astro component file",
+          text: "Set up the base Text.astro component structure",
+        },
+        {
+          name: "Define component props",
+          text: "Add TypeScript interface for text variants and HTML tags",
+        },
+        {
+          name: "Build variant styles",
+          text: "Create Tailwind CSS classes for different text styles",
+        },
+        {
+          name: "Add semantic HTML support",
+          text: "Enable dynamic tag rendering (h1, p, span, etc.)",
+        },
+        {
+          name: "Test all variants",
+          text: "Verify all text styles and tags work correctly",
+        },
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create Typography Components with Variants in Astro.js</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-typography-component-with-variants-with-astro-js-and-tailwind-css/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/astro-typography-component/index.astro"

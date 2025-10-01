@@ -1,12 +1,79 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Components
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "How to Create a Sidebar with JavaScript and Tailwind CSS",
+  description:
+    "Learn to build sidebar components using JavaScript and Tailwind CSS. Includes slide animations and responsive design.",
+  canonical: "/js-sidebar",
+  jsonLd: [
+    generateArticleSchema({
+      title: "How to Create a Sidebar with JavaScript and Tailwind CSS",
+      description:
+        "Learn to build sidebar components using JavaScript and Tailwind CSS. Includes slide animations and responsive design.",
+      url: "/js-sidebar",
+      datePublished: "2025-10-01T06:22:29.081Z",
+      dateModified: "2025-10-01T06:22:29.081Z",
+      keywords: [
+        "Tailwind CSS",
+        "JavaScript",
+        "Vanilla JS",
+        "Sidebar",
+        "Tutorial",
+        "Web Development",
+      ],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      {
+        name: "How to Create a Sidebar with JavaScript and Tailwind CSS",
+        url: "/js-sidebar",
+      },
+    ]),
+    generateHowToSchema({
+      name: "How to Create a Sidebar with JavaScript and Tailwind CSS",
+      description:
+        "Learn to build sidebar components using JavaScript and Tailwind CSS. Includes slide animations and responsive design.",
+      totalTime: "PT20M",
+      steps: [
+        {
+          name: "Set up HTML structure",
+          text: "Create the base sidebar container and elements",
+        },
+        {
+          name: "Add JavaScript interactivity",
+          text: "Initialize JavaScript to handle component state and interactions",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout and modern design",
+        },
+        {
+          name: "Add accessibility features",
+          text: "Implement ARIA attributes and keyboard navigation",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across different browsers and devices",
+        },
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
+  <h1 class="sr-only">
+    How to Create a Sidebar with JavaScript and Tailwind CSS
+  </h1>
   <div>
     <!-- Starts links to tutorial -->
     <TutorialBanner
@@ -66,7 +133,7 @@ import TutorialBanner from "@/components/global/TutorialBanner.astro";
     <Wrapper class="py-24">
       <button
         type="button"
-        class=" p-2.5 text-white bg-accent-600 rounded-full"
+        class="p-2.5 text-white bg-accent-600 rounded-full"
         id="openSidebar"
       >
         <span class="sr-only">Open sidebar</span>

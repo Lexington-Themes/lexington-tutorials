@@ -1,11 +1,77 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create a Rating System with JavaScript",
+  description:
+    "Learn to build rating system components using JavaScript and Tailwind CSS. Includes star display and interactive selection.",
+  canonical: "/js-rating-system",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create a Rating System with JavaScript",
+      description:
+        "Learn to build rating system components using JavaScript and Tailwind CSS. Includes star display and interactive selection.",
+      url: "/js-rating-system",
+      datePublished: "2025-10-01T06:22:29.080Z",
+      dateModified: "2025-10-01T06:22:29.080Z",
+      keywords: [
+        "Tailwind CSS",
+        "JavaScript",
+        "Vanilla JS",
+        "Rating System",
+        "Tutorial",
+        "Web Development",
+      ],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      {
+        name: "Create a Rating System with JavaScript",
+        url: "/js-rating-system",
+      },
+    ]),
+    generateHowToSchema({
+      name: "Create a Rating System with JavaScript",
+      description:
+        "Learn to build rating system components using JavaScript and Tailwind CSS. Includes star display and interactive selection.",
+      totalTime: "PT15M",
+      steps: [
+        {
+          name: "Set up HTML structure",
+          text: "Create the base rating system container and elements",
+        },
+        {
+          name: "Add JavaScript interactivity",
+          text: "Initialize JavaScript to handle component state and interactions",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout and modern design",
+        },
+        {
+          name: "Add accessibility features",
+          text: "Implement ARIA attributes and keyboard navigation",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across different browsers and devices",
+        },
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
+  <h1 class="sr-only">Create a Rating System with JavaScript</h1>
   ¨
   <!-- Starts links to tutorial -->
   <TutorialBanner

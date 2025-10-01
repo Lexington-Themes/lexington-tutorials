@@ -1,9 +1,60 @@
 ---
-// Import the BaseLayout component from the layouts directory to structure the page
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create Intersection Observer with Alpine.js",
+  description: "Learn to build intersection observer components using Alpine.js and Tailwind CSS. Includes responsive design and modern styling.",
+  canonical: "/intersection-observer",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Intersection Observer with Alpine.js",
+      description: "Learn to build intersection observer components using Alpine.js and Tailwind CSS. Includes responsive design and modern styling.",
+      url: "/intersection-observer",
+      datePublished: "2025-10-01T06:22:29.073Z",
+      dateModified: "2025-10-01T06:22:29.073Z",
+      keywords: ["Tailwind CSS","Alpine.js","Intersection Observer","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create Intersection Observer with Alpine.js", url: "/intersection-observer" },
+    ]),
+    generateHowToSchema({
+      name: "Create Intersection Observer with Alpine.js",
+      description: "Learn to build intersection observer components using Alpine.js and Tailwind CSS. Includes responsive design and modern styling.",
+      totalTime: "PT20M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base intersection observer container and elements"
+            },
+            {
+                  "name": "Add Alpine.js interactivity",
+                  "text": "Initialize Alpine.js to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
 <style>
@@ -12,9 +63,11 @@ import TutorialBanner from "@/components/global/TutorialBanner.astro";
     perspective: 1000px;
   }
 </style>
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <!-- Introductory section with a title -->
   <section class="">
+  <h1 class="sr-only">Create Intersection Observer with Alpine.js</h1>
+
     <!-- Starts links to tutorial -->
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-animate-objects-with-tailwind-css-and-alpinejs-intersection-observer/"

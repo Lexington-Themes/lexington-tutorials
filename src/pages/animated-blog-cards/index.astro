@@ -4,8 +4,46 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
 // Define an array of objects named 'features'. Each object represents a feature of your platform or product,
 // including properties for title, background image URL, description, background color, and title hover color.
+// SEO Configuration
+const seoConfig = {
+  title: "Create Animated Blog Cards with Tailwind CSS",
+  description: "Learn to build animated blog cards components using Tailwind CSS. Includes responsive design and modern styling.",
+  canonical: "/animated-blog-cards",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Animated Blog Cards with Tailwind CSS",
+      description: "Learn to build animated blog cards components using Tailwind CSS. Includes responsive design and modern styling.",
+      url: "/animated-blog-cards",
+      datePublished: "2025-10-01T06:26:58.389Z",
+      dateModified: "2025-10-01T06:26:58.389Z",
+      keywords: ["Tailwind CSS","Animated Blog Cards","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create Animated Blog Cards with Tailwind CSS", url: "/animated-blog-cards" },
+    ]),
+    generateHowToSchema({
+      name: "Create Animated Blog Cards with Tailwind CSS",
+      description: "Learn to build animated blog cards components using Tailwind CSS. Includes responsive design and modern styling.",
+      totalTime: "PT20M",
+      steps: [
+        { name: "Set up HTML structure", text: "Create the base component container and elements" },
+        { name: "Add interactivity", text: "Initialize state management and event handlers" },
+        { name: "Style with Tailwind CSS", text: "Apply utility classes for responsive layout" },
+        { name: "Add accessibility features", text: "Implement ARIA attributes and keyboard navigation" },
+        { name: "Test the component", text: "Verify functionality across browsers and devices" },
+      ],
+    }),
+  ],
+};
+
 const features = [
   {
     title: "Experience",
@@ -49,8 +87,10 @@ const features = [
   },
 ];
 ---
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create Animated Blog Cards with Tailwind CSS</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-animated-blog-cards-with-astrojs-and-tailwind-css/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/animated-blog-cards/index.astro"

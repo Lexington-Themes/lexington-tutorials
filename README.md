@@ -1,13 +1,12 @@
 ![Tutorials image](/public/images/tutorials.png)
+
 # Tutorials from Lexington Themes
 
-This collection offers a range of code snippets tailored for Astro.js and Tailwind CSS projects. Each snippet is designed specifically for use with Astro and Tailwind CSS, ensuring seamless integration.
+This collection offers a range of code snippets tailored for Astro, alpine JS and Tailwind CSS projects.
 
 ## Check out all tutorials
 
 #### [Tutorials](https://lexingtonthemes.com/tutorials)
-
-
 
 ## Terms of Use
 
@@ -27,11 +26,10 @@ By accessing and using the code snippets provided by Lexington Themes, you agree
 
 Use of the snippets indicates your acceptance of these terms and the GNU General Public License v3.0.
 
-
 ## License
 
 You can read the license right here: [GNU License](https://github.com/UnwrappedDesign/lexington-tutorials/blob/main/LICENSE).
 
-
 ## Contact
-For any questions and answers you can reach out to Michael Andreuzza on [X/Twitter](https://x.com/mike_andreuzza)  Lexington Themes on [X/Twitter](https://x.com/lexingtonthemes)
+
+For any questions and answers you can reach out to Michael Andreuzza on [X/Twitter](https://x.com/mike_andreuzza) Lexington Themes on [X/Twitter](https://x.com/lexingtonthemes)

@@ -5,10 +5,76 @@ import PlaceHolderIcon from "@/components/fundations/icons/PlaceHolderIcon.astro
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create Button Components with Variants in Astro.js",
+  description:
+    "Learn to build reusable button components with Astro.js and Tailwind CSS. Includes variants, sizes, and icon support.",
+  canonical: "/astro-button-component",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Button Components with Variants in Astro.js",
+      description:
+        "Learn to build reusable button components with Astro.js and Tailwind CSS. Includes variants, sizes, and icon support.",
+      url: "/astro-button-component",
+      datePublished: "2025-10-01T06:27:00.000Z",
+      dateModified: "2025-10-01T06:27:00.000Z",
+      keywords: [
+        "Astro.js",
+        "Button Component",
+        "Tailwind CSS",
+        "Component Variants",
+        "Tutorial",
+      ],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      {
+        name: "Astro Button Component Tutorial",
+        url: "/astro-button-component",
+      },
+    ]),
+    generateHowToSchema({
+      name: "Create Button Components with Variants in Astro.js",
+      description: "Build reusable button components with multiple variants",
+      totalTime: "PT15M",
+      steps: [
+        {
+          name: "Create Astro component file",
+          text: "Set up the base Button.astro component structure",
+        },
+        {
+          name: "Define component props",
+          text: "Add TypeScript interface for variants, sizes, and other props",
+        },
+        {
+          name: "Build variant styles",
+          text: "Create Tailwind CSS classes for different button styles",
+        },
+        {
+          name: "Add size variations",
+          text: "Implement responsive size options for buttons",
+        },
+        {
+          name: "Test all combinations",
+          text: "Verify all variants and sizes work correctly",
+        },
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create Button Components with Variants in Astro.js</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-button-component-with-variants-and-icons-with-astro-js-and-tailwind-css/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/astro-button-component/index.astro"

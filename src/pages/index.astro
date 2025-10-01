@@ -4,6 +4,30 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateWebSiteSchema,
+  generateOrganizationSchema,
+  generateCollectionPageSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Lexington Themes Tutorials – Astro + Tailwind & JS",
+  description:
+    "Explore a library of front‑end tutorials built with Astro, Tailwind CSS, Alpine.js, and plain JavaScript—carousel, forms, tables, and more.",
+  canonical: "/",
+  jsonLd: [
+    generateWebSiteSchema(),
+    generateOrganizationSchema(),
+    generateCollectionPageSchema({
+      title: "Lexington Themes Tutorials",
+      description:
+        "A comprehensive collection of front-end tutorials covering Astro, Tailwind CSS, Alpine.js, and JavaScript components.",
+      url: "/",
+    }),
+  ],
+};
+
 const tailwind = [
   {
     url: "/animated-images",
@@ -524,10 +548,11 @@ const data = {
 };
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
     <Wrapper variant="standard" class="py-24 pb-4 border-t">
-      <div class="flex flex-col items-center w-full md:flex-row gap-2">
+      <h1>Tutorials made with Astro, JavaScript, Alpine JS and Tailwind CSS</h1>
+      <div class="flex flex-col items-center w-full md:flex-row gap-2 mt-12">
         {
           tabs.map((tab) => (
             <button
@@ -545,9 +570,9 @@ const data = {
           tabs.map((tab) => (
             <div class="hidden tab-content  min-h-dvh" id={tab.id}>
               <div class="w-full ">
-                <h1 class="text-sm font-medium leading-tight text-black">
+                <h3 class="text-sm font-medium leading-tight text-black">
                   {tab.name}
-                </h1>
+                </h3>
                 <p class="text-xs text-balance text-base-500">
                   Tutorials made with {tab.name}
                 </p>

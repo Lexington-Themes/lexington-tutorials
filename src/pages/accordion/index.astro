@@ -3,10 +3,71 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "How to Create an Accordion with Tailwind CSS and Alpine.js",
+  description:
+    "Learn how to build an accessible, interactive accordion component using Tailwind CSS and Alpine.js. Step-by-step tutorial with code examples.",
+  canonical: "/accordion",
+  jsonLd: [
+    generateArticleSchema({
+      title: "How to Create an Accordion with Tailwind CSS and Alpine.js",
+      description:
+        "Learn how to build an accessible, interactive accordion component using Tailwind CSS and Alpine.js.",
+      url: "/accordion",
+      datePublished: "2024-01-15T09:00:00Z",
+      dateModified: "2024-01-15T09:00:00Z",
+      keywords: [
+        "Tailwind CSS",
+        "Alpine.js",
+        "Accordion",
+        "Tutorial",
+        "Web Components",
+        "Frontend Development",
+      ],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Accordion Tutorial", url: "/accordion" },
+    ]),
+    generateHowToSchema({
+      name: "Create an Accordion with Tailwind CSS and Alpine.js",
+      description:
+        "Step-by-step guide to building an interactive accordion component",
+      totalTime: "PT15M",
+      steps: [
+        {
+          name: "Set up Alpine.js data",
+          text: "Initialize Alpine.js with x-data to track the open accordion index",
+        },
+        {
+          name: "Create accordion structure",
+          text: "Build the HTML structure with buttons and content panels",
+        },
+        {
+          name: "Add Tailwind CSS styling",
+          text: "Style the accordion with Tailwind utility classes for a polished look",
+        },
+        {
+          name: "Implement click handlers",
+          text: "Add Alpine.js click handlers to toggle accordion items",
+        },
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">How to Create an Accordion with Tailwind CSS and Alpine.js</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-an-accordion-with-tailwind-css-and-alpinejs"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/accordion/index.astro"

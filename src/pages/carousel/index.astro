@@ -3,10 +3,76 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "How to Create a Carousel with Tailwind CSS and Alpine.js",
+  description:
+    "Build a responsive, accessible image carousel component using Tailwind CSS and Alpine.js. Includes navigation buttons, smooth scrolling, and keyboard support.",
+  canonical: "/carousel",
+  jsonLd: [
+    generateArticleSchema({
+      title: "How to Create a Carousel with Tailwind CSS and Alpine.js",
+      description:
+        "Step-by-step tutorial for building an accessible carousel component with smooth scrolling and navigation controls.",
+      url: "/carousel",
+      datePublished: "2024-01-20T10:00:00Z",
+      dateModified: "2024-01-20T10:00:00Z",
+      keywords: [
+        "Tailwind CSS",
+        "Alpine.js",
+        "Carousel",
+        "Slider",
+        "Image Gallery",
+        "Web Components",
+        "Tutorial",
+      ],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Carousel Tutorial", url: "/carousel" },
+    ]),
+    generateHowToSchema({
+      name: "Create a Carousel with Tailwind CSS and Alpine.js",
+      description:
+        "Build a fully functional carousel with navigation and smooth scrolling",
+      totalTime: "PT20M",
+      steps: [
+        {
+          name: "Set up the carousel container",
+          text: "Create a container with Alpine.js data for managing scroll state and navigation",
+        },
+        {
+          name: "Add carousel items",
+          text: "Create individual slide elements with content and images",
+        },
+        {
+          name: "Implement navigation controls",
+          text: "Add previous and next buttons with click handlers",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply responsive styling and smooth scroll behavior",
+        },
+        {
+          name: "Add intersection observers",
+          text: "Implement visibility detection to disable navigation at boundaries",
+        },
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">How to Create a Carousel with Tailwind CSS and Alpine.js</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-carousel-with-tailwind-css-and-alpinejs/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/carousel/index.astro"

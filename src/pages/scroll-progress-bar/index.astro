@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create a Progress Bar with JavaScript",
+  description: "Learn to build progress bar components using JavaScript and Tailwind CSS. Includes animated progress and percentage display.",
+  canonical: "/scroll-progress-bar",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create a Progress Bar with JavaScript",
+      description: "Learn to build progress bar components using JavaScript and Tailwind CSS. Includes animated progress and percentage display.",
+      url: "/scroll-progress-bar",
+      datePublished: "2025-10-01T06:22:29.087Z",
+      dateModified: "2025-10-01T06:22:29.087Z",
+      keywords: ["Tailwind CSS","JavaScript","Vanilla JS","Progress Bar","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create a Progress Bar with JavaScript", url: "/scroll-progress-bar" },
+    ]),
+    generateHowToSchema({
+      name: "Create a Progress Bar with JavaScript",
+      description: "Learn to build progress bar components using JavaScript and Tailwind CSS. Includes animated progress and percentage display.",
+      totalTime: "PT15M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base progress bar container and elements"
+            },
+            {
+                  "name": "Add JavaScript interactivity",
+                  "text": "Initialize JavaScript to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section class="relative overflow-hidden">
+  <h1 class="sr-only">Create a Progress Bar with JavaScript</h1>
+
     <!-- Starts links to tutorial -->
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-scroll-progress-bar-with-tailwind-css-and-javascript"

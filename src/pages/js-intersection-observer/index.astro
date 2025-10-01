@@ -1,11 +1,63 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create Js Intersection Observer with JavaScript",
+  description: "Learn to build js intersection observer components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+  canonical: "/js-intersection-observer",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Js Intersection Observer with JavaScript",
+      description: "Learn to build js intersection observer components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      url: "/js-intersection-observer",
+      datePublished: "2025-10-01T06:22:29.078Z",
+      dateModified: "2025-10-01T06:22:29.078Z",
+      keywords: ["Tailwind CSS","JavaScript","Vanilla JS","Js Intersection Observer","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create Js Intersection Observer with JavaScript", url: "/js-intersection-observer" },
+    ]),
+    generateHowToSchema({
+      name: "Create Js Intersection Observer with JavaScript",
+      description: "Learn to build js intersection observer components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      totalTime: "PT20M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base js intersection observer container and elements"
+            },
+            {
+                  "name": "Add JavaScript interactivity",
+                  "text": "Initialize JavaScript to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <div>
     <!-- Starts links to tutorial -->
     <TutorialBanner
@@ -15,6 +67,8 @@ import TutorialBanner from "@/components/global/TutorialBanner.astro";
     <!-- Ends links to tutorial -->
     <!-- Introductory section with a title -->
     <section>
+  <h1 class="sr-only">Create Js Intersection Observer with JavaScript</h1>
+
       <Wrapper class="h-screen px-8 py-48 text-center">
         <div>Scroll down</div>
       </Wrapper>

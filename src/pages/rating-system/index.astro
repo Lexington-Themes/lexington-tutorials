@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create a Rating System with Alpine.js",
+  description: "Learn to build rating system components using Alpine.js and Tailwind CSS. Includes star display and interactive selection.",
+  canonical: "/rating-system",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create a Rating System with Alpine.js",
+      description: "Learn to build rating system components using Alpine.js and Tailwind CSS. Includes star display and interactive selection.",
+      url: "/rating-system",
+      datePublished: "2025-10-01T06:22:29.086Z",
+      dateModified: "2025-10-01T06:22:29.086Z",
+      keywords: ["Tailwind CSS","Alpine.js","Rating System","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Create a Rating System with Alpine.js", url: "/rating-system" },
+    ]),
+    generateHowToSchema({
+      name: "Create a Rating System with Alpine.js",
+      description: "Learn to build rating system components using Alpine.js and Tailwind CSS. Includes star display and interactive selection.",
+      totalTime: "PT15M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base rating system container and elements"
+            },
+            {
+                  "name": "Add Alpine.js interactivity",
+                  "text": "Initialize Alpine.js to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">Create a Rating System with Alpine.js</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-rating-system-with-tailwind-css-and-alpine-js/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/rating-system/index.astro"

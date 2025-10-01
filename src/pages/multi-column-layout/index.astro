@@ -1,11 +1,75 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create Multi Column Layout with Tailwind CSS",
+  description:
+    "Learn to build multi column layout components using Tailwind CSS and Tailwind CSS. Includes responsive design and modern styling.",
+  canonical: "/multi-column-layout",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create Multi Column Layout with Tailwind CSS",
+      description:
+        "Learn to build multi column layout components using Tailwind CSS and Tailwind CSS. Includes responsive design and modern styling.",
+      url: "/multi-column-layout",
+      datePublished: "2025-10-01T06:22:29.083Z",
+      dateModified: "2025-10-01T06:22:29.083Z",
+      keywords: [
+        "Tailwind CSS",
+        "Multi Column Layout",
+        "Tutorial",
+        "Web Development",
+      ],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      {
+        name: "Create Multi Column Layout with Tailwind CSS",
+        url: "/multi-column-layout",
+      },
+    ]),
+    generateHowToSchema({
+      name: "Create Multi Column Layout with Tailwind CSS",
+      description:
+        "Learn to build multi column layout components using Tailwind CSS and Tailwind CSS. Includes responsive design and modern styling.",
+      totalTime: "PT20M",
+      steps: [
+        {
+          name: "Set up HTML structure",
+          text: "Create the base multi column layout container and elements",
+        },
+        {
+          name: "Add Tailwind CSS interactivity",
+          text: "Initialize Tailwind CSS to handle component state and interactions",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout and modern design",
+        },
+        {
+          name: "Add accessibility features",
+          text: "Implement ARIA attributes and keyboard navigation",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across different browsers and devices",
+        },
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
+  <h1 class="sr-only">Create Multi Column Layout with Tailwind CSS</h1>
   <div class="flex flex-col min-h-full">
     <!-- Main column wrapper -->
     <div class="w-full mx-auto max-w-7xl grow lg:flex xl:px-2">

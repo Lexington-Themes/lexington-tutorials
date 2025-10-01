@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "How to Build a Form with JavaScript and Tailwind CSS",
+  description: "Learn to build form components using JavaScript and Tailwind CSS. Includes validation and error handling.",
+  canonical: "/js-auth-form",
+  jsonLd: [
+    generateArticleSchema({
+      title: "How to Build a Form with JavaScript and Tailwind CSS",
+      description: "Learn to build form components using JavaScript and Tailwind CSS. Includes validation and error handling.",
+      url: "/js-auth-form",
+      datePublished: "2025-10-01T06:22:29.073Z",
+      dateModified: "2025-10-01T06:22:29.073Z",
+      keywords: ["Tailwind CSS","JavaScript","Vanilla JS","Form","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "How to Build a Form with JavaScript and Tailwind CSS", url: "/js-auth-form" },
+    ]),
+    generateHowToSchema({
+      name: "How to Build a Form with JavaScript and Tailwind CSS",
+      description: "Learn to build form components using JavaScript and Tailwind CSS. Includes validation and error handling.",
+      totalTime: "PT20M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base form container and elements"
+            },
+            {
+                  "name": "Add JavaScript interactivity",
+                  "text": "Initialize JavaScript to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section>
+  <h1 class="sr-only">How to Build a Form with JavaScript and Tailwind CSS</h1>
+
     <!-- Starts links to tutorial -->
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-login-register-form-with-tailwind-and-javascript/"

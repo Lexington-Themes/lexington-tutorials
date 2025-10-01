@@ -5,11 +5,31 @@ import Fonts from "@/components/fundations/head/Fonts.astro";
 import Favicons from "@/components/fundations/head/Favicons.astro";
 // Scripts
 import Alpine from "@/components/scripts/Alpine.astro";
+
+// Accept SEO props and pass them through
+interface Props {
+  seo?: {
+    title?: string;
+    description?: string;
+    canonical?: string;
+    ogImage?: string;
+    ogImageAlt?: string;
+    article?: {
+      publishedTime?: string;
+      modifiedTime?: string;
+      author?: string;
+      tags?: string[];
+    };
+    jsonLd?: object | object[];
+  };
+}
+
+const { seo } = Astro.props;
 ---
-<Seo />
+
+<Seo {...seo} />
 <Meta />
 <Fonts />
 <Favicons />
 <!-- Scripts -->
-  <Alpine />
-
+<Alpine />

@@ -1,12 +1,66 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "How to Create a Drawer with Alpine.js and Tailwind CSS",
+  description: "Learn to build drawer components using Alpine.js and Tailwind CSS. Includes slide animations and backdrop overlay.",
+  canonical: "/drawer",
+  jsonLd: [
+    generateArticleSchema({
+      title: "How to Create a Drawer with Alpine.js and Tailwind CSS",
+      description: "Learn to build drawer components using Alpine.js and Tailwind CSS. Includes slide animations and backdrop overlay.",
+      url: "/drawer",
+      datePublished: "2025-10-01T06:22:29.070Z",
+      dateModified: "2025-10-01T06:22:29.070Z",
+      keywords: ["Tailwind CSS","Alpine.js","Drawer","Tutorial","Web Development"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "How to Create a Drawer with Alpine.js and Tailwind CSS", url: "/drawer" },
+    ]),
+    generateHowToSchema({
+      name: "How to Create a Drawer with Alpine.js and Tailwind CSS",
+      description: "Learn to build drawer components using Alpine.js and Tailwind CSS. Includes slide animations and backdrop overlay.",
+      totalTime: "PT20M",
+      steps: [
+            {
+                  "name": "Set up HTML structure",
+                  "text": "Create the base drawer container and elements"
+            },
+            {
+                  "name": "Add Alpine.js interactivity",
+                  "text": "Initialize Alpine.js to handle component state and interactions"
+            },
+            {
+                  "name": "Style with Tailwind CSS",
+                  "text": "Apply utility classes for responsive layout and modern design"
+            },
+            {
+                  "name": "Add accessibility features",
+                  "text": "Implement ARIA attributes and keyboard navigation"
+            },
+            {
+                  "name": "Test the component",
+                  "text": "Verify functionality across different browsers and devices"
+            }
+      ],
+    }),
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout seo={seoConfig}>
   <section  x-data="{ isOpen: false }">
+  <h1 class="sr-only">How to Create a Drawer with Alpine.js and Tailwind CSS</h1>
+
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-bottom-drawer-tailwind-css-and-alpinejs/"
       codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/drawer/index.astro"
