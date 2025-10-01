@@ -549,43 +549,68 @@ const data = {
 ---
 
 <BaseLayout seo={seoConfig}>
-  <section>
-    <Wrapper variant="standard" class="py-24 pb-4 border-t">
-      <h1>Tutorials made with Astro, JavaScript, Alpine JS and Tailwind CSS</h1>
-      <div class="flex flex-col items-center w-full md:flex-row gap-2 mt-12">
+  <section aria-label="Tutorial navigation">
+    <Wrapper variant="standard" class="py-24 pb-4 border-t border-base-100">
+      <h1 class="text-4xl font-medium text-balance mb-4">
+        Tutorials made with Astro, JavaScript, Alpine JS and Tailwind CSS
+      </h1>
+      <p class="text-lg text-base-600 mb-8">
+       This collection offers a range of code snippets tailored for Astro, JavaScript, Alpine JS and Tailwind CSS projects.
+
+
+      </p>
+      <nav
+        aria-label="Tutorial categories"
+        class="flex flex-col items-center w-full md:flex-row gap-2 mt-12"
+      >
         {
           tabs.map((tab) => (
             <button
-              class="tab-button rounded-full w-full font-semibold cursor-pointer flex items-center duration-200 ring-offset-white focus:ring-offset-2 focus:ring-2 bg-base-50 text-base-500 ring ring-base-100 hover:text-accent-500 focus:ring-accent-500 h-8 px-4 py-1.5 text-xs md:w-auto justify-center"
+              class="tab-button rounded-full w-full font-semibold cursor-pointer flex items-center duration-200 ring-offset-white focus:ring-offset-2 focus:ring-2 bg-base-50/50 text-base-500 ring-1 ring-base-50 hover:text-accent-500 focus:ring-accent-500 h-8 px-4 py-1.5 text-xs md:w-auto justify-center"
               data-tab={tab.id}
+              role="tab"
+              aria-selected="false"
+              aria-controls={tab.id}
+              id={`${tab.id}-button`}
             >
               {tab.name}
             </button>
           ))
         }
-      </div>
+      </nav>
       <!-- Tabs Content -->
-      <div class="mt-8">
+      <div class="mt-8" role="tabpanel">
         {
           tabs.map((tab) => (
-            <div class="hidden tab-content  min-h-dvh" id={tab.id}>
-              <div class="w-full ">
-                <h3 class="text-sm font-medium leading-tight text-black">
+            <div
+              class="hidden tab-content min-h-dvh"
+              id={tab.id}
+              role="tabpanel"
+              aria-labelledby={`${tab.id}-button`}
+            >
+              <div class="w-full">
+                <h2 class="text-2xl font-medium leading-tight text-black ">
                   {tab.name}
-                </h3>
-                <p class="text-xs text-balance text-base-500">
+                </h2>
+                <p class="text-sm text-balance text-base-500 mt-2">
                   Tutorials made with {tab.name}
                 </p>
               </div>
-              <dl class="flex flex-col pt-4 mt-4 text-sm border-t border-base-200 divide-y divide-base-200">
+              <dl class="flex flex-col pt-4 mt-4 text-sm border-t border-base-100 divide-y divide-base-100">
                 {data[tab.key].map((template, index) => (
                   <div class="inline-flex items-start py-4 text-sm gap-4">
                     <dt class="w-full text-base-500 hover:text-accent-500">
-                      <a href={template.url} class="inline-flex items-center ">
+                      <a
+                        href={template.url}
+                        class="inline-flex items-center hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-accent-500 rounded"
+                      >
                         {template.title}
                       </a>
                     </dt>
-                    <dd class="order-first font-mono">
+                    <dd
+                      class="order-first font-mono text-base-400"
+                      aria-label={`Tutorial ${data[tab.key].length - index}`}
+                    >
                       {(data[tab.key].length - index)
                         .toString()
                         .padStart(2, "0") + "."}
@@ -604,35 +629,76 @@ const data = {
   document.addEventListener("DOMContentLoaded", function () {
     const tabButtons = document.querySelectorAll(".tab-button");
     const tabContents = document.querySelectorAll(".tab-content");
+
     // Retrieve last active tab from localStorage
     let activeTab = localStorage.getItem("activeTab") || "tab1";
+
     function activateTab(tabId) {
       tabButtons.forEach((button) => {
-        button.classList.toggle(
-          "ring-accent-500",
-          button.dataset.tab === tabId
-        );
-        button.classList.toggle(
-          "ring-accent-500",
-          "ring-2",
-          button.dataset.tab === tabId
-        );
-        button.classList.toggle("text-base-600", button.dataset.tab !== tabId);
-        button.classList.toggle(
-          "ring-transparent",
-          button.dataset.tab !== tabId
-        );
+        const isActive = button.dataset.tab === tabId;
+
+        // Toggle visual styles
+        button.classList.toggle("ring-accent-500", isActive);
+        button.classList.toggle("ring-2", isActive);
+        button.classList.toggle("text-accent-600", isActive);
+        button.classList.toggle("text-base-600", !isActive);
+        button.classList.toggle("ring-transparent", !isActive);
+
+        // Update ARIA attributes for accessibility
+        button.setAttribute("aria-selected", isActive.toString());
+        button.setAttribute("tabindex", isActive ? "0" : "-1");
       });
+
       tabContents.forEach((content) => {
-        content.classList.toggle("hidden", content.id !== tabId);
+        const isVisible = content.id === tabId;
+        content.classList.toggle("hidden", !isVisible);
+        content.setAttribute("aria-hidden", (!isVisible).toString());
       });
+
       localStorage.setItem("activeTab", tabId); // Save to localStorage
     }
+
     // Initialize the active tab
     activateTab(activeTab);
+
+    // Click handler
     tabButtons.forEach((button) => {
       button.addEventListener("click", function () {
         activateTab(this.dataset.tab);
+      });
+
+      // Keyboard navigation
+      button.addEventListener("keydown", function (e) {
+        let newTab = null;
+
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          e.preventDefault();
+          const currentIndex = Array.from(tabButtons).indexOf(this);
+          const nextButton = tabButtons[(currentIndex + 1) % tabButtons.length];
+          newTab = nextButton.dataset.tab;
+          nextButton.focus();
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          const currentIndex = Array.from(tabButtons).indexOf(this);
+          const prevButton =
+            tabButtons[
+              (currentIndex - 1 + tabButtons.length) % tabButtons.length
+            ];
+          newTab = prevButton.dataset.tab;
+          prevButton.focus();
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          newTab = tabButtons[0].dataset.tab;
+          tabButtons[0].focus();
+        } else if (e.key === "End") {
+          e.preventDefault();
+          newTab = tabButtons[tabButtons.length - 1].dataset.tab;
+          tabButtons[tabButtons.length - 1].focus();
+        }
+
+        if (newTab) {
+          activateTab(newTab);
+        }
       });
     });
   });

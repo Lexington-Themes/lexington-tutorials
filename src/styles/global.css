@@ -6,20 +6,20 @@
 
 @theme {
   /* Typography */
-  --font-sans: Geist, sans-serif;
+  --font-sans: "Overused Grotesk", Inter, sans-serif;
   --font-mono: Geist Mono, monospace;
   /* Colors */
-  --color-accent-50: oklch(96.37% 0.014 34.3);
-  --color-accent-100: oklch(92.11% 0.031 32.56);
-  --color-accent-200: oklch(85.18% 0.06 35);
-  --color-accent-300: oklch(77.67% 0.096 34.47);
-  --color-accent-400: oklch(70.47% 0.133 35.14);
-  --color-accent-500: oklch(64.47% 0.167 35.21);
-  --color-accent-600: oklch(55.96% 0.174 34.81);
-  --color-accent-700: oklch(45.78% 0.139 34.91);
-  --color-accent-800: oklch(35.02% 0.102 35.05);
-  --color-accent-900: oklch(22.26% 0.055 35.39);
-  --color-accent-950: oklch(16.51% 0.033 41.46);
+  --color-accent-50: oklch(95.44% 0.023 37.38);
+  --color-accent-100: oklch(91.19% 0.047 37.79);
+  --color-accent-200: oklch(83.71% 0.093 37.99);
+  --color-accent-300: oklch(76.18% 0.146 37.97);
+  --color-accent-400: oklch(70.39% 0.192 37.13);
+  --color-accent-500: oklch(65.87% 0.23 34.5);
+  --color-accent-600: oklch(57.29% 0.205 34.12);
+  --color-accent-700: oklch(45.97% 0.162 34.83);
+  --color-accent-800: oklch(35.02% 0.12 36.11);
+  --color-accent-900: oklch(22.01% 0.068 41.04);
+  --color-accent-950: oklch(15.36% 0.041 49.71);
  --color-sand-50: oklch(98.73% 0.004 106.47);
   --color-sand-100: oklch(97.03% 0.007 88.64);
   --color-sand-200: oklch(90.07% 0.024 90.76);
@@ -31,20 +31,34 @@
   --color-sand-800: oklch(36.27% 0.04 89.72);
   --color-sand-900: oklch(24.54% 0.023 87.95);
   --color-sand-950: oklch(16.56% 0.011 80.55);
-  --color-base-50: oklch(0.985 0 0);
-  --color-base-100: oklch(0.97 0 0);
-  --color-base-200: oklch(0.922 0 0);
-  --color-base-300: oklch(0.87 0 0);
-  --color-base-400: oklch(0.708 0 0);
-  --color-base-500: oklch(0.556 0 0);
-  --color-base-600: oklch(0.439 0 0);
-  --color-base-700: oklch(0.371 0 0);
-  --color-base-800: oklch(0.269 0 0);
-  --color-base-900: oklch(0.205 0 0);
-  --color-base-950: oklch(0.145 0 0);
+  --color-base-50: oklch(0.958 0.005 94.95);
+  
+  --color-base-100: oklch(0.913 0.011 89.67);
+  --color-base-200: oklch(0.826 0.01 93.52);
+  --color-base-300: oklch(0.741 0.009 91.45);
+  --color-base-400: oklch(0.656 0.009 98.88);
+  --color-base-500: oklch(0.569 0.008 97.37);
+  --color-base-600: oklch(0.482 0.005 91.42);
+  --color-base-700: oklch(0.397 0.005 106.52);
+  --color-base-800: oklch(0.309 0.004 84.54);
+  --color-base-900: oklch(0.223 0.002 67.71);
+  --color-base-950: oklch(0.223 0.002 67.71);
 }
 
+@font-face {
+  font-family: "Overused Grotesk";
+  src: url("https://raw.githubusercontent.com/RandomMaerks/Overused-Grotesk/master/fonts/variable/OverusedGroteskRoman-VF.ttf")
+    format("truetype-variations");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
 
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "Overused Grotesk", sans-serif;
+  }
+}
 /* WebKit (Chrome, Safari) */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
