@@ -1,5 +1,4 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import TutorialBanner from "@/components/global/TutorialBanner.astro";
@@ -11,48 +10,54 @@ import {
 
 // SEO Configuration
 const seoConfig = {
-  title: "How to Create [COMPONENT] with Tailwind CSS and [FRAMEWORK]",
+  title: "Your Page Title Here (Max 60 chars)",
   description:
-    "Learn how to build [COMPONENT] using Tailwind CSS and [FRAMEWORK]. [BRIEF DESCRIPTION OF WHAT THEY'LL LEARN].",
-  canonical: "/[PAGE-URL]",
+    "Your page description here. Keep it under 160 characters for optimal SEO display in search results.",
+  canonical: "/your-page-url",
   jsonLd: [
     generateArticleSchema({
-      title: "How to Create [COMPONENT] with Tailwind CSS and [FRAMEWORK]",
-      description: "Complete guide to building [COMPONENT] with [FRAMEWORK]",
-      url: "/[PAGE-URL]",
-      datePublished: "2024-XX-XXTXX:XX:XXZ", // Use current date in ISO 8601 format
-      dateModified: "2024-XX-XXTXX:XX:XXZ",
+      title: "Your Page Title Here",
+      description: "Your page description here.",
+      url: "/your-page-url",
+      datePublished: new Date().toISOString(),
+      dateModified: new Date().toISOString(),
       keywords: [
-        "Tailwind CSS",
-        "[FRAMEWORK]", // e.g., Alpine.js, JavaScript, Astro
-        "[COMPONENT]", // e.g., Modal, Carousel, Accordion
-        "[FEATURE]", // e.g., Animation, Interactive
+        "Keyword1",
+        "Keyword2",
+        "Keyword3",
         "Tutorial",
         "Web Development",
       ],
     }),
     generateBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "[PAGE NAME]", url: "/[PAGE-URL]" },
+      { name: "Your Page Title Here", url: "/your-page-url" },
     ]),
     generateHowToSchema({
-      name: "Create [COMPONENT] with Tailwind CSS and [FRAMEWORK]",
-      description: "Step-by-step guide to building [COMPONENT]",
-      totalTime: "PTXXM", // e.g., PT15M for 15 minutes, PT1H for 1 hour
+      name: "Your Page Title Here",
+      description: "Your page description here.",
+      totalTime: "PT20M", // ISO 8601 duration format (PT20M = 20 minutes)
       steps: [
         {
-          name: "[STEP 1 TITLE]",
-          text: "[STEP 1 DESCRIPTION]",
+          name: "Step 1",
+          text: "Description of step 1",
         },
         {
-          name: "[STEP 2 TITLE]",
-          text: "[STEP 2 DESCRIPTION]",
+          name: "Step 2",
+          text: "Description of step 2",
         },
         {
-          name: "[STEP 3 TITLE]",
-          text: "[STEP 3 DESCRIPTION]",
+          name: "Step 3",
+          text: "Description of step 3",
         },
-        // Add more steps as needed
+        {
+          name: "Step 4",
+          text: "Description of step 4",
+        },
+        {
+          name: "Step 5",
+          text: "Description of step 5",
+        },
       ],
     }),
   ],
@@ -60,48 +65,56 @@ const seoConfig = {
 ---
 
 <BaseLayout seo={seoConfig}>
-  <section>
-    <TutorialBanner
-      tutorialUrl="[LEXINGTON THEMES TUTORIAL URL]"
-      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/[PAGE-URL]/index.astro"
-    />
-    <Wrapper class="py-24 lg:py-48">
-      <!-- Your component code here -->
-    </Wrapper>
-  </section>
+  <h1 class="sr-only">Your Page Title Here</h1>
+
+  <!-- Tutorial Banner (optional - update URLs) -->
+  <TutorialBanner
+    tutorialUrl="https://lexingtonthemes.com/tutorials/your-tutorial-url"
+    codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/your-page-url/index.astro"
+  />
+
+  <!-- Your page content starts here -->
+  <Wrapper class="py-24 lg:py-32">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold mb-8">Your Component Title</h2>
+
+      <!-- Add your component/tutorial content here -->
+    </div>
+  </Wrapper>
 </BaseLayout>
 
-<!--
-INSTRUCTIONS FOR USING THIS TEMPLATE:
-
-1. Replace all [PLACEHOLDERS] with your actual content:
-   - [COMPONENT]: e.g., "Modal", "Carousel", "Accordion"
-   - [FRAMEWORK]: e.g., "Alpine.js", "JavaScript", "Astro"
-   - [PAGE-URL]: e.g., "modal-tutorial", "carousel"
-   - [PAGE NAME]: e.g., "Modal Tutorial", "Carousel"
-   - [BRIEF DESCRIPTION]: A short overview of what users will learn
-   - [FEATURE]: Additional descriptive keywords
-   - [STEP X TITLE]: The name of each step in your tutorial
-   - [STEP X DESCRIPTION]: What users will do in that step
-   - PTXXM: Duration in ISO 8601 format (PT15M = 15 minutes)
-   - Date: Current date in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
-
-2. Adjust the number of steps in the HowTo schema based on your tutorial
-
-3. Add relevant keywords that describe your component and tutorial
-
-4. Keep title under 60 characters
-
-5. Keep description between 150-160 characters
-
-6. Update dateModified when you make significant changes to the page
-
-EXAMPLES OF GOOD TITLES:
-- "How to Create a Modal Dialog with Tailwind CSS and Alpine.js"
-- "Build a Responsive Carousel with Tailwind CSS and JavaScript"
-- "Create an Animated Accordion with Tailwind CSS"
-
-EXAMPLES OF GOOD DESCRIPTIONS:
-- "Learn to build an accessible modal dialog using Tailwind CSS and Alpine.js. Includes animations, keyboard navigation, and focus management."
-- "Step-by-step guide to creating a responsive image carousel with smooth scrolling, navigation controls, and touch support using Tailwind CSS."
+<!-- 
+  TEMPLATE USAGE INSTRUCTIONS
+  ============================
+  
+  1. Copy this file to your new page location:
+     cp src/pages/_template.astro src/pages/new-page-name/index.astro
+  
+  2. Update the SEO configuration:
+     - title: Keep under 60 characters
+     - description: Keep under 160 characters
+     - canonical: Use the page URL (e.g., "/new-page-name")
+     - keywords: 5-7 relevant keywords
+  
+  3. Update the H1 tag to match your title
+  
+  4. Update the TutorialBanner URLs
+  
+  5. Add your component/tutorial content
+  
+  6. Run the SEO audit to verify:
+     npm run seo:check
+  
+  TITLE PATTERNS:
+  ===============
+  Alpine.js: "Create [Component] - Alpine.js" (e.g., "Create Modal Dialog - Alpine.js")
+  JavaScript: "Create [Component] - JavaScript" (e.g., "Build Carousel - JavaScript")
+  Tailwind: "Create [Component] - Tailwind" (e.g., "Create Bento Grid - Tailwind")
+  
+  DURATION FORMAT:
+  ================
+  PT20M = 20 minutes
+  PT1H = 1 hour
+  PT1H30M = 1 hour 30 minutes
+  PT45M = 45 minutes
 -->
