@@ -2,7 +2,7 @@
 
 # Tutorials from Lexington Themes
 
-This collection offers a range of code snippets tailored for Astro, alpine JS and Tailwind CSS projects.
+This collection offers a range of code snippets tailored for Astro, JavaScript, Alpine JS and Tailwind CSS projects. 
 
 ## Check out all tutorials
 
