@@ -1,0 +1,148 @@
+# SEO Quick Reference Cheatsheet
+
+## Basic Page Setup (Copy-Paste Ready)
+
+```astro
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/utils/jsonLd";
+
+const seoConfig = {
+  title: "Your Title Here (Under 60 chars)",
+  description: "Your description here (150-160 chars)",
+  canonical: "/page-url",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Your Title Here",
+      description: "Your description here",
+      url: "/page-url",
+      datePublished: "2024-10-01T09:00:00Z",
+      keywords: ["Keyword1", "Keyword2", "Keyword3"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Page Name", url: "/page-url" },
+    ]),
+  ],
+};
+---
+
+<BaseLayout seo={seoConfig}>
+  <!-- Your content -->
+</BaseLayout>
+```
+
+## Tutorial Page with HowTo Schema
+
+```astro
+import { generateArticleSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/utils/jsonLd";
+
+const seoConfig = {
+  title: "How to Create X with Tailwind CSS",
+  description: "Learn to build X using Tailwind CSS and Alpine.js",
+  canonical: "/tutorial-url",
+  jsonLd: [
+    generateArticleSchema({
+      title: "How to Create X with Tailwind CSS",
+      description: "Complete tutorial for building X",
+      url: "/tutorial-url",
+      datePublished: "2024-10-01T09:00:00Z",
+      keywords: ["Tailwind CSS", "Alpine.js", "X Component"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Tutorial", url: "/tutorial-url" },
+    ]),
+    generateHowToSchema({
+      name: "Create X with Tailwind CSS",
+      description: "Build X component",
+      totalTime: "PT20M",
+      steps: [
+        { name: "Step 1", text: "Do this first" },
+        { name: "Step 2", text: "Then do this" },
+        { name: "Step 3", text: "Finally do this" },
+      ],
+    }),
+  ],
+};
+```
+
+## Time Duration Format
+
+```javascript
+"PT10M"; // 10 minutes
+"PT30M"; // 30 minutes
+"PT1H"; // 1 hour
+"PT1H30M"; // 1 hour 30 minutes
+"PT2H"; // 2 hours
+```
+
+## Date Format (ISO 8601)
+
+```javascript
+"2024-10-01T09:00:00Z"; // October 1, 2024, 9:00 AM UTC
+"2024-01-15T14:30:00Z"; // January 15, 2024, 2:30 PM UTC
+```
+
+Get current date:
+
+```bash
+date -u +"%Y-%m-%dT%H:%M:%SZ"
+```
+
+## Common Keywords by Category
+
+### Tailwind CSS Components
+
+```javascript
+["Tailwind CSS", "Component", "Web Design", "Tutorial", "CSS Framework"];
+```
+
+### Alpine.js Components
+
+```javascript
+["Alpine.js", "Tailwind CSS", "Interactive", "JavaScript", "Tutorial"];
+```
+
+### JavaScript Components
+
+```javascript
+["JavaScript", "Vanilla JS", "Tailwind CSS", "Web Development", "Tutorial"];
+```
+
+### Astro Components
+
+```javascript
+["Astro", "Tailwind CSS", "Static Site", "Component", "Tutorial"];
+```
+
+### Animation
+
+```javascript
+["Animation", "CSS Animation", "Tailwind CSS", "Motion", "Tutorial"];
+```
+
+### Forms
+
+```javascript
+["Form", "Input", "Validation", "User Input", "Tailwind CSS", "Tutorial"];
+```
+
+### Navigation
+
+```javascript
+["Navigation", "Menu", "UI Component", "Tailwind CSS", "Tutorial"];
+```
+
+## Title Templates
+
+```
+"How to Create [COMPONENT] with Tailwind CSS and [FRAMEWORK]"
+"Build a [FEATURE] [COMPONENT] with Tailwind CSS"
+"Create an Animated [COMPONENT] with Tailwind CSS"
+"[COMPONENT] Tutorial with Tailwind CSS and [FRAMEWORK]"
+```
+
+Examples:
+
+- 
