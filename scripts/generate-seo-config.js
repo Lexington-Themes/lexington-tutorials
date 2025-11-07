@@ -17,7 +17,7 @@ const args = process.argv.slice(2);
 if (args.length === 0) {
   console.log("Usage: node scripts/generate-seo-config.js <page-path>");
   console.log(
-    "Example: node scripts/generate-seo-config.js src/pages/modal/index.astro"
+    "Example: node scripts/generate-seo-config.js src/pages/modal/index"
   );
   process.exit(1);
 }

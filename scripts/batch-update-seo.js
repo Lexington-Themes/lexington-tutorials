@@ -453,8 +453,8 @@ function processPages() {
         // Skip already optimized pages
         if (
           relativePath === "index.astro" ||
-          relativePath === "accordion/index.astro" ||
-          relativePath === "carousel/index.astro"
+          relativePath === "accordion/index" ||
+          relativePath === "carousel/index"
         ) {
           continue;
         }
