@@ -37,7 +37,7 @@ let fixed = 0;
 
 for (const page of pages) {
   try {
-    const filePath = `src/pages/${page}/index.astro`;
+    const filePath = `src/pages/${page}/index`;
 
     // Get original const declarations from git
     const originalContent = execSync(`git show HEAD:${filePath}`, {

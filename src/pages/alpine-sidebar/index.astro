@@ -14,31 +14,58 @@ import {
 // SEO Configuration
 const seoConfig = {
   title: "Create a Sidebar with Alpine.js and Tailwind CSS",
-  description: "Learn to build an interactive sidebar navigation with Alpine.js and Tailwind CSS. Includes slide animations and responsive design.",
+  description:
+    "Learn to build an interactive sidebar navigation with Alpine.js and Tailwind CSS. Includes slide animations and responsive design.",
   canonical: "/alpine-sidebar",
   jsonLd: [
     generateArticleSchema({
       title: "Create a Sidebar with Alpine.js and Tailwind CSS",
-      description: "Learn to build an interactive sidebar navigation with Alpine.js and Tailwind CSS. Includes slide animations and responsive design.",
+      description:
+        "Learn to build an interactive sidebar navigation with Alpine.js and Tailwind CSS. Includes slide animations and responsive design.",
       url: "/alpine-sidebar",
       datePublished: "2025-10-01T06:26:58.388Z",
       dateModified: "2025-10-01T06:26:58.388Z",
-      keywords: ["Alpine.js","Sidebar","Navigation","Tailwind CSS","Tutorial"],
+      keywords: [
+        "Alpine.js",
+        "Sidebar",
+        "Navigation",
+        "Tailwind CSS",
+        "Tutorial",
+      ],
     }),
     generateBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Create a Sidebar with Alpine.js and Tailwind CSS", url: "/alpine-sidebar" },
+      {
+        name: "Create a Sidebar with Alpine.js and Tailwind CSS",
+        url: "/alpine-sidebar",
+      },
     ]),
     generateHowToSchema({
       name: "Create a Sidebar with Alpine.js and Tailwind CSS",
-      description: "Learn to build an interactive sidebar navigation with Alpine.js and Tailwind CSS. Includes slide animations and responsive design.",
+      description:
+        "Learn to build an interactive sidebar navigation with Alpine.js and Tailwind CSS. Includes slide animations and responsive design.",
       totalTime: "PT20M",
       steps: [
-        { name: "Set up HTML structure", text: "Create the base component container and elements" },
-        { name: "Add interactivity", text: "Initialize state management and event handlers" },
-        { name: "Style with Tailwind CSS", text: "Apply utility classes for responsive layout" },
-        { name: "Add accessibility features", text: "Implement ARIA attributes and keyboard navigation" },
-        { name: "Test the component", text: "Verify functionality across browsers and devices" },
+        {
+          name: "Set up HTML structure",
+          text: "Create the base component container and elements",
+        },
+        {
+          name: "Add interactivity",
+          text: "Initialize state management and event handlers",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout",
+        },
+        {
+          name: "Add accessibility features",
+          text: "Implement ARIA attributes and keyboard navigation",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across browsers and devices",
+        },
       ],
     }),
   ],
@@ -55,7 +82,7 @@ const menuItems = [
 
 <BaseLayout seo={seoConfig}>
   <section>
-  <h1 class="sr-only">Create a Sidebar with Alpine.js and Tailwind CSS</h1>
+    <h1 class="sr-only">Create a Sidebar with Alpine.js and Tailwind CSS</h1>
 
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-sidebar-navigation-with-tailwindcss-and-alpine-js/"

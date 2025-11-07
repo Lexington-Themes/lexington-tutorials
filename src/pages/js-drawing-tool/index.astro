@@ -11,46 +11,59 @@ import {
 // SEO Configuration
 const seoConfig = {
   title: "Create Js Drawing Tool with JavaScript",
-  description: "Learn to build js drawing tool components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+  description:
+    "Learn to build js drawing tool components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
   canonical: "/js-drawing-tool",
   jsonLd: [
     generateArticleSchema({
       title: "Create Js Drawing Tool with JavaScript",
-      description: "Learn to build js drawing tool components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      description:
+        "Learn to build js drawing tool components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
       url: "/js-drawing-tool",
       datePublished: "2025-10-01T06:22:29.077Z",
       dateModified: "2025-10-01T06:22:29.077Z",
-      keywords: ["Tailwind CSS","JavaScript","Vanilla JS","Js Drawing Tool","Tutorial","Web Development"],
+      keywords: [
+        "Tailwind CSS",
+        "JavaScript",
+        "Vanilla JS",
+        "Js Drawing Tool",
+        "Tutorial",
+        "Web Development",
+      ],
     }),
     generateBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Create Js Drawing Tool with JavaScript", url: "/js-drawing-tool" },
+      {
+        name: "Create Js Drawing Tool with JavaScript",
+        url: "/js-drawing-tool",
+      },
     ]),
     generateHowToSchema({
       name: "Create Js Drawing Tool with JavaScript",
-      description: "Learn to build js drawing tool components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      description:
+        "Learn to build js drawing tool components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
       totalTime: "PT20M",
       steps: [
-            {
-                  "name": "Set up HTML structure",
-                  "text": "Create the base js drawing tool container and elements"
-            },
-            {
-                  "name": "Add JavaScript interactivity",
-                  "text": "Initialize JavaScript to handle component state and interactions"
-            },
-            {
-                  "name": "Style with Tailwind CSS",
-                  "text": "Apply utility classes for responsive layout and modern design"
-            },
-            {
-                  "name": "Add accessibility features",
-                  "text": "Implement ARIA attributes and keyboard navigation"
-            },
-            {
-                  "name": "Test the component",
-                  "text": "Verify functionality across different browsers and devices"
-            }
+        {
+          name: "Set up HTML structure",
+          text: "Create the base js drawing tool container and elements",
+        },
+        {
+          name: "Add JavaScript interactivity",
+          text: "Initialize JavaScript to handle component state and interactions",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout and modern design",
+        },
+        {
+          name: "Add accessibility features",
+          text: "Implement ARIA attributes and keyboard navigation",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across different browsers and devices",
+        },
       ],
     }),
   ],
@@ -59,7 +72,7 @@ const seoConfig = {
 
 <BaseLayout seo={seoConfig}>
   <section class="overflow-hidden">
-  <h1 class="sr-only">Create Js Drawing Tool with JavaScript</h1>
+    <h1 class="sr-only">Create Js Drawing Tool with JavaScript</h1>
 
     <!-- Starts links to tutorial -->
     <TutorialBanner

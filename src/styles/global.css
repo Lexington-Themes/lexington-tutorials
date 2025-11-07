@@ -6,20 +6,24 @@
 
 @theme {
   /* Typography */
-  --font-sans: "Overused Grotesk", Inter, sans-serif;
+  --font-sans: "Geist", Inter, sans-serif;
   --font-mono: Geist Mono, monospace;
+  --color-accent: #f85912;
+  --color-accent-dark: #e03e23;
+  --color-beige: #f7f7f4;
+  --color-black: #17181b;
   /* Colors */
-  --color-accent-50: oklch(95.44% 0.023 37.38);
-  --color-accent-100: oklch(91.19% 0.047 37.79);
-  --color-accent-200: oklch(83.71% 0.093 37.99);
-  --color-accent-300: oklch(76.18% 0.146 37.97);
-  --color-accent-400: oklch(70.39% 0.192 37.13);
-  --color-accent-500: oklch(65.87% 0.23 34.5);
-  --color-accent-600: oklch(57.29% 0.205 34.12);
-  --color-accent-700: oklch(45.97% 0.162 34.83);
-  --color-accent-800: oklch(35.02% 0.12 36.11);
-  --color-accent-900: oklch(22.01% 0.068 41.04);
-  --color-accent-950: oklch(15.36% 0.041 49.71);
+  -color-accent-50: oklch(0.958 0.016 22.18);
+  --color-accent-100: oklch(0.918 0.034 24.63);
+  --color-accent-200: oklch(0.836 0.074 24.96);
+  --color-accent-300: oklch(0.755 0.122 27.08);
+  --color-accent-400: oklch(0.674 0.179 31.77);
+  --color-accent-500: oklch(0.589 0.17 33.2);
+  --color-accent-600: oklch(0.499 0.144 33.12);
+  --color-accent-700: oklch(0.41 0.119 32.91);
+  --color-accent-800: oklch(0.321 0.093 33.07);
+  --color-accent-900: oklch(0.231 0.066 33.78);
+  --color-accent-950: oklch(0.183 0.053 33.33);
  --color-sand-50: oklch(98.73% 0.004 106.47);
   --color-sand-100: oklch(97.03% 0.007 88.64);
   --color-sand-200: oklch(90.07% 0.024 90.76);
@@ -45,20 +49,8 @@
   --color-base-950: oklch(0.223 0.002 67.71);
 }
 
-@font-face {
-  font-family: "Overused Grotesk";
-  src: url("https://raw.githubusercontent.com/RandomMaerks/Overused-Grotesk/master/fonts/variable/OverusedGroteskRoman-VF.ttf")
-    format("truetype-variations");
-  font-weight: 300 900;
-  font-display: swap;
-  font-style: normal;
-}
 
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: "Overused Grotesk", sans-serif;
-  }
-}
+
 /* WebKit (Chrome, Safari) */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;

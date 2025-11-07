@@ -6,7 +6,7 @@
  * Generates SEO configuration suggestions based on page file names and content.
  * Usage: node scripts/generate-seo-config.js [page-path]
  *
- * Example: node scripts/generate-seo-config.js src/pages/modal/index.astro
+ * Example: node scripts/generate-seo-config.js src/pages/modal/index
  */
 
 import fs from "fs";
@@ -95,7 +95,9 @@ const features = [
   "smooth animations",
   "accessibility features",
 ];
-const description = `Learn to build ${componentInfo.type.toLowerCase()} components using ${frameworkStr}. Includes ${features.slice(0, 2).join(" and ")}.`;
+const description = `Learn to build ${componentInfo.type.toLowerCase()} components using ${frameworkStr}. Includes ${features
+  .slice(0, 2)
+  .join(" and ")}.`;
 
 // Generate keywords
 const keywords = [

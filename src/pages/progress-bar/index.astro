@@ -11,46 +11,58 @@ import {
 // SEO Configuration
 const seoConfig = {
   title: "How to Create a Progress Bar with Alpine.js and Tailwind CSS",
-  description: "Learn to build progress bar components using Alpine.js and Tailwind CSS. Includes animated progress and percentage display.",
+  description:
+    "Learn to build progress bar components using Alpine.js and Tailwind CSS. Includes animated progress and percentage display.",
   canonical: "/progress-bar",
   jsonLd: [
     generateArticleSchema({
       title: "How to Create a Progress Bar with Alpine.js and Tailwind CSS",
-      description: "Learn to build progress bar components using Alpine.js and Tailwind CSS. Includes animated progress and percentage display.",
+      description:
+        "Learn to build progress bar components using Alpine.js and Tailwind CSS. Includes animated progress and percentage display.",
       url: "/progress-bar",
       datePublished: "2025-10-01T06:22:29.086Z",
       dateModified: "2025-10-01T06:22:29.086Z",
-      keywords: ["Tailwind CSS","Alpine.js","Progress Bar","Tutorial","Web Development"],
+      keywords: [
+        "Tailwind CSS",
+        "Alpine.js",
+        "Progress Bar",
+        "Tutorial",
+        "Web Development",
+      ],
     }),
     generateBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "How to Create a Progress Bar with Alpine.js and Tailwind CSS", url: "/progress-bar" },
+      {
+        name: "How to Create a Progress Bar with Alpine.js and Tailwind CSS",
+        url: "/progress-bar",
+      },
     ]),
     generateHowToSchema({
       name: "How to Create a Progress Bar with Alpine.js and Tailwind CSS",
-      description: "Learn to build progress bar components using Alpine.js and Tailwind CSS. Includes animated progress and percentage display.",
+      description:
+        "Learn to build progress bar components using Alpine.js and Tailwind CSS. Includes animated progress and percentage display.",
       totalTime: "PT15M",
       steps: [
-            {
-                  "name": "Set up HTML structure",
-                  "text": "Create the base progress bar container and elements"
-            },
-            {
-                  "name": "Add Alpine.js interactivity",
-                  "text": "Initialize Alpine.js to handle component state and interactions"
-            },
-            {
-                  "name": "Style with Tailwind CSS",
-                  "text": "Apply utility classes for responsive layout and modern design"
-            },
-            {
-                  "name": "Add accessibility features",
-                  "text": "Implement ARIA attributes and keyboard navigation"
-            },
-            {
-                  "name": "Test the component",
-                  "text": "Verify functionality across different browsers and devices"
-            }
+        {
+          name: "Set up HTML structure",
+          text: "Create the base progress bar container and elements",
+        },
+        {
+          name: "Add Alpine.js interactivity",
+          text: "Initialize Alpine.js to handle component state and interactions",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout and modern design",
+        },
+        {
+          name: "Add accessibility features",
+          text: "Implement ARIA attributes and keyboard navigation",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across different browsers and devices",
+        },
       ],
     }),
   ],
@@ -59,7 +71,9 @@ const seoConfig = {
 
 <BaseLayout seo={seoConfig}>
   <section>
-  <h1 class="sr-only">How to Create a Progress Bar with Alpine.js and Tailwind CSS</h1>
+    <h1 class="sr-only">
+      How to Create a Progress Bar with Alpine.js and Tailwind CSS
+    </h1>
 
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-progress-bar-with-tailwind-css-and-alpine-js/"

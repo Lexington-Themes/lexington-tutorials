@@ -1,132 +1,132 @@
 # SEO System Architecture
 
-##  System Overview
+## System Overview
 
 ```
 
-                     Your Page File                           
-                  (e.g., accordion/index.astro)              
+                     Your Page File
+                  (e.g., accordion/index)
 
-                                                              
-  1. Import utilities:                                        
-     import { generateArticleSchema } from "@/utils/jsonLd"  
-                                                              
-  2. Define seoConfig object:                                
-     const seoConfig = {                                     
-       title: "...",                                         
-       description: "...",                                   
-       canonical: "/page",                                   
-       jsonLd: [schemas...]                                  
-     }                                                        
-                                                              
-  3. Pass to BaseLayout:                                     
-     <BaseLayout seo={seoConfig}>                           
-                                                              
 
-                       
-                       
+  1. Import utilities:
+     import { generateArticleSchema } from "@/utils/jsonLd"
 
-                    BaseLayout.astro                          
-                 (src/layouts/BaseLayout.astro)              
+  2. Define seoConfig object:
+     const seoConfig = {
+       title: "...",
+       description: "...",
+       canonical: "/page",
+       jsonLd: [schemas...]
+     }
 
-                                                              
-  - Receives seo prop                                        
-  - Passes to BaseHead component                             
-  - Wraps your content with nav/footer                       
-                                                              
+  3. Pass to BaseLayout:
+     <BaseLayout seo={seoConfig}>
 
-                       
-                       
 
-                     BaseHead.astro                           
-           (src/components/fundations/head/BaseHead.astro)   
 
-                                                              
-  - Receives seo prop                                        
-  - Passes to Seo component                                  
-  - Includes Meta, Fonts, Favicons, Alpine                   
-                                                              
 
-                       
-                       
 
-                       Seo.astro                              
-           (src/components/fundations/head/Seo.astro)        
+                    BaseLayout.astro
+                 (src/layouts/BaseLayout.astro)
 
-                                                              
-  1. Processes seo config                                    
-  2. Generates canonical URL                                 
-  3. Builds full title                                       
-  4. Renders:                                                
-     - <title> tag                                           
-     - <meta> tags                                           
-     - Open Graph tags                                       
-     - Twitter Card tags                                     
-     - JSON-LD <script> tag                                  
-                                                              
+
+  - Receives seo prop
+  - Passes to BaseHead component
+  - Wraps your content with nav/footer
+
+
+
+
+
+                     BaseHead.astro
+           (src/components/fundations/head/BaseHead.astro)
+
+
+  - Receives seo prop
+  - Passes to Seo component
+  - Includes Meta, Fonts, Favicons, Alpine
+
+
+
+
+
+                       Seo.astro
+           (src/components/fundations/head/Seo.astro)
+
+
+  1. Processes seo config
+  2. Generates canonical URL
+  3. Builds full title
+  4. Renders:
+     - <title> tag
+     - <meta> tags
+     - Open Graph tags
+     - Twitter Card tags
+     - JSON-LD <script> tag
+
 
 ```
 
-##  Data Flow
+## Data Flow
 
 ```
 Page File                    Utils                    Components
-                                   
 
-Your content     
-                  jsonLd.ts       
-                                  
-      calls       Functions:      
-      - Article       
-                  - Breadcrumb    
-                  - HowTo         
-                  - FAQ           
-                  - etc.          
-                
-                      
+
+Your content
+                  jsonLd.ts
+
+      calls       Functions:
+      - Article
+                  - Breadcrumb
+                  - HowTo
+                  - FAQ
+                  - etc.
+
+
                        returns
                        schema objects
-                      
-                
-                  seoConfig       
-                  {                
-                    title,         
-                    description,   
-                    canonical,     
-                    jsonLd: [...]  
-                  }                
-                
-                      
-      passes          
-    
-    
-                
-      BaseLayout     
-                   seo={...}      
-                 
-                          
-                          
-                 
-                   BaseHead       
-                   seo={...}      
-                 
-                          
-                          
-                 
-                   Seo.astro      
-                   {...seo}       
-                 
-                          
-                          
-                 
-                   HTML Output    
-                   - <title>      
-                   - <meta>       
-                   - <script>     
-                 
+
+
+                  seoConfig
+                  {
+                    title,
+                    description,
+                    canonical,
+                    jsonLd: [...]
+                  }
+
+
+      passes
+
+
+
+      BaseLayout
+                   seo={...}
+
+
+
+
+                   BaseHead
+                   seo={...}
+
+
+
+
+                   Seo.astro
+                   {...seo}
+
+
+
+
+                   HTML Output
+                   - <title>
+                   - <meta>
+                   - <script>
+
 ```
 
-##  File Structure
+## File Structure
 
 ```
 lexington-tutorials/
@@ -140,10 +140,10 @@ lexington-tutorials/
                Meta.astro
                Fonts.astro
                Favicons.astro
-   
+
     layouts/
        BaseLayout.astro           ← Main layout (modified)
-   
+
     pages/
        _template.astro            ← NEW: Template for new pages
        index.astro                ← Updated with SEO
@@ -153,7 +153,7 @@ lexington-tutorials/
           index.astro            ← Example: Full SEO
        [other pages]/
            index.astro            ← To be updated
-   
+
     utils/
         jsonLd.ts                  ← NEW: JSON-LD utilities
 
@@ -167,51 +167,51 @@ lexington-tutorials/
  package.json                       ← Added seo:audit script
 ```
 
-##  Typical Update Flow
+## Typical Update Flow
 
 ```
 
-  1. Start with      
-     _template.astro 
+  1. Start with
+     _template.astro
 
-           
+
             copy
-           
 
-  2. Replace         
-     [PLACEHOLDERS]  
 
-           
+  2. Replace
+     [PLACEHOLDERS]
+
+
             customize
-           
 
-  3. Add your        
-     component code  
 
-           
+  3. Add your
+     component code
+
+
             save
-           
 
-  4. Test in dev     
-     npm run dev     
 
-           
+  4. Test in dev
+     npm run dev
+
+
             verify
-           
 
-  5. Run audit       
-     npm run         
-     seo:audit       
 
-           
+  5. Run audit
+     npm run
+     seo:audit
+
+
             commit
-           
 
-  6. Done!         
+
+  6. Done!
 
 ```
 
-##  Schema Relationships
+## Schema Relationships
 
 ```
 Page Types and Their Schemas:
@@ -241,7 +241,7 @@ Simple Page
  BreadcrumbSchema       (navigation)
 ```
 
-##  JSON-LD Utility Functions
+## JSON-LD Utility Functions
 
 ```
 jsonLd.ts exports:
@@ -281,7 +281,7 @@ generateCollectionPageSchema(config)
     Use: Listing/index pages
 ```
 
-##  SEO Config Object Structure
+## SEO Config Object Structure
 
 ```javascript
 const seoConfig = {
@@ -312,23 +312,23 @@ const seoConfig = {
 }
 ```
 
-##  Component Prop Flow
+## Component Prop Flow
 
 ```
 Page Component
-  
+
    seo={seoConfig}
-  
+
 BaseLayout
-  
+
    seo={seo}
-  
+
 BaseHead
-  
+
    {...seo}
-  
+
 Seo Component
-  
+
    title → <title> + OpenGraph + Twitter
    description → <meta> + OpenGraph + Twitter
    canonical → <link rel="canonical">
@@ -337,7 +337,7 @@ Seo Component
    jsonLd → <script type="application/ld+json">
 ```
 
-##  Output in HTML
+## Output in HTML
 
 ```html
 <head>
@@ -383,7 +383,7 @@ Seo Component
 </head>
 ```
 
-##  Audit Tool Logic
+## Audit Tool Logic
 
 ```
 seo-audit.js
@@ -406,7 +406,7 @@ seo-audit.js
      Exit code (1 if any need work)
 ```
 
-##  Example Implementations
+## Example Implementations
 
 ### Minimal (Simple Page)
 
@@ -456,8 +456,8 @@ const seoConfig = {
 
 This architecture provides:
 
--  Separation of concerns
--  Reusable utilities
--  Type-safe configurations
--  Easy maintenance
--  Scalable to 100s of pages
+- Separation of concerns
+- Reusable utilities
+- Type-safe configurations
+- Easy maintenance
+- Scalable to 100s of pages

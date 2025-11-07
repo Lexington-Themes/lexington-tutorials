@@ -298,7 +298,9 @@ function generateSEOConfig(folderName, content, canonical) {
   const shortTitle =
     title.length > 60 ? `${componentType.action} with ${framework}` : title;
 
-  const description = `Learn to build ${componentType.type.toLowerCase()} components using ${framework} and Tailwind CSS. Includes ${componentType.features.slice(0, 2).join(" and ")}.`;
+  const description = `Learn to build ${componentType.type.toLowerCase()} components using ${framework} and Tailwind CSS. Includes ${componentType.features
+    .slice(0, 2)
+    .join(" and ")}.`;
   const shortDescription =
     description.length > 160
       ? description.substring(0, 157) + "..."
@@ -374,13 +376,18 @@ const seoConfig = {
     }),
     generateBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "${config.title.replace(/"/g, '\\"')}", url: "${config.canonical}" },
+      { name: "${config.title.replace(/"/g, '\\"')}", url: "${
+    config.canonical
+  }" },
     ]),
     generateHowToSchema({
       name: "${config.title}",
       description: "${config.description}",
       totalTime: "${config.time}",
-      steps: ${JSON.stringify(config.steps, null, 6).replace(/\n/g, "\n      ")},
+      steps: ${JSON.stringify(config.steps, null, 6).replace(
+        /\n/g,
+        "\n      "
+      )},
     }),
   ],
 };

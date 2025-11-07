@@ -11,16 +11,18 @@ import {
 // SEO Configuration
 const seoConfig = {
   title: "Create Tailwind Faq with Tailwind CSS",
-  description: "Learn to build tailwind faq components using Tailwind CSS. Includes responsive design and modern styling.",
+  description:
+    "Learn to build tailwind faq components using Tailwind CSS. Includes responsive design and modern styling.",
   canonical: "/tailwind-faq",
   jsonLd: [
     generateArticleSchema({
       title: "Create Tailwind Faq with Tailwind CSS",
-      description: "Learn to build tailwind faq components using Tailwind CSS. Includes responsive design and modern styling.",
+      description:
+        "Learn to build tailwind faq components using Tailwind CSS. Includes responsive design and modern styling.",
       url: "/tailwind-faq",
       datePublished: "2025-10-01T06:26:58.394Z",
       dateModified: "2025-10-01T06:26:58.394Z",
-      keywords: ["Tailwind CSS","Tailwind Faq","Tutorial","Web Development"],
+      keywords: ["Tailwind CSS", "Tailwind Faq", "Tutorial", "Web Development"],
     }),
     generateBreadcrumbSchema([
       { name: "Home", url: "/" },
@@ -28,14 +30,30 @@ const seoConfig = {
     ]),
     generateHowToSchema({
       name: "Create Tailwind Faq with Tailwind CSS",
-      description: "Learn to build tailwind faq components using Tailwind CSS. Includes responsive design and modern styling.",
+      description:
+        "Learn to build tailwind faq components using Tailwind CSS. Includes responsive design and modern styling.",
       totalTime: "PT20M",
       steps: [
-        { name: "Set up HTML structure", text: "Create the base component container and elements" },
-        { name: "Add interactivity", text: "Initialize state management and event handlers" },
-        { name: "Style with Tailwind CSS", text: "Apply utility classes for responsive layout" },
-        { name: "Add accessibility features", text: "Implement ARIA attributes and keyboard navigation" },
-        { name: "Test the component", text: "Verify functionality across browsers and devices" },
+        {
+          name: "Set up HTML structure",
+          text: "Create the base component container and elements",
+        },
+        {
+          name: "Add interactivity",
+          text: "Initialize state management and event handlers",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout",
+        },
+        {
+          name: "Add accessibility features",
+          text: "Implement ARIA attributes and keyboard navigation",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across browsers and devices",
+        },
       ],
     }),
   ],
@@ -62,7 +80,7 @@ const faqs = [
 
 <BaseLayout seo={seoConfig}>
   <section>
-  <h1 class="sr-only">Create Tailwind Faq with Tailwind CSS</h1>
+    <h1 class="sr-only">Create Tailwind Faq with Tailwind CSS</h1>
 
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-javascript-free-animated-accordion-faq-section-with-only-tailwind-css"

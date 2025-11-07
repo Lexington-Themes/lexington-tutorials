@@ -1,0 +1,274 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+// SEO Configuration
+const seoConfig = {
+  title: "Create an Image Carousel with Alpine.js and Tailwind CSS",
+  description:
+    "Learn to build a responsive image carousel slider using Alpine.js and Tailwind CSS. Includes navigation controls, auto-play, and smooth transitions.",
+  canonical: "/alpine-carousel",
+  jsonLd: [
+    generateArticleSchema({
+      title: "Create an Image Carousel with Alpine.js and Tailwind CSS",
+      description:
+        "Learn to build a responsive image carousel slider using Alpine.js and Tailwind CSS. Includes navigation controls, auto-play, and smooth transitions.",
+      url: "/alpine-carousel",
+      datePublished: new Date().toISOString(),
+      dateModified: new Date().toISOString(),
+      keywords: [
+        "Tailwind CSS",
+        "Alpine.js",
+        "Carousel",
+        "Image Slider",
+        "Tutorial",
+        "Web Development",
+      ],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      {
+        name: "Create an Image Carousel with Alpine.js and Tailwind CSS",
+        url: "/alpine-carousel",
+      },
+    ]),
+    generateHowToSchema({
+      name: "Create an Image Carousel with Alpine.js and Tailwind CSS",
+      description:
+        "Learn to build a responsive image carousel slider using Alpine.js and Tailwind CSS. Includes navigation controls, auto-play, and smooth transitions.",
+      totalTime: "PT20M",
+      steps: [
+        {
+          name: "Set up HTML structure",
+          text: "Create the base carousel container with slide elements",
+        },
+        {
+          name: "Add Alpine.js interactivity",
+          text: "Initialize carousel state and implement navigation logic",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout and animations",
+        },
+        {
+          name: "Add carousel controls",
+          text: "Implement navigation buttons and indicators",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across different browsers and devices",
+        },
+      ],
+    }),
+  ],
+};
+
+const images = [
+  {
+    src: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
+    alt: "Blue Aurora",
+  },
+  {
+    src: "https://plus.unsplash.com/premium_photo-1733760125497-cd51a05afc6c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071",
+    alt: "Blue Blob",
+  },
+  {
+    src: "https://plus.unsplash.com/premium_photo-1733760125031-62a1611f02db?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071",
+    alt: "Gradient Animation",
+  },
+];
+
+const features = [
+  "Previous/Next navigation buttons for manual control",
+  "Auto-play functionality with 4-second interval",
+  "Dot indicators to show current slide and navigate directly",
+  "Smooth fade transitions between slides",
+  "Responsive design that works on all screen sizes",
+  "Pause auto-play on hover for better UX",
+];
+---
+
+<BaseLayout seo={seoConfig}>
+  <section>
+    <h1 class="sr-only">
+      Create an Image Carousel with Alpine.js and Tailwind CSS
+    </h1>
+
+    <!-- Starts links to tutorial -->
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/alpine-carousel/index.astro"
+    />
+    <!-- Ends links to tutorial -->
+    <Wrapper class="py-24">
+      <!-- Starts component -->
+      <div
+        class="w-full max-w-4xl mx-auto"
+        x-data="{
+          currentSlide: 0,
+          autoPlay: true,
+          autoPlayInterval: null,
+          slides: 3,
+          init() {
+            this.startAutoPlay();
+          },
+          next() {
+            this.currentSlide = (this.currentSlide + 1) % this.slides;
+            this.resetAutoPlay();
+          },
+          prev() {
+            this.currentSlide = (this.currentSlide - 1 + this.slides) % this.slides;
+            this.resetAutoPlay();
+          },
+          goToSlide(index) {
+            this.currentSlide = index;
+            this.resetAutoPlay();
+          },
+          startAutoPlay() {
+            if (this.autoPlay) {
+              this.autoPlayInterval = setInterval(() => {
+                this.currentSlide = (this.currentSlide + 1) % this.slides;
+              }, 4000);
+            }
+          },
+          resetAutoPlay() {
+            clearInterval(this.autoPlayInterval);
+            this.startAutoPlay();
+          }
+        }"
+        @mouseenter="clearInterval(autoPlayInterval)"
+        @mouseleave="startAutoPlay()"
+      >
+        <!-- Carousel Container -->
+        <div class="relative w-full overflow-hidden bg-base-100 rounded-2xl">
+          <!-- Slides -->
+          <div class="relative w-full h-96 md:h-[500px]">
+            <template x-for="(slide, index) in slides" :key="index">
+              <div
+                :class="currentSlide === index ? 'opacity-100' : 'opacity-0'"
+                class="absolute inset-0 transition-opacity duration-500 ease-in-out"
+              >
+                <img
+                  :src="slide === 0 ? 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070' : slide === 1 ? 'https://plus.unsplash.com/premium_photo-1733760125497-cd51a05afc6c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071' : 'https://plus.unsplash.com/premium_photo-1733760125031-62a1611f02db?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071'"
+                  :alt="slide === 0 ? 'Blue Aurora' : slide === 1 ? 'Blue Blob' : 'Gradient Animation'"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </template>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="absolute left-0 top-1/2 -translate-y-1/2 z-20">
+            <Button
+              variant="muted"
+              size="md"
+              iconOnly
+              @click="prev()"
+              aria-label="Previous slide"
+              class="rounded-r-lg rounded-l-none"
+            >
+              <fragment slot="icon">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </fragment>
+            </Button>
+          </div>
+
+          <div class="absolute right-0 top-1/2 -translate-y-1/2 z-20">
+            <Button
+              variant="muted"
+              size="md"
+              iconOnly
+              @click="next()"
+              aria-label="Next slide"
+              class="rounded-l-lg rounded-r-none"
+            >
+              <fragment slot="icon">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path>
+                </svg>
+              </fragment>
+            </Button>
+          </div>
+
+          <!-- Slide Counter -->
+          <div
+            class="absolute top-4 right-4 z-20 px-3 py-2 bg-black/50 text-white text-sm font-medium rounded-full"
+          >
+            <span x-text="currentSlide + 1"></span> / <span x-text="slides"
+            ></span>
+          </div>
+        </div>
+
+        <!-- Dot Indicators -->
+        <div class="flex justify-center gap-2 mt-6">
+          <template x-for="(slide, index) in slides" :key="index">
+            <button
+              @click="goToSlide(index)"
+              :class="currentSlide === index ? 'bg-accent-500' : 'bg-base-300 hover:bg-base-400'"
+              class="w-3 h-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              :aria-label="`Go to slide ${index + 1}`"
+              :aria-current="currentSlide === index"></button>
+          </template>
+        </div>
+
+        <!-- Carousel Info -->
+        <div class="mt-12 p-6 bg-base-50 rounded-xl">
+          <h2 class="text-lg font-semibold text-base-900 mb-3">
+            About This Carousel
+          </h2>
+          <p class="text-base-600 leading-relaxed">
+            This interactive image carousel slider is built with Alpine.js for
+            state management and Tailwind CSS for styling. Features include:
+          </p>
+          <ul class="mt-3 space-y-2 text-base-600">
+            {
+              features.map((feature) => (
+                <li class="flex items-start">
+                  <svg
+                    class="w-5 h-5 text-accent-500 mr-3 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

@@ -11,16 +11,24 @@ import {
 // SEO Configuration
 const seoConfig = {
   title: "Create a Multi-Step Form with Alpine.js",
-  description: "Learn to build multi-step form components using Alpine.js and Tailwind CSS. Includes progress tracking and validation.",
+  description:
+    "Learn to build multi-step form components using Alpine.js and Tailwind CSS. Includes progress tracking and validation.",
   canonical: "/multistep",
   jsonLd: [
     generateArticleSchema({
       title: "Create a Multi-Step Form with Alpine.js",
-      description: "Learn to build multi-step form components using Alpine.js and Tailwind CSS. Includes progress tracking and validation.",
+      description:
+        "Learn to build multi-step form components using Alpine.js and Tailwind CSS. Includes progress tracking and validation.",
       url: "/multistep",
       datePublished: "2025-10-01T06:22:29.084Z",
       dateModified: "2025-10-01T06:22:29.084Z",
-      keywords: ["Tailwind CSS","Alpine.js","Multi-Step Form","Tutorial","Web Development"],
+      keywords: [
+        "Tailwind CSS",
+        "Alpine.js",
+        "Multi-Step Form",
+        "Tutorial",
+        "Web Development",
+      ],
     }),
     generateBreadcrumbSchema([
       { name: "Home", url: "/" },
@@ -28,29 +36,30 @@ const seoConfig = {
     ]),
     generateHowToSchema({
       name: "Create a Multi-Step Form with Alpine.js",
-      description: "Learn to build multi-step form components using Alpine.js and Tailwind CSS. Includes progress tracking and validation.",
+      description:
+        "Learn to build multi-step form components using Alpine.js and Tailwind CSS. Includes progress tracking and validation.",
       totalTime: "PT25M",
       steps: [
-            {
-                  "name": "Set up HTML structure",
-                  "text": "Create the base multi-step form container and elements"
-            },
-            {
-                  "name": "Add Alpine.js interactivity",
-                  "text": "Initialize Alpine.js to handle component state and interactions"
-            },
-            {
-                  "name": "Style with Tailwind CSS",
-                  "text": "Apply utility classes for responsive layout and modern design"
-            },
-            {
-                  "name": "Add accessibility features",
-                  "text": "Implement ARIA attributes and keyboard navigation"
-            },
-            {
-                  "name": "Test the component",
-                  "text": "Verify functionality across different browsers and devices"
-            }
+        {
+          name: "Set up HTML structure",
+          text: "Create the base multi-step form container and elements",
+        },
+        {
+          name: "Add Alpine.js interactivity",
+          text: "Initialize Alpine.js to handle component state and interactions",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout and modern design",
+        },
+        {
+          name: "Add accessibility features",
+          text: "Implement ARIA attributes and keyboard navigation",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across different browsers and devices",
+        },
       ],
     }),
   ],
@@ -59,7 +68,7 @@ const seoConfig = {
 
 <BaseLayout seo={seoConfig}>
   <section>
-  <h1 class="sr-only">Create a Multi-Step Form with Alpine.js</h1>
+    <h1 class="sr-only">Create a Multi-Step Form with Alpine.js</h1>
 
     <TutorialBanner
       tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-multistep-form-with-tailwind-css-and-alpinejs/"

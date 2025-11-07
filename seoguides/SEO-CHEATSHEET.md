@@ -145,11 +145,11 @@ date -u +"%Y-%m-%dT%H:%M:%SZ"
 
 Examples:
 
--  "How to Create a Modal Dialog with Tailwind CSS and Alpine.js"
--  "Build a Responsive Carousel with Tailwind CSS"
--  "Create an Animated Accordion with Tailwind CSS"
--  "Modal" (too short)
--  "How to Create a Fully Responsive, Accessible, Animated Modal Dialog Component with Advanced Features using Tailwind CSS and Alpine.js Framework" (too long)
+- "How to Create a Modal Dialog with Tailwind CSS and Alpine.js"
+- "Build a Responsive Carousel with Tailwind CSS"
+- "Create an Animated Accordion with Tailwind CSS"
+- "Modal" (too short)
+- "How to Create a Fully Responsive, Accessible, Animated Modal Dialog Component with Advanced Features using Tailwind CSS and Alpine.js Framework" (too long)
 
 ## Description Templates
 
@@ -161,9 +161,9 @@ Examples:
 
 Examples:
 
--  "Learn to build an accessible modal dialog using Tailwind CSS and Alpine.js. Includes animations, keyboard navigation, and focus management."
--  "Step-by-step tutorial for creating a responsive carousel with Tailwind CSS and JavaScript. Features smooth scrolling and touch support."
--  "Build an interactive accordion with Tailwind CSS and Alpine.js. Includes smooth animations and accessible markup."
+- "Learn to build an accessible modal dialog using Tailwind CSS and Alpine.js. Includes animations, keyboard navigation, and focus management."
+- "Step-by-step tutorial for creating a responsive carousel with Tailwind CSS and JavaScript. Features smooth scrolling and touch support."
+- "Build an interactive accordion with Tailwind CSS and Alpine.js. Includes smooth animations and accessible markup."
 
 ## Breadcrumb Patterns
 
@@ -281,7 +281,7 @@ npm run seo:audit
 date -u +"%Y-%m-%dT%H:%M:%SZ"
 
 # Copy template for new page
-cp src/pages/_template.astro src/pages/new-page/index.astro
+cp src/pages/_template.astro src/pages/new-page/index
 ```
 
 ## Testing URLs
@@ -294,7 +294,7 @@ cp src/pages/_template.astro src/pages/new-page/index.astro
 
 ## Common Mistakes to Avoid
 
- **Don't**:
+**Don't**:
 
 - Use same title/description on multiple pages
 - Forget to update dateModified when content changes
@@ -304,7 +304,7 @@ cp src/pages/_template.astro src/pages/new-page/index.astro
 - Use vague keywords like "tutorial" alone
 - Copy-paste without customizing
 
- **Do**:
+  **Do**:
 
 - Make each page unique
 - Update dates when editing
@@ -323,7 +323,7 @@ cp src/pages/_template.astro src/pages/new-page/index.astro
 
 ## Priority Order
 
-1. **Homepage**  (Done)
+1. **Homepage** (Done)
 2. **Top 10 most visited tutorials**
 3. **All Alpine.js tutorials**
 4. **All JavaScript tutorials**

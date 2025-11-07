@@ -11,54 +11,68 @@ import {
 // SEO Configuration
 const seoConfig = {
   title: "Create Js Particle Text with JavaScript",
-  description: "Learn to build js particle text components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+  description:
+    "Learn to build js particle text components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
   canonical: "/js-particle-text",
   jsonLd: [
     generateArticleSchema({
       title: "Create Js Particle Text with JavaScript",
-      description: "Learn to build js particle text components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      description:
+        "Learn to build js particle text components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
       url: "/js-particle-text",
       datePublished: "2025-10-01T06:22:29.079Z",
       dateModified: "2025-10-01T06:22:29.079Z",
-      keywords: ["Tailwind CSS","JavaScript","Vanilla JS","Js Particle Text","Tutorial","Web Development"],
+      keywords: [
+        "Tailwind CSS",
+        "JavaScript",
+        "Vanilla JS",
+        "Js Particle Text",
+        "Tutorial",
+        "Web Development",
+      ],
     }),
     generateBreadcrumbSchema([
       { name: "Home", url: "/" },
-      { name: "Create Js Particle Text with JavaScript", url: "/js-particle-text" },
+      {
+        name: "Create Js Particle Text with JavaScript",
+        url: "/js-particle-text",
+      },
     ]),
     generateHowToSchema({
       name: "Create Js Particle Text with JavaScript",
-      description: "Learn to build js particle text components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
+      description:
+        "Learn to build js particle text components using JavaScript and Tailwind CSS. Includes responsive design and modern styling.",
       totalTime: "PT20M",
       steps: [
-            {
-                  "name": "Set up HTML structure",
-                  "text": "Create the base js particle text container and elements"
-            },
-            {
-                  "name": "Add JavaScript interactivity",
-                  "text": "Initialize JavaScript to handle component state and interactions"
-            },
-            {
-                  "name": "Style with Tailwind CSS",
-                  "text": "Apply utility classes for responsive layout and modern design"
-            },
-            {
-                  "name": "Add accessibility features",
-                  "text": "Implement ARIA attributes and keyboard navigation"
-            },
-            {
-                  "name": "Test the component",
-                  "text": "Verify functionality across different browsers and devices"
-            }
+        {
+          name: "Set up HTML structure",
+          text: "Create the base js particle text container and elements",
+        },
+        {
+          name: "Add JavaScript interactivity",
+          text: "Initialize JavaScript to handle component state and interactions",
+        },
+        {
+          name: "Style with Tailwind CSS",
+          text: "Apply utility classes for responsive layout and modern design",
+        },
+        {
+          name: "Add accessibility features",
+          text: "Implement ARIA attributes and keyboard navigation",
+        },
+        {
+          name: "Test the component",
+          text: "Verify functionality across different browsers and devices",
+        },
       ],
     }),
   ],
 };
 ---
+
 <BaseLayout seo={seoConfig}>
   <section>
-  <h1 class="sr-only">Create Js Particle Text with JavaScript</h1>
+    <h1 class="sr-only">Create Js Particle Text with JavaScript</h1>
 
     <!-- Starts links to tutorial -->
     <TutorialBanner
@@ -69,7 +83,6 @@ const seoConfig = {
       <div id="text-container" class="flex items-center h-96 lg:h-24"></div>
     </Wrapper>
   </section>
- 
 </BaseLayout>
 <script type="module">
   class ParticleTextAnimation {
