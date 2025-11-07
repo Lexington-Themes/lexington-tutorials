@@ -13,7 +13,7 @@
   --color-beige: #f7f7f4;
   --color-black: #17181b;
   /* Colors */
-  -color-accent-50: oklch(0.958 0.016 22.18);
+  --color-accent-50: oklch(0.958 0.016 22.18);
   --color-accent-100: oklch(0.918 0.034 24.63);
   --color-accent-200: oklch(0.836 0.074 24.96);
   --color-accent-300: oklch(0.755 0.122 27.08);
