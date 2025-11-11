@@ -19,7 +19,7 @@
     "@astrojs/sitemap": "^3.6.0",
     "@astrolib/seo": "^1.0.0-beta.8",
     "@tailwindcss/typography": "^0.5.19",
-    "astro": "^5.15.4",
+    "astro": "^5.15.5",
     "tailwind-scrollbar-hide": "^4.0.0"
   },
   "devDependencies": {

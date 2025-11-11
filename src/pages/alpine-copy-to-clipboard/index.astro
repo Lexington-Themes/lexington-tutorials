@@ -1,0 +1,140 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import TutorialBanner from "@/components/global/TutorialBanner.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+} from "@/utils/jsonLd";
+
+const seoConfig = {
+  title: "How to Create a Copy to Clipboard with Alpine.js and Tailwind CSS",
+  description:
+    "Learn to build a copy-to-clipboard component using Alpine.js and Tailwind CSS. Includes success feedback and accessibility.",
+  canonical: "/alpine-copy-to-clipboard",
+  jsonLd: [
+    generateArticleSchema({
+      title:
+        "How to Create a Copy to Clipboard with Alpine.js and Tailwind CSS",
+      description:
+        "Learn to build a copy-to-clipboard component using Alpine.js and Tailwind CSS. Includes success feedback and accessibility.",
+      url: "/alpine-copy-to-clipboard",
+      datePublished: "2025-10-01T06:22:29.090Z",
+      dateModified: "2025-10-01T06:22:29.090Z",
+      keywords: ["Tailwind CSS", "Alpine.js", "Clipboard", "Copy", "Tutorial"],
+    }),
+    generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      {
+        name: "How to Create a Copy to Clipboard with Alpine.js and Tailwind CSS",
+        url: "/alpine-copy-to-clipboard",
+      },
+    ]),
+    generateHowToSchema({
+      name: "How to Create a Copy to Clipboard with Alpine.js and Tailwind CSS",
+      description:
+        "Learn to build a copy-to-clipboard component using Alpine.js and Tailwind CSS. Includes success feedback and accessibility.",
+      totalTime: "PT10M",
+      steps: [
+        { name: "Set up structure", text: "Create input, preview and button" },
+        {
+          name: "Add Alpine.js state",
+          text: "Track text value and copied state",
+        },
+        {
+          name: "Implement copy logic",
+          text: "Use navigator.clipboard.writeText(text)",
+        },
+        {
+          name: "Style with Tailwind",
+          text: "Add utility classes for layout and contrast",
+        },
+        {
+          name: "Add accessibility",
+          text: "Announce success with aria-live and focus management",
+        },
+      ],
+    }),
+  ],
+};
+---
+
+<BaseLayout seo={seoConfig}>
+  <section>
+    <h1 class="sr-only">
+      How to Create a Copy to Clipboard with Alpine.js and Tailwind CSS
+    </h1>
+
+    <TutorialBanner
+      tutorialUrl="https://lexingtonthemes.com/tutorials/how-to-create-a-copy-to-clipboard-with-tailwind-css-and-alpinejs/"
+      codeUrl="https://github.com/Lexington-Themes/lexington-tutorials/blob/main/src/pages/alpine-copy-to-clipboard/index.astro"
+    />
+
+    <Wrapper class="py-24 lg:py-48">
+      <div
+        class="max-w-xl p-6 mx-auto rounded-xl bg-sand-50"
+        x-data="{
+          text: 'npm create astro@latest',
+          copied: false,
+          async copy() {
+            try {
+              await navigator.clipboard.writeText(this.text);
+              this.copied = true;
+              setTimeout(() => (this.copied = false), 1800);
+            } catch (e) {
+              console.error('Copy failed', e);
+            }
+          }
+        }"
+      >
+        <div class="space-y-4">
+          <label for="copyInput" class="block text-sm font-medium text-base-700"
+            >Text to copy</label
+          >
+          <input
+            id="copyInput"
+            type="text"
+            x-model="text"
+            class="w-full h-11 px-3 text-sm rounded-md border border-base-100 placeholder-base-400 focus:border-accent-500 focus:ring-accent-500"
+            placeholder="Type something to copy..."
+          />
+
+          <div class="flex items-center justify-between gap-3">
+            <pre
+              class="flex-1 p-3 overflow-x-auto text-sm bg-base-50 rounded-md border border-base-100 text-base-600"><code x-text="text" /></pre>
+
+            <Button size="sm" variant="accent" type="button" @click="copy()">
+              <span x-show="!copied">Copy</span>
+              <span x-show="copied" class="inline-flex items-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="size-4"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.25 12a9.75 9.75 0 1119.5 0 9.75 9.75 0 01-19.5 0zm14.03-2.28a.75.75 0 10-1.06-1.06L10.5 13.44l-1.97-1.97a.75.75 0 10-1.06 1.06l2.5 2.5a.75.75 0 001.06 0l5.31-5.31z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Copied
+              </span>
+            </Button>
+          </div>
+
+          <p
+            class="text-xs text-base-500"
+            role="status"
+            aria-live="polite"
+            x-show="copied"
+            x-transition.opacity
+          >
+            The text was copied to your clipboard.
+          </p>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

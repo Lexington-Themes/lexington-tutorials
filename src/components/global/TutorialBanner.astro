@@ -5,6 +5,18 @@ interface Props {
   codeUrl: string;
 }
 const { tutorialUrl, codeUrl } = Astro.props;
+// Normalize code URL to ensure it points to the file, not just the folder
+const finalCodeUrl = (() => {
+  try {
+    if (!codeUrl) return "#";
+    if (codeUrl.endsWith(".astro")) return codeUrl;
+    // If it ends with /index (common in this repo), append .astro
+    if (/\/index$/.test(codeUrl)) return `${codeUrl}.astro`;
+    return codeUrl;
+  } catch {
+    return codeUrl;
+  }
+})();
 import Button from "@/components/fundations/elements/Button.astro";
 ---
 
@@ -15,7 +27,7 @@ import Button from "@/components/fundations/elements/Button.astro";
     <Button isLink={true} size="sm" variant="accent" href={tutorialUrl}
       >Tutorial</Button
     >
-    <Button isLink={true} size="sm" variant="muted" href={codeUrl}
+    <Button isLink={true} size="sm" variant="muted" href={finalCodeUrl}
       >Get the code
     </Button>
   </div>
